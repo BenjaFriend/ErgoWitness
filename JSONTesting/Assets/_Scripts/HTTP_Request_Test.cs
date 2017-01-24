@@ -8,18 +8,19 @@ using UnityEngine.Networking;
 /// Purpose of class: To see if I can't do a HTTP request up in here
 /// </summary>
 public class HTTP_Request_Test : MonoBehaviour {
+
     // The URL of my ELK server
     private string url = "http://192.168.137.134:9200/packetbeat-2017.01.24/_search?pretty=true";
 
     // The output that I may get
-    private string output = "";
+    private string JSON_String = "";
 
 	void Start ()
     {
-        StartCoroutine(GetText());
+        StartCoroutine(GetJSONText());     
 	}
 
-    IEnumerator GetText()
+    IEnumerator GetJSONText()
     {
         // Make a WWW object and give it the URL to my ELK stack server
         WWW www = new WWW(url);
@@ -28,8 +29,8 @@ public class HTTP_Request_Test : MonoBehaviour {
         if(www.error == null)
         {
             // it worked, so set my output to a string. 
-            output = www.text;
-            Debug.Log(output);
+            JSON_String = www.text;
+
         }
         else
         {
@@ -37,4 +38,5 @@ public class HTTP_Request_Test : MonoBehaviour {
             Debug.Log("WWW Error: " + www.error);
         }
     }
+
 }
