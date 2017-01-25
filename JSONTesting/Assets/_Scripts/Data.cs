@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Ben Hoffman
+/// Purpose of classes: This is the outline of all of the JSON data that I will need
+/// in order to get the things that I want.
+/// </summary>
 [System.Serializable]
 public class Data
 {
-    public int took;
     public bool timed_out;
-    public ShardsData _shards;
     public HitsData hits;
-}
-
-[System.Serializable]
-public class ShardsData
-{
-    public int total;
-    public int successful;
-    public int failed;
 }
 
 [System.Serializable]
@@ -35,6 +30,7 @@ public class HitsAuxData
     public Source _source; 
 }
 
+// This is really the information that I care about right now
 [System.Serializable]
 public class Source
 {
@@ -47,5 +43,4 @@ public class Source
     public string @timestamp;
     public int port;
     public string client_ip;
-
 }
