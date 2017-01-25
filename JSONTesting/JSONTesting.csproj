@@ -78,8 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Data.cs" />
     <Compile Include="Assets\_Scripts\HTTP_Request_Test.cs" />
-    <Compile Include="Assets\_Scripts\JSONDataObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
