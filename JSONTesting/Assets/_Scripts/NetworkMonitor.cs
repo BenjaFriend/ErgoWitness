@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using System.IO;
+using System.Net;
+using System.Text;
 /// <summary>
 /// Author: Ben Hoffman
 /// This class will be the main controller for the network monitoring in this visualization.
@@ -20,6 +22,12 @@ public class NetworkMonitor : MonoBehaviour {
     private string JSON_String = "";        // The string that represents the JSON data
     private Data dataObject;                // The actual JSON data class 
     private WWW www;                        // This class has methods that are built in to make HTTP requests
+
+    private string queryLocation;
+    private string queryString;
+
+
+
     #endregion
 
     /// <summary>
@@ -28,10 +36,13 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        queryLocation =  Application.streamingAssetsPath + "/gimmeData.json";
+        queryString = File.ReadAllText(queryLocation);
+        Debug.Log(queryString);
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
 
         // Find the latest index name and make my URL
-
+        
         StartCoroutine(GetJSONText());
     }
 
@@ -44,7 +55,7 @@ public class NetworkMonitor : MonoBehaviour {
     IEnumerator GetJSONText()
     {
         // Make a WWW object and give it the URL to my ELK stack server
-        www = new WWW(elk_url);
+        www = new WWW(elk_url + queryString);
         yield return www;   // Wait for the website to give me a response
 
         if (www.error == null)
@@ -71,6 +82,27 @@ public class NetworkMonitor : MonoBehaviour {
         // Run it again, forever and ever
         StartCoroutine(GetJSONText());
     }
+
+   /* public void DifferentWay()
+    {
+        string messaggio;
+        messaggio = "Caspita non ci posso credere!!!";
+
+        System.Net.WebRequest request = WebRequest.Create(elk_url);
+
+        request.ContentType = "application/json";
+        request.Method = "POST";
+        //string authInfo = "usr:pwd";
+        //request.Headers["X-Parse-Application-Id"] = "aaaaaaaaaaaaaaa";
+        //request.Headers["X-Parse-REST-API-Key"] = "bbbbbbbbbbbbbbb";
+        byte[] buffer = Encoding.GetEncoding("UTF-8").GetBytes("{\"channels\": [\"\"], \"data\": { \"alert\": \" " + messaggio + "\" } }");
+        string result = System.Convert.ToBase64String(buffer);
+        Stream reqstr = request.GetRequestStream();
+        reqstr.Write(buffer, 0, buffer.Length);
+        reqstr.Close();
+
+        WebResponse response = request.GetResponse();
+    }*/
 
 
 }

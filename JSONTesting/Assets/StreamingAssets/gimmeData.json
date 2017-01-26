@@ -1,0 +1,11 @@
+{
+	"query": {
+		"match_all": {}
+	},
+	"size": 1,
+	"sort": [{
+		"_timestamp": {
+			"order": "desc"
+		}
+	}]
+}
