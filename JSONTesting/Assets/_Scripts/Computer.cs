@@ -15,14 +15,13 @@ public class Computer : MonoBehaviour {
     #endregion
 
     #region Getters and Setters
-    public Source ComputerSourceInfo { get { return computerSourceInfo; } }
+    public Source ComputerSourceInfo { get { return computerSourceInfo; } set { computerSourceInfo = value; } }
     public List<Computer> ConnectedComputers { get { return connectedComputers; } }
     #endregion
 
     // Constructor
-    public Computer(Source computerSource)
+     void start()
     {
-        computerSourceInfo = computerSource;
         connectedComputers = new List<Computer>();
     }
 

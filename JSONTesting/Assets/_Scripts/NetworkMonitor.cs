@@ -69,7 +69,7 @@ public class NetworkMonitor : MonoBehaviour {
         }
 
         // Run it again, forever and ever
-        //StartCoroutine(GetJSONText());
+        StartCoroutine(GetJSONText());
     }
 
 

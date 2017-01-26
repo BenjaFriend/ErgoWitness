@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
     public GameObject computerPrefab;
 
     private Dictionary<string, GameObject> computersDict;
-
+    private GameObject temp;
     #endregion
 
     void Start ()
@@ -33,19 +33,27 @@ public class GameController : MonoBehaviour {
         // Check all the given info from the json data with the info that I already have
         for (int i = 0; i < jsonData.hits.hits.Length; i++)
         {
+            // Make sure that we are not null
+            if(jsonData.hits.hits[i]._source.source.ip == null)
+            {
+                break;
+            }
+
             // If my dictionary contains the IP address of this JSON info...
-            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.ip))
+            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.source.ip))
             {
                 // Then I know that I have had this before, and I need to check the client IP
                 // If the client IP is the same then do NOTHING, but if it is different, then 
                 // create a new computer on the network with that IP
-            }else
+                CheckClient(jsonData.hits.hits[i]._source);
+            }
+            else
             {
                 // If I do NOT have this IP in my dictionary, then make a new computer and add
-                // it to the dictionary
+                // it to the dictionary                
+                NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
             }
         }
-
     }
 
     /// <summary>
@@ -53,22 +61,41 @@ public class GameController : MonoBehaviour {
     /// We have NOT seen this IP before, and we want to make
     /// a new one
     /// </summary>
-    private void NewComputer(string ipAddr, Source newSource)
+    private void NewComputer(string ipAddr, Source data)
     {
         // Instantiate a new computer object
-        GameObject temp = (GameObject)Instantiate(computerPrefab, transform);
+        temp = (GameObject)Instantiate(computerPrefab, transform);
+        // Set the DATA on this gameobject to the data from the JSON data
+        temp.GetComponent<Computer>().ComputerSourceInfo = data;
         // Actually add it to my list of computers
-
+        computersDict.Add(ipAddr, temp);
     }
 
 
     /// <summary>
     /// Author: Ben Hoffman
-    /// We have seen this IP before, and 
+    /// We have seen this IP before, and we want to see if the DESTINATION IP
+    /// is NEW. IF IT IS, then make a new computer, and ADD THAT COMPUTER to the
+    /// list of connected computers to both
     /// </summary>
-    private void AddConnection()
+    private void CheckClient(Source data)
     {
+        if(data.dest.ip == null)
+        {
+            return;
+        }
 
+        if (computersDict.ContainsKey(data.dest.ip))
+        {
+            // We have this computer on the network, CONNECT IT to the client on the network
+            Debug.Log("We also have the client! " + data.dest.ip);
+        }
+        else
+        {
+            Debug.Log("We do not have the client! Make a new PC!");
+            NewComputer(data.dest.ip, data);
+            // Add the connected IP's together on each computer
+        }
 
     }
 	

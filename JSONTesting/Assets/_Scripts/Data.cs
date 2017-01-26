@@ -27,6 +27,9 @@ public class HitsData
 [System.Serializable]
 public class HitsAuxData
 {
+    public string _index;
+    public string _type;
+    public string _id;
     public Source _source;      // This is the source of that hit
 }
 
@@ -34,13 +37,22 @@ public class HitsAuxData
 [System.Serializable]
 public class Source
 {
-    public string method;       // QUERY, etc.
-    public int bytes_in;        // How amny bytes are in?
-    public string ip;           // The IP of the hit
-    public string id;           // The unique ID given to this source by ELK
+    public SourceAuxData source;// Info on the source
     public string transport;    // TCP, UDP, etc
     public string type;         // What type of traffic is it? (DNS, icmp, etc)
-    public string @timestamp;   // When did this happen? 
-    public int port;            // What port is this running on?
-    public string client_ip;    // The client IP
+    public Destination dest;    // The info the destination
+}
+
+[System.Serializable]
+public class SourceAuxData
+{
+    public int port;
+    public string ip;           // The IP of the hit
+}
+
+[System.Serializable]
+public class Destination
+{
+    public int port;
+    public string ip;
 }
