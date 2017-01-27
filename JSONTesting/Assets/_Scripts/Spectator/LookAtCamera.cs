@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour {
 	
-	// Update is called once per frame
+	// Just look at the camera 
 	void LateUpdate ()
     {
-        transform.LookAt(Camera.main.transform);
-	}
+        transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
+    }
 }
