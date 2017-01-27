@@ -7,12 +7,14 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
+[RequireComponent(typeof(LineRenderer))]
 public class Computer : MonoBehaviour {
 
     #region Fields
-    private Source computerSourceInfo;          // The data that I care about for each PC
+    public Source computerSourceInfo;          // The data that I care about for each PC
     public List<GameObject> connectedComputers;  // This is the list of children
     private double numHits;     // How many times have we seen this IP get hit?
+    private LineRenderer lineRend;  // The line renderer
     #endregion
 
     #region Getters and Setters
@@ -22,10 +24,12 @@ public class Computer : MonoBehaviour {
     #endregion
 
     // Constructor
-     void Awake()
+     void Start()
     {
         numHits = 1;
         connectedComputers = new List<GameObject>();
+        lineRend = GetComponent<LineRenderer>();
+        lineRend.SetPosition(0, Vector3.zero);
     }
 
     /// <summary>
@@ -36,10 +40,13 @@ public class Computer : MonoBehaviour {
     /// <param name="connectedToMe">the PC that is connected to me</param>
     public void AddConnectedPC(GameObject connectedToMe)
     {
-        if (!connectedComputers.Contains(connectedToMe))
+        if (!connectedComputers.Contains(connectedToMe) && connectedToMe != gameObject)
         {
             connectedComputers.Add(connectedToMe);
+
+            // Add the position to the line renderer    
+            lineRend.SetPosition(1, transform.InverseTransformPoint(connectedToMe.transform.position));        
         }
     }
-	
+
 }

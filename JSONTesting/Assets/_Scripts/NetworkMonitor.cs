@@ -96,7 +96,7 @@ public class NetworkMonitor : MonoBehaviour {
         }
 
         // Capture data every certain number of seconds
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(1f);
 
         // Start this again after 1 second
         StartCoroutine(SetJsonData());

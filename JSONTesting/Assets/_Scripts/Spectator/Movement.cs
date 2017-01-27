@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour {
     /// </summary>
 	void Update ()
     {
-
+        Move();
 	}
 
     /// <summary>
@@ -32,15 +32,19 @@ public class Movement : MonoBehaviour {
     /// </summary>
     void Move()
     {
-        
-    }
-    
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Purpose of method: To do the rotation on this object
-    /// </summary>
-    void Rotate()
-    {
+        transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * xMoveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * xMoveSpeed * Time.deltaTime);
 
+        if (Input.GetKey(KeyCode.Q))
+        {
+            // Move up
+            transform.Translate(transform.up * yMoveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            // Move down
+            transform.Translate(-transform.up * yMoveSpeed * Time.deltaTime);
+        }
+        // Clamp the position
     }
 }

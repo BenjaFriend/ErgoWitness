@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
     public Vector3 boundries;
 
     private Vector3 tempPosition;
-    private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
+    public Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
     private GameObject temp; // Use this for making new computers, so I can edit them
     #endregion
 
@@ -42,22 +42,22 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < jsonData.hits.hits.Length; i++)
         {
             // Make sure that we are not null
-            if(jsonData.hits.hits[i]._source.ip == null)
+            if(jsonData.hits.hits[i]._source.source.ip == null)
             {
                 break;
             }
 
             // If my dictionary contains the IP address of this JSON info...
-            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.ip))
+            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.source.ip))
             {
                 // I want to check if there is a connection that I should add
                 CheckConnections(jsonData.hits.hits[i]._source,
-                    computersDict[jsonData.hits.hits[i]._source.ip]);
+                    computersDict[jsonData.hits.hits[i]._source.source.ip]);
             }
             else
             {
                 // If I do NOT have this IP in my dictionary, then make a new computer        
-                NewComputer(jsonData.hits.hits[i]._source.ip, jsonData.hits.hits[i]._source);
+                NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
             }
         }
     }
@@ -95,20 +95,19 @@ public class GameController : MonoBehaviour {
     /// </summary>
     private void CheckConnections(Source data, GameObject checkMe)
     {
-        if(data.client_ip== null)
+        if(data.dest.ip== null)
         {
             return;
         }
         // There IS a connection if one of the PC's on the network has a DEST IP of the given PC's IP
-        if (computersDict.ContainsKey(data.client_ip))
+        if (computersDict.ContainsKey(data.dest.ip))
         {
             // We have this IP on our network already, add the connection to the given pc
-            checkMe.GetComponent<Computer>().AddConnectedPC(computersDict[data.client_ip]);
-
+            checkMe.GetComponent<Computer>().AddConnectedPC(computersDict[data.dest.ip]);
         }
         else
         {
-            NewComputer(data.client_ip, data);
+            NewComputer(data.dest.ip, data);
             // Add the connected IP's together on each computer
         }
 

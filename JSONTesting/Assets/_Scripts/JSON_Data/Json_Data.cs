@@ -38,13 +38,24 @@ public class HitsData
 [System.Serializable]
 public class Source
 {
-    public int bytes_in;
-    public string ip;           // The IP of the hit
+    public SourceData source;
     public string transport;    // TCP, UDP, etc
     public string type;         // What type of traffic is it? (DNS, icmp, etc)
+    public DestinationData dest;
     public string @timestamp;
-    public int bytes_out;
-    public string client_ip;           // The IP of the hit
+}
 
+[System.Serializable]
+public class SourceData
+{
+    public int port;
+    public string ip;           // The IP of the hit
+}
+
+[System.Serializable]
+public class DestinationData
+{
+    public int port;
+    public string ip;           // The IP of the hit
 }
 
