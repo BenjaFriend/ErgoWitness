@@ -11,18 +11,21 @@ public class Computer : MonoBehaviour {
 
     #region Fields
     private Source computerSourceInfo;          // The data that I care about for each PC
-    private List<Computer> connectedComputers;  // This is the list of children
+    public List<GameObject> connectedComputers;  // This is the list of children
+    private double numHits;     // How many times have we seen this IP get hit?
     #endregion
 
     #region Getters and Setters
     public Source ComputerSourceInfo { get { return computerSourceInfo; } set { computerSourceInfo = value; } }
-    public List<Computer> ConnectedComputers { get { return connectedComputers; } }
+    public List<GameObject> ConnectedComputers { get { return connectedComputers; } }
+    public double NumHits { get { return numHits; } set { numHits = value; } }
     #endregion
 
     // Constructor
-     void start()
+     void Awake()
     {
-        connectedComputers = new List<Computer>();
+        numHits = 1;
+        connectedComputers = new List<GameObject>();
     }
 
     /// <summary>
@@ -30,10 +33,13 @@ public class Computer : MonoBehaviour {
     /// Purpose of method: To add the given computer to my
     /// list of connected PC's
     /// </summary>
-    /// <param name="connectedToMe"></param>
-    public void AddConnectedPC(Computer connectedToMe)
+    /// <param name="connectedToMe">the PC that is connected to me</param>
+    public void AddConnectedPC(GameObject connectedToMe)
     {
-        connectedComputers.Add(connectedToMe);
+        if (!connectedComputers.Contains(connectedToMe))
+        {
+            connectedComputers.Add(connectedToMe);
+        }
     }
 	
 }

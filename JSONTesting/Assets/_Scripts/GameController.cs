@@ -11,14 +11,22 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     #region Fields
-    public GameObject computerPrefab;
+    public GameObject computerPrefab;  // The computer prefab
 
-    private Dictionary<string, GameObject> computersDict;
-    private GameObject temp;
+    // This will be used to randomly position the computers within this area. 
+    // The max range will be whatever number you put in, and the min will be 
+    // the negative of that. So if you enter 100,100,100, then a random
+    // position will be within -100 and 100 on each axis.
+    public Vector3 boundries;
+
+    private Vector3 tempPosition;
+    private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
+    private GameObject temp; // Use this for making new computers, so I can edit them
     #endregion
 
     void Start ()
     {
+        // Load in my prefab from the resources folder
         computersDict = new Dictionary<string, GameObject>();
     }
 
@@ -42,15 +50,13 @@ public class GameController : MonoBehaviour {
             // If my dictionary contains the IP address of this JSON info...
             if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.ip))
             {
-                // Then I know that I have had this before, and I need to check the client IP
-                // If the client IP is the same then do NOTHING, but if it is different, then 
-                // create a new computer on the network with that IP
-                CheckClient(jsonData.hits.hits[i]._source);
+                // I want to check if there is a connection that I should add
+                CheckConnections(jsonData.hits.hits[i]._source,
+                    computersDict[jsonData.hits.hits[i]._source.ip]);
             }
             else
             {
-                // If I do NOT have this IP in my dictionary, then make a new computer and add
-                // it to the dictionary                
+                // If I do NOT have this IP in my dictionary, then make a new computer        
                 NewComputer(jsonData.hits.hits[i]._source.ip, jsonData.hits.hits[i]._source);
             }
         }
@@ -63,12 +69,21 @@ public class GameController : MonoBehaviour {
     /// </summary>
     private void NewComputer(string ipAddr, Source data)
     {
+        // Make a random transform within the paramters of this space
+        tempPosition = new Vector3(
+            Random.Range(-boundries.x, boundries.x),
+            Random.Range(-boundries.y, boundries.y),
+            Random.Range(-boundries.z, boundries.z));
+
         // Instantiate a new computer object
-        temp = (GameObject)Instantiate(computerPrefab, transform);
+        temp = (GameObject)Instantiate(computerPrefab, tempPosition, Quaternion.identity);
         // Set the DATA on this gameobject to the data from the JSON data
         temp.GetComponent<Computer>().ComputerSourceInfo = data;
         // Actually add it to my list of computers
         computersDict.Add(ipAddr, temp);
+
+        // Check the connections to this PC
+        CheckConnections(data, temp);
     }
 
 
@@ -78,16 +93,17 @@ public class GameController : MonoBehaviour {
     /// is NEW. IF IT IS, then make a new computer, and ADD THAT COMPUTER to the
     /// list of connected computers to both
     /// </summary>
-    private void CheckClient(Source data)
+    private void CheckConnections(Source data, GameObject checkMe)
     {
         if(data.client_ip== null)
         {
             return;
         }
-
+        // There IS a connection if one of the PC's on the network has a DEST IP of the given PC's IP
         if (computersDict.ContainsKey(data.client_ip))
         {
-            // We have this computer on the network, CONNECT IT to the client on the network
+            // We have this IP on our network already, add the connection to the given pc
+            checkMe.GetComponent<Computer>().AddConnectedPC(computersDict[data.client_ip]);
 
         }
         else

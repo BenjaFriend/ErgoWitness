@@ -46,13 +46,10 @@ public class NetworkMonitor : MonoBehaviour {
 
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
 
-        // Find the latest index name and make my URL
+        // Find the latest index name and make my URL, or maybe get all the indexes and ask the
+        // user which one they want to use
 
-        //StartCoroutine(GetJSONText());
-        // HTTPRequest();
-        //StartCoroutine(UnityWebRequestMine());
         StartCoroutine(SetJsonData());
-
     }
 
 
@@ -98,7 +95,8 @@ public class NetworkMonitor : MonoBehaviour {
             StringToJson();
         }
 
-        yield return new WaitForSeconds(1);
+        // Capture data every certain number of seconds
+        yield return new WaitForSeconds(0.5f);
 
         // Start this again after 1 second
         StartCoroutine(SetJsonData());
