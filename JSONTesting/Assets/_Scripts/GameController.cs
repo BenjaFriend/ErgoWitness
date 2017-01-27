@@ -28,19 +28,19 @@ public class GameController : MonoBehaviour {
     /// seen it before. 
     /// </summary>
     /// <param name="jsonData">The data for me to check what PC's are on the network</param>
-    public void CheckIP(Data jsonData)
+    public void CheckIP(Json_Data jsonData)
     {
         // Check all the given info from the json data with the info that I already have
         for (int i = 0; i < jsonData.hits.hits.Length; i++)
         {
             // Make sure that we are not null
-            if(jsonData.hits.hits[i]._source.source.ip == null)
+            if(jsonData.hits.hits[i]._source.ip == null)
             {
                 break;
             }
 
             // If my dictionary contains the IP address of this JSON info...
-            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.source.ip))
+            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.ip))
             {
                 // Then I know that I have had this before, and I need to check the client IP
                 // If the client IP is the same then do NOTHING, but if it is different, then 
@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour {
             {
                 // If I do NOT have this IP in my dictionary, then make a new computer and add
                 // it to the dictionary                
-                NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
+                NewComputer(jsonData.hits.hits[i]._source.ip, jsonData.hits.hits[i]._source);
             }
         }
     }
@@ -80,20 +80,19 @@ public class GameController : MonoBehaviour {
     /// </summary>
     private void CheckClient(Source data)
     {
-        if(data.dest.ip == null)
+        if(data.client_ip== null)
         {
             return;
         }
 
-        if (computersDict.ContainsKey(data.dest.ip))
+        if (computersDict.ContainsKey(data.client_ip))
         {
             // We have this computer on the network, CONNECT IT to the client on the network
-            Debug.Log("We also have the client! " + data.dest.ip);
+
         }
         else
         {
-            Debug.Log("We do not have the client! Make a new PC!");
-            NewComputer(data.dest.ip, data);
+            NewComputer(data.client_ip, data);
             // Add the connected IP's together on each computer
         }
 

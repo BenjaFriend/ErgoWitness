@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -17,17 +17,22 @@ public class NetworkMonitor : MonoBehaviour {
 
     #region Fields
     // The URL of my ELK server
-    private string elk_url = "http://192.168.137.134:9200/packetbeat-2017.01.26/_search?pretty=true";
-    private GameController gameControllerObj; // The game controller 
+    private string elk_url = "http://192.168.137.134:9200/packetbeat-2017.01.27/_search?pretty=true";
     private string JSON_String = "";        // The string that represents the JSON data
-    private Data dataObject;                // The actual JSON data class 
-    private WWW www;                        // This class has methods that are built in to make HTTP requests
+    private Json_Data dataObject;           // The actual JSON data class 
 
     private string queryLocation;
     private string queryString;
+    private GameController gameControllerObj; // The game controller 
 
-
-
+    // These are fields for my web request so that I am not making new objects in mem
+    // With each call
+    private WebRequest request;
+    private HttpWebResponse response;
+    private Stream requestStream;
+    private StreamReader reader;
+    private byte[] buffer;
+    private string bufferResult;
     #endregion
 
     /// <summary>
@@ -38,71 +43,85 @@ public class NetworkMonitor : MonoBehaviour {
     {
         queryLocation =  Application.streamingAssetsPath + "/gimmeData.json";
         queryString = File.ReadAllText(queryLocation);
-        Debug.Log(queryString);
+
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
 
         // Find the latest index name and make my URL
-        
-        StartCoroutine(GetJSONText());
+
+        //StartCoroutine(GetJSONText());
+        // HTTPRequest();
+        //StartCoroutine(UnityWebRequestMine());
+        StartCoroutine(SetJsonData());
+
+    }
+
+
+    /// <summary>
+    /// Author: Ben Hoffman
+    /// This will allow me to get the most recent event
+    /// from the ELK server, in a string that can then be parsed 
+    /// by the Unity JsonUtility. This is a co routine so that
+    /// I don't get framerate drops if it takes too long
+    /// to download
+    /// </summary>
+    IEnumerator SetJsonData()
+    {
+        // Make a new web request with the .net WebRequest
+        request = WebRequest.Create(elk_url);
+
+        request.ContentType = "application/json";
+        request.Method = "POST";
+        buffer = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
+        bufferResult = System.Convert.ToBase64String(buffer);
+
+        requestStream = request.GetRequestStream();
+        requestStream.Write(buffer, 0, buffer.Length);
+        requestStream.Close();
+
+        response = (HttpWebResponse)request.GetResponse();
+
+        yield return requestStream = response.GetResponseStream();
+
+        // Open the stream using a StreamReader for easy access.
+        reader = new StreamReader(requestStream);
+        // Set my string to the response from the website
+        JSON_String = reader.ReadToEnd();
+
+        // Cleanup the streams and the response.
+        reader.Close();
+        requestStream.Close();
+        response.Close();
+
+        // As long as we are not null, put this in as real C# data
+        if(JSON_String != "" || JSON_String != null)
+        {
+            StringToJson();
+        }
+
+        yield return new WaitForSeconds(1);
+
+        // Start this again after 1 second
+        StartCoroutine(SetJsonData());
     }
 
     /// <summary>
     /// Author: Ben Hoffman
-    /// Purpose of method: To send out a WWW HTTP request to my ELK stack 
-    /// server, and put that data into a DATA class object, so that I can access
-    /// all of my stuff as I regualarlly would with any C# variable
+    /// Take the Json string that we just got from the website,
+    /// and use the JsonUtility to make it JsonData. After that 
+    /// it will send it to the game controller
     /// </summary>
-    IEnumerator GetJSONText()
+    public void StringToJson()
     {
-        // Make a WWW object and give it the URL to my ELK stack server
-        www = new WWW(elk_url + queryString);
-        yield return www;   // Wait for the website to give me a response
+        // Use the JsonUtility to send the string of data that I got from the server, to a data object
+        dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
 
-        if (www.error == null)
+        // As long as we did not time out... 
+        if (!dataObject.timed_out)
         {
-            // As long as there was not an error, then we can set the JSON string to the output of the HTTP request
-            JSON_String = www.text;
-
-            // Use the JsonUtility to send the string of data that I got from the server, to a data object
-            dataObject = JsonUtility.FromJson<Data>(JSON_String);
-
-            // As long as we did not time out... 
-            if (!dataObject.timed_out)
-            {
-                // Give my game controller the JSON data to sort out if there is a new computer on it or not
-                gameControllerObj.CheckIP(dataObject);
-            }
+            // Give my game controller the JSON data to sort out if there is a new computer on it or not
+            gameControllerObj.CheckIP(dataObject);
         }
-        else
-        {
-            // Print out the error that happened
-            Debug.Log("WWW Error: " + www.error);
-        }
-
-        // Run it again, forever and ever
-        StartCoroutine(GetJSONText());
     }
-
-   /* public void DifferentWay()
-    {
-        string messaggio;
-        messaggio = "Caspita non ci posso credere!!!";
-
-        System.Net.WebRequest request = WebRequest.Create(elk_url);
-
-        request.ContentType = "application/json";
-        request.Method = "POST";
-        //string authInfo = "usr:pwd";
-        //request.Headers["X-Parse-Application-Id"] = "aaaaaaaaaaaaaaa";
-        //request.Headers["X-Parse-REST-API-Key"] = "bbbbbbbbbbbbbbb";
-        byte[] buffer = Encoding.GetEncoding("UTF-8").GetBytes("{\"channels\": [\"\"], \"data\": { \"alert\": \" " + messaggio + "\" } }");
-        string result = System.Convert.ToBase64String(buffer);
-        Stream reqstr = request.GetRequestStream();
-        reqstr.Write(buffer, 0, buffer.Length);
-        reqstr.Close();
-
-        WebResponse response = request.GetResponse();
-    }*/
 
 
 }

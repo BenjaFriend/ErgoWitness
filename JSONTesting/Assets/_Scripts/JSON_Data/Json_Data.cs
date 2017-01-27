@@ -11,21 +11,22 @@ using UnityEngine;
 /// JSON libraries because of the way that it allocates memory.
 /// </summary>
 [System.Serializable]
-public class Data
+public class Json_Data
 {
+    public int took;            // How many samples is this?
     public bool timed_out;      // Did we time out?
-    public HitsData hits;       // The data that actually matters
+    public Hits hits;       // The data that actually matters
+}
+
+[System.Serializable]
+public class Hits
+{
+    public int total;           // How many total hits do we have on the server?
+    public HitsData[] hits;  // Array of all the hits that we gathered since last time
 }
 
 [System.Serializable]
 public class HitsData
-{
-    public int total;           // How many total hits do we have on the server?
-    public HitsAuxData[] hits;  // Array of all the hits that we gathered since last time
-}
-
-[System.Serializable]
-public class HitsAuxData
 {
     public string _index;
     public string _type;
@@ -37,22 +38,13 @@ public class HitsAuxData
 [System.Serializable]
 public class Source
 {
-    public SourceAuxData source;// Info on the source
+    public int bytes_in;
+    public string ip;           // The IP of the hit
     public string transport;    // TCP, UDP, etc
     public string type;         // What type of traffic is it? (DNS, icmp, etc)
-    public Destination dest;    // The info the destination
+    public string @timestamp;
+    public int bytes_out;
+    public string client_ip;           // The IP of the hit
+
 }
 
-[System.Serializable]
-public class SourceAuxData
-{
-    public int port;
-    public string ip;           // The IP of the hit
-}
-
-[System.Serializable]
-public class Destination
-{
-    public int port;
-    public string ip;
-}
