@@ -47,7 +47,7 @@ public class NetworkMonitor : MonoBehaviour {
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
 
         // Set up my URL to get info from
-        SetUpURL();
+        elk_url = SetUpURL();
 
         // Find the latest index name and make my URL, or maybe get all the indexes and ask the
         // user which one they want to use
@@ -60,24 +60,24 @@ public class NetworkMonitor : MonoBehaviour {
     /// to get my JSON data by getting the current date and matching
     /// it to the index
     /// </summary>
-    private void SetUpURL()
+    private string SetUpURL()
     {
+        string url = "";
         // Add the year 
-        elk_url = "http://192.168.137.134:9200/packetbeat-" + DateTime.Today.Year.ToString() + ".";
+        url = "http://192.168.137.134:9200/packetbeat-" + DateTime.Today.Year.ToString() + ".";
 
         // Make sure we have proper format on the month
         if(DateTime.Today.Month < 10)
         {
-            elk_url += "0" + DateTime.Today.Month.ToString() + ".";
+            url += "0" + DateTime.Today.Month.ToString() + ".";
         }
         else
         {
-            elk_url +=  DateTime.Today.Month.ToString() + ".";
+            url +=  DateTime.Today.Month.ToString() + ".";
         }
 
-        elk_url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
-
-        Debug.Log(elk_url);
+        url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
+        return url;
     }
 
 
@@ -126,7 +126,7 @@ public class NetworkMonitor : MonoBehaviour {
         // Capture data every certain number of seconds
         //yield return new WaitForSeconds(1f);
 
-        // Start this again after 1 second
+        // Start this again
         StartCoroutine(SetJsonData());
     }
 

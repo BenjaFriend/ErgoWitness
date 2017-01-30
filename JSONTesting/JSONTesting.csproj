@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Computer.cs" />
+    <Compile Include="Assets\_Scripts\Fade_UI.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
     <Compile Include="Assets\_Scripts\JSON_Data\Json_Data.cs" />
     <Compile Include="Assets\_Scripts\NetworkMonitor.cs" />

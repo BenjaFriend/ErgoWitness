@@ -20,7 +20,7 @@ public class Computer : MonoBehaviour {
     private LineRenderer lineRend;  // The line renderer
     #endregion
 
-    #region Getters and Setters
+    #region Mutators
     public Source ComputerSourceInfo { get { return computerSourceInfo; } set { computerSourceInfo = value; } }
     public List<GameObject> ConnectedComputers { get { return connectedComputers; } }
     public double NumHits { get { return numHits; } set { numHits = value; } }
@@ -62,6 +62,27 @@ public class Computer : MonoBehaviour {
     {
         sourceIpText.text = "Source IP: " + computerSourceInfo.source.ip;
         destIpText.text = "Dest. IP: " + computerSourceInfo.dest.ip;
+
+        // Change the color of the  line renderer material based on the protocol
+        switch (computerSourceInfo.transport)
+        {
+            case ("tcp"):
+                // Light Gray color
+                lineRend.material.color = Color.gray;
+                break;
+            case ("udp"):
+                // Light blue
+                lineRend.material.color = Color.blue;
+                break;
+            case ("http"):
+                // Light green
+                lineRend.material.color = Color.green;
+                break;
+            case ("https"):
+                // Vibrant green
+                lineRend.material.color = Color.green;              
+                break;
+        }
     }
 
 }
