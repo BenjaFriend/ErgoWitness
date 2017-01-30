@@ -16,6 +16,7 @@ using System.Text;
 public class NetworkMonitor : MonoBehaviour {
 
     #region Fields
+    public bool keepGoing = true;
     // The URL of my ELK server
     private string elk_url;
     private string JSON_String = "";        // The string that represents the JSON data
@@ -103,7 +104,7 @@ public class NetworkMonitor : MonoBehaviour {
         requestStream.Close();
 
         response = (HttpWebResponse)request.GetResponse();
-
+        // Wait until we have all of the data we need from the response to continue
         yield return requestStream = response.GetResponseStream();
 
         // Open the stream using a StreamReader for easy access.
@@ -119,11 +120,20 @@ public class NetworkMonitor : MonoBehaviour {
         // As long as we are not null, put this in as real C# data
         if(JSON_String != "" || JSON_String != null)
         {
+            // Wait until we finish converting the string to JSON data to continue
             yield return StartCoroutine(StringToJson());
+
+            // Give my game controller the JSON data to sort out if there is a new computer on it or not
+            gameControllerObj.CheckIP(dataObject);
         }
 
-        // Start this again
-        StartCoroutine(SetJsonData());
+
+        // As long as we didn't say to stop yet
+        if (keepGoing)
+        {
+            // Start this again
+            StartCoroutine(SetJsonData());
+        }
     }
 
     /// <summary>
@@ -135,14 +145,7 @@ public class NetworkMonitor : MonoBehaviour {
     private IEnumerator StringToJson()
     {
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
-        dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
-
-        // As long as we did not time out... 
-        if (!dataObject.timed_out)
-        {
-            // Give my game controller the JSON data to sort out if there is a new computer on it or not
-            yield return StartCoroutine(gameControllerObj.CheckIP(dataObject));
-        }
+        yield return dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
     }
 
 
