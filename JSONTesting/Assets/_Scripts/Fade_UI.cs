@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Fade_UI : MonoBehaviour {
 
     public Text[] textItems;
-    private bool isFaded;
 
     private void Start()
     {
@@ -36,8 +35,6 @@ public class Fade_UI : MonoBehaviour {
             // Fade out each component
             textItems[i].CrossFadeAlpha(0f, 1f, false);
         }
-
-        isFaded = true;
     }
 
     private void FadeIn()
@@ -47,7 +44,5 @@ public class Fade_UI : MonoBehaviour {
             // Fade out each component
             textItems[i].CrossFadeAlpha(1f, 1f, false);
         }
-
-        isFaded = false;
     }
 }

@@ -91,7 +91,6 @@
     <Compile Include="Assets\_Scripts\NetworkMonitor.cs" />
     <Compile Include="Assets\_Scripts\Spectator\LookAtCamera.cs" />
     <Compile Include="Assets\_Scripts\Spectator\Movement.cs" />
-    <Compile Include="Assets\_Scripts\Spectator\ShowInfoOnLook.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

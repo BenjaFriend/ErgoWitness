@@ -16,7 +16,7 @@ public class Computer : MonoBehaviour {
     public List<GameObject> connectedComputers;  // This is the list of children
     public Text sourceIpText;
     public Text destIpText;
-    private double numHits;     // How many times have we seen this IP get hit?
+    public double numHits;     // How many times have we seen this IP get hit?
     private LineRenderer lineRend;  // The line renderer
     #endregion
 
@@ -44,6 +44,12 @@ public class Computer : MonoBehaviour {
     /// <param name="connectedToMe">the PC that is connected to me</param>
     public void AddConnectedPC(GameObject connectedToMe)
     {
+        if(connectedToMe == null)
+        {
+            return;
+        }
+
+        numHits++;
         if (!connectedComputers.Contains(connectedToMe) && connectedToMe != gameObject)
         {
             connectedComputers.Add(connectedToMe);

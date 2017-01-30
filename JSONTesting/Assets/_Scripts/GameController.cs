@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour {
     /// seen it before. 
     /// </summary>
     /// <param name="jsonData">The data for me to check what PC's are on the network</param>
-    public void CheckIP(Json_Data jsonData)
+    public IEnumerator CheckIP(Json_Data jsonData)
     {
         // Check all the given info from the json data with the info that I already have
         for (int i = 0; i < jsonData.hits.hits.Length; i++)
@@ -60,6 +60,7 @@ public class GameController : MonoBehaviour {
                 NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
             }
         }
+        yield return null;
     }
 
     /// <summary>
@@ -84,6 +85,8 @@ public class GameController : MonoBehaviour {
 
         // Check the connections to this PC
         CheckConnections(data, temp);
+        // Release from memory
+        temp = null;
     }
 
 

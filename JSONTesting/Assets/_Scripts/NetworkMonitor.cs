@@ -21,7 +21,6 @@ public class NetworkMonitor : MonoBehaviour {
     private string JSON_String = "";        // The string that represents the JSON data
     private Json_Data dataObject;           // The actual JSON data class 
 
-    private string queryLocation;
     private string queryString;
     private GameController gameControllerObj; // The game controller 
 
@@ -41,8 +40,8 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        queryLocation =  Application.streamingAssetsPath + "/gimmeData.json";
-        queryString = File.ReadAllText(queryLocation);
+        //queryLocation =  Application.streamingAssetsPath + "/gimmeData.json";
+        queryString = File.ReadAllText(Application.streamingAssetsPath + "/gimmeData.json");
 
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
 
@@ -89,7 +88,7 @@ public class NetworkMonitor : MonoBehaviour {
     /// I don't get framerate drops if it takes too long
     /// to download
     /// </summary>
-    IEnumerator SetJsonData()
+    private IEnumerator SetJsonData()
     {
         // Make a new web request with the .net WebRequest
         request = WebRequest.Create(elk_url);
@@ -120,11 +119,8 @@ public class NetworkMonitor : MonoBehaviour {
         // As long as we are not null, put this in as real C# data
         if(JSON_String != "" || JSON_String != null)
         {
-            StringToJson();
+            yield return StartCoroutine(StringToJson());
         }
-
-        // Capture data every certain number of seconds
-        //yield return new WaitForSeconds(1f);
 
         // Start this again
         StartCoroutine(SetJsonData());
@@ -136,7 +132,7 @@ public class NetworkMonitor : MonoBehaviour {
     /// and use the JsonUtility to make it JsonData. After that 
     /// it will send it to the game controller
     /// </summary>
-    public void StringToJson()
+    private IEnumerator StringToJson()
     {
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
         dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
@@ -145,7 +141,7 @@ public class NetworkMonitor : MonoBehaviour {
         if (!dataObject.timed_out)
         {
             // Give my game controller the JSON data to sort out if there is a new computer on it or not
-            gameControllerObj.CheckIP(dataObject);
+            yield return StartCoroutine(gameControllerObj.CheckIP(dataObject));
         }
     }
 
