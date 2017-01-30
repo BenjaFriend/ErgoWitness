@@ -17,7 +17,7 @@ public class NetworkMonitor : MonoBehaviour {
 
     #region Fields
     // The URL of my ELK server
-    private string elk_url = "http://192.168.137.134:9200/packetbeat-2017.01.27/_search?pretty=true";
+    private string elk_url;
     private string JSON_String = "";        // The string that represents the JSON data
     private Json_Data dataObject;           // The actual JSON data class 
 
@@ -46,10 +46,38 @@ public class NetworkMonitor : MonoBehaviour {
 
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
 
+        // Set up my URL to get info from
+        SetUpURL();
+
         // Find the latest index name and make my URL, or maybe get all the indexes and ask the
         // user which one they want to use
-
         StartCoroutine(SetJsonData());
+    }
+
+    /// <summary>
+    /// Author: Ben Hoffman
+    /// Purpose of method: To set up the URL that I will be using 
+    /// to get my JSON data by getting the current date and matching
+    /// it to the index
+    /// </summary>
+    private void SetUpURL()
+    {
+        // Add the year 
+        elk_url = "http://192.168.137.134:9200/packetbeat-" + DateTime.Today.Year.ToString() + ".";
+
+        // Make sure we have proper format on the month
+        if(DateTime.Today.Month < 10)
+        {
+            elk_url += "0" + DateTime.Today.Month.ToString() + ".";
+        }
+        else
+        {
+            elk_url +=  DateTime.Today.Month.ToString() + ".";
+        }
+
+        elk_url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
+
+        Debug.Log(elk_url);
     }
 
 

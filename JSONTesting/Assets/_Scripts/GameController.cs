@@ -93,8 +93,11 @@ public class GameController : MonoBehaviour {
     /// is NEW. IF IT IS, then make a new computer, and ADD THAT COMPUTER to the
     /// list of connected computers to both
     /// </summary>
+    /// <param name="data">The data of that commputer</param>
+    /// <param name="checkMe">The new computer that we just made</param>
     private void CheckConnections(Source data, GameObject checkMe)
     {
+        // I need to check if my destination is a source  address, which would mean that it is in my dictionary already
         if(data.dest.ip== null)
         {
             return;

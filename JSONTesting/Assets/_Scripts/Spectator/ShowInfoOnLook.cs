@@ -16,7 +16,7 @@ public class ShowInfoOnLook : MonoBehaviour {
     {
 		// Raycast out a short distance and check if I am
         // hitting a a computer game object
-        if(Physics.Raycast(transform.position, transform.forward,out hit, 20f))
+        if(Physics.Raycast(transform.position, transform.forward, out hit, 20f))
         {
             // Hide the canvas somehow, or transition it in a cool way but i have to look that up
         }
