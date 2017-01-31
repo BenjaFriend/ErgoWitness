@@ -69,34 +69,36 @@ public class GameController : MonoBehaviour {
     /// </summary>
     private void NewComputer(string ipAddr, Source data)
     {
-        // Make a random transform within the paramters of this space
-        tempPosition = new Vector3(
-            Random.Range(-boundries.x, boundries.x),
-            Random.Range(-boundries.y, boundries.y),
-            Random.Range(-boundries.z, boundries.z));
+        if (!computersDict.ContainsKey(ipAddr))
+        {
+            // Make a random transform within the paramters of this space
+            tempPosition = new Vector3(
+                Random.Range(-boundries.x, boundries.x),
+                Random.Range(-boundries.y, boundries.y),
+                Random.Range(-boundries.z, boundries.z));
 
-        // Instantiate a new computer object
-        temp = (GameObject)Instantiate(computerPrefab, tempPosition, Quaternion.identity);
-        // Set the DATA on this gameobject to the data from the JSON data
-        temp.GetComponent<Computer>().ComputerSourceInfo = data;
-        // Actually add it to my list of computers
-        computersDict.Add(ipAddr, temp);
+            // Instantiate a new computer object
+            temp = (GameObject)Instantiate(computerPrefab, tempPosition, Quaternion.identity);
 
-        // Check the connections to this PC
-        CheckConnections(data, temp);
-        // Release from memory
-        temp = null;
+            // Set the DATA on this gameobject to the data from the JSON data
+            temp.GetComponent<Computer>().ComputerSourceInfo = data;
+
+            // Actually add it to my list of computers
+            computersDict.Add(ipAddr, temp);
+
+            // Release from memory
+            temp = null;
+        }
     }
-
 
     /// <summary>
     /// Author: Ben Hoffman
-    /// We have seen this IP before, and we want to see if the DESTINATION IP
-    /// is NEW. IF IT IS, then make a new computer, and ADD THAT COMPUTER to the
-    /// list of connected computers to both
+    /// This is for when there is a computer that we already have the SOURCE
+    /// IP for no the network. This will check if we already have the DESTINATION
+    /// IP of that object or not. 
     /// </summary>
-    /// <param name="data">The data of that commputer</param>
-    /// <param name="checkMe">The new computer that we just made</param>
+    /// <param name="data">The data of that commputer with the same source IP so I can check the dest.</param>
+    /// <param name="checkMe">The game object that I already have, from my dicionary</param>
     private void CheckConnections(Source data, GameObject checkMe)
     {
         // I need to check if my destination is a source  address, which would mean that it is in my dictionary already
@@ -104,16 +106,27 @@ public class GameController : MonoBehaviour {
         {
             return;
         }
-        // There IS a connection if one of the PC's on the network has a DEST IP of the given PC's IP
+
+        // If we do already have the destination on the network, then connect them
         if (computersDict.ContainsKey(data.dest.ip))
         {
-            // We have this IP on our network already, add the connection to the given pc
+            // We have this IP on our network already, add the connection to each PC
             checkMe.GetComponent<Computer>().AddConnectedPC(computersDict[data.dest.ip]);
+            computersDict[data.dest.ip].GetComponent<Computer>().AddConnectedPC(checkMe);
         }
         else
         {
-            NewComputer(data.dest.ip, data);
-            // Add the connected IP's together on each computer
+            // Here is the problem... I am making a new computer with the same data
+            // as the one already on the network so it is showing up as 2 of the same
+            // This new computer that I am making needs to have some altered things...
+            // Like the fact that it is the source, and that we don't know the destination
+            
+            data.source.ip = data.dest.ip;
+            data.dest.ip = "Null";
+            data.source.port = data.dest.port;
+            data.dest.port = -1;
+
+            NewComputer(data.source.ip, data);
         }
 
     }

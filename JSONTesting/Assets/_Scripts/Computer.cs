@@ -50,6 +50,7 @@ public class Computer : MonoBehaviour {
         }
 
         numHits++;
+        // If I do not already know of this PC, and it's not myself...
         if (!connectedComputers.Contains(connectedToMe) && connectedToMe != gameObject)
         {
             connectedComputers.Add(connectedToMe);
