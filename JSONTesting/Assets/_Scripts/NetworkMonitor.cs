@@ -40,7 +40,7 @@ public class NetworkMonitor : MonoBehaviour {
     private Stream requestStream;
     private StreamReader reader;
     private byte[] buffer;
-    private string bufferResult;
+    //private string bufferResult;
     #endregion
 
     /// <summary>
@@ -117,7 +117,7 @@ public class NetworkMonitor : MonoBehaviour {
         request.ContentType = "application/json";
         request.Method = "POST";
         buffer = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
-        bufferResult = System.Convert.ToBase64String(buffer);
+        var bufferResult = System.Convert.ToBase64String(buffer);
 
         requestStream = request.GetRequestStream();
         requestStream.Write(buffer, 0, buffer.Length);

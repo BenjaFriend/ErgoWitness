@@ -18,13 +18,12 @@ public class Fade_UI : MonoBehaviour {
     private bool showingExtra;
     #endregion
 
-
-    private void Awake()
+    private void OnEnable()
     {
         FadeOut();
-
         HideExtraInfo();
     }
+
 
     /// <summary>
     /// Author: Ben Hoffman

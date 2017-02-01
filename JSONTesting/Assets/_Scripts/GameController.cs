@@ -11,7 +11,6 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     #region Fields
-    public GameObject computerPrefab;  // The computer prefab
 
     // This will be used to randomly position the computers within this area. 
     // The max range will be whatever number you put in, and the min will be 
@@ -21,13 +20,11 @@ public class GameController : MonoBehaviour {
 
     private Vector3 tempPosition;
     public Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
-    private GameObject temp; // Use this for making new computers, so I can edit them
     #endregion
 
     void Start ()
     {
-        // Load in my prefab from the resources folder
-        computersDict = new Dictionary<string, GameObject>();
+        computersDict = new Dictionary<string, GameObject>();     
     }
 
     /// <summary>
@@ -69,26 +66,24 @@ public class GameController : MonoBehaviour {
     /// </summary>
     private void NewComputer(string ipAddr, Source data)
     {
-        if (!computersDict.ContainsKey(ipAddr))
-        {
-            // Make a random transform within the paramters of this space
-            tempPosition = new Vector3(
-                Random.Range(-boundries.x, boundries.x),
-                Random.Range(-boundries.y, boundries.y),
-                Random.Range(-boundries.z, boundries.z));
+        GameObject obj = ObjectPooler.current.GetPooledObject();
 
-            // Instantiate a new computer object
-            temp = (GameObject)Instantiate(computerPrefab, tempPosition, Quaternion.identity);
+        if (obj == null) return;
 
-            // Set the DATA on this gameobject to the data from the JSON data
-            temp.GetComponent<Computer>().SetData(data);
+        // Make a random transform within the paramters of this space
+        tempPosition = new Vector3(
+            Random.Range(-boundries.x, boundries.x),
+            Random.Range(-boundries.y, boundries.y),
+            Random.Range(-boundries.z, boundries.z));
 
-            // Actually add it to my list of computers
-            computersDict.Add(ipAddr, temp);
+        obj.transform.position = tempPosition;
+        obj.transform.rotation = Quaternion.identity;
 
-            // Release from memory
-            temp = null;
-        }
+        // Set the DATA on this gameobject to the data from the JSON data
+        obj.GetComponent<Computer>().SetData(data);
+        obj.SetActive(true);
+        computersDict.Add(ipAddr, obj);
+
     }
 
     /// <summary>

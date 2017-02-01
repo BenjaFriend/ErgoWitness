@@ -53,7 +53,6 @@ public class Movement : MonoBehaviour {
     /// </summary>
 	void FixedUpdate ()
     {
-
         Rotate();
 
         Move();
