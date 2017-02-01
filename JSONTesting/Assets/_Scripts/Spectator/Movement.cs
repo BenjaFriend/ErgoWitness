@@ -75,9 +75,16 @@ public class Movement : MonoBehaviour {
     /// </summary>
     private void Rotate()
     {
+        // Controller input
         transform.Rotate(
-            Input.GetAxis("RS_Vertical") * Time.deltaTime * panSpeed,
-            Input.GetAxis("RS_Horizontal") * Time.deltaTime * panSpeed,
+            Input.GetAxis("RS_Vertical") * Time.smoothDeltaTime * panSpeed,
+            Input.GetAxis("RS_Horizontal") * Time.smoothDeltaTime * panSpeed,
             0f);
+
+        // Now mouse input
+        transform.Rotate(
+           Input.GetAxis("Mouse Y") * Time.smoothDeltaTime * panSpeed,
+           Input.GetAxis("Mouse X") * Time.smoothDeltaTime * panSpeed,
+           0f);
     }
 }

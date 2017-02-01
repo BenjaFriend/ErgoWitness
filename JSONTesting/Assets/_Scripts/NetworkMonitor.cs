@@ -5,6 +5,8 @@ using UnityEngine;
 using System.IO;
 using System.Net;
 using System.Text;
+using UnityEngine.UI;
+
 /// <summary>
 /// Author: Ben Hoffman
 /// This class will be the main controller for the network monitoring in this visualization.
@@ -16,6 +18,12 @@ using System.Text;
 public class NetworkMonitor : MonoBehaviour {
 
     #region Fields
+
+    public Text current_Index_Text;
+    public Text statusText;
+    public Color runningColor;
+    public Color stoppedColor;
+
     public bool keepGoing = true;
     // The URL of my ELK server
     private string elk_url;
@@ -52,6 +60,11 @@ public class NetworkMonitor : MonoBehaviour {
         // Find the latest index name and make my URL, or maybe get all the indexes and ask the
         // user which one they want to use
         StartCoroutine(SetJsonData());
+
+        statusText.text = "Monitor Status: Running";
+        statusText.CrossFadeColor(runningColor, 0.3f, true, true);
+
+        current_Index_Text.text = elk_url;
     }
 
     /// <summary>
@@ -122,7 +135,6 @@ public class NetworkMonitor : MonoBehaviour {
         {
             // Wait until we finish converting the string to JSON data to continue
             yield return StartCoroutine(StringToJson());
-
             // Give my game controller the JSON data to sort out if there is a new computer on it or not
             gameControllerObj.CheckIP(dataObject);
         }
@@ -148,5 +160,27 @@ public class NetworkMonitor : MonoBehaviour {
         yield return dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
     }
 
+    /// <summary>
+    /// Author: Ben Hoffman
+    /// Give the user the option to stop monitoring the network
+    /// </summary>
+    public void ToggleMonitoring()
+    {
+        if (keepGoing)
+        {
+            keepGoing = false;
+            StopCoroutine(SetJsonData());
+            statusText.text = "Monitor Status: Stopped";
+            statusText.CrossFadeColor(stoppedColor, 0.3f, true, true);
+        }
+        else
+        {
+            keepGoing = true;
+            StartCoroutine(SetJsonData());
+            statusText.text = "Monitor Status: Running";
+            statusText.CrossFadeColor(runningColor, 0.3f, true, true);
+
+        }
+    }
 
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// Author: Ben Hoffman
@@ -9,30 +8,50 @@ using UnityEngine.UI;
 /// of computers that it is conenct to
 /// </summary>
 [RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(Fade_UI))]
 public class Computer : MonoBehaviour {
 
     #region Fields
     public Source computerSourceInfo;          // The data that I care about for each PC
-    public List<GameObject> connectedComputers;  // This is the list of children
-    public Text sourceIpText;
-    public Text destIpText;
+    /// <summary>
+    /// Use a linked list for this because it is better for insertion
+    /// but the same for searching, there are only benefits to this
+    /// </summary>
+    public LinkedList<GameObject> connectedPCs;
+    private Fade_UI UI;         // The UI for me to use
     public double numHits;     // How many times have we seen this IP get hit?
     private LineRenderer lineRend;  // The line renderer
     #endregion
 
     #region Mutators
     public Source ComputerSourceInfo { get { return computerSourceInfo; } set { computerSourceInfo = value; } }
-    public List<GameObject> ConnectedComputers { get { return connectedComputers; } }
-    public double NumHits { get { return numHits; } set { numHits = value; } }
+    public double NumHits { get { return numHits; } }
     #endregion
 
-
-    void Start()
+    /// <summary>
+    /// Author: Ben Hoffman
+    /// Set up the components that I need
+    /// </summary>
+    void Awake()
     {
+        connectedPCs = new LinkedList<GameObject>();
+        UI = GetComponent<Fade_UI>();
+
         numHits = 1;
-        connectedComputers = new List<GameObject>();
+
         lineRend = GetComponent<LineRenderer>();
         lineRend.SetPosition(0, Vector3.zero);
+    }
+
+    /// <summary>
+    /// Author: Ben Hoffman
+    /// This will let me set my UI only when I have data
+    /// </summary>
+    /// <param name="myData"></param>
+    public void SetData(Source myData)
+    {
+        computerSourceInfo = myData;
+
         UpdateUI();
     }
 
@@ -49,11 +68,12 @@ public class Computer : MonoBehaviour {
             return;
         }
 
-        numHits++;
         // If I do not already know of this PC, and it's not myself...
-        if (!connectedComputers.Contains(connectedToMe) && connectedToMe != gameObject)
+        if (!connectedPCs.Contains(connectedToMe) && connectedToMe != gameObject)
         {
-            connectedComputers.Add(connectedToMe);
+            numHits++;
+            // Add the connection to my linked list
+            connectedPCs.AddLast(connectedToMe);
 
             // Add the position to the line renderer    
             lineRend.SetPosition(1, transform.InverseTransformPoint(connectedToMe.transform.position));        
@@ -67,8 +87,9 @@ public class Computer : MonoBehaviour {
     /// </summary>
     private void UpdateUI()
     {
-        sourceIpText.text = "Source IP: " + computerSourceInfo.source.ip;
-        destIpText.text = "Dest. IP: " + computerSourceInfo.dest.ip;
+        // Set all my UI data
+        if(computerSourceInfo != null)
+            UI.SetValues(computerSourceInfo);
 
         // Change the color of the  line renderer material based on the protocol
         switch (computerSourceInfo.transport)

@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour {
             temp = (GameObject)Instantiate(computerPrefab, tempPosition, Quaternion.identity);
 
             // Set the DATA on this gameobject to the data from the JSON data
-            temp.GetComponent<Computer>().ComputerSourceInfo = data;
+            temp.GetComponent<Computer>().SetData(data);
 
             // Actually add it to my list of computers
             computersDict.Add(ipAddr, temp);
@@ -123,9 +123,10 @@ public class GameController : MonoBehaviour {
             
             data.source.ip = data.dest.ip;
             data.dest.ip = "Null";
+
             data.source.port = data.dest.port;
             data.dest.port = -1;
-
+            
             NewComputer(data.source.ip, data);
         }
 

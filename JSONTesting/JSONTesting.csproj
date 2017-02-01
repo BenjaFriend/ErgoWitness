@@ -85,6 +85,7 @@
     <Compile Include="Assets\_Scripts\NetworkMonitor.cs" />
     <Compile Include="Assets\_Scripts\Spectator\LookAtCamera.cs" />
     <Compile Include="Assets\_Scripts\Spectator\Movement.cs" />
+    <Compile Include="Assets\_Scripts\Spectator\Raycast_ExtraInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

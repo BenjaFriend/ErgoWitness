@@ -50,6 +50,7 @@ public class SourceData
 {
     public int port;
     public string ip;           // The IP of the hit
+    public string mac;
 }
 
 [System.Serializable]
