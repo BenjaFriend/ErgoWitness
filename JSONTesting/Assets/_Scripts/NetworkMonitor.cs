@@ -88,8 +88,15 @@ public class NetworkMonitor : MonoBehaviour {
         {
             url +=  DateTime.Today.Month.ToString() + ".";
         }
+        if(DateTime.Today.Day < 10)
+        {
+            url += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
+        }
+        else
+        {
+            url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
+        }
 
-        url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
         return url;
     }
 

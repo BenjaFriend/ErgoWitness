@@ -15,7 +15,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
             {
                 if(hitInfo.collider.tag == "Comp")
                 {
-                    hitInfo.collider.GetComponent<Fade_UI>().ToggleExtra();
+                    //hitInfo.collider.GetComponent<Fade_UI>().ToggleExtra();
                 }
             }
         }

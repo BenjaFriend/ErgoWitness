@@ -68,6 +68,9 @@ public class Fade_UI : MonoBehaviour {
             // Fade out each component
             regInfoitems[i].CrossFadeAlpha(0f, 1f, false);
         }
+
+        HideExtraInfo();
+
     }
 
     private void FadeIn()
@@ -77,6 +80,8 @@ public class Fade_UI : MonoBehaviour {
             // Fade out each component
             regInfoitems[i].CrossFadeAlpha(0.8f, 1f, false);
         }
+
+        ShowExtraInfo();
     }
     #endregion
 
@@ -106,10 +111,11 @@ public class Fade_UI : MonoBehaviour {
     private void ShowExtraInfo()
     {
         showingExtra = true;
+
         for (int i = 0; i < extraInfoItems.Length; i++)
         {
             // Fade in each component
-            extraInfoItems[i].CrossFadeAlpha(0.8f, 0.5f, false);
+            extraInfoItems[i].CrossFadeAlpha(1f, 1f, false);
         }
     }
 
@@ -124,7 +130,7 @@ public class Fade_UI : MonoBehaviour {
         for(int i = 0; i < extraInfoItems.Length; i++)
         {
             // Fade out each component and set as inactive
-            extraInfoItems[i].CrossFadeAlpha(0f, 0.5f, false);
+            extraInfoItems[i].CrossFadeAlpha(0f, 1f, false);
         }
     }
 
