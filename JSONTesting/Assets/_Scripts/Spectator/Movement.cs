@@ -12,13 +12,12 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     #region Fields
-
     public float xMoveSpeed;    // X axis movement speed
     public float yMoveSpeed;    // Y axis movement speed
     public float maxSpeed_Norm;      // The thing that I will clamp velocity with
     public float speed_Multiplier;   // The max speed while we hold shift or left analog down
     public float panSpeed;
-    public Transform camera;
+    public Transform camTransform;
     public Transform character;
     public float MinimumX = -90F;
     public float MaximumX = 90F;
@@ -37,7 +36,7 @@ public class Movement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 
         m_CharacterTargetRot = character.localRotation;
-        m_CameraTargetRot = camera.localRotation;
+        m_CameraTargetRot = camTransform.localRotation;
     }
 
     void Update()
@@ -135,7 +134,7 @@ public class Movement : MonoBehaviour {
         // Do some smoothing
         character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
             smoothTime * Time.deltaTime);
-        camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
+        camTransform.localRotation = Quaternion.Slerp(camTransform.localRotation, m_CameraTargetRot,
             smoothTime * Time.deltaTime);
     }
 

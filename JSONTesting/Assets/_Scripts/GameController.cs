@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour {
     /// seen it before. 
     /// </summary>
     /// <param name="jsonData">The data for me to check what PC's are on the network</param>
-    public void CheckIP(Json_Data jsonData)
+    public void CheckIP(Json_Data jsonData, Bro_Json broMessage)
     {
         // Check all the given info from the json data with the info that I already have
         for (int i = 0; i < jsonData.hits.hits.Length; i++)
@@ -56,6 +56,38 @@ public class GameController : MonoBehaviour {
                 // If I do NOT have this IP in my dictionary, then make a new computer        
                 NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
             }
+        }
+    }
+
+    public IEnumerator CheckIpEnum(Json_Data jsonData, Bro_Json broMessage)
+    {
+        // Check all the given info from the json data with the info that I already have
+        for (int i = 0; i < jsonData.hits.hits.Length; i++)
+        {
+            // Make sure that we are not null
+            if (jsonData.hits.hits[i]._source.source.ip == null)
+            {
+                yield return null;
+                break;
+            }
+
+            // If my dictionary contains the IP address of this JSON info...
+            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.source.ip))
+            {
+                // I want to check if there is a connection that I should add
+                CheckConnections(jsonData.hits.hits[i]._source,
+                    computersDict[jsonData.hits.hits[i]._source.source.ip]);
+                yield return null;
+
+            }
+            else
+            {
+                // If I do NOT have this IP in my dictionary, then make a new computer        
+                NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
+                yield return null;
+
+            }
+            yield return null;
         }
     }
 

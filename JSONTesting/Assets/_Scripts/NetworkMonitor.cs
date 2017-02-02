@@ -18,7 +18,10 @@ using UnityEngine.UI;
 public class NetworkMonitor : MonoBehaviour {
 
     #region Fields
+    public enum packetName { packetbeat, filebeat }
 
+    public string serverIP;
+    public packetName packetType;
     public Text current_Index_Text;
     public Text statusText;
     public Color runningColor;
@@ -29,6 +32,7 @@ public class NetworkMonitor : MonoBehaviour {
     private string elk_url;
     private string JSON_String = "";        // The string that represents the JSON data
     private Json_Data dataObject;           // The actual JSON data class 
+    private Bro_Json broDataObj;            // The bro data that we might have
 
     private string queryString;
     private GameController gameControllerObj; // The game controller 
@@ -40,7 +44,7 @@ public class NetworkMonitor : MonoBehaviour {
     private Stream requestStream;
     private StreamReader reader;
     private byte[] buffer;
-    //private string bufferResult;
+    private string bufferResult;
     #endregion
 
     /// <summary>
@@ -49,13 +53,12 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        //queryLocation =  Application.streamingAssetsPath + "/gimmeData.json";
         queryString = File.ReadAllText(Application.streamingAssetsPath + "/gimmeData.json");
 
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
 
         // Set up my URL to get info from
-        elk_url = SetUpURL();
+        SetUpURL();
 
         // Find the latest index name and make my URL, or maybe get all the indexes and ask the
         // user which one they want to use
@@ -73,31 +76,39 @@ public class NetworkMonitor : MonoBehaviour {
     /// to get my JSON data by getting the current date and matching
     /// it to the index
     /// </summary>
-    private string SetUpURL()
+    private void SetUpURL()
     {
-        string url = "";
-        // Add the year 
-        url = "http://192.168.137.134:9200/packetbeat-" + DateTime.Today.Year.ToString() + ".";
-
-        // Make sure we have proper format on the month
-        if(DateTime.Today.Month < 10)
+        elk_url = "";
+        // Add the packet type
+        elk_url = "http://" + serverIP + ":9200/";
+        switch (packetType)
         {
-            url += "0" + DateTime.Today.Month.ToString() + ".";
+            case (packetName.packetbeat):
+                elk_url += "packetbeat-";
+                break;
+            case (packetName.filebeat):
+                elk_url += "filebeat-";
+                break;
+        }
+
+        elk_url += DateTime.Today.Year.ToString() + ".";
+        // Make sure we have proper format on the month
+        if (DateTime.Today.Month < 10)
+        {
+            elk_url += "0" + DateTime.Today.Month.ToString() + ".";
         }
         else
         {
-            url +=  DateTime.Today.Month.ToString() + ".";
+            elk_url +=  DateTime.Today.Month.ToString() + ".";
         }
         if(DateTime.Today.Day < 10)
         {
-            url += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            elk_url += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
         else
         {
-            url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            elk_url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
-
-        return url;
     }
 
 
@@ -113,15 +124,21 @@ public class NetworkMonitor : MonoBehaviour {
     {
         // Make a new web request with the .net WebRequest
         request = WebRequest.Create(elk_url);
+        yield return null;
 
         request.ContentType = "application/json";
         request.Method = "POST";
         buffer = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
         var bufferResult = System.Convert.ToBase64String(buffer);
 
+        // Put this yield here so that I get higher FPS
+        yield return null;
+
         requestStream = request.GetRequestStream();
         requestStream.Write(buffer, 0, buffer.Length);
         requestStream.Close();
+        // Again this is about getting higher FPS
+        yield return null;
 
         response = (HttpWebResponse)request.GetResponse();
         // Wait until we have all of the data we need from the response to continue
@@ -132,27 +149,41 @@ public class NetworkMonitor : MonoBehaviour {
         // Set my string to the response from the website
         JSON_String = reader.ReadToEnd();
 
+        yield return null;
         // Cleanup the streams and the response.
         reader.Close();
         requestStream.Close();
         response.Close();
+        yield return null;
 
         // As long as we are not null, put this in as real C# data
-        if(JSON_String != "" || JSON_String != null)
+        if (JSON_String != null)
         {
             // Wait until we finish converting the string to JSON data to continue
-            yield return StartCoroutine(StringToJson());
+            yield return StartCoroutine(PacketbeatToJson());
+
+            // If we have a message from a filebeat, then send that to a different JSON parser
+            if(dataObject.hits.hits[0]._source.message != null)
+            {
+                yield return StartCoroutine(FilebeatToJson(dataObject.hits.hits[0]._source.message));
+            }
+            yield return null;
+
             // Give my game controller the JSON data to sort out if there is a new computer on it or not
-            gameControllerObj.CheckIP(dataObject);
+            gameControllerObj.CheckIP(dataObject, broDataObj);
+            //StartCoroutine(gameControllerObj.CheckIpEnum(dataObject, broDataObj));
         }
 
-
+        dataObject = null;
+        broDataObj = null;
         // As long as we didn't say to stop yet
         if (keepGoing)
         {
+            yield return null;
+
             // Start this again
             StartCoroutine(SetJsonData());
-        }
+        } 
     }
 
     /// <summary>
@@ -161,10 +192,16 @@ public class NetworkMonitor : MonoBehaviour {
     /// and use the JsonUtility to make it JsonData. After that 
     /// it will send it to the game controller
     /// </summary>
-    private IEnumerator StringToJson()
+    private IEnumerator PacketbeatToJson()
     {
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
         yield return dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
+    }
+
+    private IEnumerator FilebeatToJson(string message)      
+    {
+        // Use the JsonUtility to send the string of data that I got from the server, to a data object
+        yield return broDataObj = JsonUtility.FromJson<Bro_Json>(message);
     }
 
     /// <summary>

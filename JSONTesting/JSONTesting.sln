@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting.Plugins", "JSONTesting.Plugins.csproj", "{14AE8519-C79C-7BBD-79C4-22DD9021372B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting", "JSONTesting.csproj", "{BA64B734-0296-CECA-4E97-C574B1E1B6F9}"
 EndProject
 Global
@@ -11,10 +9,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BA64B734-0296-CECA-4E97-C574B1E1B6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA64B734-0296-CECA-4E97-C574B1E1B6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA64B734-0296-CECA-4E97-C574B1E1B6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU

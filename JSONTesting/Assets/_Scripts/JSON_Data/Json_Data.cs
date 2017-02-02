@@ -13,24 +13,19 @@ using UnityEngine;
 [System.Serializable]
 public class Json_Data
 {
-    public int took;            // How many samples is this?
-    public bool timed_out;      // Did we time out?
     public Hits hits;       // The data that actually matters
 }
 
 [System.Serializable]
 public class Hits
 {
-    public int total;           // How many total hits do we have on the server?
     public HitsData[] hits;  // Array of all the hits that we gathered since last time
 }
 
 [System.Serializable]
 public class HitsData
 {
-    public string _index;
     public string _type;
-    public string _id;
     public Source _source;      // This is the source of that hit
 }
 
@@ -43,6 +38,7 @@ public class Source
     public string type;         // What type of traffic is it? (DNS, icmp, etc)
     public DestinationData dest;
     public string @timestamp;
+    public string message;
 }
 
 [System.Serializable]
@@ -59,4 +55,3 @@ public class DestinationData
     public int port;
     public string ip;           // The IP of the hit
 }
-

@@ -19,13 +19,12 @@ public class Computer : MonoBehaviour {
     /// </summary>
     public LinkedList<GameObject> connectedPCs;
     private Fade_UI UI;         // The UI for me to use
-    public double numHits;     // How many times have we seen this IP get hit?
     private LineRenderer lineRend;  // The line renderer
+    private IncreaseEmission particleController;
     #endregion
 
     #region Mutators
     public Source ComputerSourceInfo { get { return computerSourceInfo; } set { computerSourceInfo = value; } }
-    public double NumHits { get { return numHits; } }
     #endregion
 
     /// <summary>
@@ -34,10 +33,9 @@ public class Computer : MonoBehaviour {
     /// </summary>
     void Awake()
     {
+        particleController = GetComponent<IncreaseEmission>();
         connectedPCs = new LinkedList<GameObject>();
         UI = GetComponent<Fade_UI>();
-
-        numHits = 1;
 
         lineRend = GetComponent<LineRenderer>();
         lineRend.SetPosition(0, Vector3.zero);
@@ -71,7 +69,7 @@ public class Computer : MonoBehaviour {
         // If I do not already know of this PC, and it's not myself...
         if (!connectedPCs.Contains(connectedToMe) && connectedToMe != gameObject)
         {
-            numHits++;
+            particleController.AddHit();
             // Add the connection to my linked list
             connectedPCs.AddLast(connectedToMe);
 
