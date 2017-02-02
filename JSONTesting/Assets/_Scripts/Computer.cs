@@ -13,6 +13,7 @@ public class Computer : MonoBehaviour {
 
     #region Fields
     public Source computerSourceInfo;          // The data that I care about for each PC
+    public Bro_Json broInfo;            // The info that bro gives you
     /// <summary>
     /// Use a linked list for this because it is better for insertion
     /// but the same for searching, there are only benefits to this
@@ -25,6 +26,7 @@ public class Computer : MonoBehaviour {
 
     #region Mutators
     public Source ComputerSourceInfo { get { return computerSourceInfo; } set { computerSourceInfo = value; } }
+    public Bro_Json BroInfo { get { return broInfo; } set { broInfo = value; } }
     #endregion
 
     /// <summary>
@@ -46,9 +48,10 @@ public class Computer : MonoBehaviour {
     /// This will let me set my UI only when I have data
     /// </summary>
     /// <param name="myData"></param>
-    public void SetData(Source myData)
+    public void SetData(Source myData, Bro_Json broData)
     {
         computerSourceInfo = myData;
+        broInfo = broData;
 
         UpdateUI();
     }

@@ -27,37 +27,6 @@ public class GameController : MonoBehaviour {
         computersDict = new Dictionary<string, GameObject>();     
     }
 
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// This will take in an IP address, and CHECK if we have
-    /// seen it before. 
-    /// </summary>
-    /// <param name="jsonData">The data for me to check what PC's are on the network</param>
-    public void CheckIP(Json_Data jsonData, Bro_Json broMessage)
-    {
-        // Check all the given info from the json data with the info that I already have
-        for (int i = 0; i < jsonData.hits.hits.Length; i++)
-        {
-            // Make sure that we are not null
-            if(jsonData.hits.hits[i]._source.source.ip == null)
-            {
-                break;
-            }
-
-            // If my dictionary contains the IP address of this JSON info...
-            if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.source.ip))
-            {
-                // I want to check if there is a connection that I should add
-                CheckConnections(jsonData.hits.hits[i]._source,
-                    computersDict[jsonData.hits.hits[i]._source.source.ip]);
-            }
-            else
-            {
-                // If I do NOT have this IP in my dictionary, then make a new computer        
-                NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
-            }
-        }
-    }
 
     public IEnumerator CheckIpEnum(Json_Data jsonData, Bro_Json broMessage)
     {
@@ -75,28 +44,25 @@ public class GameController : MonoBehaviour {
             if (computersDict.ContainsKey(jsonData.hits.hits[i]._source.source.ip))
             {
                 // I want to check if there is a connection that I should add
-                CheckConnections(jsonData.hits.hits[i]._source,
-                    computersDict[jsonData.hits.hits[i]._source.source.ip]);
-                yield return null;
-
+                StartCoroutine(CheckConnectionsEnum(jsonData.hits.hits[i]._source, broMessage,
+                    computersDict[jsonData.hits.hits[i]._source.source.ip]));
             }
             else
             {
                 // If I do NOT have this IP in my dictionary, then make a new computer        
-                NewComputer(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source);
-                yield return null;
-
+                StartCoroutine(NewComputerEnum(jsonData.hits.hits[i]._source.source.ip, jsonData.hits.hits[i]._source, broMessage));
             }
             yield return null;
         }
     }
+
 
     /// <summary>
     /// Author: Ben Hoffman
     /// We have NOT seen this IP before, and we want to make
     /// a new one
     /// </summary>
-    private void NewComputer(string ipAddr, Source data)
+    private void NewComputer(string ipAddr, Source data, Bro_Json broMessage)
     {
         GameObject obj = ObjectPooler.current.GetPooledObject();
 
@@ -112,10 +78,40 @@ public class GameController : MonoBehaviour {
         obj.transform.rotation = Quaternion.identity;
 
         // Set the DATA on this gameobject to the data from the JSON data
-        obj.GetComponent<Computer>().SetData(data);
+        obj.GetComponent<Computer>().SetData(data, broMessage);
         obj.SetActive(true);
         computersDict.Add(ipAddr, obj);
 
+    }
+
+    /// <summary>
+    /// Author: Ben Hoffman
+    /// We have NOT seen this IP before, and we want to make
+    /// a new one
+    /// </summary>
+    private IEnumerator NewComputerEnum(string ipAddr, Source data, Bro_Json broMessage)
+    {
+        yield return null;
+        GameObject obj = ObjectPooler.current.GetPooledObject();
+
+        if (obj == null) yield return null;
+
+        // Make a random transform within the paramters of this space
+        tempPosition = new Vector3(
+            Random.Range(-boundries.x, boundries.x),
+            Random.Range(-boundries.y, boundries.y),
+            Random.Range(-boundries.z, boundries.z));
+        yield return null;
+
+        obj.transform.position = tempPosition;
+        obj.transform.rotation = Quaternion.identity;
+
+        // Set the DATA on this gameobject to the data from the JSON data
+        obj.GetComponent<Computer>().SetData(data, broMessage);
+        obj.SetActive(true);
+        yield return null;
+
+        computersDict.Add(ipAddr, obj);
     }
 
     /// <summary>
@@ -126,18 +122,21 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="data">The data of that commputer with the same source IP so I can check the dest.</param>
     /// <param name="checkMe">The game object that I already have, from my dicionary</param>
-    private void CheckConnections(Source data, GameObject checkMe)
+    private IEnumerator CheckConnectionsEnum(Source data, Bro_Json broMessage, GameObject checkMe)
     {
+        yield return null;
         // I need to check if my destination is a source  address, which would mean that it is in my dictionary already
-        if(data.dest.ip== null)
+        if (data.dest.ip == null)
         {
-            return;
+            yield return null;
         }
 
         // If we do already have the destination on the network, then connect them
         if (computersDict.ContainsKey(data.dest.ip))
         {
             // We have this IP on our network already, add the connection to each PC
+            yield return null;
+
             checkMe.GetComponent<Computer>().AddConnectedPC(computersDict[data.dest.ip]);
             computersDict[data.dest.ip].GetComponent<Computer>().AddConnectedPC(checkMe);
         }
@@ -147,16 +146,18 @@ public class GameController : MonoBehaviour {
             // as the one already on the network so it is showing up as 2 of the same
             // This new computer that I am making needs to have some altered things...
             // Like the fact that it is the source, and that we don't know the destination
-            
+
             data.source.ip = data.dest.ip;
             data.dest.ip = "Null";
 
             data.source.port = data.dest.port;
             data.dest.port = -1;
-            
-            NewComputer(data.source.ip, data);
+            yield return null;
+
+            NewComputer(data.source.ip, data, broMessage);
         }
+        yield return null;
 
     }
-	
+
 }
