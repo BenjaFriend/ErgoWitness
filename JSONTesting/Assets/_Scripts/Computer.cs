@@ -12,7 +12,6 @@ using UnityEngine;
 public class Computer : MonoBehaviour {
 
     #region Fields
-    public Source computerSourceInfo;          // The data that I care about for each PC
     public Bro_Json broInfo;            // The info that bro gives you
     /// <summary>
     /// Use a linked list for this because it is better for insertion
@@ -25,7 +24,6 @@ public class Computer : MonoBehaviour {
     #endregion
 
     #region Mutators
-    public Source ComputerSourceInfo { get { return computerSourceInfo; } set { computerSourceInfo = value; } }
     public Bro_Json BroInfo { get { return broInfo; } set { broInfo = value; } }
     #endregion
 
@@ -48,9 +46,8 @@ public class Computer : MonoBehaviour {
     /// This will let me set my UI only when I have data
     /// </summary>
     /// <param name="myData"></param>
-    public void SetData(Source myData, Bro_Json broData)
+    public void SetData( Bro_Json broData)
     {
-        computerSourceInfo = myData;
         broInfo = broData;
 
         UpdateUI();
@@ -89,11 +86,11 @@ public class Computer : MonoBehaviour {
     private void UpdateUI()
     {
         // Set all my UI data
-        if(computerSourceInfo != null)
-            UI.SetValues(computerSourceInfo);
+        if(broInfo != null)
+            UI.SetValues(broInfo);
 
         // Change the color of the  line renderer material based on the protocol
-        switch (computerSourceInfo.transport)
+        switch (broInfo.proto)
         {
             case ("tcp"):
                 // Light Gray color

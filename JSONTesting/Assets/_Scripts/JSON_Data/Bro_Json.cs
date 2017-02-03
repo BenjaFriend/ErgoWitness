@@ -7,6 +7,10 @@ public class Bro_Json
 {
     public string ts;
     public string uid;
+    public string id_orig_h;
+    public int id_orig_p;
+    public string id_resp_h;
+    public int id_resp_p;
     public string proto;
     public float duration;
     public string conn_state;

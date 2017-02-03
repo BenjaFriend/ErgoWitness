@@ -11,8 +11,6 @@ public class Fade_UI : MonoBehaviour {
 
     public Text sourceIpText;
     public Text destIpText;
-    public Text macAddrText;
-    public Text portText;
     public Text transportText;
 
     private bool showingExtra;
@@ -30,14 +28,12 @@ public class Fade_UI : MonoBehaviour {
     /// Set the data for all of the UI elements on this object
     /// </summary>
     /// <param name="data">The data for us to use</param>
-    public void SetValues(Source data)
+    public void SetValues(Bro_Json data)
     {
         
-        sourceIpText.text = "Source IP: " + data.source.ip;
-        destIpText.text = "Dest. IP: " + data.dest.ip;
-        portText.text = "Type: " + data.type;
-        macAddrText.text = "Source MAC: " + data.source.mac;
-        transportText.text = "Transport: " + data.transport;
+        sourceIpText.text = "Source IP: " + data.id_orig_h;
+        destIpText.text = "Dest. IP: " + data.id_resp_h;
+        transportText.text = "Protocol: " + data.proto;
     }
 
     #region Showing info on enter

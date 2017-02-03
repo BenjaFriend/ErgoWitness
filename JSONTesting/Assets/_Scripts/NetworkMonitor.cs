@@ -171,8 +171,7 @@ public class NetworkMonitor : MonoBehaviour {
             yield return null;
 
             // Give my game controller the JSON data to sort out if there is a new computer on it or not
-            //gameControllerObj.CheckIP(dataObject, broDataObj);
-            StartCoroutine(gameControllerObj.CheckIpEnum(dataObject, broDataObj));
+            StartCoroutine(gameControllerObj.CheckIpEnum(broDataObj));
         }
 
         dataObject = null;
