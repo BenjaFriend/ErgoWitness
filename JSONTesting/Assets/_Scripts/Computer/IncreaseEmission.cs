@@ -8,20 +8,23 @@ public class IncreaseEmission : MonoBehaviour {
     public ParticleSystem particles;
     public float minHits = 1f;
     public float maxHits = 1000f;
-    public float degradeRate = 0.1f;
-    public float numHits = 0f;
+    public float degradeRate = 10f;
+    public float increaseAmount = 100f;
+    public float startSize = 0f;
+
     private ParticleSystem.EmissionModule em;
     #endregion
 
     void Start()
     {
+        startSize = maxHits;
         AddHit();
     }
 
     void Update()
     {
         // Start degrading this because it hasnt been hit in a while
-        numHits = Mathf.Clamp(numHits - degradeRate * Time.deltaTime, minHits, maxHits);
+        startSize = Mathf.Clamp(startSize - degradeRate * Time.deltaTime, minHits, maxHits);
         UpdateParticles();
     }
 
@@ -32,7 +35,8 @@ public class IncreaseEmission : MonoBehaviour {
     /// </summary>
     public void AddHit()
     {
-        numHits++;
+        startSize += increaseAmount;
+        startSize = Mathf.Clamp(startSize, minHits, maxHits);
         UpdateParticles();
     }
 
@@ -45,6 +49,16 @@ public class IncreaseEmission : MonoBehaviour {
         em = particles.emission;
 
         em.enabled = true;
-        em.rateOverTime = numHits;
+        em.rateOverTime = startSize;
+    }
+
+    /// <summary>
+    /// Author: Ben Hoffman
+    /// Just change the color of the particle system to something
+    /// </summary>
+    /// <param name="changeTo"></param>
+    public void ChangeColor(Color changeTo)
+    {
+        particles.startColor = changeTo;
     }
 }

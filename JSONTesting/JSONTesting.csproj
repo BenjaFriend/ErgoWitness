@@ -78,10 +78,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Scripts\Computer.cs" />
-    <Compile Include="Assets\_Scripts\Fade_UI.cs" />
+    <Compile Include="Assets\_Scripts\Computer\Computer.cs" />
+    <Compile Include="Assets\_Scripts\Computer\Fade_UI.cs" />
+    <Compile Include="Assets\_Scripts\Computer\IncreaseEmission.cs" />
+    <Compile Include="Assets\_Scripts\Computer\MoveOnAwake.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
-    <Compile Include="Assets\_Scripts\IncreaseEmission.cs" />
     <Compile Include="Assets\_Scripts\JSON_Data\Bro_Json.cs" />
     <Compile Include="Assets\_Scripts\JSON_Data\Json_Data.cs" />
     <Compile Include="Assets\_Scripts\NetworkMonitor.cs" />

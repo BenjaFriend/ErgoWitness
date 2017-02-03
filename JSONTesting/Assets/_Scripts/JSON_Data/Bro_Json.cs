@@ -12,6 +12,7 @@ public class Bro_Json
     public string id_resp_h;
     public int id_resp_p;
     public string proto;
+    public string service;
     public float duration;
     public string conn_state;
     public int missed_bytes;

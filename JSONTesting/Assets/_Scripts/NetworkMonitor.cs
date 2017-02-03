@@ -168,10 +168,11 @@ public class NetworkMonitor : MonoBehaviour {
                 yield return StartCoroutine(FilebeatToJson(dataObject.hits.hits[0]._source.message));
             }
 
-            yield return null;
-
             // Give my game controller the JSON data to sort out if there is a new computer on it or not
-            StartCoroutine(gameControllerObj.CheckIpEnum(broDataObj));
+            if(broDataObj != null)
+            {
+                StartCoroutine(gameControllerObj.CheckIpEnum(broDataObj));
+            }
         }
 
         dataObject = null;
@@ -213,13 +214,14 @@ public class NetworkMonitor : MonoBehaviour {
         if (keepGoing)
         {
             keepGoing = false;
-            StopCoroutine(SetJsonData());
+            StopAllCoroutines();
             statusText.text = "Monitor Status: Stopped";
             statusText.CrossFadeColor(stoppedColor, 0.3f, true, true);
         }
         else
         {
             keepGoing = true;
+            StopAllCoroutines();
             StartCoroutine(SetJsonData());
             statusText.text = "Monitor Status: Running";
             statusText.CrossFadeColor(runningColor, 0.3f, true, true);

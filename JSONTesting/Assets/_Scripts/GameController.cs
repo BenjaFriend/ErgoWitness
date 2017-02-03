@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
     // the negative of that. So if you enter 100,100,100, then a random
     // position will be within -100 and 100 on each axis.
     public Vector3 boundries;
-
+    public float positionScalar = 1f;
     private Vector3 tempPosition;
     public Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
     #endregion
@@ -30,13 +30,14 @@ public class GameController : MonoBehaviour {
     public IEnumerator CheckIpEnum(Bro_Json broMessage)
     {
         // Make sure that we are not null
-        if (broMessage.id_orig_h == null)
+        if (broMessage.id_orig_h == null || broMessage.id_orig_h == "Null")
         {
-            yield return null;
+            yield break;
+            //yield return null;
         }
 
         // If my dictionary contains the IP address of this JSON info...
-        if (computersDict.ContainsKey(broMessage.id_orig_h))
+        if (broMessage.id_orig_h != null && computersDict.ContainsKey(broMessage.id_orig_h))
         {
             // I want to check if there is a connection that I should add
             StartCoroutine(CheckConnectionsEnum(broMessage,
@@ -66,10 +67,15 @@ public class GameController : MonoBehaviour {
             if (obj == null) yield return null;
 
             // Make a random transform within the paramters of this space
+            /*  tempPosition = new Vector3(
+                  Random.Range(-boundries.x, boundries.x),
+                  Random.Range(-boundries.y, boundries.y),
+                  Random.Range(-boundries.z, boundries.z));*/
             tempPosition = new Vector3(
-                Random.Range(-boundries.x, boundries.x),
-                Random.Range(-boundries.y, boundries.y),
-                Random.Range(-boundries.z, boundries.z));
+                Time.timeSinceLevelLoad * positionScalar,
+                0f,
+                0f);
+
             yield return null;
 
             obj.transform.position = tempPosition;
@@ -96,7 +102,7 @@ public class GameController : MonoBehaviour {
     {
         yield return null;
         // I need to check if my destination is a source  address, which would mean that it is in my dictionary already
-        if (broMessage.id_orig_h == null)
+        if (broMessage.id_orig_h == null || broMessage.id_orig_h == "Null")
         {
             yield return null;
         }

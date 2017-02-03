@@ -11,6 +11,8 @@ public class Fade_UI : MonoBehaviour {
 
     public Text sourceIpText;
     public Text destIpText;
+    public Text serviceText;
+    public Text portText;
     public Text transportText;
 
     private bool showingExtra;
@@ -30,9 +32,10 @@ public class Fade_UI : MonoBehaviour {
     /// <param name="data">The data for us to use</param>
     public void SetValues(Bro_Json data)
     {
-        
         sourceIpText.text = "Source IP: " + data.id_orig_h;
         destIpText.text = "Dest. IP: " + data.id_resp_h;
+        serviceText.text = "Service: " + data.service;
+        portText.text = "Port: " + data.id_orig_p;
         transportText.text = "Protocol: " + data.proto;
     }
 
@@ -63,9 +66,7 @@ public class Fade_UI : MonoBehaviour {
             // Fade out each component
             regInfoitems[i].CrossFadeAlpha(0f, 1f, false);
         }
-
         HideExtraInfo();
-
     }
 
     private void FadeIn()

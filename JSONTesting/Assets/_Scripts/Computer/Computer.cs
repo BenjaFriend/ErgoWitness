@@ -7,19 +7,23 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
-[RequireComponent(typeof(LineRenderer))]
 [RequireComponent(typeof(Fade_UI))]
 public class Computer : MonoBehaviour {
 
+
     #region Fields
     public Bro_Json broInfo;            // The info that bro gives you
+    public Color tcpColor;
+    public Color udpColor;
+    public Color httpColor;
+    public Color httpsColor;
+
     /// <summary>
     /// Use a linked list for this because it is better for insertion
     /// but the same for searching, there are only benefits to this
     /// </summary>
     public LinkedList<GameObject> connectedPCs;
     private Fade_UI UI;         // The UI for me to use
-    private LineRenderer lineRend;  // The line renderer
     private IncreaseEmission particleController;
     #endregion
 
@@ -36,9 +40,6 @@ public class Computer : MonoBehaviour {
         particleController = GetComponent<IncreaseEmission>();
         connectedPCs = new LinkedList<GameObject>();
         UI = GetComponent<Fade_UI>();
-
-        lineRend = GetComponent<LineRenderer>();
-        lineRend.SetPosition(0, Vector3.zero);
     }
 
     /// <summary>
@@ -61,20 +62,22 @@ public class Computer : MonoBehaviour {
     /// <param name="connectedToMe">the PC that is connected to me</param>
     public void AddConnectedPC(GameObject connectedToMe)
     {
-        if(connectedToMe == null)
+        if(connectedToMe == null || connectedToMe == gameObject)
         {
             return;
         }
 
         // If I do not already know of this PC, and it's not myself...
-        if (!connectedPCs.Contains(connectedToMe) && connectedToMe != gameObject)
+        if (!connectedPCs.Contains(connectedToMe))
         {
+            Debug.Log("Connected pc!");
+            // Increase the immision of the particle system
             particleController.AddHit();
+
             // Add the connection to my linked list
             connectedPCs.AddLast(connectedToMe);
 
-            // Add the position to the line renderer    
-            lineRend.SetPosition(1, transform.InverseTransformPoint(connectedToMe.transform.position));        
+            // add the position to the line renderer    
         }
     }
 
@@ -89,24 +92,24 @@ public class Computer : MonoBehaviour {
         if(broInfo != null)
             UI.SetValues(broInfo);
 
-        // Change the color of the  line renderer material based on the protocol
+        // Change the dolor of the particle system
         switch (broInfo.proto)
         {
             case ("tcp"):
                 // Light Gray color
-                lineRend.material.color = Color.gray;
+                particleController.ChangeColor(tcpColor);
                 break;
             case ("udp"):
-                // Light blue
-                lineRend.material.color = Color.blue;
+                // Light gray because we really dont care that much
+                particleController.ChangeColor(udpColor);
                 break;
             case ("http"):
                 // Light green
-                lineRend.material.color = Color.green;
+                particleController.ChangeColor(httpColor);
                 break;
             case ("https"):
                 // Vibrant green
-                lineRend.material.color = Color.green;              
+                particleController.ChangeColor(httpsColor);
                 break;
         }
     }
