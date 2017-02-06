@@ -47,7 +47,6 @@ public class IncreaseEmission : MonoBehaviour {
     public void UpdateParticles()
     {
         em = particles.emission;
-
         em.enabled = true;
         em.rateOverTime = startSize;
     }

@@ -76,8 +76,6 @@ public class Computer : MonoBehaviour {
 
             // Add the connection to my linked list
             connectedPCs.AddLast(connectedToMe);
-
-            // add the position to the line renderer    
         }
     }
 

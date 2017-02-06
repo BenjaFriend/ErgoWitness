@@ -7,13 +7,13 @@ public class Fade_UI : MonoBehaviour {
 
     #region Fields
     public Text[] regInfoitems;
-    public Text[] extraInfoItems;
 
     public Text sourceIpText;
     public Text destIpText;
     public Text serviceText;
     public Text portText;
     public Text transportText;
+    public Text connTypeText;
 
     private bool showingExtra;
     #endregion
@@ -21,7 +21,6 @@ public class Fade_UI : MonoBehaviour {
     private void OnEnable()
     {
         FadeOut();
-        HideExtraInfo();
     }
 
 
@@ -37,11 +36,12 @@ public class Fade_UI : MonoBehaviour {
         serviceText.text = "Service: " + data.service;
         portText.text = "Port: " + data.id_orig_p;
         transportText.text = "Protocol: " + data.proto;
+        connTypeText.text = "Conn. State: " + data.conn_state;
     }
 
     #region Showing info on enter
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
@@ -54,81 +54,25 @@ public class Fade_UI : MonoBehaviour {
         if (other.tag == "Player")
         {
             FadeOut();
-
-            HideExtraInfo();
         }
-    }
+    }*/
 
-    private void FadeOut()
+    public void FadeOut()
     {
         for(int i = 0; i < regInfoitems.Length; i++)
         {
             // Fade out each component
             regInfoitems[i].CrossFadeAlpha(0f, 1f, false);
         }
-        HideExtraInfo();
     }
 
-    private void FadeIn()
+    public void FadeIn()
     {
         for (int i = 0; i < regInfoitems.Length; i++)
         {
             // Fade out each component
             regInfoitems[i].CrossFadeAlpha(0.8f, 1f, false);
         }
-
-        ShowExtraInfo();
     }
-    #endregion
-
-
-    #region Showing extra info
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Toggle if we are showing the extra info or not
-    /// </summary>
-    public void ToggleExtra()
-    {
-        if (showingExtra)
-        {
-            HideExtraInfo();
-        }
-        else
-        {
-            ShowExtraInfo();
-        }
-    }
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Show extra info, like the port, 
-    /// </summary>
-    private void ShowExtraInfo()
-    {
-        showingExtra = true;
-
-        for (int i = 0; i < extraInfoItems.Length; i++)
-        {
-            // Fade in each component
-            extraInfoItems[i].CrossFadeAlpha(1f, 1f, false);
-        }
-    }
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Hide the extra info when we either leave, or we press 
-    /// it again
-    /// </summary>
-    private void HideExtraInfo()
-    {
-        showingExtra = false;
-        for(int i = 0; i < extraInfoItems.Length; i++)
-        {
-            // Fade out each component and set as inactive
-            extraInfoItems[i].CrossFadeAlpha(0f, 1f, false);
-        }
-    }
-
     #endregion
 }

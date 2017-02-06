@@ -19,21 +19,23 @@ public class GameController : MonoBehaviour {
     public Vector3 boundries;
     public float positionScalar = 1f;
     private Vector3 tempPosition;
-    public Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
+    private float timeSinceStart;
+    private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
     #endregion
 
     void Start ()
     {
-        computersDict = new Dictionary<string, GameObject>();     
+        computersDict = new Dictionary<string, GameObject>();
+        timeSinceStart = Time.timeSinceLevelLoad / 60f;
     }
 
     public IEnumerator CheckIpEnum(Bro_Json broMessage)
     {
+
         // Make sure that we are not null
         if (broMessage.id_orig_h == null || broMessage.id_orig_h == "Null")
         {
             yield break;
-            //yield return null;
         }
 
         // If my dictionary contains the IP address of this JSON info...
@@ -66,15 +68,9 @@ public class GameController : MonoBehaviour {
 
             if (obj == null) yield return null;
 
-            // Make a random transform within the paramters of this space
-            /*  tempPosition = new Vector3(
-                  Random.Range(-boundries.x, boundries.x),
-                  Random.Range(-boundries.y, boundries.y),
-                  Random.Range(-boundries.z, boundries.z));*/
-            tempPosition = new Vector3(
-                Time.timeSinceLevelLoad * positionScalar,
-                0f,
-                0f);
+            timeSinceStart = Time.timeSinceLevelLoad / 60f;
+
+            tempPosition = Random.onUnitSphere * timeSinceStart * positionScalar;
 
             yield return null;
 

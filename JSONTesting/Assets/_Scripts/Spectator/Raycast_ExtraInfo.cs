@@ -5,19 +5,24 @@ using UnityEngine;
 public class Raycast_ExtraInfo : MonoBehaviour {
 
     private RaycastHit hitInfo;
+    private GameObject target;
 
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire3"))
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo))
         {
-            if(Physics.Raycast(transform.position, transform.forward, out hitInfo))
+            if (hitInfo.collider.tag == "Comp")
             {
-                if(hitInfo.collider.tag == "Comp")
-                {
-                    //hitInfo.collider.GetComponent<Fade_UI>().ToggleExtra();
-                }
+                // Show the info on that particular on that computer
+                target = hitInfo.collider.gameObject;
+                target.GetComponent<Fade_UI>().FadeIn();
+            }
+            else if (target != null)
+            {
+                target.GetComponent<Fade_UI>().FadeOut();
+                target = null;
             }
         }
-	}
+    }
 }

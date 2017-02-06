@@ -150,6 +150,7 @@ public class NetworkMonitor : MonoBehaviour {
         JSON_String = reader.ReadToEnd();
 
         yield return null;
+
         // Cleanup the streams and the response.
         reader.Close();
         requestStream.Close();
@@ -175,8 +176,9 @@ public class NetworkMonitor : MonoBehaviour {
             }
         }
 
-        dataObject = null;
-        broDataObj = null;
+        // Release temp objects from memory 
+        bufferResult = null;
+
         // As long as we didn't say to stop yet
         if (keepGoing)
         {
