@@ -1,0 +1,14 @@
+# Bro filter for Filebeat and Logstash
+# Since all of Bro's useful output is in a field called "message", this will have
+# Logstash sort through that and put it into fields in Elasticsearch
+# This filter can go into Logstash conf.d folder
+
+filter {
+       json {
+          source => "message"
+       }
+}
+
+# Note that for this to work you need to have JSON logging enabled in your
+# site config in Bro. Insert the line below to do that
+redef LogAscii::use_json=T;
