@@ -6,6 +6,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
 
     private RaycastHit hitInfo;
     private GameObject target;
+    public Animator anim;
 
 	// Update is called once per frame
 	void Update ()
@@ -17,11 +18,15 @@ public class Raycast_ExtraInfo : MonoBehaviour {
                 // Show the info on that particular on that computer
                 target = hitInfo.collider.gameObject;
                 target.GetComponent<Fade_UI>().FadeIn();
+                anim.SetBool("isLooking", true);
+                //anim.SetTrigger("Expand");
             }
             else if (target != null)
             {
                 target.GetComponent<Fade_UI>().FadeOut();
                 target = null;
+                anim.SetBool("isLooking", false);
+                //anim.SetTrigger("Close");
             }
         }
     }
