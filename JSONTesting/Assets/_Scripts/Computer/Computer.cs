@@ -22,7 +22,9 @@ public class Computer : MonoBehaviour {
     /// Use a linked list for this because it is better for insertion
     /// but the same for searching, there are only benefits to this
     /// </summary>
-    public LinkedList<GameObject> connectedPCs;
+    //public LinkedList<GameObject> connectedPCs;
+    public List<GameObject> connectedPCs;
+
     private Fade_UI UI;         // The UI for me to use
     private IncreaseEmission particleController;
     #endregion
@@ -38,7 +40,8 @@ public class Computer : MonoBehaviour {
     void Awake()
     {
         particleController = GetComponent<IncreaseEmission>();
-        connectedPCs = new LinkedList<GameObject>();
+        //connectedPCs = new LinkedList<GameObject>();
+        connectedPCs = new List<GameObject>();
         UI = GetComponent<Fade_UI>();
     }
 
@@ -75,7 +78,8 @@ public class Computer : MonoBehaviour {
             particleController.AddHit();
 
             // Add the connection to my linked list
-            connectedPCs.AddLast(connectedToMe);
+            //connectedPCs.AddLast(connectedToMe);
+            connectedPCs.Add(connectedToMe);
         }
     }
 

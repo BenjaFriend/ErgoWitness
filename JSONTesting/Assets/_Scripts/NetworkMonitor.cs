@@ -96,7 +96,6 @@ public class NetworkMonitor : MonoBehaviour {
         }
     }
 
-
     /// <summary>
     /// Author: Ben Hoffman
     /// This will allow me to get the most recent event

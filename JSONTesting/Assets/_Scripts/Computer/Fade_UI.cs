@@ -22,10 +22,6 @@ public class Fade_UI : MonoBehaviour {
     private void Awake()
     {
         anim = GetComponent<Animator>();
-    }
-
-    private void OnEnable()
-    {
         FadeOut();
     }
 

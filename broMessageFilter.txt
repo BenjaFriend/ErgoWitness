@@ -12,3 +12,6 @@ filter {
 # Note that for this to work you need to have JSON logging enabled in your
 # site config in Bro. Insert the line below to do that
 redef LogAscii::use_json=T;
+
+# Directory to install bro scripts?
+/usr/share/bro/scripts
