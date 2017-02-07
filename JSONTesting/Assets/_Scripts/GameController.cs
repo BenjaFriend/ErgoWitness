@@ -29,29 +29,37 @@ public class GameController : MonoBehaviour {
         timeSinceStart = Time.timeSinceLevelLoad / 60f;
     }
 
-    public IEnumerator CheckIpEnum(Bro_Json broMessage)
+    public IEnumerator CheckIpEnum(Source jsonSourceData)
     {
-
-        // Make sure that we are not null
-        if (broMessage.id_orig_h == null || broMessage.id_orig_h == "Null")
+        // Make sure that we have something in the array
+        if(jsonSourceData == null)
         {
             yield break;
         }
+        
+            // Make sure that we are not null
+            if (jsonSourceData.id_orig_h == null ||
+                jsonSourceData.id_orig_h == "Null")
+            {
+                yield break;
+            }
 
-        // If my dictionary contains the IP address of this JSON info...
-        if (broMessage.id_orig_h != null && computersDict.ContainsKey(broMessage.id_orig_h))
-        {
-            // I want to check if there is a connection that I should add
-            StartCoroutine(CheckConnectionsEnum(broMessage,
-                computersDict[broMessage.id_orig_h]));
-        }
-        else
-        {
-            // If I do NOT have this IP in my dictionary, then make a new computer        
-            StartCoroutine(NewComputerEnum(broMessage));
-        }
-        yield return null;
+            yield return null;
 
+            // If my dictionary contains the IP address of this JSON info...
+            if (jsonSourceData.id_orig_h != null && computersDict.ContainsKey(jsonSourceData.id_orig_h))
+            {
+                // I want to check if there is a connection that I should add
+                StartCoroutine(CheckConnectionsEnum(jsonSourceData,
+                    computersDict[jsonSourceData.id_orig_h]));
+            }
+            else
+            {
+                // If I do NOT have this IP in my dictionary, then make a new computer        
+                StartCoroutine(NewComputerEnum(jsonSourceData));
+            }
+            yield return null;
+       
     }
 
     /// <summary>
@@ -59,9 +67,9 @@ public class GameController : MonoBehaviour {
     /// We have NOT seen this IP before, and we want to make
     /// a new one
     /// </summary>
-    private IEnumerator NewComputerEnum(Bro_Json broMessage)
+    private IEnumerator NewComputerEnum(Source jsonSourceData)
     {
-        if (broMessage.id_orig_h != null)
+        if (jsonSourceData.id_orig_h != null)
         {
             yield return null;
             GameObject obj = ObjectPooler.current.GetPooledObject();
@@ -78,11 +86,11 @@ public class GameController : MonoBehaviour {
             obj.transform.rotation = Quaternion.identity;
 
             // Set the DATA on this gameobject to the data from the JSON data
-            obj.GetComponent<Computer>().SetData(broMessage);
+            obj.GetComponent<Computer>().SetData(jsonSourceData);
             obj.SetActive(true);
             yield return null;
 
-            computersDict.Add(broMessage.id_orig_h, obj);
+            computersDict.Add(jsonSourceData.id_orig_h, obj);
         }
     }
 
@@ -94,7 +102,7 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="data">The data of that commputer with the same source IP so I can check the dest.</param>
     /// <param name="checkMe">The game object that I already have, from my dicionary</param>
-    private IEnumerator CheckConnectionsEnum(Bro_Json broMessage, GameObject checkMe)
+    private IEnumerator CheckConnectionsEnum(Source broMessage, GameObject checkMe)
     {
         yield return null;
         // I need to check if my destination is a source  address, which would mean that it is in my dictionary already

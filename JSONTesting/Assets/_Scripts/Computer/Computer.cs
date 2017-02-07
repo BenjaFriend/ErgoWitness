@@ -12,7 +12,7 @@ public class Computer : MonoBehaviour {
 
 
     #region Fields
-    public Bro_Json broInfo;            // The info that bro gives you
+    public Source sourceInfo;            // The info that bro gives you
     public Color tcpColor;
     public Color udpColor;
     public Color httpColor;
@@ -28,7 +28,7 @@ public class Computer : MonoBehaviour {
     #endregion
 
     #region Mutators
-    public Bro_Json BroInfo { get { return broInfo; } set { broInfo = value; } }
+    public Source SourceInfo { get { return sourceInfo; } set { sourceInfo = value; } }
     #endregion
 
     /// <summary>
@@ -47,9 +47,9 @@ public class Computer : MonoBehaviour {
     /// This will let me set my UI only when I have data
     /// </summary>
     /// <param name="myData"></param>
-    public void SetData( Bro_Json broData)
+    public void SetData(Source broData)
     {
-        broInfo = broData;
+        sourceInfo = broData;
 
         UpdateUI();
     }
@@ -87,11 +87,11 @@ public class Computer : MonoBehaviour {
     private void UpdateUI()
     {
         // Set all my UI data
-        if(broInfo != null)
-            UI.SetValues(broInfo);
+        if(sourceInfo != null)
+            UI.SetValues(sourceInfo);
 
         // Change the dolor of the particle system
-        switch (broInfo.proto)
+        switch (sourceInfo.proto)
         {
             case ("tcp"):
                 // Light Gray color

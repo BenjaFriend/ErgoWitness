@@ -18,23 +18,19 @@ using UnityEngine.UI;
 public class NetworkMonitor : MonoBehaviour {
 
     #region Fields
-    public enum packetName { packetbeat, filebeat }
-
     public string serverIP;
-    public packetName packetType;
     public Text current_Index_Text;
     public Text statusText;
     public Color runningColor;
     public Color stoppedColor;
 
-    public bool keepGoing = true;
+    public bool keepGoing = true;            // If we want to keep going
     // The URL of my ELK server
     private string elk_url;
     private string JSON_String = "";        // The string that represents the JSON data
     private Json_Data dataObject;           // The actual JSON data class 
-    private Bro_Json broDataObj;            // The bro data that we might have
 
-    private string queryString;
+    private string queryString;     // The JSON data that we are sending with the GET request
     private GameController gameControllerObj; // The game controller 
 
     // These are fields for my web request so that I am not making new objects in mem
@@ -44,7 +40,6 @@ public class NetworkMonitor : MonoBehaviour {
     private Stream requestStream;
     private StreamReader reader;
     private byte[] buffer;
-    private string bufferResult;
     #endregion
 
     /// <summary>
@@ -78,18 +73,8 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     private void SetUpURL()
     {
-        elk_url = "";
-        // Add the packet type
-        elk_url = "http://" + serverIP + ":9200/";
-        switch (packetType)
-        {
-            case (packetName.packetbeat):
-                elk_url += "packetbeat-";
-                break;
-            case (packetName.filebeat):
-                elk_url += "filebeat-";
-                break;
-        }
+        // Add the port and packet type
+        elk_url = "http://" + serverIP + ":9200/filebeat-";
 
         elk_url += DateTime.Today.Year.ToString() + ".";
         // Make sure we have proper format on the month
@@ -129,7 +114,6 @@ public class NetworkMonitor : MonoBehaviour {
         request.ContentType = "application/json";
         request.Method = "POST";
         buffer = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
-        var bufferResult = System.Convert.ToBase64String(buffer);
 
         // Put this yield here so that I get higher FPS
         yield return null;
@@ -161,23 +145,18 @@ public class NetworkMonitor : MonoBehaviour {
         if (JSON_String != null)
         {
             // Wait until we finish converting the string to JSON data to continue
-            yield return StartCoroutine(PacketbeatToJson());
-
-            // If we have a message from a filebeat, then send that to a different JSON parser
-            if(dataObject.hits.hits[0]._source.message != null)
-            {
-                yield return StartCoroutine(FilebeatToJson(dataObject.hits.hits[0]._source.message));
-            }
-
-            // Give my game controller the JSON data to sort out if there is a new computer on it or not
-            if(broDataObj != null)
-            {
-                StartCoroutine(gameControllerObj.CheckIpEnum(broDataObj));
-            }
+            yield return StartCoroutine(StringToJson());   
         }
 
-        // Release temp objects from memory 
-        bufferResult = null;
+        if(dataObject != null)
+        {
+            // Send the data to the game controller for all of our hits
+            for(int i = 0; i < dataObject.hits.hits.Length; i++)
+            {
+                StartCoroutine(
+                    gameControllerObj.CheckIpEnum(dataObject.hits.hits[i]._source));
+            }
+        }
 
         // As long as we didn't say to stop yet
         if (keepGoing)
@@ -195,16 +174,10 @@ public class NetworkMonitor : MonoBehaviour {
     /// and use the JsonUtility to make it JsonData. After that 
     /// it will send it to the game controller
     /// </summary>
-    private IEnumerator PacketbeatToJson()
+    private IEnumerator StringToJson()
     {
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
         yield return dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
-    }
-
-    private IEnumerator FilebeatToJson(string message)      
-    {
-        // Use the JsonUtility to send the string of data that I got from the server, to a data object
-        yield return broDataObj = JsonUtility.FromJson<Bro_Json>(message);
     }
 
     /// <summary>

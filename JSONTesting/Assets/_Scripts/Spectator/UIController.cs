@@ -22,6 +22,8 @@ public class UIController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        Time.timeScale = 1f;
+
         // Make sure that me menus are OFF to start
         gameMenu.gameObject.SetActive(false);
         debugInfo.gameObject.SetActive(false);
@@ -41,6 +43,7 @@ public class UIController : MonoBehaviour {
         {
             ToggleMenu(gameMenu);
             TogglePlayerMovement();
+            ToggleTimescale();
         }
 
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
@@ -97,9 +100,24 @@ public class UIController : MonoBehaviour {
     /// </summary>
     public void Resume()
     {
+        Time.timeScale = 1f;
         // Hide the menu and allow the player to move again
         ToggleMenu(gameMenu);
         TogglePlayerMovement();
+    }
+
+    private void ToggleTimescale()
+    {
+        if(Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+
     }
 
     /// <summary>

@@ -13,45 +13,47 @@ using UnityEngine;
 [System.Serializable]
 public class Json_Data
 {
-    public Hits hits;       // The data that actually matters
+    public int took;
+    public bool timed_out;
+    public HitsParent hits;       // The data that actually matters
 }
 
 [System.Serializable]
-public class Hits
+public class HitsParent
 {
+    public int total;
     public HitsData[] hits;  // Array of all the hits that we gathered since last time
 }
 
 [System.Serializable]
 public class HitsData
 {
+    public string _index;
     public string _type;
-    public Source _source;      // This is the source of that hit
+    public string _id;
+    public Source _source;
 }
 
 // This is really the information that I care about right now
 [System.Serializable]
 public class Source
 {
-    public SourceData source;
-    public string transport;    // TCP, UDP, etc
-    public string type;         // What type of traffic is it? (DNS, icmp, etc)
-    public DestinationData dest;
-    public string @timestamp;
+    public int resp_pkts;
+    public string type;
+    public int id_orig_p;
+    public float duration;
+    public string uid;
+    public string id_orig_h;
+    public string conn_state;
+    public string id_resp_h;
+    public int id_resp_p;
+    public int resp_ip_bytes;
+    public int orig_bytes;
+    public int orig_ip_bytes;
+    public int orig_pkts;
+    public int missed_bytes;
     public string message;
-}
-
-[System.Serializable]
-public class SourceData
-{
-    public int port;
-    public string ip;           // The IP of the hit
-    public string mac;
-}
-
-[System.Serializable]
-public class DestinationData
-{
-    public int port;
-    public string ip;           // The IP of the hit
+    public int resp_bytes;
+    public string service;
+    public string proto;
 }

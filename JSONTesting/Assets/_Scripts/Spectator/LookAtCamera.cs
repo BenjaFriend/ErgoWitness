@@ -8,7 +8,7 @@ public class LookAtCamera : MonoBehaviour {
     public float MaximumX = 90F;
     private Quaternion newRotation;
 
-	// Just look at the camera 
+	// Just look at the camera every frame
 	void Update ()
     {
         newRotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
