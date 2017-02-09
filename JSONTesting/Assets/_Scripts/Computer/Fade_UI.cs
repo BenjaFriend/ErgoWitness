@@ -7,7 +7,7 @@ public class Fade_UI : MonoBehaviour {
 
     #region Fields
     private Animator anim;
-    public Text[] regInfoitems;
+    //public Text[] regInfoitems;
 
     public Image backgroundImage;
     public Text sourceIpText;
@@ -71,28 +71,19 @@ public class Fade_UI : MonoBehaviour {
 
     }
 
-    #region Showing info on enter
-
-    public void FadeOut()
-    {
-        for(int i = 0; i < regInfoitems.Length; i++)
-        {
-            // Fade out each component
-            regInfoitems[i].CrossFadeAlpha(0f, 1f, false);
-        }
-        backgroundImage.CrossFadeAlpha(0f, 1f, false);
-        anim.SetTrigger("FadeIn");
-    }
-
+    /// <summary>
+    /// Fade the text and background IN
+    /// </summary>
     public void FadeIn()
     {
-        for (int i = 0; i < regInfoitems.Length; i++)
-        {
-            // Fade out each component
-            regInfoitems[i].CrossFadeAlpha(0.8f, 1f, false);
-        }
-        backgroundImage.CrossFadeAlpha(0.8f, 1f, false);
-        anim.SetTrigger("FadeOut");
+        anim.SetBool("isLooking", true);
     }
-    #endregion
+
+    /// <summary>
+    /// Fade the text and background OUT
+    /// </summary>
+    public void FadeOut()
+    {
+        anim.SetBool("isLooking", false);
+    }
 }

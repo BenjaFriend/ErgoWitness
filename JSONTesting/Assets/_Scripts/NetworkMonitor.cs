@@ -25,6 +25,7 @@ public class NetworkMonitor : MonoBehaviour {
     public Color stoppedColor;
 
     public bool keepGoing = true;            // If we want to keep going
+
     // The URL of my ELK server
     private string elk_url;
     private string JSON_String = "";        // The string that represents the JSON data
@@ -33,13 +34,6 @@ public class NetworkMonitor : MonoBehaviour {
     private string queryString;     // The JSON data that we are sending with the GET request
     private GameController gameControllerObj; // The game controller 
 
-    // These are fields for my web request so that I am not making new objects in mem
-    // With each call
-    private WebRequest request;
-    private HttpWebResponse response;
-    private Stream requestStream;
-    private StreamReader reader;
-    private byte[] buffer;
     #endregion
 
     /// <summary>
@@ -57,7 +51,7 @@ public class NetworkMonitor : MonoBehaviour {
 
         // Find the latest index name and make my URL, or maybe get all the indexes and ask the
         // user which one they want to use
-        StartCoroutine(SetJsonData());
+        StartCoroutine(PostJsonData());
 
         statusText.text = "Monitor Status: Running";
         statusText.CrossFadeColor(runningColor, 0.3f, true, true);
@@ -98,59 +92,42 @@ public class NetworkMonitor : MonoBehaviour {
 
     /// <summary>
     /// Author: Ben Hoffman
-    /// This will allow me to get the most recent event
-    /// from the ELK server, in a string that can then be parsed 
-    /// by the Unity JsonUtility. This is a co routine so that
-    /// I don't get framerate drops if it takes too long
-    /// to download
+    /// Post the data to my server, and then get the JSON
+    /// data that I want from it
     /// </summary>
-    private IEnumerator SetJsonData()
+    /// <returns></returns>
+    private IEnumerator PostJsonData()
     {
-        // Make a new web request with the .net WebRequest
-        request = WebRequest.Create(elk_url);
-        yield return null;
+        // Build up the headers:
+        Dictionary <string, string> headers = new Dictionary<string, string>();
 
-        request.ContentType = "application/json";
-        request.Method = "POST";
-        buffer = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
+        // Add in content type:
+        headers["Content-Type"] = "application/json";
 
-        // Put this yield here so that I get higher FPS
-        yield return null;
+        // Get the post data:
+        byte[] postData = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
 
-        requestStream = request.GetRequestStream();
-        requestStream.Write(buffer, 0, buffer.Length);
-        requestStream.Close();
-        // Again this is about getting higher FPS
-        yield return null;
+        // Start up the reqest:
+        WWW myRequest = new WWW(elk_url, postData, headers);
 
-        response = (HttpWebResponse)request.GetResponse();
-        // Wait until we have all of the data we need from the response to continue
-        yield return requestStream = response.GetResponseStream();
+        // Yield until it's done:
+        yield return myRequest;
 
-        // Open the stream using a StreamReader for easy access.
-        reader = new StreamReader(requestStream);
-        // Set my string to the response from the website
-        JSON_String = reader.ReadToEnd();
-
-        yield return null;
-
-        // Cleanup the streams and the response.
-        reader.Close();
-        requestStream.Close();
-        response.Close();
-        yield return null;
+        // Get the response (into your JSON_String field like above)
+        JSON_String = myRequest.text;
 
         // As long as we are not null, put this in as real C# data
         if (JSON_String != null)
         {
             // Wait until we finish converting the string to JSON data to continue
-            yield return StartCoroutine(StringToJson());   
+            yield return StartCoroutine(StringToJson());
         }
 
-        if(dataObject != null)
+        if (dataObject != null)
         {
+
             // Send the data to the game controller for all of our hits
-            for(int i = 0; i < dataObject.hits.hits.Length; i++)
+            for (int i = 0; i < dataObject.hits.hits.Length; i++)
             {
                 StartCoroutine(
                     gameControllerObj.CheckIpEnum(dataObject.hits.hits[i]._source));
@@ -163,9 +140,10 @@ public class NetworkMonitor : MonoBehaviour {
             yield return null;
 
             // Start this again
-            StartCoroutine(SetJsonData());
-        } 
+            StartCoroutine(PostJsonData());
+        }
     }
+
 
     /// <summary>
     /// Author: Ben Hoffman
@@ -196,10 +174,9 @@ public class NetworkMonitor : MonoBehaviour {
         {
             keepGoing = true;
             StopAllCoroutines();
-            StartCoroutine(SetJsonData());
+            StartCoroutine(PostJsonData());
             statusText.text = "Monitor Status: Running";
             statusText.CrossFadeColor(runningColor, 0.3f, true, true);
-
         }
     }
 

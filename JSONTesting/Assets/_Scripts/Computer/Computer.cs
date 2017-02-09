@@ -19,10 +19,9 @@ public class Computer : MonoBehaviour {
     public Color httpsColor;
 
     /// <summary>
-    /// Use a linked list for this because it is better for insertion
+    /// Use a list for this because it is better for insertion
     /// but the same for searching, there are only benefits to this
     /// </summary>
-    //public LinkedList<GameObject> connectedPCs;
     public List<GameObject> connectedPCs;
 
     private Fade_UI UI;         // The UI for me to use
@@ -40,7 +39,7 @@ public class Computer : MonoBehaviour {
     void Awake()
     {
         particleController = GetComponent<IncreaseEmission>();
-        //connectedPCs = new LinkedList<GameObject>();
+
         connectedPCs = new List<GameObject>();
         UI = GetComponent<Fade_UI>();
     }

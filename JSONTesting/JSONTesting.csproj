@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -70,9 +67,6 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
@@ -84,10 +78,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Alert\AlertController.cs" />
     <Compile Include="Assets\_Scripts\Computer\Computer.cs" />
     <Compile Include="Assets\_Scripts\Computer\Fade_UI.cs" />
     <Compile Include="Assets\_Scripts\Computer\IncreaseEmission.cs" />
     <Compile Include="Assets\_Scripts\Computer\MoveOnAwake.cs" />
+    <Compile Include="Assets\_Scripts\DeviceUIControlls.cs" />
     <Compile Include="Assets\_Scripts\ExceptionLogger.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
     <Compile Include="Assets\_Scripts\JSON_Data\Bro_Json.cs" />

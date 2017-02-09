@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Author: Ben Hoffman
@@ -11,7 +12,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     #region Fields
-
+    public Text alertText;
+    private int alertCount;
     // This will be used to randomly position the computers within this area. 
     // The max range will be whatever number you put in, and the min will be 
     // the negative of that. So if you enter 100,100,100, then a random
@@ -25,6 +27,7 @@ public class GameController : MonoBehaviour {
 
     void Start ()
     {
+        alertCount = 0;
         computersDict = new Dictionary<string, GameObject>();
         timeSinceStart = Time.timeSinceLevelLoad / 60f;
     }
@@ -36,30 +39,36 @@ public class GameController : MonoBehaviour {
         {
             yield break;
         }
-        
-            // Make sure that we are not null
-            if (jsonSourceData.id_orig_h == null ||
-                jsonSourceData.id_orig_h == "Null")
-            {
-                yield break;
-            }
 
-            yield return null;
+        if(jsonSourceData.alert == "true")
+        {
+            alertCount++;
+            alertText.text = "Alerts: " + alertCount.ToString();
+        }
 
-            // If my dictionary contains the IP address of this JSON info...
-            if (jsonSourceData.id_orig_h != null && computersDict.ContainsKey(jsonSourceData.id_orig_h))
-            {
-                // I want to check if there is a connection that I should add
-                StartCoroutine(CheckConnectionsEnum(jsonSourceData,
-                    computersDict[jsonSourceData.id_orig_h]));
-            }
-            else
-            {
-                // If I do NOT have this IP in my dictionary, then make a new computer        
-                StartCoroutine(NewComputerEnum(jsonSourceData));
-            }
-            yield return null;
-       
+        // Make sure that we are not null
+        if (jsonSourceData.id_orig_h == null ||
+            jsonSourceData.id_orig_h == "Null")
+        {
+            yield break;
+        }
+
+        yield return null;
+
+        // If my dictionary contains the IP address of this JSON info...
+        if (jsonSourceData.id_orig_h != null && computersDict.ContainsKey(jsonSourceData.id_orig_h))
+        {
+            // I want to check if there is a connection that I should add
+            StartCoroutine(CheckConnectionsEnum(jsonSourceData,
+                computersDict[jsonSourceData.id_orig_h]));
+        }
+        else
+        {
+            // If I do NOT have this IP in my dictionary, then make a new computer        
+            StartCoroutine(NewComputerEnum(jsonSourceData));
+        }
+        yield return null;
+
     }
 
     /// <summary>
