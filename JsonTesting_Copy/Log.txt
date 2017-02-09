@@ -1,0 +1,48 @@
+Exception
+SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy)
+System.Net.WebConnection.Connect (System.Net.HttpWebRequest request)
+Rethrow as WebException: Error: ConnectFailure (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+)
+System.Net.HttpWebRequest.EndGetRequestStream (IAsyncResult asyncResult)
+System.Net.HttpWebRequest.GetRequestStream ()
+NetworkMonitor+<SetJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:120)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy)
+System.Net.WebConnection.Connect (System.Net.HttpWebRequest request)
+Rethrow as WebException: Error: ConnectFailure (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+)
+System.Net.HttpWebRequest.EndGetRequestStream (IAsyncResult asyncResult)
+System.Net.HttpWebRequest.GetRequestStream ()
+NetworkMonitor+<SetJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:130)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy)
+System.Net.WebConnection.Connect (System.Net.HttpWebRequest request)
+Rethrow as WebException: Error: ConnectFailure (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+)
+System.Net.HttpWebRequest.EndGetRequestStream (IAsyncResult asyncResult)
+System.Net.HttpWebRequest.GetRequestStream ()
+NetworkMonitor+<SetJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:120)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+System.Net.Sockets.Socket.Connect (System.Net.EndPoint remoteEP, Boolean requireSocketPolicy)
+System.Net.WebConnection.Connect (System.Net.HttpWebRequest request)
+Rethrow as WebException: Error: ConnectFailure (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+)
+System.Net.HttpWebRequest.EndGetRequestStream (IAsyncResult asyncResult)
+System.Net.HttpWebRequest.GetRequestStream ()
+NetworkMonitor+<SetJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:126)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
