@@ -1,0 +1,1 @@
+alert icmp any any -> $HOME_NET any (msg:"ICMP test"; sid:10000001; rev:001;)

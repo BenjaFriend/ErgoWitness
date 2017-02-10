@@ -39,6 +39,10 @@ public class Movement : MonoBehaviour {
         m_CameraTargetRot = camTransform.localRotation;
     }
 
+    /// <summary>
+    /// Check for update from the user as to if they want to 
+    /// toggle the camera
+    /// </summary>
     void Update()
     {
         if (Input.GetButtonDown("CamToggle"))

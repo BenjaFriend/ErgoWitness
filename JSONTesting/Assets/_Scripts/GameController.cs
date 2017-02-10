@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
 
     #region Fields
     public Text alertText;
+    public Text deviceCountText;
     private int alertCount;
     // This will be used to randomly position the computers within this area. 
     // The max range will be whatever number you put in, and the min will be 
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour {
         alertCount = 0;
         computersDict = new Dictionary<string, GameObject>();
         timeSinceStart = Time.timeSinceLevelLoad / 60f;
+        deviceCountText.text = "Devices: 0";
     }
 
     public IEnumerator CheckIpEnum(Source jsonSourceData)
@@ -100,6 +102,7 @@ public class GameController : MonoBehaviour {
             yield return null;
 
             computersDict.Add(jsonSourceData.id_orig_h, obj);
+            deviceCountText.text = "Devices: " + computersDict.Count.ToString();
         }
     }
 

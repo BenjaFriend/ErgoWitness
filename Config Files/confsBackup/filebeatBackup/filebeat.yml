@@ -1,0 +1,6 @@
+filebeat:
+  registry_file: /var/lib/filebeat/registry
+  config_dir: /etc/filebeat/conf.d
+
+output.logstash:
+  hosts: ["localhost:5044"]

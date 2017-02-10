@@ -11,17 +11,23 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
     
     #region Fields
-    public Movement playerMovement;
-    public Canvas debugInfo;
-    public Canvas gameMenu;
+    public Movement playerMovement;     // The player movement so we can stop it on pause
+    public Canvas debugInfo;            // The debug menu
+    public Canvas gameMenu;             // The pause menu
+    private Animator anim;      // The animator of the menu
 
-    private bool showingMenu;
-    private bool isPaused;
+    private bool showingMenu;           // Are we showing the menu?
+    private bool isPaused;              // Are we paused?
     #endregion
 
-    // Use this for initialization
+    /// <summary>
+    /// set the menus to false, enable player movement, set time scale to 1
+    /// get the animator component
+    /// </summary>
     void Start ()
     {
+        // Get te animator for the menu
+        anim = gameMenu.GetComponent<Animator>();
         Time.timeScale = 1f;
 
         // Make sure that me menus are OFF to start
@@ -41,13 +47,16 @@ public class UIController : MonoBehaviour {
     {
         if (Input.GetButtonDown("Cancel"))
         {
+            // Show the pause menu
             ToggleMenu(gameMenu);
+            // Stop the player from moving
             TogglePlayerMovement();
-            ToggleTimescale();
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        // Toggle the 'debug' menu with the plus key on the num pad or d-pad down
+        if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetAxis("DPadUpDown") < 0f)
         {
+            // Show the debug menu
             ToggleMenu(debugInfo);
         }
 	}
@@ -65,6 +74,11 @@ public class UIController : MonoBehaviour {
         {
             // Show the game menu
             menu.gameObject.SetActive(true);
+
+            // Select the first button if there is one, this will allow me to traverse the 
+            // menu with a controller
+            if(menu.GetComponentInChildren<Button>() != null)
+                menu.GetComponentInChildren<Button>().Select();
         }
         else
         {
@@ -100,21 +114,47 @@ public class UIController : MonoBehaviour {
     /// </summary>
     public void Resume()
     {
+        // Set the time to normal
         Time.timeScale = 1f;
-        // Hide the menu and allow the player to move again
+        // Hide the menu
         ToggleMenu(gameMenu);
+        // Enable player movement
         TogglePlayerMovement();
     }
 
+    /// <summary>
+    /// Display the help menu, or hide the help menu
+    /// </summary>
+    public void ToggleHelpMenu()
+    {
+        // Use the animator to do this
+        // If we are not showing the menu and we are in idle state....
+        if (!anim.GetBool("showHelp") && anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            // Show the menu
+            anim.SetBool(("showHelp"), true);
+        }
+        // If we are showing the menu and we are in that state too
+        else if (anim.GetBool("showHelp") && anim.GetCurrentAnimatorStateInfo(0).IsName("ShowHelpMenu"))
+        {
+            // Hide the menu
+            anim.SetBool(("showHelp"), false);
+        }
+    }
+
+    /// <summary>
+    /// Toggle if we want time scale to be happening or not
+    /// </summary>
     private void ToggleTimescale()
     {
         if(Time.timeScale == 0f)
         {
+            // Set the time scale to normal
             Time.timeScale = 1f;
-
         }
         else
         {
+            // Effectively pause all active effects that are scaled by time
             Time.timeScale = 0f;
         }
 
@@ -126,6 +166,7 @@ public class UIController : MonoBehaviour {
     /// </summary>
     public void Quit()
     {
+        // Quit the application
         Application.Quit();
     }
 }

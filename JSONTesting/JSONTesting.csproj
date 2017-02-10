@@ -95,6 +95,9 @@
     <Compile Include="Assets\_Scripts\Spectator\Raycast_ExtraInfo.cs" />
     <Compile Include="Assets\_Scripts\Spectator\UIController.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Fonts\Lato\OFL.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>
