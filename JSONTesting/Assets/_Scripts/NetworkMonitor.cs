@@ -27,7 +27,8 @@ public class NetworkMonitor : MonoBehaviour {
     public bool keepGoing = true;            // If we want to keep going
 
     // The URL of my ELK server
-    private string elk_url;
+    private string elk_url_filebeat;        // The filebeat index
+    private string elk_url_packetbeat;      // The packetbeat index
     private string JSON_String = "";        // The string that represents the JSON data
     private Json_Data dataObject;           // The actual JSON data class 
 
@@ -56,7 +57,7 @@ public class NetworkMonitor : MonoBehaviour {
         statusText.text = "Monitor Status: Running";
         statusText.CrossFadeColor(runningColor, 0.3f, true, true);
 
-        current_Index_Text.text = elk_url;
+        current_Index_Text.text = elk_url_filebeat;
     }
 
     /// <summary>
@@ -68,25 +69,25 @@ public class NetworkMonitor : MonoBehaviour {
     private void SetUpURL()
     {
         // Add the port and packet type
-        elk_url = "http://" + serverIP + ":9200/filebeat-";
+        elk_url_filebeat = "http://" + serverIP + ":9200/filebeat-";
 
-        elk_url += DateTime.Today.Year.ToString() + ".";
+        elk_url_filebeat += DateTime.Today.Year.ToString() + ".";
         // Make sure we have proper format on the month
         if (DateTime.Today.Month < 10)
         {
-            elk_url += "0" + DateTime.Today.Month.ToString() + ".";
+            elk_url_filebeat += "0" + DateTime.Today.Month.ToString() + ".";
         }
         else
         {
-            elk_url +=  DateTime.Today.Month.ToString() + ".";
+            elk_url_filebeat +=  DateTime.Today.Month.ToString() + ".";
         }
         if(DateTime.Today.Day < 10)
         {
-            elk_url += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            elk_url_filebeat += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
         else
         {
-            elk_url += DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            elk_url_filebeat += DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
     }
 
@@ -108,7 +109,7 @@ public class NetworkMonitor : MonoBehaviour {
         byte[] postData = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
 
         // Start up the reqest:
-        WWW myRequest = new WWW(elk_url, postData, headers);
+        WWW myRequest = new WWW(elk_url_filebeat, postData, headers);
 
         // Yield until it's done:
         yield return myRequest;

@@ -13,10 +13,6 @@ public class Computer : MonoBehaviour {
 
     #region Fields
     public Source sourceInfo;            // The info that bro gives you
-    public Color tcpColor;
-    public Color udpColor;
-    public Color httpColor;
-    public Color httpsColor;
 
     /// <summary>
     /// Use a list for this because it is better for insertion
@@ -92,27 +88,6 @@ public class Computer : MonoBehaviour {
         // Set all my UI data
         if(sourceInfo != null)
             UI.SetValues(sourceInfo);
-
-        // Change the dolor of the particle system
-        switch (sourceInfo.proto)
-        {
-            case ("tcp"):
-                // Light Gray color
-                particleController.ChangeColor(tcpColor);
-                break;
-            case ("udp"):
-                // Light gray because we really dont care that much
-                particleController.ChangeColor(udpColor);
-                break;
-            case ("http"):
-                // Light green
-                particleController.ChangeColor(httpColor);
-                break;
-            case ("https"):
-                // Vibrant green
-                particleController.ChangeColor(httpsColor);
-                break;
-        }
     }
 
 }

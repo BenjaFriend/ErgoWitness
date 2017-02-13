@@ -12,17 +12,19 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     #region Fields
-    public Text alertText;
-    public Text deviceCountText;
-    private int alertCount;
-    // This will be used to randomly position the computers within this area. 
+    public Text alertText;              // How many alerts have we had?
+    public Text deviceCountText;        // How many devices are there currently?
+    public ObjectPooler computerPooler; // The object pooler for the computer prefab
+
+    private int alertCount;             // The count of how many alerts we have had
+    // This will be used to randomly position the computers within this area.   
     // The max range will be whatever number you put in, and the min will be 
     // the negative of that. So if you enter 100,100,100, then a random
     // position will be within -100 and 100 on each axis.
     public Vector3 boundries;
-    public float positionScalar = 1f;
-    private Vector3 tempPosition;
-    private float timeSinceStart;
+    public float positionScalar = 1f;   // How far we want to scale the time by when positioning things
+    private Vector3 tempPosition;       // Used for position calculations
+    private float timeSinceStart;       // How long it has been since start 
     private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
     #endregion
 
@@ -83,7 +85,7 @@ public class GameController : MonoBehaviour {
         if (jsonSourceData.id_orig_h != null)
         {
             yield return null;
-            GameObject obj = ObjectPooler.current.GetPooledObject();
+            GameObject obj = computerPooler.GetPooledObject();
 
             if (obj == null) yield return null;
 
