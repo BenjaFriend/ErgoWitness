@@ -70,25 +70,34 @@ public class NetworkMonitor : MonoBehaviour {
     {
         // Add the port and packet type
         elk_url_filebeat = "http://" + serverIP + ":9200/filebeat-";
+        // Set up the packetbeat
+        elk_url_packetbeat = "http://" + serverIP + ":9200/packetbeat-";
 
-        elk_url_filebeat += DateTime.Today.Year.ToString() + ".";
+        // Set up the year
+        string dateUrl = DateTime.Today.Year.ToString() + ".";
+
         // Make sure we have proper format on the month
         if (DateTime.Today.Month < 10)
         {
-            elk_url_filebeat += "0" + DateTime.Today.Month.ToString() + ".";
+            dateUrl += "0" + DateTime.Today.Month.ToString() + ".";
         }
         else
         {
-            elk_url_filebeat +=  DateTime.Today.Month.ToString() + ".";
+            dateUrl +=  DateTime.Today.Month.ToString() + ".";
         }
+        // Handle the day
         if(DateTime.Today.Day < 10)
         {
-            elk_url_filebeat += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            dateUrl += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
         else
         {
-            elk_url_filebeat += DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            dateUrl += DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
+
+        // Add the date to each of the URL's
+        elk_url_filebeat += dateUrl;
+        elk_url_packetbeat = dateUrl;
     }
 
     /// <summary>

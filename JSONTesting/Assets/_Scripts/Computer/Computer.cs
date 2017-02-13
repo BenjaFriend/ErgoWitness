@@ -7,7 +7,7 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
-[RequireComponent(typeof(Fade_UI))]
+[RequireComponent(typeof(ComputerUI))]
 public class Computer : MonoBehaviour {
 
 
@@ -20,7 +20,7 @@ public class Computer : MonoBehaviour {
     /// </summary>
     public List<GameObject> connectedPCs;
 
-    private Fade_UI UI;         // The UI for me to use
+    private ComputerUI UI;         // The UI for me to use
     private IncreaseEmission particleController;
     #endregion
 
@@ -37,7 +37,7 @@ public class Computer : MonoBehaviour {
         particleController = GetComponent<IncreaseEmission>();
 
         connectedPCs = new List<GameObject>();
-        UI = GetComponent<Fade_UI>();
+        UI = GetComponent<ComputerUI>();
     }
 
     /// <summary>

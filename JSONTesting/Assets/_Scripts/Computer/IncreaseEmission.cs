@@ -6,6 +6,7 @@ public class IncreaseEmission : MonoBehaviour {
 
     #region Fields
     public ParticleSystem particles;
+    
     public float minHits = 1f;
     public float maxHits = 1000f;
     public float degradeRate = 10f;
@@ -58,6 +59,8 @@ public class IncreaseEmission : MonoBehaviour {
     /// <param name="changeTo"></param>
     public void ChangeColor(Color changeTo)
     {
-        particles.startColor = changeTo;
+        var ma = particles.main;
+
+        ma.startColor = changeTo;
     }
 }

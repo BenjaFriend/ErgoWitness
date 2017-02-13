@@ -41,7 +41,6 @@ public class Raycast_ExtraInfo : MonoBehaviour {
             {            
                 // Show the info on that particular on that computer
                 target = hitInfo.collider.gameObject;
-                //target.GetComponent<Fade_UI>().FadeIn();
                 // Set the reticle to open
                 anim.SetBool("isLooking", true);
 
@@ -51,7 +50,6 @@ public class Raycast_ExtraInfo : MonoBehaviour {
             }
             else if (target != null)
             {
-                //target.GetComponent<Fade_UI>().FadeOut();
                 target = null;
                 // Set the reteicle to close
                 anim.SetBool("isLooking", false);

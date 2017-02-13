@@ -7,17 +7,11 @@ using UnityEngine;
 /// </summary>
 public class ObjectPooler : MonoBehaviour {
 
-    //public static ObjectPooler current;
     public GameObject pooledObject;
     public int pooledAmount = 20;
     public bool willGrow = true;
 
     private List<GameObject> pooledObjects;
-
-    private void Awake()
-    {
-        //current = this;
-    }
 
     void Start ()
     {

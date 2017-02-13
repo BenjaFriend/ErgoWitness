@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Fade_UI : MonoBehaviour {
+public class ComputerUI : MonoBehaviour {
 
     #region Fields
-    private Animator anim;
-    //public Text[] regInfoitems;
-
     public Image backgroundImage;
     public Text sourceIpText;
     public Text sourcePortText;
@@ -18,12 +15,6 @@ public class Fade_UI : MonoBehaviour {
     public Text transportText;
     public Text connTypeText;
     #endregion
-
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-        FadeOut();
-    }
 
 
     /// <summary>
@@ -69,21 +60,5 @@ public class Fade_UI : MonoBehaviour {
             connTypeText.text = "Conn. State: " + data.conn_state.ToString();
         }
 
-    }
-
-    /// <summary>
-    /// Fade the text and background IN
-    /// </summary>
-    public void FadeIn()
-    {
-        anim.SetBool("isLooking", true);
-    }
-
-    /// <summary>
-    /// Fade the text and background OUT
-    /// </summary>
-    public void FadeOut()
-    {
-        anim.SetBool("isLooking", false);
     }
 }

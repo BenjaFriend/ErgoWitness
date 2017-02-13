@@ -154,4 +154,23 @@ public class GameController : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Simply get the transform of the given IP
+    /// </summary>
+    /// <param name="IP">The IP of the computer that we want to find</param>
+    /// <returns>The transform of the computer</returns>
+    public Transform GetTransform(string IP)
+    {
+        return computersDict[IP].transform;
+    }
+
+    /// <summary>
+    /// Check if our dictionary comtaints this IP
+    /// </summary>
+    /// <param name="IP">The IP that we want to know if we have</param>
+    /// <returns>True if we have this key</returns>
+    public bool CheckDictionary(string IP)
+    {
+        return computersDict.ContainsKey(IP);
+    }
 }
