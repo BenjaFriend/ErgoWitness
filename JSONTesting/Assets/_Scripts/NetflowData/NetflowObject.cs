@@ -8,21 +8,21 @@ using UnityEngine;
 /// example. So I need a script that will have it be activated/
 /// deactivated on enable and disable
 /// </summary>
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(TrailRenderer))]
 public class NetflowObject : MonoBehaviour {
 
     // The different colors for the protocols
-    public Color tcpColor;
-    public Color udpColor;
-    public Color httpColor;
-    public Color httpsColor;
-    public Color defaultColor;
+    public Material tcpMat;
+    public Material udpColor;
+    public Material httpColor;
+    public Material httpsColor;
+    public Material defaultColor;
     public float smoothing = 10f;       // How fast do we want to shoot this thing
 
     private Transform source;
     private Transform destinaton;
     private string protocol;
-    private LineRenderer lineRend;
+    private TrailRenderer trailRend;
 
     /// <summary>
     /// On set this changes the current position to source position
@@ -33,7 +33,10 @@ public class NetflowObject : MonoBehaviour {
         set
         {
             source = value;
+            // Move to this positon
             transform.position = source.position;
+            // Set as active
+            gameObject.SetActive(true);
         }
     }
     /// <summary>
@@ -65,11 +68,11 @@ public class NetflowObject : MonoBehaviour {
     }
 
     /// <summary>
-    /// Get teh line renderer component
+    /// Get the line renderer component
     /// </summary>
-    void Start ()
+    void Awake ()
     {
-        lineRend = GetComponent<LineRenderer>();	
+        trailRend = GetComponent<TrailRenderer>();	
 	}
 
     /// <summary>
@@ -91,24 +94,30 @@ public class NetflowObject : MonoBehaviour {
     /// </summary>
     private void SetColor()
     {
+        Material trail = trailRend.material;
+
         switch (protocol)
         {
             case ("tcp"):
-                lineRend.material.color = tcpColor;
+                trailRend.material = tcpMat;
                 break;
             case ("udp"):
-                lineRend.material.color =  udpColor;
+                trailRend.material = udpColor;
+
                 break;
             case ("http"):
-                lineRend.material.color = httpColor;
+                trailRend.material = httpColor;
+
                 break;
             case ("https"):
-                lineRend.material.color = httpsColor;
+                trailRend.material = httpsColor;
+
                 break;
             default:
-                // Default color
-                lineRend.material.color = defaultColor;
+                trailRend.material = defaultColor;
+
                 break;
         }
+
     }
 }

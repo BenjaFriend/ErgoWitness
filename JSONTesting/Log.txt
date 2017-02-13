@@ -409,3 +409,1574 @@ You probably need to assign the pooledObject variable of the ObjectPooler script
 UnityEngine.Object.Instantiate[GameObject] (UnityEngine.GameObject original) (at C:/buildslave/unity/build/Runtime/Export/UnityEngineObject.cs:202)
 ObjectPooler.Start () (at Assets/_Scripts/ObjectPooler.cs:27)
 
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,UnityEngine.GameObject].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+GameController.CheckDictionary (System.String IP) (at Assets/_Scripts/GameController.cs:174)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:26)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:155)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.String,UnityEngine.GameObject].Add (System.String key, UnityEngine.GameObject value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+GameController+<NewComputerEnum>c__Iterator1.MoveNext () (at Assets/_Scripts/GameController.cs:104)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Error
+Coroutine 'MoveToDestination' couldn't be started because the the game object 'NetflowData(Clone)' is inactive!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+NetflowObject:set_Destination(Transform) (at Assets/_Scripts/NetflowData/NetflowObject.cs:51)
+NetflowController:SendFlow(String, String, String) (at Assets/_Scripts/NetflowData/NetflowController.cs:58)
+NetflowController:CheckPacketbeatData(Source) (at Assets/_Scripts/NetflowData/NetflowController.cs:30)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:156)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetflowObject.SetColor () (at Assets/_Scripts/NetflowData/NetflowObject.cs:97)
+NetflowObject.set_Protocol (System.String value) (at Assets/_Scripts/NetflowData/NetflowObject.cs:63)
+NetflowController.SendFlow (System.String sourceIP, System.String destIP, System.String protocol) (at Assets/_Scripts/NetflowData/NetflowController.cs:60)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:30)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:156)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.String,UnityEngine.GameObject].Add (System.String key, UnityEngine.GameObject value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+GameController+<NewComputerEnum>c__Iterator1.MoveNext () (at Assets/_Scripts/GameController.cs:104)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.String,UnityEngine.GameObject].Add (System.String key, UnityEngine.GameObject value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+GameController+<NewComputerEnum>c__Iterator1.MoveNext () (at Assets/_Scripts/GameController.cs:104)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.String,UnityEngine.GameObject].Add (System.String key, UnityEngine.GameObject value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+GameController+<NewComputerEnum>c__Iterator1.MoveNext () (at Assets/_Scripts/GameController.cs:104)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Raycast_ExtraInfo.SetValues (.Source data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:72)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:48)
+

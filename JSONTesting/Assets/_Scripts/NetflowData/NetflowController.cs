@@ -20,13 +20,27 @@ public class NetflowController : MonoBehaviour {
     }
 
 
-    public void CheckPacketbeatData()
+    public void CheckPacketbeatData(Source packetbeatSource)
     {
-        // Do we have this object in our dictionary? 
-        if (gameControllerObj.CheckDictionary(""))
+        // If the source and destination IP's are known...
+        if (gameControllerObj.CheckDictionary(packetbeatSource.packet_source.ip) &&
+            gameControllerObj.CheckDictionary(packetbeatSource.dest.ip))
         {
-            // Set up my data
+            // Then we can continue on and send out flow data out
+            SendFlow(packetbeatSource.packet_source.ip, packetbeatSource.dest.ip, packetbeatSource.transport);
         }
+        else
+        {
+            // Add them to the network
+            packetbeatSource.id_orig_h = packetbeatSource.packet_source.ip;
+            packetbeatSource.id_orig_p = packetbeatSource.packet_source.port;
+            packetbeatSource.id_resp_h = packetbeatSource.dest.ip;
+            packetbeatSource.id_resp_p = packetbeatSource.dest.port;
+            packetbeatSource.proto = packetbeatSource.transport;
+
+            StartCoroutine(gameControllerObj.NewComputerEnum(packetbeatSource));
+        }
+
     }
 
 
@@ -51,9 +65,6 @@ public class NetflowController : MonoBehaviour {
             tempNet.Destination = gameControllerObj.GetTransform(destIP);
             // Set the protocol of the netflow 
             tempNet.Protocol = protocol;
-
-            // Set it to active in the hierachy
-            obj.SetActive(true);
         }
         
     }

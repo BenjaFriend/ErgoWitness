@@ -34,6 +34,7 @@ public class NetworkMonitor : MonoBehaviour {
 
     private string queryString;     // The JSON data that we are sending with the GET request
     private GameController gameControllerObj; // The game controller 
+    private NetflowController netflowController;
 
     #endregion
 
@@ -43,16 +44,20 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        // Get the post data from a streaming assets file
         queryString = File.ReadAllText(Application.streamingAssetsPath + "/gimmeData.json");
-
+        // Find the game controler
         gameControllerObj = GameObject.FindObjectOfType<GameController>();
+        // Find the netflow controller
+        netflowController = GameObject.FindObjectOfType<NetflowController>();
 
         // Set up my URL to get info from
         SetUpURL();
 
         // Find the latest index name and make my URL, or maybe get all the indexes and ask the
         // user which one they want to use
-        StartCoroutine(PostJsonData());
+        StartCoroutine(PostJsonData(elk_url_filebeat, false));
+        StartCoroutine(PostJsonData(elk_url_packetbeat, true));
 
         statusText.text = "Monitor Status: Running";
         statusText.CrossFadeColor(runningColor, 0.3f, true, true);
@@ -97,7 +102,7 @@ public class NetworkMonitor : MonoBehaviour {
 
         // Add the date to each of the URL's
         elk_url_filebeat += dateUrl;
-        elk_url_packetbeat = dateUrl;
+        elk_url_packetbeat += dateUrl;
     }
 
     /// <summary>
@@ -106,7 +111,7 @@ public class NetworkMonitor : MonoBehaviour {
     /// data that I want from it
     /// </summary>
     /// <returns></returns>
-    private IEnumerator PostJsonData()
+    private IEnumerator PostJsonData(string url, bool isFlowData)
     {
         // Build up the headers:
         Dictionary <string, string> headers = new Dictionary<string, string>();
@@ -118,7 +123,7 @@ public class NetworkMonitor : MonoBehaviour {
         byte[] postData = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
 
         // Start up the reqest:
-        WWW myRequest = new WWW(elk_url_filebeat, postData, headers);
+        WWW myRequest = new WWW(url, postData, headers);
 
         // Yield until it's done:
         yield return myRequest;
@@ -135,12 +140,21 @@ public class NetworkMonitor : MonoBehaviour {
 
         if (dataObject != null)
         {
-
             // Send the data to the game controller for all of our hits
             for (int i = 0; i < dataObject.hits.hits.Length; i++)
             {
-                StartCoroutine(
-                    gameControllerObj.CheckIpEnum(dataObject.hits.hits[i]._source));
+                if(!isFlowData)
+                {
+                    // handle it being a none flow data object... so a device on the network
+                    StartCoroutine(
+                        gameControllerObj.CheckIpEnum(dataObject.hits.hits[i]._source));
+                }
+                else
+                {
+                    // handle it being flow data from packetbeat
+                    if(dataObject.hits.hits[i]._source != null)
+                        netflowController.CheckPacketbeatData(dataObject.hits.hits[i]._source);
+                }
             }
         }
 
@@ -150,7 +164,7 @@ public class NetworkMonitor : MonoBehaviour {
             yield return null;
 
             // Start this again
-            StartCoroutine(PostJsonData());
+            StartCoroutine(PostJsonData(url, isFlowData));
         }
     }
 
@@ -184,7 +198,9 @@ public class NetworkMonitor : MonoBehaviour {
         {
             keepGoing = true;
             StopAllCoroutines();
-            StartCoroutine(PostJsonData());
+            StartCoroutine(PostJsonData(elk_url_filebeat, false));
+            StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+
             statusText.text = "Monitor Status: Running";
             statusText.CrossFadeColor(runningColor, 0.3f, true, true);
         }

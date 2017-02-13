@@ -68,7 +68,6 @@ public class Computer : MonoBehaviour {
         // If I do not already know of this PC, and it's not myself...
         if (!connectedPCs.Contains(connectedToMe))
         {
-            Debug.Log("Connected pc!");
             // Increase the immision of the particle system
             particleController.AddHit();
 

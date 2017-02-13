@@ -69,7 +69,16 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         // Dest port
         destPortText.text = "Dest. Port: " + data.id_resp_p.ToString();
 
+        if(data.proto == null)
+        {
+            protoText.text = "Protocol: Null";
+            
+        }
+        else
+        {
         protoText.text = "Protocol: " + data.proto.ToString();
+
+        }
 
     }
 }

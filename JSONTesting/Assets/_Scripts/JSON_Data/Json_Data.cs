@@ -32,12 +32,18 @@ public class HitsData
     public string _type;
     public string _id;
     public Source _source;
+    
 }
 
 // This is really the information that I care about right now
 [System.Serializable]
 public class Source
 {
+    // Packetbeat stuff
+    public string transport;
+    public DestinationData dest;
+    public SourceData packet_source;
+
     // Snort stuff will show here
     public int offset;
     public string packet_data;
@@ -77,6 +83,8 @@ public class Source
     public string proto;
 }
 
+
+
 [System.Serializable]
 public class Fields
 {
@@ -84,3 +92,18 @@ public class Fields
     public string sendsorID;
 }
 
+[System.Serializable]
+public class SourceData
+{
+    public int port;
+    public string ip;
+    public string mac;
+}
+
+[System.Serializable]
+public class DestinationData
+{
+    public int port;
+    public string ip;
+    public string mac;
+}

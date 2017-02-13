@@ -57,10 +57,9 @@ public class GameController : MonoBehaviour {
             yield break;
         }
 
-        yield return null;
 
-        // If my dictionary contains the IP address of this JSON info...
-        if (jsonSourceData.id_orig_h != null && computersDict.ContainsKey(jsonSourceData.id_orig_h))
+        // If my dictionary contains the IP address already.... 
+        if (computersDict.ContainsKey(jsonSourceData.id_orig_h))
         {
             // I want to check if there is a connection that I should add
             StartCoroutine(CheckConnectionsEnum(jsonSourceData,
@@ -71,7 +70,6 @@ public class GameController : MonoBehaviour {
             // If I do NOT have this IP in my dictionary, then make a new computer        
             StartCoroutine(NewComputerEnum(jsonSourceData));
         }
-        yield return null;
 
     }
 
@@ -80,32 +78,36 @@ public class GameController : MonoBehaviour {
     /// We have NOT seen this IP before, and we want to make
     /// a new one
     /// </summary>
-    private IEnumerator NewComputerEnum(Source jsonSourceData)
+    public IEnumerator NewComputerEnum(Source jsonSourceData)
     {
-        if (jsonSourceData.id_orig_h != null)
+        // If this is null or we already have the IP somehow...
+        if(jsonSourceData.id_orig_h == null || computersDict.ContainsKey(jsonSourceData.id_orig_h))
         {
-            yield return null;
-            GameObject obj = computerPooler.GetPooledObject();
-
-            if (obj == null) yield return null;
-
-            timeSinceStart = Time.timeSinceLevelLoad / 60f;
-
-            tempPosition = Random.onUnitSphere * timeSinceStart * positionScalar;
-
-            yield return null;
-
-            obj.transform.position = tempPosition;
-            obj.transform.rotation = Quaternion.identity;
-
-            // Set the DATA on this gameobject to the data from the JSON data
-            obj.GetComponent<Computer>().SetData(jsonSourceData);
-            obj.SetActive(true);
-            yield return null;
-
-            computersDict.Add(jsonSourceData.id_orig_h, obj);
-            deviceCountText.text = "Devices: " + computersDict.Count.ToString();
+            yield break;
         }
+
+        yield return null;
+        GameObject obj = computerPooler.GetPooledObject();
+
+        if (obj == null) yield break;
+
+        timeSinceStart = Time.timeSinceLevelLoad / 60f;
+
+        tempPosition = Random.onUnitSphere * timeSinceStart * positionScalar;
+
+        yield return null;
+
+        obj.transform.position = tempPosition;
+        obj.transform.rotation = Quaternion.identity;
+
+        // Set the DATA on this gameobject to the data from the JSON data
+        obj.GetComponent<Computer>().SetData(jsonSourceData);
+        obj.SetActive(true);
+        yield return null;
+
+        computersDict.Add(jsonSourceData.id_orig_h, obj);
+        deviceCountText.text = "Devices: " + computersDict.Count.ToString();
+    
     }
 
     /// <summary>
@@ -118,29 +120,23 @@ public class GameController : MonoBehaviour {
     /// <param name="checkMe">The game object that I already have, from my dicionary</param>
     private IEnumerator CheckConnectionsEnum(Source broMessage, GameObject checkMe)
     {
-        yield return null;
         // I need to check if my destination is a source  address, which would mean that it is in my dictionary already
-        if (broMessage.id_orig_h == null || broMessage.id_orig_h == "Null")
+        if (broMessage.id_resp_h == null || broMessage.id_resp_h == "Null" || checkMe == null)
         {
-            yield return null;
+            yield break;
         }
 
         // If we do already have the destination on the network, then connect them
-        if (computersDict.ContainsKey(broMessage.id_orig_h))
+        if (computersDict.ContainsKey(broMessage.id_resp_h))
         {
-            // We have this IP on our network already, add the connection to each PC
-            yield return null;
-
-            checkMe.GetComponent<Computer>().AddConnectedPC(computersDict[broMessage.id_orig_h]);
+            // We have this IP on our network already, add the connection to the thing we are checking
+            checkMe.GetComponent<Computer>().AddConnectedPC(computersDict[broMessage.id_resp_h]);
+            // Add the connection to the other computer
             computersDict[broMessage.id_orig_h].GetComponent<Computer>().AddConnectedPC(checkMe);
         }
         else
         {
-            // Here is the problem... I am making a new computer with the same data
-            // as the one already on the network so it is showing up as 2 of the same
-            // This new computer that I am making needs to have some altered things...
-            // Like the fact that it is the source, and that we don't know the destination
-
+            // We DO NOT have the responding IP on our network, so add it.
             broMessage.id_orig_h = broMessage.id_resp_h;
             broMessage.id_resp_h = "Null";
 
@@ -150,8 +146,6 @@ public class GameController : MonoBehaviour {
 
             StartCoroutine(NewComputerEnum(broMessage));
         }
-        yield return null;
-
     }
 
     /// <summary>
@@ -161,6 +155,11 @@ public class GameController : MonoBehaviour {
     /// <returns>The transform of the computer</returns>
     public Transform GetTransform(string IP)
     {
+        if (IP == null || IP == "null")
+        {
+            return null;
+        }
+
         return computersDict[IP].transform;
     }
 
@@ -171,6 +170,11 @@ public class GameController : MonoBehaviour {
     /// <returns>True if we have this key</returns>
     public bool CheckDictionary(string IP)
     {
+        if(IP == null || IP == "null")
+        {
+            return false;
+        }
+
         return computersDict.ContainsKey(IP);
     }
 }
