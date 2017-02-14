@@ -7,7 +7,6 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
-[RequireComponent(typeof(ComputerUI))]
 public class Computer : MonoBehaviour {
 
 
@@ -20,12 +19,13 @@ public class Computer : MonoBehaviour {
     /// </summary>
     public List<GameObject> connectedPCs;
 
-    private ComputerUI UI;         // The UI for me to use
     private IncreaseEmission particleController;
     #endregion
 
     #region Mutators
+
     public Source SourceInfo { get { return sourceInfo; } set { sourceInfo = value; } }
+    
     #endregion
 
     /// <summary>
@@ -34,22 +34,11 @@ public class Computer : MonoBehaviour {
     /// </summary>
     void Awake()
     {
+        // Get the particle controller for this object
         particleController = GetComponent<IncreaseEmission>();
-
+        
+        // Create a new list object
         connectedPCs = new List<GameObject>();
-        UI = GetComponent<ComputerUI>();
-    }
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// This will let me set my UI only when I have data
-    /// </summary>
-    /// <param name="myData"></param>
-    public void SetData(Source broData)
-    {
-        sourceInfo = broData;
-
-        UpdateUI();
     }
 
     /// <summary>
@@ -60,6 +49,7 @@ public class Computer : MonoBehaviour {
     /// <param name="connectedToMe">the PC that is connected to me</param>
     public void AddConnectedPC(GameObject connectedToMe)
     {
+        // If the object that we are given is null or it is myself, then stop
         if(connectedToMe == null || connectedToMe == gameObject)
         {
             return;
@@ -72,21 +62,8 @@ public class Computer : MonoBehaviour {
             particleController.AddHit();
 
             // Add the connection to my linked list
-            //connectedPCs.AddLast(connectedToMe);
             connectedPCs.Add(connectedToMe);
         }
-    }
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Purpose of method: To update the UI of this object on 
-    /// start and when a new connection is added
-    /// </summary>
-    private void UpdateUI()
-    {
-        // Set all my UI data
-        if(sourceInfo != null)
-            UI.SetValues(sourceInfo);
     }
 
 }

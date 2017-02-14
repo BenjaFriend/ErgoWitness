@@ -11,6 +11,7 @@ using UnityEngine;
 [RequireComponent(typeof(TrailRenderer))]
 public class NetflowObject : MonoBehaviour {
 
+    #region Fields
     // The different colors for the protocols
     public Material tcpMat;
     public Material udpColor;
@@ -19,10 +20,14 @@ public class NetflowObject : MonoBehaviour {
     public Material defaultColor;
     public float smoothing = 10f;       // How fast do we want to shoot this thing
 
-    private Transform source;
-    private Transform destinaton;
-    private string protocol;
-    private TrailRenderer trailRend;
+    private Transform source;           // Our starting point
+    private Transform destinaton;       // The spot that we want to be at
+    private string protocol;            // Our protocol that we represent
+    private TrailRenderer trailRend;    // The trail renderer comonent
+    #endregion
+
+
+    #region Properties
 
     /// <summary>
     /// On set this changes the current position to source position
@@ -39,6 +44,7 @@ public class NetflowObject : MonoBehaviour {
             gameObject.SetActive(true);
         }
     }
+
     /// <summary>
     /// On set this will start to move this object with a coroutine so that nothing else needs to happen
     /// </summary>
@@ -55,6 +61,7 @@ public class NetflowObject : MonoBehaviour {
 
         }
     }
+
     /// <summary>
     /// This sets the color, and if you set it then it changes the material of the line renderer
     /// </summary>
@@ -67,11 +74,15 @@ public class NetflowObject : MonoBehaviour {
         }
     }
 
+    #endregion
+
+
     /// <summary>
     /// Get the line renderer component
     /// </summary>
     void Awake ()
     {
+        // Get the trail renderer component
         trailRend = GetComponent<TrailRenderer>();	
 	}
 
@@ -81,6 +92,11 @@ public class NetflowObject : MonoBehaviour {
     /// <returns></returns>
 	public IEnumerator MoveToDestination()
     {
+        if (destinaton == null || source == null)
+        {
+            yield break;
+        }
+
         while (Vector3.Distance(transform.position, destinaton.position) > 0.05f)
         {
             transform.position = Vector3.Lerp(transform.position, destinaton.position, smoothing * Time.deltaTime);
@@ -94,11 +110,10 @@ public class NetflowObject : MonoBehaviour {
     /// </summary>
     private void SetColor()
     {
-        Material trail = trailRend.material;
-
         switch (protocol)
         {
             case ("tcp"):
+                // Change to the proper material
                 trailRend.material = tcpMat;
                 break;
             case ("udp"):
@@ -120,4 +135,5 @@ public class NetflowObject : MonoBehaviour {
         }
 
     }
+
 }

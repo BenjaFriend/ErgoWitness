@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
     public float positionScalar = 1f;   // How far we want to scale the time by when positioning things
     private Vector3 tempPosition;       // Used for position calculations
     private float timeSinceStart;       // How long it has been since start 
+
     private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
     #endregion
 
@@ -44,70 +45,77 @@ public class GameController : MonoBehaviour {
             yield break;
         }
 
-        if(jsonSourceData.alert == "true")
-        {
-            alertCount++;
-            alertText.text = "Alerts: " + alertCount.ToString();
-        }
-
-        // Make sure that we are not null
+        // Make sure that the IP's are not null, this happens some times with ELK stack
         if (jsonSourceData.id_orig_h == null ||
             jsonSourceData.id_orig_h == "Null")
         {
             yield break;
         }
 
+        // If this is an alert from snort then add to the alerts count
+        if (jsonSourceData.alert == "true")
+        {
+            alertCount++;
+            alertText.text = "Alerts: " + alertCount.ToString();
+        }
 
-        // If my dictionary contains the IP address already.... 
+
+        // If we know of the source IP already...
         if (computersDict.ContainsKey(jsonSourceData.id_orig_h))
         {
             // I want to check if there is a connection that I should add
-            StartCoroutine(CheckConnectionsEnum(jsonSourceData,
-                computersDict[jsonSourceData.id_orig_h]));
+            CheckConnectionsEnum(jsonSourceData, computersDict[jsonSourceData.id_orig_h]);
         }
         else
         {
             // If I do NOT have this IP in my dictionary, then make a new computer        
-            StartCoroutine(NewComputerEnum(jsonSourceData));
+            NewComputerEnum(jsonSourceData);
         }
 
     }
 
     /// <summary>
-    /// Author: Ben Hoffman
     /// We have NOT seen this IP before, and we want to make
     /// a new one
+    /// Author: Ben Hoffman
     /// </summary>
-    public IEnumerator NewComputerEnum(Source jsonSourceData)
+    public void NewComputerEnum(Source jsonSourceData)
     {
         // If this is null or we already have the IP somehow...
         if(jsonSourceData.id_orig_h == null || computersDict.ContainsKey(jsonSourceData.id_orig_h))
         {
-            yield break;
+            return;
         }
 
-        yield return null;
+        // Get a temporary object from the object pooler
         GameObject obj = computerPooler.GetPooledObject();
 
-        if (obj == null) yield break;
+        // If the object is null then break out of this
+        if (obj == null) return;
 
+        // Get the start time
         timeSinceStart = Time.timeSinceLevelLoad / 60f;
 
+        // Scale the radius of sphere by the time since start, and then get a random point on it
         tempPosition = Random.onUnitSphere * timeSinceStart * positionScalar;
 
-        yield return null;
-
+        // Set the position and rotation of the object
         obj.transform.position = tempPosition;
         obj.transform.rotation = Quaternion.identity;
 
         // Set the DATA on this gameobject to the data from the JSON data
-        obj.GetComponent<Computer>().SetData(jsonSourceData);
+        obj.GetComponent<Computer>().SourceInfo = jsonSourceData;
         obj.SetActive(true);
-        yield return null;
 
+        // Add the object to the dictionary
         computersDict.Add(jsonSourceData.id_orig_h, obj);
+
+        // Update the UI that tells us how many devices there are
         deviceCountText.text = "Devices: " + computersDict.Count.ToString();
-    
+
+        // Check the connections to this
+        CheckConnectionsEnum(jsonSourceData, computersDict[jsonSourceData.id_orig_h]);
+
     }
 
     /// <summary>
@@ -118,12 +126,12 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="data">The data of that commputer with the same source IP so I can check the dest.</param>
     /// <param name="checkMe">The game object that I already have, from my dicionary</param>
-    private IEnumerator CheckConnectionsEnum(Source broMessage, GameObject checkMe)
+    private void CheckConnectionsEnum(Source broMessage, GameObject checkMe)
     {
         // I need to check if my destination is a source  address, which would mean that it is in my dictionary already
         if (broMessage.id_resp_h == null || broMessage.id_resp_h == "Null" || checkMe == null)
         {
-            yield break;
+            return;
         }
 
         // If we do already have the destination on the network, then connect them
@@ -137,14 +145,14 @@ public class GameController : MonoBehaviour {
         else
         {
             // We DO NOT have the responding IP on our network, so add it.
+            // Change up the data so that it represents the repsonding IP
             broMessage.id_orig_h = broMessage.id_resp_h;
             broMessage.id_resp_h = "Null";
 
             broMessage.id_orig_p = broMessage.id_resp_p;
             broMessage.id_resp_p = -1;
-            yield return null;
-
-            StartCoroutine(NewComputerEnum(broMessage));
+            // Add this new computer to the network
+            NewComputerEnum(broMessage);
         }
     }
 
@@ -160,7 +168,10 @@ public class GameController : MonoBehaviour {
             return null;
         }
 
-        return computersDict[IP].transform;
+        if(computersDict.ContainsKey(IP))
+            return computersDict[IP].transform;
+
+        return null;
     }
 
     /// <summary>

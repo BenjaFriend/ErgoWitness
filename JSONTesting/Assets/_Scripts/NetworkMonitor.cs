@@ -35,7 +35,6 @@ public class NetworkMonitor : MonoBehaviour {
     private string queryString;     // The JSON data that we are sending with the GET request
     private GameController gameControllerObj; // The game controller 
     private NetflowController netflowController;
-
     #endregion
 
     /// <summary>
@@ -58,10 +57,10 @@ public class NetworkMonitor : MonoBehaviour {
         // user which one they want to use
         StartCoroutine(PostJsonData(elk_url_filebeat, false));
         StartCoroutine(PostJsonData(elk_url_packetbeat, true));
-
+        // Say that the monitor is running
         statusText.text = "Monitor Status: Running";
         statusText.CrossFadeColor(runningColor, 0.3f, true, true);
-
+        // Show the current index that we are using
         current_Index_Text.text = elk_url_filebeat;
     }
 
@@ -105,12 +104,15 @@ public class NetworkMonitor : MonoBehaviour {
         elk_url_packetbeat += dateUrl;
     }
 
+
     /// <summary>
-    /// Author: Ben Hoffman
-    /// Post the data to my server, and then get the JSON
-    /// data that I want from it
+    /// Make a post request to the specified URL with the JSON
+    /// query from the streaming assets folder.
     /// </summary>
-    /// <returns></returns>
+    /// <param name="url">The URL that we want to make a post request to</param>
+    /// <param name="isFlowData">If this is flow data or not, determines if we send it to the netflow controller
+    /// or the game controller</param>
+    /// <returns>The data downloaded from the server</returns>
     private IEnumerator PostJsonData(string url, bool isFlowData)
     {
         // Build up the headers:
@@ -138,31 +140,37 @@ public class NetworkMonitor : MonoBehaviour {
             yield return StartCoroutine(StringToJson());
         }
 
-        if (dataObject != null)
+        // Break if we have null data
+        if(dataObject == null || dataObject.hits.hits.Length <= 0)
         {
-            // Send the data to the game controller for all of our hits
-            for (int i = 0; i < dataObject.hits.hits.Length; i++)
+            yield break;
+        }
+
+
+        // Send the data to the game controller for all of our hits
+        for (int i = 0; i < dataObject.hits.hits.Length; i++)
+        {
+            if (!isFlowData)
             {
-                if(!isFlowData)
+                // handle it being a none flow data object... so a device on the network
+                StartCoroutine(
+                    gameControllerObj.CheckIpEnum(dataObject.hits.hits[i]._source));
+            }
+            else
+            {
+                // handle it being flow data from packetbeat
+                if (dataObject.hits.hits[i]._source != null)
                 {
-                    // handle it being a none flow data object... so a device on the network
                     StartCoroutine(
-                        gameControllerObj.CheckIpEnum(dataObject.hits.hits[i]._source));
-                }
-                else
-                {
-                    // handle it being flow data from packetbeat
-                    if(dataObject.hits.hits[i]._source != null)
-                        netflowController.CheckPacketbeatData(dataObject.hits.hits[i]._source);
+                        netflowController.CheckPacketbeatData(dataObject.hits.hits[i]._source));
                 }
             }
         }
 
+
         // As long as we didn't say to stop yet
         if (keepGoing)
         {
-            yield return null;
-
             // Start this again
             StartCoroutine(PostJsonData(url, isFlowData));
         }
@@ -189,18 +197,24 @@ public class NetworkMonitor : MonoBehaviour {
     {
         if (keepGoing)
         {
+            // Tell the method to stop
             keepGoing = false;
+            // Stop all coroutines
             StopAllCoroutines();
+            // Set up the UI
             statusText.text = "Monitor Status: Stopped";
             statusText.CrossFadeColor(stoppedColor, 0.3f, true, true);
         }
         else
         {
+            // Tell the method to keep going
             keepGoing = true;
+            // Stop all coroutines so that we cna start fresh
             StopAllCoroutines();
+            //Start monitoring packetbeat and filebeat again
             StartCoroutine(PostJsonData(elk_url_filebeat, false));
             StartCoroutine(PostJsonData(elk_url_packetbeat, true));
-
+            // Set up the monitoring text
             statusText.text = "Monitor Status: Running";
             statusText.CrossFadeColor(runningColor, 0.3f, true, true);
         }

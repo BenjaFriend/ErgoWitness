@@ -9,6 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Raycast_ExtraInfo : MonoBehaviour {
 
+    #region Fields
     public Text sourceIpText;
     public Text sourcePortText;
     public Text destIpText;
@@ -21,9 +22,11 @@ public class Raycast_ExtraInfo : MonoBehaviour {
     public Animator anim;
     private Vector3 screenCenter;
     private Computer compInfo;
+    #endregion
 
     private void Start()
     {
+        // Get the center of the screen so taht we can raycast from there
         screenCenter.x = Screen.width / 2;
         screenCenter.y = Screen.height / 2;
         screenCenter.z = 0;
@@ -34,9 +37,10 @@ public class Raycast_ExtraInfo : MonoBehaviour {
     {
         // Make a ray that is coming out of the center of the camera
         ray = Camera.main.ScreenPointToRay(screenCenter);
-
+        // If we hit something
         if (Physics.Raycast(ray, out hitInfo))
         {
+            // Is this object a computer?
             if (hitInfo.collider.tag == "Comp")
             {            
                 // Show the info on that particular on that computer
@@ -48,8 +52,10 @@ public class Raycast_ExtraInfo : MonoBehaviour {
                 SetValues(target.GetComponent<Computer>().sourceInfo);
 
             }
+            // If we are not hitting a computer anymore, but we are hitting something
             else if (target != null)
             {
+                // Release the target variable
                 target = null;
                 // Set the reteicle to close
                 anim.SetBool("isLooking", false);
@@ -57,27 +63,31 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         }
     }
 
-
+    /// <summary>
+    /// Set ip the values of the text for the UI
+    /// </summary>
+    /// <param name="data">The data that we are representing</param>
     public void SetValues(Source data)
     {
+        // Set the source IP text
         sourceIpText.text = "Source IP: " + data.id_orig_h.ToString();
         // Source port
         sourcePortText.text = "Source Port: " + data.id_orig_p.ToString();
 
-
+        // Set the destination IP text
         destIpText.text = "Dest. IP: " + data.id_resp_h.ToString();
         // Dest port
         destPortText.text = "Dest. Port: " + data.id_resp_p.ToString();
 
+        // If our protocl is null then show that in the text
         if(data.proto == null)
         {
-            protoText.text = "Protocol: Null";
-            
+            protoText.text = "Protocol: Null";          
         }
         else
         {
-        protoText.text = "Protocol: " + data.proto.ToString();
-
+            // Otherwise just put the protocal
+            protoText.text = "Protocol: " + data.proto.ToString();
         }
 
     }
