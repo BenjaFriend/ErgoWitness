@@ -15,11 +15,11 @@ public class Raycast_ExtraInfo : MonoBehaviour {
     public Text destIpText;
     public Text destPortText;
     public Text protoText;
+    public Animator anim;
 
     private RaycastHit hitInfo;
     private Ray ray;
     private GameObject target;
-    public Animator anim;
     private Vector3 screenCenter;
     private Computer compInfo;
     #endregion
@@ -45,11 +45,12 @@ public class Raycast_ExtraInfo : MonoBehaviour {
             {            
                 // Show the info on that particular on that computer
                 target = hitInfo.collider.gameObject;
+
                 // Set the reticle to open
                 anim.SetBool("isLooking", true);
 
                 // Get the information on that PC and display it in my hud
-                SetValues(target.GetComponent<Computer>().sourceInfo);
+                SetValues(target.GetComponent<Computer>());
 
             }
             // If we are not hitting a computer anymore, but we are hitting something
@@ -57,6 +58,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
             {
                 // Release the target variable
                 target = null;
+
                 // Set the reteicle to close
                 anim.SetBool("isLooking", false);
             }
@@ -67,27 +69,48 @@ public class Raycast_ExtraInfo : MonoBehaviour {
     /// Set ip the values of the text for the UI
     /// </summary>
     /// <param name="data">The data that we are representing</param>
-    public void SetValues(Source data)
+    public void SetValues(Computer data)
     {
         // Set the source IP text
-        sourceIpText.text = "Source IP: " + data.id_orig_h.ToString();
+        sourceIpText.text = "Source IP: " + data.SourceInfo.id_orig_h.ToString();
         // Source port
-        sourcePortText.text = "Source Port: " + data.id_orig_p.ToString();
+        sourcePortText.text = "Source Ports: " + data.SourceInfo.id_orig_p.ToString();
 
-        // Set the destination IP text
-        destIpText.text = "Dest. IP: " + data.id_resp_h.ToString();
-        // Dest port
-        destPortText.text = "Dest. Port: " + data.id_resp_p.ToString();
-
-        // If our protocl is null then show that in the text
-        if(data.proto == null)
+        
+        // If our destination IP is null, then say that
+        if (data.SourceInfo.id_resp_h == null)
         {
-            protoText.text = "Protocol: Null";          
+            destIpText.text = "Dest. IPs: None";
         }
         else
         {
             // Otherwise just put the protocal
-            protoText.text = "Protocol: " + data.proto.ToString();
+            destIpText.text = "Dest. IPs: " + data.SourceInfo.id_resp_h.ToString();
+        }
+
+        // Check if our destination port is useful or not
+        if (data.portsUsed.Count == 0)
+        {
+            destPortText.text = "Dest. Ports: None";
+        }
+        else
+        {
+            destPortText.text = "Dest. Ports: " + data.SourceInfo.id_resp_p.ToString();
+        }
+
+        // If our protocl is null then show that in the text
+        if (data.protocolsUsed.Count == 0)
+        {
+            protoText.text = "Protocols: None";          
+        }
+        else
+        {
+            // Otherwise just put the protocal
+            protoText.text = "Protocols: ";
+            for(int i = 0; i < data.protocolsUsed.Count; i++)
+            {
+                protoText.text += "  " + data.protocolsUsed[i];
+            }
         }
 
     }

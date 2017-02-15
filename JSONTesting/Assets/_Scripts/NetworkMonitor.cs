@@ -23,18 +23,16 @@ public class NetworkMonitor : MonoBehaviour {
     public Text statusText;
     public Color runningColor;
     public Color stoppedColor;
-
+    //public GameController gameControllerObj; // The game controller 
     public bool keepGoing = true;            // If we want to keep going
 
     // The URL of my ELK server
     private string elk_url_filebeat;        // The filebeat index
     private string elk_url_packetbeat;      // The packetbeat index
-    private string JSON_String = "";        // The string that represents the JSON data
     private Json_Data dataObject;           // The actual JSON data class 
 
     private string queryString;     // The JSON data that we are sending with the GET request
-    private GameController gameControllerObj; // The game controller 
-    private NetflowController netflowController;
+    private byte[] postData;
     #endregion
 
     /// <summary>
@@ -45,18 +43,18 @@ public class NetworkMonitor : MonoBehaviour {
     {
         // Get the post data from a streaming assets file
         queryString = File.ReadAllText(Application.streamingAssetsPath + "/gimmeData.json");
-        // Find the game controler
-        gameControllerObj = GameObject.FindObjectOfType<GameController>();
-        // Find the netflow controller
-        netflowController = GameObject.FindObjectOfType<NetflowController>();
 
         // Set up my URL to get info from
         SetUpURL();
 
-        // Find the latest index name and make my URL, or maybe get all the indexes and ask the
-        // user which one they want to use
+        // Get the post data that I will be using, since it will always be the same
+        postData = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
+
+        // Start looking for filebeat data, NO this is not netflow data
         StartCoroutine(PostJsonData(elk_url_filebeat, false));
+        // Start looking for packetbeat data, YES this is netflow data
         StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+
         // Say that the monitor is running
         statusText.text = "Monitor Status: Running";
         statusText.CrossFadeColor(runningColor, 0.3f, true, true);
@@ -104,7 +102,6 @@ public class NetworkMonitor : MonoBehaviour {
         elk_url_packetbeat += dateUrl;
     }
 
-
     /// <summary>
     /// Make a post request to the specified URL with the JSON
     /// query from the streaming assets folder.
@@ -121,31 +118,20 @@ public class NetworkMonitor : MonoBehaviour {
         // Add in content type:
         headers["Content-Type"] = "application/json";
 
-        // Get the post data:
-        byte[] postData = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
-
         // Start up the reqest:
         WWW myRequest = new WWW(url, postData, headers);
 
         // Yield until it's done:
         yield return myRequest;
 
-        // Get the response (into your JSON_String field like above)
-        JSON_String = myRequest.text;
-
-        // As long as we are not null, put this in as real C# data
-        if (JSON_String != null)
-        {
-            // Wait until we finish converting the string to JSON data to continue
-            yield return StartCoroutine(StringToJson());
-        }
+        // Wait until we finish converting the string to JSON data to continue
+        StringToJson(myRequest.text);
 
         // Break if we have null data
-        if(dataObject == null || dataObject.hits.hits.Length <= 0)
+        if (dataObject == null || dataObject.hits.hits.Length <= 0)
         {
             yield break;
         }
-
 
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
@@ -153,20 +139,14 @@ public class NetworkMonitor : MonoBehaviour {
             if (!isFlowData)
             {
                 // handle it being a none flow data object... so a device on the network
-                StartCoroutine(
-                    gameControllerObj.CheckIpEnum(dataObject.hits.hits[i]._source));
+                GameController.currentGameController.CheckIpEnum(dataObject.hits.hits[i]._source);
             }
             else
             {
-                // handle it being flow data from packetbeat
-                if (dataObject.hits.hits[i]._source != null)
-                {
-                    StartCoroutine(
-                        netflowController.CheckPacketbeatData(dataObject.hits.hits[i]._source));
-                }
+                // Handle it being flow data from packetbeat
+                NetflowController.currentNetflowController.CheckPacketbeatData(dataObject.hits.hits[i]._source);
             }
         }
-
 
         // As long as we didn't say to stop yet
         if (keepGoing)
@@ -183,10 +163,10 @@ public class NetworkMonitor : MonoBehaviour {
     /// and use the JsonUtility to make it JsonData. After that 
     /// it will send it to the game controller
     /// </summary>
-    private IEnumerator StringToJson()
+    private void StringToJson(string jsonString)
     {
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
-        yield return dataObject = JsonUtility.FromJson<Json_Data>(JSON_String);
+        dataObject = JsonUtility.FromJson<Json_Data>(jsonString);
     }
 
     /// <summary>

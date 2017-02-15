@@ -41,8 +41,8 @@ public class Source
 {
     // Packetbeat stuff
     public string transport;
-    public DestinationData dest;
-    public SourceData packet_source;
+    public DestinationData_Packetbeat dest;
+    public SourceData_Packetbeat packet_source;
 
     // Snort stuff will show here
     public int offset;
@@ -93,7 +93,7 @@ public class Fields
 }
 
 [System.Serializable]
-public class SourceData
+public class SourceData_Packetbeat
 {
     public int port;
     public string ip;
@@ -101,7 +101,7 @@ public class SourceData
 }
 
 [System.Serializable]
-public class DestinationData
+public class DestinationData_Packetbeat
 {
     public int port;
     public string ip;
