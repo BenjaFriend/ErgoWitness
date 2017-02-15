@@ -78,7 +78,6 @@
     <Compile Include="Assets\_Scripts\Computer\Computer.cs" />
     <Compile Include="Assets\_Scripts\Computer\ComputerUI.cs" />
     <Compile Include="Assets\_Scripts\Computer\IncreaseEmission.cs" />
-    <Compile Include="Assets\_Scripts\Computer\MoveOnAwake.cs" />
     <Compile Include="Assets\_Scripts\DeviceUIControlls.cs" />
     <Compile Include="Assets\_Scripts\ExceptionLogger.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />

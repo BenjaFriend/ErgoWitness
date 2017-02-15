@@ -22,6 +22,7 @@ public class Computer : MonoBehaviour {
     public List<string> destinationIps;
     public List<int> portsUsed;
     private IncreaseEmission particleController;
+    private Computer connectedComputer;
     #endregion
 
     #region Mutators
@@ -32,9 +33,6 @@ public class Computer : MonoBehaviour {
         set
         {
             sourceInfo = value;
-            
-            destinationIps.Add(sourceInfo.id_resp_h);
-            portsUsed.Add(sourceInfo.id_orig_p);
         }
     }
     
@@ -54,9 +52,12 @@ public class Computer : MonoBehaviour {
         protocolsUsed = new List<string>();
         destinationIps = new List<string>();
         portsUsed = new List<int>();
-        if(SourceInfo.proto != null)
-        protocolsUsed.Add(sourceInfo.proto);
 
+        if(SourceInfo.proto != null)
+            protocolsUsed.Add(sourceInfo.proto);
+
+        destinationIps.Add(sourceInfo.id_resp_h);
+        portsUsed.Add(sourceInfo.id_orig_p);
     }
 
     /// <summary>
@@ -69,8 +70,8 @@ public class Computer : MonoBehaviour {
     {
         // Get the computer component of this object, to ensure a couple things
         // 1. That what we are trying to connect to is actually a computer
-        // 2. We can add things to our lists of protocols and what 
-        Computer connectedComputer = connectedToMe.GetComponent<Computer>();
+        // 2. We can add things to our lists of protocols and what not
+        connectedComputer = connectedToMe.GetComponent<Computer>();
 
         // If the object that we are given is null or it is myself, then stop
         if (connectedToMe == null || connectedToMe == gameObject || connectedComputer)

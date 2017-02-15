@@ -17,8 +17,6 @@ public abstract class DeviceUIControlls : MonoBehaviour {
     private void Awake()
     {
         anim = GetComponent<Animator>();
-
-        //FadeOut();
     }
 
     public virtual void SetValue() { }

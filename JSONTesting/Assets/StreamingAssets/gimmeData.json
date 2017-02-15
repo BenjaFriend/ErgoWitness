@@ -2,7 +2,7 @@
 	"query": {
 		"match_all": {}
 	},
-	"size": 1,
+	"size": 5,
 	"sort": [{
 		"@timestamp": {
 			"order": "desc"

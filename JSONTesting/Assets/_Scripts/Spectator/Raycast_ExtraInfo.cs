@@ -85,7 +85,11 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         else
         {
             // Otherwise just put the protocal
-            destIpText.text = "Dest. IPs: " + data.SourceInfo.id_resp_h.ToString();
+            destIpText.text = "Dest. IPs: ";
+            for (int i = 0; i < data.destinationIps.Count; i++)
+            {
+                destIpText.text += "  " + data.destinationIps[i];
+            }
         }
 
         // Check if our destination port is useful or not
@@ -95,7 +99,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         }
         else
         {
-            destPortText.text = "Dest. Ports: " + data.SourceInfo.id_resp_p.ToString();
+            destPortText.text = "Dest. Ports: " + data.SourceInfo.id_resp_p;
         }
 
         // If our protocl is null then show that in the text
