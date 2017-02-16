@@ -8,6 +8,7 @@ using UnityEngine;
 public class IPGroup : MonoBehaviour {
 
     public float radius = 5f;
+    public float minDistanceApart = 1f;
     //public Transform groupPosition;
     public List<GameObject> groupedComputers;
 
@@ -15,12 +16,19 @@ public class IPGroup : MonoBehaviour {
     private string[] stringValues;      // Temp variable used to store an IP split at the '.'
     private int[] tempIntValues;        // Used for comparisons
     private GameObject tempObj;
+    private int attemptCount;
     public int[] GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
 
-
+    /// <summary>
+    /// Instantiate the list of grouped computers, 
+    /// set the position of this
+    /// </summary>
     private void Awake()
     {
+        // Initialize the list
         groupedComputers = new List<GameObject>();
+        // Set the attempt count
+        attemptCount = 0;
     }
 
     /// <summary>
@@ -90,6 +98,9 @@ public class IPGroup : MonoBehaviour {
 
         tempIntValues = ParseIPv4(IpAddress);
 
+        // Retrun false if the temp values are null
+        if (tempIntValues == null) return false;
+
         // Now we can move on to the comparison
         for (int i = 0; i < groupAddress.Length - 1; i++)
         {
@@ -117,6 +128,39 @@ public class IPGroup : MonoBehaviour {
         {
             // Add it to our list
             groupedComputers.Add(GameController.currentGameController.ComputersDict[IpAddress]);
+            // Move the object to our spot
+            MoveToGroupSpot(GameController.currentGameController.ComputersDict[IpAddress]);
+        }
+    }
+
+    /// <summary>
+    /// This method will move a gameobject to the group position
+    /// </summary>
+    private void MoveToGroupSpot(GameObject thingToMove)
+    {
+        attemptCount++;
+
+        // Make the this group the parent of the computer object
+        thingToMove.transform.parent = gameObject.transform;
+
+        // I need to put it in a random spot...
+        Vector3 temp = new Vector3(
+            Random.Range(transform.position.x - radius, transform.position.x + radius),
+            Random.Range(transform.position.y - radius, transform.position.y + radius),
+            Random.Range(transform.position.z - radius, transform.position.z + radius));
+
+        // Check if I am colliding with any other groups
+        Collider[] neighbors = Physics.OverlapSphere(temp, minDistanceApart);
+
+        // There is something colliding with us, recursively call this function
+        if (neighbors.Length > 0 && attemptCount <= 10)
+        {
+            // Try again
+            MoveToGroupSpot(thingToMove);
+        }
+        else
+        {
+            thingToMove.transform.position = temp;
         }
     }
 }

@@ -23,7 +23,6 @@ public class NetworkMonitor : MonoBehaviour {
     public Text statusText;
     public Color runningColor;
     public Color stoppedColor;
-    //public GameController gameControllerObj; // The game controller 
     public bool keepGoing = true;            // If we want to keep going
 
     // The URL of my ELK server
@@ -32,7 +31,8 @@ public class NetworkMonitor : MonoBehaviour {
     private Json_Data dataObject;           // The actual JSON data class 
 
     private string queryString;     // The JSON data that we are sending with the GET request
-    private byte[] postData;
+    private byte[] postData;        // The post data that we are using
+    Dictionary<string, string> headers; 
     #endregion
 
     /// <summary>
@@ -41,6 +41,10 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        headers = new Dictionary<string, string>();
+        // Add in content type:
+        headers["Content-Type"] = "application/json";
+
         // Get the post data from a streaming assets file
         queryString = File.ReadAllText(Application.streamingAssetsPath + "/gimmeData.json");
 
@@ -54,6 +58,8 @@ public class NetworkMonitor : MonoBehaviour {
         StartCoroutine(PostJsonData(elk_url_filebeat, false));
         // Start looking for packetbeat data, YES this is netflow data
         StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+
+
 
         // Say that the monitor is running
         statusText.text = "Monitor Status: Running";
@@ -113,7 +119,7 @@ public class NetworkMonitor : MonoBehaviour {
     private IEnumerator PostJsonData(string url, bool isFlowData)
     {
         // Build up the headers:
-        Dictionary <string, string> headers = new Dictionary<string, string>();
+        headers.Clear();
 
         // Add in content type:
         headers["Content-Type"] = "application/json";
@@ -175,6 +181,9 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     public void ToggleMonitoring()
     {
+        // Collect garbage now because people wouldn't notice
+        GC.Collect();
+
         if (keepGoing)
         {
             // Tell the method to stop
@@ -189,11 +198,14 @@ public class NetworkMonitor : MonoBehaviour {
         {
             // Tell the method to keep going
             keepGoing = true;
+
             // Stop all coroutines so that we cna start fresh
             StopAllCoroutines();
+
             //Start monitoring packetbeat and filebeat again
             StartCoroutine(PostJsonData(elk_url_filebeat, false));
             StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+
             // Set up the monitoring text
             statusText.text = "Monitor Status: Running";
             statusText.CrossFadeColor(runningColor, 0.3f, true, true);

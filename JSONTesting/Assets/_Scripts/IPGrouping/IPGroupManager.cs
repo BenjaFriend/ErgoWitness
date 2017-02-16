@@ -11,9 +11,14 @@ public class IPGroupManager : MonoBehaviour {
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
     public List<IPGroup> groups;    // A list of all the groups that we have
     public GameObject groupPrefab;  // The prefab for the IP group
+    public float minDistanceApart = 15f;
+    public float size = 100f;
+    public float increaseAmountPerGroup = 10f;  // This will be added to the size every time that a new group is added
+                                                // So that the radius gets bigger and bigger
 
     private IPGroup newGroup;       // variable that I will use as a temp
     private GameObject temp;        // Temp reference to a gameObject
+    private int attemptCount;
 
     /// <summary>
     /// Set the static referce, initialize the list of groups
@@ -22,7 +27,8 @@ public class IPGroupManager : MonoBehaviour {
     {
         currentIpGroups = this;
         groups = new List<IPGroup>();
-	}
+        attemptCount = 0;
+    }
 	
     /// <summary>
     /// Loops through and checks if this IP fits into any of these groups
@@ -71,6 +77,9 @@ public class IPGroupManager : MonoBehaviour {
         // Add the IP to that group
         newGroup.AddToGroup(ipToCheck);
 
+        // Set the position of this group to something random
+        SetGroupPosition(temp);
+
         // Add the new group to the list of groups
         groups.Add(newGroup);
     }
@@ -103,6 +112,37 @@ public class IPGroupManager : MonoBehaviour {
 
         return true;
    
+    }
+
+    private void SetGroupPosition(GameObject moveMe)
+    {
+        attemptCount++;
+
+        // Increase the size of the groups
+        size += increaseAmountPerGroup;
+
+        // I need to put it in a random spot...
+        Vector3 temp = new Vector3(
+            Random.Range(-size, size),
+            Random.Range(-size, size),
+            Random.Range(-size, size));
+
+        // Check if I am colliding with any other groups
+        Collider[] neighbors = Physics.OverlapSphere(temp, minDistanceApart);
+
+        // There is something colliding with us, recursively call this function
+        if (neighbors.Length > 0 && attemptCount <= 10)
+        {        
+            // Try again   
+            SetGroupPosition(moveMe);
+        }
+        else
+        {
+            // Set the transform to this random location
+            moveMe.transform.position = temp;
+            // Reset the attempt count
+            attemptCount = 0;
+        }         
     }
 
 }

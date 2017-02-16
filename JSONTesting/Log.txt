@@ -3740,3 +3740,14 @@ GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameCont
 NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.CheckIPv4 (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:96)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:40)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

@@ -41,7 +41,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         if (Physics.Raycast(ray, out hitInfo))
         {
             // Is this object a computer?
-            if (hitInfo.collider.tag == "Comp")
+            if (hitInfo.collider.CompareTag("Comp"))
             {            
                 // Show the info on that particular on that computer
                 target = hitInfo.collider.gameObject;
@@ -66,26 +66,40 @@ public class Raycast_ExtraInfo : MonoBehaviour {
     }
 
     /// <summary>
-    /// Set ip the values of the text for the UI
+    /// Set ip the values of the text for the UI. The if statements
+    /// in this are so that I change the text as little as possible, 
+    /// ecause strings are immutable and it takes less memory allocation
+    /// this way
     /// </summary>
     /// <param name="data">The data that we are representing</param>
     public void SetValues(Computer data)
     {
         // Set the source IP text
-        sourceIpText.text = "Source IP: " + data.SourceInfo.id_orig_h.ToString();
-        // Source port
-        sourcePortText.text = "Source Ports: " + data.SourceInfo.id_orig_p.ToString();
-
-        
-        // If our destination IP is null, then say that
-        if (data.SourceInfo.id_resp_h == null)
+        if(sourceIpText.text != data.SourceInfo.id_orig_h.ToString())
         {
-            destIpText.text = "Dest. IPs: None";
+            sourceIpText.text = data.SourceInfo.id_orig_h.ToString();
         }
-        else
+
+        // Source port
+        if(sourcePortText.text != data.SourceInfo.id_orig_p.ToString())
+        {
+            sourcePortText.text = data.SourceInfo.id_orig_p.ToString();
+        }
+
+        // If our destination IP is null, then say that
+        // Only change the words if we need to
+        if (data.destinationIps.Count == 0 && destIpText.text != "None")
+        {
+            destIpText.text = "None";
+        }
+        else if (data.destinationIps.Count == 1 && destIpText.text != data.destinationIps[0])
+        {
+            destIpText.text = data.destinationIps[0];
+        }
+        else if(data.destinationIps.Count >= 2)
         {
             // Otherwise just put the protocal
-            destIpText.text = "Dest. IPs: ";
+            destIpText.text = "";
             for (int i = 0; i < data.destinationIps.Count; i++)
             {
                 destIpText.text += "  " + data.destinationIps[i];
@@ -95,23 +109,27 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         // Check if our destination port is useful or not
         if (data.portsUsed.Count == 0)
         {
-            destPortText.text = "Dest. Ports: None";
+            destPortText.text = "None";
         }
         else
         {
-            destPortText.text = "Dest. Ports: " + data.SourceInfo.id_resp_p;
+            destPortText.text = data.SourceInfo.id_resp_p.ToString();
         }
 
         // If our protocl is null then show that in the text
-        if (data.protocolsUsed.Count == 0)
+        if (data.protocolsUsed.Count == 0 && protoText.text != "None")
         {
-            protoText.text = "Protocols: None";          
+            protoText.text = "None";          
         }
-        else
+        else if(data.protocolsUsed.Count == 1 && protoText.text != data.protocolsUsed[0])
         {
+            protoText.text = data.protocolsUsed[0];
+        }
+        else if(data.protocolsUsed.Count >= 2)
+        {
+            protoText.text = "";
             // Otherwise just put the protocal
-            protoText.text = "Protocols: ";
-            for(int i = 0; i < data.protocolsUsed.Count; i++)
+            for (int i = 0; i < data.protocolsUsed.Count; i++)
             {
                 protoText.text += "  " + data.protocolsUsed[i];
             }

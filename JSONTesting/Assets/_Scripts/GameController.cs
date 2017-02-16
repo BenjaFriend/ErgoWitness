@@ -99,17 +99,18 @@ public class GameController : MonoBehaviour {
         if (obj == null) return;
 
         // Get the start time
-        timeSinceStart = Time.timeSinceLevelLoad / 60f;
+       // timeSinceStart = Time.timeSinceLevelLoad / 60f;
 
         // Scale the radius of sphere by the time since start, and then get a random point on it
-        tempPosition = Random.onUnitSphere * timeSinceStart * positionScalar;
+        //tempPosition = Random.onUnitSphere * timeSinceStart * positionScalar;
 
         // Set the position and rotation of the object
-        obj.transform.position = tempPosition;
+       // obj.transform.position = tempPosition;
         obj.transform.rotation = Quaternion.identity;
 
         // Set the DATA on this gameobject to the data from the JSON data
         obj.GetComponent<Computer>().SourceInfo = jsonSourceData;
+
         // Set this object as active in the hierachy so that you can actually see it
         obj.SetActive(true);
 
