@@ -8,11 +8,19 @@ using UnityEngine;
 /// </summary>
 public class IPGroupManager : MonoBehaviour {
 
-    public List<IPGroup> groups;
+    public static IPGroupManager currentIpGroups;   // A static reference to this manager
+    public List<IPGroup> groups;    // A list of all the groups that we have
+    public GameObject groupPrefab;  // The prefab for the IP group
 
-	// Use this for initialization
-	void Start ()
+    private IPGroup newGroup;       // variable that I will use as a temp
+    private GameObject temp;        // Temp reference to a gameObject
+
+    /// <summary>
+    /// Set the static referce, initialize the list of groups
+    /// </summary>
+    void Start ()
     {
+        currentIpGroups = this;
         groups = new List<IPGroup>();
 	}
 	
@@ -21,7 +29,7 @@ public class IPGroupManager : MonoBehaviour {
     /// If it does, then add it to the group. If not, create a new group 
     /// based on it
     /// </summary>
-    /// <param name="ipToCheck"></param>
+    /// <param name="ipToCheck">The IP that we want to check if it fits in a group</param>
     public void CheckGroups(string ipToCheck)
     {
         if (ipToCheck == null) return;
@@ -29,18 +37,72 @@ public class IPGroupManager : MonoBehaviour {
         for(int i = 0; i < groups.Count; i++)
         {
             // if this IP fits into the group
-            if (groups[i].FitsInGroup(ipToCheck))
+            if (groups[i].CheckIPv4(ipToCheck))
             {
                 // Return out of this method, we are done
                 return;
             }
         }
 
-        // If it doesnt fit then we have to make a new group object
-        IPGroup newGroup = new IPGroup();
-
-        // Add the new group to the list
-        groups.Add(newGroup);
-
+        // If the IP does not fit into any groups, then make a new group
+        MakeNewGroup(ipToCheck);
     }
+
+    /// <summary>
+    /// Create a new group for computers to be added to
+    /// </summary>
+    /// <param name="ipToCheck"></param>
+    private void MakeNewGroup(string ipToCheck)
+    {
+        // As long as we can use this, then make a new object
+        if (!CheckIPv4IsValid(ipToCheck, 2))
+        {
+            return;
+        }
+
+        // Instatiate a new instance of a group, and set it equal to temp so we can access it
+        temp = (GameObject)Instantiate(groupPrefab, transform.position, Quaternion.identity);
+    
+        // If it doesnt fit then we have to make a new group object
+        newGroup = temp.GetComponent<IPGroup>();
+
+        newGroup.GroupAddress = newGroup.ParseIPv4(ipToCheck);
+
+        // Add the IP to that group
+        newGroup.AddToGroup(ipToCheck);
+
+        // Add the new group to the list of groups
+        groups.Add(newGroup);
+    }
+
+    /// <summary>
+    /// Split the ip into an array of strings at every '.'
+    /// If there array length is less then the specified minimum length,
+    /// then return false. Otherwise return true. This is to avoid creating a new instace
+    /// of the objet and then having to destroy it anyway
+    /// </summary>
+    /// <param name="ipToCheck">IP to check</param>
+    /// <param name="minLength">The minimun length of the split array of strings</param>
+    /// <returns></returns>
+    public bool CheckIPv4IsValid(string ipToCheck, int minLength)
+    {
+        // Break out if the string is null
+        if (ipToCheck == null)
+        {
+            return false;
+        }
+
+        // Split the IP address at periods first
+        string[] stringValues = ipToCheck.Split('.');
+
+        // As long as this array actually has useful info about an ip in it
+        if (stringValues.Length <= minLength)
+        {
+            return false;
+        }
+
+        return true;
+   
+    }
+
 }

@@ -3557,3 +3557,186 @@ System.Collections.Generic.List`1[System.String].get_Item (Int32 index) (at /Use
 Raycast_ExtraInfo.SetValues (.Computer data) (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:112)
 Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:53)
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:130)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:130)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:147)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:132)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:132)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:147)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:131)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:131)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:147)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:132)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:132)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:147)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:131)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:131)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:147)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:130)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:130)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:47)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:147)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+UnassignedReferenceException: The variable groupPrefab of IPGroupManager has not been assigned.
+You probably need to assign the groupPrefab variable of the IPGroupManager script in the inspector.
+UnityEngine.Object.Internal_InstantiateSingle (UnityEngine.Object data, Vector3 pos, Quaternion rot) (at C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineObjectBindings.gen.cs:51)
+UnityEngine.Object.Instantiate (UnityEngine.Object original, Vector3 position, Quaternion rotation) (at C:/buildslave/unity/build/Runtime/Export/UnityEngineObject.cs:157)
+UnityEngine.Object.Instantiate[GameObject] (UnityEngine.GameObject original, Vector3 position, Quaternion rotation) (at C:/buildslave/unity/build/Runtime/Export/UnityEngineObject.cs:207)
+IPGroupManager.MakeNewGroup (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:52)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:43)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.ParseIPv4 (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroup.cs:55)
+IPGroupManager.MakeNewGroup (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:69)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:48)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.ParseIPv4 (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroup.cs:55)
+IPGroupManager.MakeNewGroup (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:69)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:48)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:147)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.ParseIPv4 (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroup.cs:55)
+IPGroupManager.MakeNewGroup (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:69)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:48)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:126)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:168)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:123)
+GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:77)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:142)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

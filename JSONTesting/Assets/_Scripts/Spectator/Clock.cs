@@ -10,7 +10,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class Clock : MonoBehaviour {
 
-    private Text clockText;
+    private Text clockText;     // The UI part of the clock
+    private string oldText;     // The old text
 
     void Start()
     {
@@ -20,7 +21,13 @@ public class Clock : MonoBehaviour {
 
     void Update()
     {
-        // Set the text component of the UI to the current time
-        clockText.text = System.DateTime.Now.ToShortTimeString();
+        // Only update the time if the text is different from before,
+        // This avoids unnecessary string concatination
+        if(System.DateTime.Now.ToShortTimeString() != oldText)
+        {
+            oldText = System.DateTime.Now.ToShortTimeString();
+            clockText.text = System.DateTime.Now.ToShortTimeString();
+
+        }
     }
 }

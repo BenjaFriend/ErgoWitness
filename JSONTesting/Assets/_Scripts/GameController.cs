@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour {
     private float timeSinceStart;       // How long it has been since start 
     private GameObject obj;             // Use this as a temp calculation variable for better memory
     private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
+
+    public Dictionary<string, GameObject> ComputersDict { get { return computersDict; } }
     #endregion
 
     void Awake ()
@@ -120,6 +122,8 @@ public class GameController : MonoBehaviour {
         // Check the connections to this
         CheckConnectionsEnum(jsonSourceData);
 
+        // Check if we can add it to a group
+        IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.id_orig_h);
     }
 
     /// <summary>
@@ -197,4 +201,7 @@ public class GameController : MonoBehaviour {
 
         return computersDict.ContainsKey(IP);
     }
+
+
+
 }
