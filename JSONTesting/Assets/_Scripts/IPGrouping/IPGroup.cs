@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This represents the 
+/// This represents a group of IP address that have the same
+/// first 3 numbers. I.E. 192.168.1.XXX, all IP's with "192.168.1"
+/// would be in this group
 /// </summary>
 public class IPGroup : MonoBehaviour {
 
+    public Color groupColor;        // The color of the group
+
     public float radius = 5f;
     public float minDistanceApart = 1f;
-    //public Transform groupPosition;
+
     public List<GameObject> groupedComputers;
 
     public int[] groupAddress;     // This is the IP address parsed into integers, with delimeters at the periods
     private string[] stringValues;      // Temp variable used to store an IP split at the '.'
     private int[] tempIntValues;        // Used for comparisons
-    private GameObject tempObj;
-    private int attemptCount;
+    private GameObject tempObj;         // Use to store a gameobject that I may need
+    private int attemptCount;           // This is so that we can break out of finding a position if we try this many times
     public int[] GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
 
     /// <summary>
@@ -86,7 +90,6 @@ public class IPGroup : MonoBehaviour {
 
     }
 
-
     /// <summary>
     /// This method will compare the string and see if it is part of
     /// our group. If it is return true, if not return false
@@ -126,10 +129,17 @@ public class IPGroup : MonoBehaviour {
         // If our dictionary contains this...
         if (GameController.currentGameController.CheckDictionary(IpAddress))
         {
+            // Cache the object here
+            tempObj = GameController.currentGameController.ComputersDict[IpAddress];
+
             // Add it to our list
-            groupedComputers.Add(GameController.currentGameController.ComputersDict[IpAddress]);
+            groupedComputers.Add(tempObj);
+
             // Move the object to our spot
-            MoveToGroupSpot(GameController.currentGameController.ComputersDict[IpAddress]);
+            MoveToGroupSpot(tempObj);
+
+            // Assign the the group color to this object
+            SetColor(tempObj);
         }
     }
 
@@ -162,5 +172,23 @@ public class IPGroup : MonoBehaviour {
         {
             thingToMove.transform.position = temp;
         }
+    }
+
+    /// <summary>
+    /// Assign the particle system of this computer
+    /// to a color
+    /// </summary>
+    /// <param name="thingToChange"></param>
+    private void SetColor(GameObject thingToChange)
+    {
+        // Get the component that has the method to change the color for the particle system
+        IncreaseEmission temp = thingToChange.GetComponent<IncreaseEmission>();
+
+        // if this is null, then return
+        if(temp == null || groupColor == null)        
+            return;
+
+        // Change the color to the group color
+        temp.ChangeColor(groupColor);
     }
 }

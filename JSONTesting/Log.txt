@@ -3751,3 +3751,17 @@ GameController.CheckIpEnum (.Source jsonSourceData) (at Assets/_Scripts/GameCont
 NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetflowController.SendFlow (System.String sourceIP, System.String destIP, System.String protocol) (at Assets/_Scripts/NetflowData/NetflowController.cs:85)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:68)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:153)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetflowController.SendFlow (System.String sourceIP, System.String destIP, System.String protocol) (at Assets/_Scripts/NetflowData/NetflowController.cs:85)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:49)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:153)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

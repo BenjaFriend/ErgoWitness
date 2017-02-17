@@ -18,13 +18,7 @@ public class GameController : MonoBehaviour {
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
-
-    public Vector3 boundries;
-    public float positionScalar = 1f;   // How far we want to scale the time by when positioning things
-
     private int alertCount;             // The count of how many alerts we have had
-    private Vector3 tempPosition;       // Used for position calculations
-    private float timeSinceStart;       // How long it has been since start 
     private GameObject obj;             // Use this as a temp calculation variable for better memory
     private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
 
@@ -35,11 +29,14 @@ public class GameController : MonoBehaviour {
     {
         // Set the static reference
         currentGameController = this;
-
+        // Set the alert count
         alertCount = 0;
+        // Initialize the dictionary
         computersDict = new Dictionary<string, GameObject>();
-        timeSinceStart = Time.timeSinceLevelLoad / 60f;
-        deviceCountText.text = "Devices: 0";
+
+        // Set the text
+        deviceCountText.text = "0";
+        alertText.text = "0";
     }
 
     public void CheckIpEnum(Source jsonSourceData)
@@ -58,10 +55,10 @@ public class GameController : MonoBehaviour {
         }
 
         // If this is an alert from snort then add to the alerts count
-        if (jsonSourceData.alert == "true")
+        if (jsonSourceData.alert)
         {
             alertCount++;
-            alertText.text = "Alerts: " + alertCount.ToString();
+            alertText.text = alertCount.ToString();
         }
 
 
@@ -98,16 +95,6 @@ public class GameController : MonoBehaviour {
         // If the object is null then break out of this
         if (obj == null) return;
 
-        // Get the start time
-       // timeSinceStart = Time.timeSinceLevelLoad / 60f;
-
-        // Scale the radius of sphere by the time since start, and then get a random point on it
-        //tempPosition = Random.onUnitSphere * timeSinceStart * positionScalar;
-
-        // Set the position and rotation of the object
-       // obj.transform.position = tempPosition;
-        obj.transform.rotation = Quaternion.identity;
-
         // Set the DATA on this gameobject to the data from the JSON data
         obj.GetComponent<Computer>().SourceInfo = jsonSourceData;
 
@@ -118,7 +105,7 @@ public class GameController : MonoBehaviour {
         computersDict.Add(jsonSourceData.id_orig_h, obj);
 
         // Update the UI that tells us how many devices there are
-        deviceCountText.text = "Devices: " + computersDict.Count.ToString();
+        deviceCountText.text = computersDict.Count.ToString();
 
         // Check the connections to this
         CheckConnectionsEnum(jsonSourceData);
@@ -202,7 +189,5 @@ public class GameController : MonoBehaviour {
 
         return computersDict.ContainsKey(IP);
     }
-
-
 
 }

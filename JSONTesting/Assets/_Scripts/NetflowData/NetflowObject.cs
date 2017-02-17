@@ -97,7 +97,7 @@ public class NetflowObject : MonoBehaviour {
             yield break;
         }
 
-        while (Vector3.Distance(transform.position, destinaton.position) > 0.05f)
+        while (Vector3.Distance(transform.position, destinaton.position) > 1f)
         {
             transform.position = Vector3.Lerp(transform.position, destinaton.position, smoothing * Time.deltaTime);
 

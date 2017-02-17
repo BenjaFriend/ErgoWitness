@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class IPGroupManager : MonoBehaviour {
 
+    public Color[] possibleColors;      // The possible colors that we want to assign the groups at random
+
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
     public List<IPGroup> groups;    // A list of all the groups that we have
     public GameObject groupPrefab;  // The prefab for the IP group
@@ -15,7 +17,7 @@ public class IPGroupManager : MonoBehaviour {
     public float size = 100f;
     public float increaseAmountPerGroup = 10f;  // This will be added to the size every time that a new group is added
                                                 // So that the radius gets bigger and bigger
-
+    private int lastColorUsed;    // Keep track of the last color so that we don't assign it twice in a row
     private IPGroup newGroup;       // variable that I will use as a temp
     private GameObject temp;        // Temp reference to a gameObject
     private int attemptCount;
@@ -72,16 +74,20 @@ public class IPGroupManager : MonoBehaviour {
         // If it doesnt fit then we have to make a new group object
         newGroup = temp.GetComponent<IPGroup>();
 
+        // Set the group address
         newGroup.GroupAddress = newGroup.ParseIPv4(ipToCheck);
-
-        // Add the IP to that group
-        newGroup.AddToGroup(ipToCheck);
 
         // Set the position of this group to something random
         SetGroupPosition(temp);
 
+        // Set the color of the group
+        SetGroupColor(newGroup);
+
         // Add the new group to the list of groups
         groups.Add(newGroup);
+
+        // Add the IP to that group
+        newGroup.AddToGroup(ipToCheck);
     }
 
     /// <summary>
@@ -143,6 +149,45 @@ public class IPGroupManager : MonoBehaviour {
             // Reset the attempt count
             attemptCount = 0;
         }         
+    }
+
+    /// <summary>
+    /// This method will set the group color field to one 
+    /// of the random colors in thepossible colors array
+    /// </summary>
+    /// <param name="groupToColor"></param>
+    private void SetGroupColor(IPGroup groupToColor)
+    {
+        // Check and make sure taht we actually have some colors
+        if (possibleColors == null || possibleColors.Length == 0)
+        {
+            // Return if we dont
+            return;
+        }
+        // If we only have one color
+        else if(possibleColors.Length == 1)
+        {
+            // Set that color to the only one that we have
+            groupToColor.groupColor = possibleColors[0];
+            // We are done so return
+            return;
+        }
+
+        // Generate a random number that represents the index of possible color array
+        int x = Random.Range(0, possibleColors.Length);
+
+        // If this is the same as the last color used
+        while(x == lastColorUsed)
+        {
+            // This is so that we never get the same color that we used last time
+            x = Random.Range(0, possibleColors.Length);
+        }
+
+        // Set the group color to that
+        groupToColor.groupColor = possibleColors[x];
+
+        // Store the last color that we used
+        lastColorUsed = x;
     }
 
 }

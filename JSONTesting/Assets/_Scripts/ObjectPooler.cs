@@ -10,6 +10,7 @@ public class ObjectPooler : MonoBehaviour {
     public GameObject pooledObject;
     public int pooledAmount = 20;
     public bool willGrow = true;
+    public int maxGrowth = 200;
 
     private List<GameObject> pooledObjects;
 
@@ -34,7 +35,8 @@ public class ObjectPooler : MonoBehaviour {
             }
         }
 
-        if (willGrow)
+        // Grow only if we are told that we should grow, and are not exceeding the max
+        if (willGrow && pooledObjects.Count <= maxGrowth)
         {
             GameObject obj = (GameObject)Instantiate(pooledObject);
             pooledObjects.Add(obj);

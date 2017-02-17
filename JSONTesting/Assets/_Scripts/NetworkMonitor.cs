@@ -130,8 +130,8 @@ public class NetworkMonitor : MonoBehaviour {
         // Yield until it's done:
         yield return myRequest;
 
-        // Wait until we finish converting the string to JSON data to continue
-        StringToJson(myRequest.text);
+        // Use the JsonUtility to send the string of data that I got from the server, to a data object
+        dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
 
         // Break if we have null data
         if (dataObject == null || dataObject.hits.hits.Length <= 0)
@@ -162,18 +162,6 @@ public class NetworkMonitor : MonoBehaviour {
         }
     }
 
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Take the Json string that we just got from the website,
-    /// and use the JsonUtility to make it JsonData. After that 
-    /// it will send it to the game controller
-    /// </summary>
-    private void StringToJson(string jsonString)
-    {
-        // Use the JsonUtility to send the string of data that I got from the server, to a data object
-        dataObject = JsonUtility.FromJson<Json_Data>(jsonString);
-    }
 
     /// <summary>
     /// Author: Ben Hoffman

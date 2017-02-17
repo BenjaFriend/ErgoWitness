@@ -81,6 +81,11 @@ public class NetflowController : MonoBehaviour {
     {
         // Grab a pooled object
         obj = netflowObjectPooler.GetPooledObject();
+
+        // Return if the object is null
+        if (obj == null)
+            return;
+
         // Get the netflow component of that
         tempNet = obj.GetComponent<NetflowObject>();
 
@@ -88,7 +93,6 @@ public class NetflowController : MonoBehaviour {
         if(tempNet == null)
             return;
  
-
         // Set the source of the netflow 
         tempNet.Source = GameController.currentGameController.GetTransform(sourceIP);
         // Set the protocol of the netflow 

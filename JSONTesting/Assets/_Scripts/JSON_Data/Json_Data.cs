@@ -73,7 +73,7 @@ public class Source
     public int packet_sensor_id;
     public int packet_length;
     public float packet_second;
-    public string alert;
+    public bool alert;
     public int packet_event_id;
     public Fields fields;
 
