@@ -129,6 +129,14 @@ public class NetworkMonitor : MonoBehaviour {
 
         // Yield until it's done:
         yield return myRequest;
+        
+        if(myRequest.error != null)
+        {
+            // The request is bad, there was a problem connecting to the server stop monitoring
+            ToggleMonitoring();
+            // Break out of the coroutine
+            yield break;
+        }     
 
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
         dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
@@ -142,6 +150,7 @@ public class NetworkMonitor : MonoBehaviour {
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
+            // If this is not flow data, then send it the bro controller
             if (!isFlowData)
             {
                 // handle it being a none flow data object... so a device on the network
@@ -184,6 +193,11 @@ public class NetworkMonitor : MonoBehaviour {
         }
         else
         {
+            // Reset the headers
+            headers = new Dictionary<string, string>();
+            // Add in content type:
+            headers["Content-Type"] = "application/json";
+
             // Tell the method to keep going
             keepGoing = true;
 

@@ -151,7 +151,7 @@ public class GameController : MonoBehaviour {
             // Set that transport to the same thing
             newSource.transport = source.transport;
             // I got this information from the same log file, so the source is the same
-            newSource.source = source.source;
+            //newSource.source = source.source;
             // Add this new computer to the network
             NewComputerEnum(newSource);
         }

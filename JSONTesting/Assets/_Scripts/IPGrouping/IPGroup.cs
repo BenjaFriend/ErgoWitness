@@ -185,7 +185,7 @@ public class IPGroup : MonoBehaviour {
         IncreaseEmission temp = thingToChange.GetComponent<IncreaseEmission>();
 
         // if this is null, then return
-        if(temp == null || groupColor == null)        
+        if(temp == null)        
             return;
 
         // Change the color to the group color
