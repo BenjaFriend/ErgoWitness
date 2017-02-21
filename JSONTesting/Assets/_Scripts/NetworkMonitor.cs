@@ -59,8 +59,6 @@ public class NetworkMonitor : MonoBehaviour {
         // Start looking for packetbeat data, YES this is netflow data
         StartCoroutine(PostJsonData(elk_url_packetbeat, true));
 
-
-
         // Say that the monitor is running
         statusText.text = "Monitor Status: Running";
         statusText.CrossFadeColor(runningColor, 0.3f, true, true);
@@ -129,20 +127,23 @@ public class NetworkMonitor : MonoBehaviour {
 
         // Yield until it's done:
         yield return myRequest;
-        
+
         if(myRequest.error != null)
         {
+            Debug.Log(myRequest.error);
             // The request is bad, there was a problem connecting to the server stop monitoring
-            ToggleMonitoring();
+            //ToggleMonitoring();
             // Break out of the coroutine
-            yield break;
-        }     
+            //yield break;
+        } 
+        //Debug.Log(myRequest.text);
+        if (myRequest.text == null) yield break;
 
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
         dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
 
         // Break if we have null data
-        if (dataObject == null || dataObject.hits.hits.Length <= 0)
+        if (dataObject == null || dataObject.hits.hits == null)
         {
             yield break;
         }

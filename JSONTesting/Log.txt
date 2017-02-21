@@ -3813,3 +3813,53 @@ UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
 NetworkMonitor:ToggleMonitoring() (at Assets/_Scripts/NetworkMonitor.cs:205)
 UnityEngine.EventSystems.EventSystem:Update()
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:143)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:145)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:145)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

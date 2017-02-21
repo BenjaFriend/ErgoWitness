@@ -5,27 +5,29 @@ using UnityEngine;
 public class IncreaseEmission : MonoBehaviour {
 
     #region Fields
-    public ParticleSystem particles;
+    public ParticleSystem particles; // What particle system are we using?
     
-    public float minHits = 1f;
-    public float maxHits = 1000f;
-    public float degradeRate = 10f;
-    public float increaseAmount = 100f;
-    public float startSize = 0f;
+    public float minHits = 1f;      // The smallest amount of particles that we can emit
+    public float maxHits = 1000f;   // The max number of particles taht we an emit
+    public float degradeRate = 10f; // How fast will we degrade?
 
-    private ParticleSystem.EmissionModule em;
+    private float currentSize = 0f;     // The current emission rate over time
+    private ParticleSystem.EmissionModule em;   // The emission module of this particle system
     #endregion
 
     void Start()
     {
-        startSize = maxHits;
+        // Set the start size to the max
+        currentSize = maxHits;
+        // Set the emission rate to the current one
         AddHit();
     }
 
     void Update()
     {
         // Start degrading this because it hasnt been hit in a while
-        startSize = Mathf.Clamp(startSize - degradeRate * Time.deltaTime, minHits, maxHits);
+        currentSize = Mathf.Clamp(currentSize - degradeRate * Time.deltaTime, minHits, maxHits);
+        // Change the emission of particles
         UpdateParticles();
     }
 
@@ -36,8 +38,11 @@ public class IncreaseEmission : MonoBehaviour {
     /// </summary>
     public void AddHit()
     {
-        startSize += increaseAmount;
-        startSize = Mathf.Clamp(startSize, minHits, maxHits);
+        // Set the current size to how we started because we are active again
+        currentSize = maxHits;
+        // Clamp that emmision rate to the max
+        currentSize = Mathf.Clamp(currentSize, minHits, maxHits);
+        // Actually change the emission of particles
         UpdateParticles();
     }
 
@@ -47,9 +52,12 @@ public class IncreaseEmission : MonoBehaviour {
     /// </summary>
     public void UpdateParticles()
     {
+        // Get a reference to the emitter
         em = particles.emission;
+        // Make sure that it is enabled
         em.enabled = true;
-        em.rateOverTime = startSize;
+        // Set the rate
+        em.rateOverTime = currentSize;
     }
 
     /// <summary>
@@ -59,8 +67,9 @@ public class IncreaseEmission : MonoBehaviour {
     /// <param name="changeTo"></param>
     public void ChangeColor(Color changeTo)
     {
+        // Get a reference to the color
         var ma = particles.main;
-
+        // Change that color
         ma.startColor = changeTo;
     }
 }
