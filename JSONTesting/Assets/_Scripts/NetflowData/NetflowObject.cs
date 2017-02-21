@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,7 +55,6 @@ public class NetflowObject : MonoBehaviour {
         set
         {
             destinaton = value;
-
             // Stop the coroutine and start it again with a new destination
             StopCoroutine("MoveToDestination");
             StartCoroutine("MoveToDestination");
@@ -83,8 +83,8 @@ public class NetflowObject : MonoBehaviour {
     void Awake ()
     {
         // Get the trail renderer component
-        trailRend = GetComponent<TrailRenderer>();	
-	}
+        trailRend = GetComponent<TrailRenderer>();
+    }   
 
     /// <summary>
     /// This is how I am gonna move between the source and destion
@@ -92,12 +92,13 @@ public class NetflowObject : MonoBehaviour {
     /// <returns></returns>
 	public IEnumerator MoveToDestination()
     {
+        // Break if our destination is null
         if (destinaton == null || source == null)
         {
             yield break;
         }
 
-        while (Vector3.Distance(transform.position, destinaton.position) > 1f)
+        while (Vector3.Distance(transform.position, destinaton.position) > 0.5f)
         {
             transform.position = Vector3.Lerp(transform.position, destinaton.position, smoothing * Time.deltaTime);
 
