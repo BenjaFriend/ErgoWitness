@@ -84,6 +84,7 @@
     <Compile Include="Assets\_Scripts\IPGrouping\IPGroup.cs" />
     <Compile Include="Assets\_Scripts\IPGrouping\IPGroupManager.cs" />
     <Compile Include="Assets\_Scripts\JSON_Data\Json_Data.cs" />
+    <Compile Include="Assets\_Scripts\MeshStuff\DeformOnClick.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowController.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowDestroyAfterTime.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowObject.cs" />
@@ -97,7 +98,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Lato\OFL.txt" />
-    <None Include="Assets\Materials\Shaders\MyShader.shader" />
+    <None Include="Assets\Shaders\ComputedVertex.shader" />
+    <None Include="Assets\Shaders\OutlineShader.shader" />
+    <None Include="Assets\Shaders\PulsingDissolve.shader" />
+    <None Include="Assets\Shaders\Ripple.shader" />
+    <None Include="Assets\Shaders\RotateTexture.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

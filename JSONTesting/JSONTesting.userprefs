@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PeerPlay\Ripple Water\_shaders\RippleWater.shader">
+    <Files>
+      <File FileName="Assets\_Scripts\MeshStuff\DeformOnClick.cs" Line="12" Column="3" />
+      <File FileName="Assets\Shaders\Ripple.shader" Line="27" Column="1" />
+      <File FileName="Assets\Shaders\RotateTexture.shader" Line="7" Column="1" />
+      <File FileName="Assets\PeerPlay\Ripple Water\_shaders\RippleWater.shader" Line="73" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -10,6 +10,9 @@ using UnityEngine.UI;
 public class Raycast_ExtraInfo : MonoBehaviour {
 
     #region Fields
+    public Material outlineMat;
+    public Shader outlineShader;
+
     public Text sourceIpText;
     public Text sourcePortText;
     public Text destIpText;
@@ -22,6 +25,8 @@ public class Raycast_ExtraInfo : MonoBehaviour {
     private GameObject target;
     private Vector3 screenCenter;
     private Computer compInfo;
+    private MeshRenderer computerMeshRend;
+    private Material[] oldMats;
     #endregion
 
     private void Start()
@@ -42,9 +47,25 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         {
             // Is this object a computer?
             if (hitInfo.collider.CompareTag("Comp"))
-            {            
+            {
                 // Show the info on that particular on that computer
                 target = hitInfo.collider.gameObject;
+
+                // Get the mesh renderer and add an outline material
+                computerMeshRend = target.GetComponent<MeshRenderer>();
+
+                // Store the old mats so that we can reset it when we look away
+                oldMats = computerMeshRend.materials;
+
+                Material[] mats = new Material[2];
+
+                mats[0] = oldMats[0];
+                
+                //outlineMat.shader = outlineShader;
+
+                mats[1] = outlineMat;
+
+                computerMeshRend.materials = mats;
 
                 // Set the reticle to open
                 anim.SetBool("isLooking", true);
@@ -58,6 +79,10 @@ public class Raycast_ExtraInfo : MonoBehaviour {
             {
                 // Release the target variable
                 target = null;
+                Material[] newMats = new Material[1];
+                newMats[0] = oldMats[0];
+                // Set the materials to whatever they were
+                computerMeshRend.materials = newMats;
 
                 // Set the reteicle to close
                 anim.SetBool("isLooking", false);

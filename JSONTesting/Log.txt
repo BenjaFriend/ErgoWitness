@@ -16905,3 +16905,13 @@ Exception
 NullReferenceException: Object reference not set to an instance of an object
 NetflowObject.Update () (at Assets/_Scripts/NetflowData/NetflowObject.cs:113)
 
+Exception
+IndexOutOfRangeException: Array index is out of range.
+(wrapper stelemref) object:stelemref (object,intptr,object)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:64)
+
+Exception
+IndexOutOfRangeException: Array index is out of range.
+(wrapper stelemref) object:stelemref (object,intptr,object)
+Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:66)
+
