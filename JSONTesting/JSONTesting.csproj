@@ -78,6 +78,7 @@
     <Compile Include="Assets\_Scripts\Computer\Computer.cs" />
     <Compile Include="Assets\_Scripts\Computer\ComputerUI.cs" />
     <Compile Include="Assets\_Scripts\Computer\IncreaseEmission.cs" />
+    <Compile Include="Assets\_Scripts\Computer\Rotate_Texture.cs" />
     <Compile Include="Assets\_Scripts\DeviceUIControlls.cs" />
     <Compile Include="Assets\_Scripts\ExceptionLogger.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\_Scripts\NetflowData\NetflowController.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowDestroyAfterTime.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowObject.cs" />
+    <Compile Include="Assets\_Scripts\NetflowData\Test_Behavior.cs" />
     <Compile Include="Assets\_Scripts\NetworkMonitor.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\_Scripts\Spectator\Clock.cs" />
@@ -97,14 +99,11 @@
     <Compile Include="Assets\_Scripts\Spectator\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Fonts\Lato\OFL.txt" />
-    <None Include="Assets\Shaders\ComputedVertex.shader" />
-    <None Include="Assets\Shaders\Computer.shader" />
-    <None Include="Assets\Shaders\OutlineShader.shader" />
-    <None Include="Assets\Shaders\PulsingDissolve.shader" />
-    <None Include="Assets\Shaders\Ripple.shader" />
-    <None Include="Assets\Shaders\RotateTexture.shader" />
-    <None Include="Assets\Shaders\Texture_Tint.shader" />
+    <None Include="Assets\Art Assets\Fonts\Lato\OFL.txt" />
+    <None Include="Assets\Art Assets\Shaders\OutlineShader.shader" />
+    <None Include="Assets\Art Assets\Shaders\PulsingDissolve.shader" />
+    <None Include="Assets\Art Assets\Shaders\RotateTexture.shader" />
+    <None Include="Assets\Art Assets\Shaders\Texture_Tint.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -16915,3 +16915,904 @@ IndexOutOfRangeException: Array index is out of range.
 (wrapper stelemref) object:stelemref (object,intptr,object)
 Raycast_ExtraInfo.Update () (at Assets/_Scripts/Spectator/Raycast_ExtraInfo.cs:66)
 
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+MainModule.set_startColor (MinMaxGradient value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:499)
+IncreaseEmission.ChangeColor (Color changeTo) (at Assets/_Scripts/Computer/IncreaseEmission.cs:73)
+IPGroup.SetColor (UnityEngine.GameObject thingToChange) (at Assets/_Scripts/IPGrouping/IPGroup.cs:192)
+IPGroup.AddToGroup (System.String IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:142)
+IPGroupManager.MakeNewGroup (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:90)
+IPGroupManager.CheckGroups (System.String ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:56)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:114)
+GameController.CheckConnectionsEnum (.Source source) (at Assets/_Scripts/GameController.cs:156)
+GameController.NewComputerEnum (.Source jsonSourceData) (at Assets/_Scripts/GameController.cs:111)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:65)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:163)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.AddHit () (at Assets/_Scripts/Computer/IncreaseEmission.cs:46)
+IncreaseEmission.Start () (at Assets/_Scripts/Computer/IncreaseEmission.cs:23)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.AddHit () (at Assets/_Scripts/Computer/IncreaseEmission.cs:46)
+IncreaseEmission.Start () (at Assets/_Scripts/Computer/IncreaseEmission.cs:23)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+NullReferenceException: Do not create your own module instances, get them from a ParticleSystem instance
+UnityEngine.ParticleSystem+EmissionModule.set_enabled (Boolean value) (at C:/buildslave/unity/build/artifacts/generated/common/modules/ParticleSystem/ParticleSystemBindings.gen.cs:723)
+IncreaseEmission.UpdateParticles () (at Assets/_Scripts/Computer/IncreaseEmission.cs:58)
+IncreaseEmission.Update () (at Assets/_Scripts/Computer/IncreaseEmission.cs:31)
+
+Exception
+KeyNotFoundException: The given key was not present in the dictionary.
+System.Collections.Generic.Dictionary`2[System.String,UnityEngine.GameObject].get_Item (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:150)
+GameController.CheckDictionary (System.String IP) (at Assets/_Scripts/GameController.cs:191)
+NetflowController.CheckPacketbeatData (.Source packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:45)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:163)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

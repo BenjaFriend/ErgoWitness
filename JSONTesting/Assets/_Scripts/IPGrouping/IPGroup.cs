@@ -9,18 +9,19 @@ using UnityEngine;
 /// </summary>
 public class IPGroup : MonoBehaviour {
 
-    public Color groupColor;        // The color of the group
+    public Material groupColor;        // The color of the group
 
     public float radius = 5f;
     public float minDistanceApart = 1f;
 
     public List<GameObject> groupedComputers;
 
-    public int[] groupAddress;     // This is the IP address parsed into integers, with delimeters at the periods
+    public int[] groupAddress;          // This is the IP address parsed into integers, with delimeters at the periods
     private string[] stringValues;      // Temp variable used to store an IP split at the '.'
     private int[] tempIntValues;        // Used for comparisons
     private GameObject tempObj;         // Use to store a gameobject that I may need
     private int attemptCount;           // This is so that we can break out of finding a position if we try this many times
+
     public int[] GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
 
     /// <summary>
@@ -182,13 +183,17 @@ public class IPGroup : MonoBehaviour {
     private void SetColor(GameObject thingToChange)
     {
         // Get the component that has the method to change the color for the particle system
-        IncreaseEmission temp = thingToChange.GetComponent<IncreaseEmission>();
+        //IncreaseEmission temp = thingToChange.GetComponent<IncreaseEmission>();
+        MeshRenderer temp = thingToChange.GetComponent<MeshRenderer>();
 
         // if this is null, then return
-        if(temp == null)        
+        if (temp == null)
             return;
 
+        // Set the material to the group materials
+        temp.material = groupColor;
+
         // Change the color to the group color
-        temp.ChangeColor(groupColor);
+       // temp.ChangeColor(groupColor);
     }
 }

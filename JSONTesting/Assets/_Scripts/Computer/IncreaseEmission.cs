@@ -8,7 +8,7 @@ public class IncreaseEmission : MonoBehaviour {
     public ParticleSystem particles; // What particle system are we using?
     
     public float minHits = 1f;      // The smallest amount of particles that we can emit
-    public float maxHits = 1000f;   // The max number of particles taht we an emit
+    public float maxHits = 100;   // The max number of particles that we an emit
     public float degradeRate = 10f; // How fast will we degrade?
 
     private float currentSize = 0f;     // The current emission rate over time

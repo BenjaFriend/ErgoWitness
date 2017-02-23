@@ -45,6 +45,9 @@ public class NetflowController : MonoBehaviour {
         if (GameController.currentGameController.CheckDictionary(packetbeatSource.packet_source.ip) &&
             GameController.currentGameController.CheckDictionary(packetbeatSource.dest.ip))
         {
+            // Increase the emmision of the computer here, because we
+            // obviously see some activity with it if we are checking
+            GameController.currentGameController.ComputersDict[packetbeatSource.packet_source.ip].GetComponent<IncreaseEmission>().AddHit();
             // Then we can continue on and send out flow data out      
             SendFlow(packetbeatSource.packet_source.ip, packetbeatSource.dest.ip, packetbeatSource.transport);
         }

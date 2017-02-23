@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class IPGroupManager : MonoBehaviour {
 
-    public Color[] possibleColors;      // The possible colors that we want to assign the groups at random
+    public Material[] possibleColors;      // The possible colors that we want to assign the groups at random
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
     public List<IPGroup> groups;    // A list of all the groups that we have
