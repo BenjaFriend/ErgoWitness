@@ -10,6 +10,8 @@
         Tags { "RenderType"="Opaque" }
         LOD 200
        
+			Blend One OneMinusSrcAlpha // Premultiplied transparency
+
         CGPROGRAM
         #pragma surface surf Lambert vertex:vert
 

@@ -4,6 +4,7 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_Color("Color", Color) = (1,1,1,1)
+		_Value("Value", float) = 1
 	}
 
     SubShader {
@@ -22,10 +23,12 @@
             float3 customValue;
         };
 
+		float _Value;
+
         void vert(inout appdata_full v, out Input o){
         	UNITY_INITIALIZE_OUTPUT(Input, o);
-        	v.vertex.y += value;
-        	o.customValue = value;
+        	v.vertex.y += _Value;
+        	o.customValue = _Value;
         }
  
         void surf (Input IN, inout SurfaceOutput o) {  
@@ -38,4 +41,4 @@
     FallBack "Diffuse"
 }
 	
-}
+
