@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\BoxBlur.cs" />
     <Compile Include="Assets\_Scripts\Computer\Computer.cs" />
     <Compile Include="Assets\_Scripts\Computer\ComputerUI.cs" />
     <Compile Include="Assets\_Scripts\Computer\IncreaseEmission.cs" />
@@ -103,7 +104,9 @@
     <None Include="Assets\Art Assets\Shaders\OutlineShader.shader" />
     <None Include="Assets\Art Assets\Shaders\PulsingDissolve.shader" />
     <None Include="Assets\Art Assets\Shaders\RotateTexture.shader" />
+    <None Include="Assets\Art Assets\Shaders\Surface_Texture.shader" />
     <None Include="Assets\Art Assets\Shaders\Texture_Tint.shader" />
+    <None Include="Assets\Art Assets\Shaders\boxBlur.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

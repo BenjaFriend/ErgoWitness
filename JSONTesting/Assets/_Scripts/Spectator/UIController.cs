@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -52,6 +53,8 @@ public class UIController : MonoBehaviour {
             ToggleMenu(gameMenu);
             // Stop the player from moving
             TogglePlayerMovement();
+            // Toggle the blur that we are doing
+            ToggleBlur();
         }
 
         // Toggle the 'debug' menu with the plus key on the num pad or d-pad down
@@ -165,15 +168,17 @@ public class UIController : MonoBehaviour {
     /// Just reload the current scene, which will reset everything
     /// </summary>
     public void Reset()
-    {        
-        Application.LoadLevel(Application.loadedLevel);
-        Debug.Log("Reset!");
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
-    public void ShowIsSure(int whichMethod)
+    /// <summary>
+    /// Show the 'are you sure?' prompt
+    /// </summary>
+    /// <param name="newWhichMethod">Which method do we want to use?</param>
+    public void ShowIsSure(int newWhichMethod)
     {
-        whichMethod = whichMethod;
+        whichMethod = newWhichMethod;
         anim.SetBool("showIsSure", true);
     }
 
@@ -210,5 +215,18 @@ public class UIController : MonoBehaviour {
     {
         // Quit the application
         Application.Quit();
+    }
+
+    private void ToggleBlur()
+    {
+        if (BoxBlur.currentBlur.doTheBlur)
+        {
+            BoxBlur.currentBlur.doTheBlur = false;
+        }
+        else
+        {
+            BoxBlur.currentBlur.doTheBlur = true;
+        }
+
     }
 }
