@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour {
 
     private bool showingMenu;           // Are we showing the menu?
     private bool isPaused;              // Are we paused?
+    private int whichMethod;
     #endregion
 
     /// <summary>
@@ -159,6 +160,47 @@ public class UIController : MonoBehaviour {
         }
 
     }
+
+    /// <summary>
+    /// Just reload the current scene, which will reset everything
+    /// </summary>
+    public void Reset()
+    {        
+        Application.LoadLevel(Application.loadedLevel);
+        Debug.Log("Reset!");
+    }
+
+
+    public void ShowIsSure(int whichMethod)
+    {
+        whichMethod = whichMethod;
+        anim.SetBool("showIsSure", true);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>True if the player hits the 'yes' button</returns>
+    public void IsSure()
+    {
+        if(whichMethod == 0)
+        {
+            // Call quit
+            Quit();
+        }
+        else if(whichMethod == 1)
+        {
+            // Call reset
+            Reset();
+        }
+
+        // Hide ths is sure menu
+        whichMethod = -1;
+        anim.SetBool("showIsSure", false);
+
+
+    }
+
 
     /// <summary>
     /// Author: Ben Hoffman
