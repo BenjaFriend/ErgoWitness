@@ -124,6 +124,9 @@ public class UIController : MonoBehaviour {
         ToggleMenu(gameMenu);
         // Enable player movement
         TogglePlayerMovement();
+        // Make sure that we are not blurry
+        BoxBlur.currentBlur.doTheBlur = false;
+
     }
 
     /// <summary>

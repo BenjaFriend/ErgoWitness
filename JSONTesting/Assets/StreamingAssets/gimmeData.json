@@ -1,11 +1,13 @@
 {
-	"query": {
-		"match_all": {}
-	},
-	"size": 5,
-	"sort": [{
-		"@timestamp": {
-			"order": "desc"
-		}
-	}]
+  "query": {
+    "match_all": { }
+  },
+  "size": 7,
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ]
 }

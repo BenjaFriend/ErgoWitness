@@ -136,7 +136,9 @@ public class NetworkMonitor : MonoBehaviour {
             // Break out of the coroutine
             //yield break;
         } 
+
         //Debug.Log(myRequest.text);
+
         if (myRequest.text == null) yield break;
 
         // Use the JsonUtility to send the string of data that I got from the server, to a data object
@@ -145,6 +147,7 @@ public class NetworkMonitor : MonoBehaviour {
         // Break if we have null data
         if (dataObject == null || dataObject.hits.hits == null)
         {
+            
             yield break;
         }
 

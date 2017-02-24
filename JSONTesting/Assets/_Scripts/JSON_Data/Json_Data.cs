@@ -25,7 +25,7 @@ public class HitsParent
 [System.Serializable]
 public class HitsData
 {
-    //public string _index;
+    public string _index;
     //public string _type;
     //public string _id;
     public Source _source; 
