@@ -15,7 +15,8 @@ using UnityEngine.UI;
 /// IF that IP address has been seen here before, and if has, then we will tell our computer
 /// controller to make a new computer with the given information. 
 /// </summary>
-public class NetworkMonitor : MonoBehaviour {
+public class NetworkMonitor : MonoBehaviour
+{
 
     #region Fields
     public string serverIP;
@@ -29,10 +30,14 @@ public class NetworkMonitor : MonoBehaviour {
     private string elk_url_filebeat;        // The filebeat index
     private string elk_url_packetbeat;      // The packetbeat index
     private Json_Data dataObject;           // The actual JSON data class 
+    private Packetbeat_Json_Data packetDataObj;
 
-    private string queryString;     // The JSON data that we are sending with the GET request
-    private byte[] postData;        // The post data that we are using
-    Dictionary<string, string> headers; 
+    private byte[] broPostData;        // The post data that we are using
+    private byte[] packetPostData;        // The post data that we are using
+
+    Dictionary<string, string> headers;
+
+    private string lastFlowRecived, lastFilebeatRecieved;
     #endregion
 
     /// <summary>
@@ -41,18 +46,33 @@ public class NetworkMonitor : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        // Initalize the data objects that I will be using
+        dataObject = new Json_Data();
+        packetDataObj = new Packetbeat_Json_Data();
+
+        // Initialize the headers
         headers = new Dictionary<string, string>();
         // Add in content type:
         headers["Content-Type"] = "application/json";
 
-        // Get the post data from a streaming assets file
-        queryString = File.ReadAllText(Application.streamingAssetsPath + "/gimmeData.json");
-
         // Set up my URL to get info from
         SetUpURL();
 
+        // Read in the query that I will use for filebeat from streaming assets
+        string broHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/bro_Headers.json");
+
+        // Read in the query that I will use for packetbeat from streaming assets
+        string packetHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/packetbeat_Headers.json");
+
         // Get the post data that I will be using, since it will always be the same
-        postData = Encoding.GetEncoding("UTF-8").GetBytes(queryString);
+        broPostData = Encoding.GetEncoding("UTF-8").GetBytes(broHeaderString);
+
+        // Get the post data for packetbeat
+        packetPostData = Encoding.GetEncoding("UTF-8").GetBytes(packetHeaderString);
+
+        // Initalize the strings to not get a null ref exception
+        lastFlowRecived = "";
+        lastFilebeatRecieved = "";
 
         // Start looking for filebeat data, NO this is not netflow data
         StartCoroutine(PostJsonData(elk_url_filebeat, false));
@@ -89,10 +109,10 @@ public class NetworkMonitor : MonoBehaviour {
         }
         else
         {
-            dateUrl +=  DateTime.Today.Month.ToString() + ".";
+            dateUrl += DateTime.Today.Month.ToString() + ".";
         }
         // Handle the day
-        if(DateTime.Today.Day < 10)
+        if (DateTime.Today.Day < 10)
         {
             dateUrl += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
@@ -116,56 +136,56 @@ public class NetworkMonitor : MonoBehaviour {
     /// <returns>The data downloaded from the server</returns>
     private IEnumerator PostJsonData(string url, bool isFlowData)
     {
-        // Build up the headers:
+        // Clear the headers:
         headers.Clear();
 
         // Add in content type:
         headers["Content-Type"] = "application/json";
 
-        // Start up the reqest:
-        WWW myRequest = new WWW(url, postData, headers);
+        // Create a web request object
+        WWW myRequest;
+
+        if (!isFlowData)
+        {
+            // Start up the reqest for FILEBEAT:
+            myRequest = new WWW(url, broPostData, headers);
+        }
+        else
+        {
+            // Start up the reqest for PACKETBEAT:
+            myRequest = new WWW(url, packetPostData, headers);
+        }
 
         // Yield until it's done:
         yield return myRequest;
 
-        if(myRequest.error != null)
+        // Check if we got an error in our request or not
+        if (myRequest.error != null || myRequest.text == null)
         {
-            Debug.Log(myRequest.error);
-            // The request is bad, there was a problem connecting to the server stop monitoring
-            //ToggleMonitoring();
-            // Break out of the coroutine
-            //yield break;
-        } 
-
-        //Debug.Log(myRequest.text);
-
-        if (myRequest.text == null) yield break;
-
-        // Use the JsonUtility to send the string of data that I got from the server, to a data object
-        dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
-
-        // Break if we have null data
-        if (dataObject == null || dataObject.hits.hits == null)
-        {
-            
+            Debug.Log("THERE WAS A REQUEST ERROR: " + myRequest.error);
+            if (myRequest.text != null)
+                Debug.Log(myRequest.text);
             yield break;
         }
 
-        // Send the data to the game controller for all of our hits
-        for (int i = 0; i < dataObject.hits.hits.Length; i++)
+        // Actually send the JSON data to either the netflow controller or the game controller
+        if (isFlowData)
         {
-            // If this is not flow data, then send it the bro controller
-            if (!isFlowData)
-            {
-                // handle it being a none flow data object... so a device on the network
-                GameController.currentGameController.CheckIpEnum(dataObject.hits.hits[i]._source);
-            }
-            else
-            {
-                // Handle it being flow data from packetbeat
-                NetflowController.currentNetflowController.CheckPacketbeatData(dataObject.hits.hits[i]._source);
-            }
+            // Use the JSON utility with the packetbeat data to parse this text
+            packetDataObj = JsonUtility.FromJson<Packetbeat_Json_Data>(myRequest.text);
+
+            // Send to Netflow Controller
+            CheckPacketbeat();
         }
+        else
+        {
+            // Use the JsonUtility to send the string of data that I got from the server, to a data object
+            dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
+
+            // Send to GameController
+            CheckFilebeat();
+        }
+
 
         // As long as we didn't say to stop yet
         if (keepGoing)
@@ -175,6 +195,62 @@ public class NetworkMonitor : MonoBehaviour {
         }
     }
 
+
+    private void CheckPacketbeat()
+    {
+        // Make sure that our data is not null
+        if (packetDataObj == null || packetDataObj.hits.hits == null)
+        {
+            return;
+        }
+
+        // Send the data to the game controller for all of our hits
+        for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
+        {
+            // If this is not flow data, then send it the bro controller
+            // Check if this is the exact same as the last one we looked at
+            if (lastFlowRecived == packetDataObj.hits.hits[i]._id)
+            {
+                // If it is then break out and don't bother doing anything, this should
+                // Save on processing power
+                Debug.Log("Broke out becasue of the same ID as before, packetbeat");
+                Debug.Log("The ID is: " + packetDataObj.hits.hits[i]._id);
+                break;
+            }
+            // It is new, so set the thing we use to check it to the current ID
+            lastFlowRecived = packetDataObj.hits.hits[i]._id;
+
+            // handle it being a none flow data object... so a device on the network
+            NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
+        }
+    }
+
+    private void CheckFilebeat()
+    {
+        // Make sure that our data is not null
+        if (dataObject == null || dataObject.hits.hits == null)
+        {
+            return;
+        }
+        // Send the data to the game controller for all of our hits
+        for (int i = 0; i < dataObject.hits.hits.Length; i++)
+        {
+            // If this is not flow data, then send it the bro controller
+            // Check if this is the exact same as the last one we looked at
+            if (lastFilebeatRecieved == dataObject.hits.hits[i]._id)
+            {
+                // If it is then break out and don't bother doing anything, this should
+                // Save on processing power
+                Debug.Log("Broke out becasue of the same ID as before, packetbeat");
+                break;
+            }
+            // It is new, so set the thing we use to check it to the current ID
+            lastFilebeatRecieved = dataObject.hits.hits[i]._id;
+
+            // handle it being a none flow data object... so a device on the network
+            GameController.currentGameController.CheckIpEnum(dataObject.hits.hits[i]._source);
+        }
+    }
 
     /// <summary>
     /// Author: Ben Hoffman

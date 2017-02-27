@@ -28,7 +28,7 @@ public class NetflowController : MonoBehaviour {
     /// Otherwise, add it to the network
     /// </summary>
     /// <param name="packetbeatSource">The netflow source data</param>
-    public void CheckPacketbeatData(Source packetbeatSource)
+    public void CheckPacketbeatData(Source_Packet packetbeatSource)
     {
         // Break out if something is null
         if (packetbeatSource.packet_source.ip == null || packetbeatSource.dest.ip == null)
@@ -53,19 +53,21 @@ public class NetflowController : MonoBehaviour {
         }
         else
         {
+            Source newSource = new Source();
+
             // Set up the source data to properlly represent a computer that we don't yet have
-            packetbeatSource.id_orig_h = packetbeatSource.packet_source.ip;
-            packetbeatSource.id_orig_p = packetbeatSource.packet_source.port;
+            newSource.id_orig_h = packetbeatSource.packet_source.ip;
+            newSource.id_orig_p = packetbeatSource.packet_source.port;
 
             // Set the destination data so that the game controller can read it
-            packetbeatSource.id_resp_h = packetbeatSource.dest.ip;
-            packetbeatSource.id_resp_p = packetbeatSource.dest.port;
+            newSource.id_resp_h = packetbeatSource.dest.ip;
+            newSource.id_resp_p = packetbeatSource.dest.port;
 
             // Set the protocol so that the game controller can read it
             packetbeatSource.proto = packetbeatSource.transport;
 
             // Add them to the network, and wait for that to finish:
-            GameController.currentGameController.NewComputerEnum(packetbeatSource);
+            GameController.currentGameController.NewComputerEnum(newSource);
 
             // Now send the data since we know about it:
             SendFlow(packetbeatSource.packet_source.ip, packetbeatSource.dest.ip, packetbeatSource.transport);

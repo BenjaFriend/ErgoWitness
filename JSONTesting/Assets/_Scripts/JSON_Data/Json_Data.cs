@@ -25,9 +25,7 @@ public class HitsParent
 [System.Serializable]
 public class HitsData
 {
-    public string _index;
-    //public string _type;
-    //public string _id;
+    public string _id;
     public Source _source; 
 }
 
@@ -36,7 +34,7 @@ public class HitsData
 public class Source
 {
     // Packetbeat stuff
-    public string transport;
+  /*  public string transport;
     public DestinationData_Packetbeat dest;
     public SourceData_Packetbeat packet_source;
 
@@ -45,7 +43,7 @@ public class Source
     //public string packet_data;
     //public string input_type;
     //public string source;
-    
+    */
     // Bro stuff is here
     //public int resp_pkts;
     public int id_orig_p;
@@ -69,7 +67,7 @@ public class Source
     //public int packet_sensor_id;
     //public int packet_length;
     //public float packet_second;
-    public bool alert;
+    //public bool alert;
     //public int packet_event_id;
 
     // More bro stuff
@@ -78,18 +76,3 @@ public class Source
     public string proto;
 }
 
-[System.Serializable]
-public class SourceData_Packetbeat
-{
-    public int port;
-    public string ip;
-    public string mac;
-}
-
-[System.Serializable]
-public class DestinationData_Packetbeat
-{
-    public int port;
-    public string ip;
-    public string mac;
-}

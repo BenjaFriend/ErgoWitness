@@ -2,17 +2,9 @@
   "query": {
     "match_all": { }
   },
-  "size": 7,
+  "size": 3,
   "_source": {
     "includes": [
-      "transport",
-      "dest",
-      "dest.port",
-      "dest.ip",
-      "packet_source",
-      "packet_source.port",
-      "packet_source.ip",
-      "packet_source.mac",
       "id_orig_p",
       "id_orig_p",
       "id_orig_h",

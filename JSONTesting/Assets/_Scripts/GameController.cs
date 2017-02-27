@@ -55,12 +55,12 @@ public class GameController : MonoBehaviour {
         }
 
         // If this is an alert from snort then add to the alerts count
-        if (jsonSourceData.alert)
+    /*    if (jsonSourceData.alert)
         {
             alertCount++;
             alertText.text = alertCount.ToString();
         }
-
+        */
 
         // If we know of the source IP already...
         if (computersDict.ContainsKey(jsonSourceData.id_orig_h))
@@ -149,7 +149,7 @@ public class GameController : MonoBehaviour {
             // Set the NEW source's orig. Port to the response port of the other one
             newSource.id_orig_p = source.id_resp_p;
             // Set that transport to the same thing
-            newSource.transport = source.transport;
+            //newSource.transport = source.transport;
             // I got this information from the same log file, so the source is the same
             //newSource.source = source.source;
             // Add this new computer to the network

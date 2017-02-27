@@ -86,6 +86,7 @@
     <Compile Include="Assets\_Scripts\IPGrouping\IPGroup.cs" />
     <Compile Include="Assets\_Scripts\IPGrouping\IPGroupManager.cs" />
     <Compile Include="Assets\_Scripts\JSON_Data\Json_Data.cs" />
+    <Compile Include="Assets\_Scripts\JSON_Data\Packetbeat_Json_Data.cs" />
     <Compile Include="Assets\_Scripts\MeshStuff\DeformOnClick.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowController.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowDestroyAfterTime.cs" />
