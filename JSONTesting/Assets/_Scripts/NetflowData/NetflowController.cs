@@ -61,18 +61,19 @@ public class NetflowController : MonoBehaviour {
 
             // Set the destination data so that the game controller can read it
             newSource.id_resp_h = packetbeatSource.dest.ip;
+
+            // Set the destiation port data
             newSource.id_resp_p = packetbeatSource.dest.port;
 
             // Set the protocol so that the game controller can read it
             packetbeatSource.proto = packetbeatSource.transport;
 
             // Add them to the network, and wait for that to finish:
-            GameController.currentGameController.NewComputerEnum(newSource);
+            GameController.currentGameController.CheckIp(newSource);
 
             // Now send the data since we know about it:
             SendFlow(packetbeatSource.packet_source.ip, packetbeatSource.dest.ip, packetbeatSource.transport);
         }
-
     }
 
 
@@ -99,11 +100,13 @@ public class NetflowController : MonoBehaviour {
             return;
  
         // Set the source of the netflow 
-        tempNet.Source = GameController.currentGameController.GetTransform(sourceIP);
+        tempNet.SourcePos = GameController.currentGameController.GetTransform(sourceIP);
         // Set the protocol of the netflow 
         tempNet.Protocol = protocol;
         // Set the destination of the netflow obj, which also start the movement 
-        tempNet.Destination = GameController.currentGameController.GetTransform(destIP);
+        tempNet.DestinationPos = GameController.currentGameController.GetTransform(destIP);
 
+        // Connect the computers, because now they have talked to each other
+        GameController.currentGameController.ConnectComputers(sourceIP, destIP);
     }
 }

@@ -31,6 +31,8 @@ public class Movement : MonoBehaviour {
     private float yRot;
     #endregion
 
+    public Rigidbody Rb { get { return rb; } set { rb = value; } }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

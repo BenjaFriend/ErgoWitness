@@ -163,8 +163,10 @@ public class NetworkMonitor : MonoBehaviour
         if (myRequest.error != null || myRequest.text == null)
         {
             Debug.Log("THERE WAS A REQUEST ERROR: " + myRequest.error);
+
             if (myRequest.text != null)
                 Debug.Log(myRequest.text);
+
             yield break;
         }
 
@@ -186,7 +188,6 @@ public class NetworkMonitor : MonoBehaviour
             CheckFilebeat();
         }
 
-
         // As long as we didn't say to stop yet
         if (keepGoing)
         {
@@ -195,66 +196,78 @@ public class NetworkMonitor : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Check if the ID of this data is the same as the previous one,
+    /// if it is then return out of this method. Otherwise, send the 
+    /// data to the Netflow Controller
+    /// </summary>
     private void CheckPacketbeat()
     {
         // Make sure that our data is not null
-        if (packetDataObj == null || packetDataObj.hits.hits == null)
+        if (packetDataObj == null || packetDataObj.hits.hits == null || packetDataObj.hits.hits[0] == null)
         {
             return;
         }
 
-        // Send the data to the game controller for all of our hits
+        // If we have seen this data before, then return out of this method
+        // Because that means it is esxactly the same, and no new data has been
+        // pushed to our data base's stack
+        if (lastFlowRecived == packetDataObj.hits.hits[0]._id)
+        {
+            // If it is then break out and don't bother doing anything, this should
+            // Save on processing power
+            return;
+        }
+
+        // It is new, so set the thing we use to check it to the current ID
+        lastFlowRecived = packetDataObj.hits.hits[0]._id;
+
+        // Loop through our data and send that data to the netflow controller
         for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
         {
-            // If this is not flow data, then send it the bro controller
-            // Check if this is the exact same as the last one we looked at
-            if (lastFlowRecived == packetDataObj.hits.hits[i]._id)
-            {
-                // If it is then break out and don't bother doing anything, this should
-                // Save on processing power
-                Debug.Log("Broke out becasue of the same ID as before, packetbeat");
-                Debug.Log("The ID is: " + packetDataObj.hits.hits[i]._id);
-                break;
-            }
-            // It is new, so set the thing we use to check it to the current ID
-            lastFlowRecived = packetDataObj.hits.hits[i]._id;
-
-            // handle it being a none flow data object... so a device on the network
+            // Handle it being a none flow data object... so a device on the network
             NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
         }
     }
 
+    /// <summary>
+    /// Check if the data that was given is the same as the previous,
+    /// if it is then break out of this method. Otherwise, send that
+    /// data to the game controller and add the computer to the network
+    /// </summary>
     private void CheckFilebeat()
     {
         // Make sure that our data is not null
-        if (dataObject == null || dataObject.hits.hits == null)
+        if (dataObject == null || dataObject.hits.hits == null || dataObject.hits.hits[0] == null)
         {
             return;
         }
+
+        // If this data is the same as the last one that we did, 
+        // then we don't need to look at any of the other stuff
+        if (lastFilebeatRecieved == dataObject.hits.hits[0]._id)
+        {
+            // If it is then break out and don't bother doing anything, this should
+            // Save on processing power
+            return;
+        }
+
+        // This is a new data object, so keep track of the most recent ID
+        lastFilebeatRecieved = dataObject.hits.hits[0]._id;
+
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
-            // If this is not flow data, then send it the bro controller
-            // Check if this is the exact same as the last one we looked at
-            if (lastFilebeatRecieved == dataObject.hits.hits[i]._id)
-            {
-                // If it is then break out and don't bother doing anything, this should
-                // Save on processing power
-                Debug.Log("Broke out becasue of the same ID as before, packetbeat");
-                break;
-            }
-            // It is new, so set the thing we use to check it to the current ID
-            lastFilebeatRecieved = dataObject.hits.hits[i]._id;
-
-            // handle it being a none flow data object... so a device on the network
-            GameController.currentGameController.CheckIpEnum(dataObject.hits.hits[i]._source);
+            // Send the bro data to the game controller, and add it to the network
+            GameController.currentGameController.CheckIp(dataObject.hits.hits[i]._source);
         }
     }
 
     /// <summary>
     /// Author: Ben Hoffman
     /// Give the user the option to stop monitoring the network
+    /// Collect the gabrage because they would not notice it happening
+    /// and it could possibly help the situation. 
     /// </summary>
     public void ToggleMonitoring()
     {

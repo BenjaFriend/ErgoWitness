@@ -2,7 +2,7 @@
   "query": {
     "match_all": { }
   },
-  "size": 3,
+  "size": 7,
   "_source": {
     "includes": [
       "id_orig_p",

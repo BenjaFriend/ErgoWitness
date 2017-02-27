@@ -104,11 +104,14 @@ public class UIController : MonoBehaviour {
         {
             // Disable player movement
             playerMovement.enabled = false;
+            playerMovement.Rb.Sleep();
         }
         else
         {
             // Enable player movement
             playerMovement.enabled = true;
+            playerMovement.Rb.WakeUp();
+
         }
     }
 
