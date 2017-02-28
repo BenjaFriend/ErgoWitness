@@ -30,6 +30,10 @@ public class NetflowController : MonoBehaviour {
     /// <param name="packetbeatSource">The netflow source data</param>
     public void CheckPacketbeatData(Source_Packet packetbeatSource)
     {
+        if(packetbeatSource == null)
+        {
+            return;
+        }
         // Break out if something is null
         if (packetbeatSource.packet_source.ip == null || packetbeatSource.dest.ip == null)
         {
@@ -41,15 +45,21 @@ public class NetflowController : MonoBehaviour {
             return;
         }
         
-        // If the source and destination IP's are known...
-        if (GameController.currentGameController.CheckDictionary(packetbeatSource.packet_source.ip_int) &&
-            GameController.currentGameController.CheckDictionary(packetbeatSource.dest.ip_int))
+        if(packetbeatSource.sourceIpInt == 0 || packetbeatSource.destIpInt == 0)
+        {
+            return;
+        }
+
+        // If the source and destination IP's are known:
+        if (GameController.currentGameController.CheckDictionary(packetbeatSource.sourceIpInt) &&
+            GameController.currentGameController.CheckDictionary(packetbeatSource.destIpInt))
         {
             // Increase the emmision of the computer here, because we
             // obviously see some activity with it if we are checking
-            GameController.currentGameController.ComputersDict[packetbeatSource.packet_source.ip_int].GetComponent<IncreaseEmission>().AddHit();
+            GameController.currentGameController.ComputersDict[packetbeatSource.sourceIpInt].GetComponent<IncreaseEmission>().AddHit();
+
             // Then we can continue on and send out flow data out      
-            SendFlow(packetbeatSource.packet_source.ip_int, packetbeatSource.dest.ip_int, packetbeatSource.transport);
+            SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
         }
         else
         {
@@ -68,11 +78,14 @@ public class NetflowController : MonoBehaviour {
             // Set the protocol so that the game controller can read it
             packetbeatSource.proto = packetbeatSource.transport;
 
+            //Set the integer values for this object
+            NetworkMonitor.currentNetworkMonitor.SetIntegerValues(newSource);
+
             // Add them to the network, and wait for that to finish:
             GameController.currentGameController.CheckIp(newSource);
 
             // Now send the data since we know about it:
-            SendFlow(packetbeatSource.packet_source.ip_int, packetbeatSource.dest.ip_int, packetbeatSource.transport);
+            SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
         }
     }
 
@@ -98,13 +111,23 @@ public class NetflowController : MonoBehaviour {
         // Return if we are null
         if(tempNet == null)
             return;
- 
+
+        if(GameController.currentGameController.GetTransform(sourceIP) == null ||
+           GameController.currentGameController.GetTransform(destIP) == null)
+        {
+            return;
+        }
+
         // Set the source of the netflow 
         tempNet.SourcePos = GameController.currentGameController.GetTransform(sourceIP);
+
         // Set the protocol of the netflow 
         tempNet.Protocol = protocol;
+
         // Set the destination of the netflow obj, which also start the movement 
         tempNet.DestinationPos = GameController.currentGameController.GetTransform(destIP);
+
+        obj.SetActive(true);
 
         // Connect the computers, because now they have talked to each other
         GameController.currentGameController.ConnectComputers(sourceIP, destIP);

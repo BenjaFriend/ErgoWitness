@@ -21,7 +21,6 @@ public class Computer : MonoBehaviour
     public List<string> destinationIps;
     public List<int> portsUsed;
     private IncreaseEmission particleController;
-    private Transform targetPosition;
     #endregion
 
     #region Mutators

@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
-    private GameObject obj;             // Use this as a temp calculation variable for better memory
+    //private GameObject obj;             // Use this as a temp calculation variable for better memory
     private Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
 
     public Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
@@ -77,18 +77,18 @@ public class GameController : MonoBehaviour {
         }
 
         // Get a temporary object from the object pooler
-        obj = computerPooler.GetPooledObject();
-
+        GameObject newTempObj = computerPooler.GetPooledObject();
+    
         // If the object is null then break out of this
-        if (obj == null) return;
+        if (newTempObj == null) return;
 
-        Computer newDevice = obj.GetComponent<Computer>();
+        Computer newDevice = newTempObj.GetComponent<Computer>();
 
         // Set the DATA on this gameobject to the data from the JSON data
         newDevice.SourceInfo = jsonSourceData;
 
         // Set this object as active in the hierachy so that you can actually see it
-        obj.SetActive(true);
+        newTempObj.SetActive(true);
 
         // Add the object to the dictionary
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
@@ -121,7 +121,7 @@ public class GameController : MonoBehaviour {
             return;
         }
 
-        // If we fail to connect them, then create a new computer
+        // If we fail to connect them, then create a new computer using the destination
         if (!ConnectComputers(source.sourceIpInt, source.destIpInt))
         {
             // We DO NOT have the responding IP on our network, so add it.
@@ -132,6 +132,9 @@ public class GameController : MonoBehaviour {
             newSource.id_orig_h = source.id_resp_h;
             // Set the NEW source's orig. Port to the response port of the other one
             newSource.id_orig_p = source.id_resp_p;
+
+            // Set the integer data
+            NetworkMonitor.currentNetworkMonitor.SetIntegerValues(newSource);
 
             // Add this new computer to the network
             NewComputer(newSource);

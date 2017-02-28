@@ -19,6 +19,7 @@ public class NetworkMonitor : MonoBehaviour
 {
 
     #region Fields
+    public static NetworkMonitor currentNetworkMonitor;
     public string serverIP;
     public Text current_Index_Text;
     public Text statusText;
@@ -46,6 +47,8 @@ public class NetworkMonitor : MonoBehaviour
     /// </summary>
     void Start()
     {
+        currentNetworkMonitor = this;
+
         // Initalize the data objects that I will be using
         dataObject = new Json_Data();
         packetDataObj = new Packetbeat_Json_Data();
@@ -75,7 +78,7 @@ public class NetworkMonitor : MonoBehaviour
         lastFilebeatRecieved = "";
 
         // Start looking for filebeat data, NO this is not netflow data
-        StartCoroutine(PostJsonData(elk_url_filebeat, false));
+        //StartCoroutine(PostJsonData(elk_url_filebeat, false));
         // Start looking for packetbeat data, YES this is netflow data
         StartCoroutine(PostJsonData(elk_url_packetbeat, true));
 
@@ -204,7 +207,7 @@ public class NetworkMonitor : MonoBehaviour
     private void CheckPacketbeat()
     {
         // Make sure that our data is not null
-        if (packetDataObj == null || packetDataObj.hits.hits == null || packetDataObj.hits.hits[0] == null)
+        if (packetDataObj == null || packetDataObj.hits.hits == null || packetDataObj.hits.hits.Length == 0)
         {
             return;
         }
@@ -225,15 +228,15 @@ public class NetworkMonitor : MonoBehaviour
         // Loop through our data and send that data to the netflow controller
         for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
         {
-            // Calculate the INTEGER version of the IP address
-            packetDataObj.hits.hits[i]._source.packet_source.ip_int
-                = IpToInt(packetDataObj.hits.hits[i]._source.packet_source.ip);
+            // Set the integer IP values of this object
+            SetIntegerValues(packetDataObj.hits.hits[i]._source);
 
-            // Calculate the desp IP to an int
-            packetDataObj.hits.hits[i]._source.dest.ip_int
-                = IpToInt(packetDataObj.hits.hits[i]._source.dest.ip);
-
-            NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
+            // As long as what we got from those IP's is valid:
+            if(packetDataObj.hits.hits[i]._source.destIpInt != 0 && packetDataObj.hits.hits[i]._source.sourceIpInt != 0)
+            {
+                // Send the data to the netflow controller
+                NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
+            }
         }
     }
 
@@ -245,7 +248,7 @@ public class NetworkMonitor : MonoBehaviour
     private void CheckFilebeat()
     {
         // Make sure that our data is not null
-        if (dataObject == null || dataObject.hits.hits == null || dataObject.hits.hits[0] == null)
+        if (dataObject == null || dataObject.hits.hits == null || dataObject.hits.hits.Length == 0)
         {
             return;
         }
@@ -265,13 +268,8 @@ public class NetworkMonitor : MonoBehaviour
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
-            // Calculate the INTEGER version of the SOURCE IP address
-            dataObject.hits.hits[i]._source.sourceIpInt =
-                IpToInt(dataObject.hits.hits[i]._source.id_orig_h);
-
-            // Calculate the INTEGER version of the DESTINATION IP address
-            dataObject.hits.hits[i]._source.destIpInt =
-                IpToInt(dataObject.hits.hits[i]._source.id_resp_h);
+            // Set the integer IP values if this source
+            SetIntegerValues(dataObject.hits.hits[i]._source);
 
             // Send the bro data to the game controller, and add it to the network
             GameController.currentGameController.CheckIp(dataObject.hits.hits[i]._source);
@@ -338,6 +336,38 @@ public class NetworkMonitor : MonoBehaviour
     {
         return new IPAddress(BitConverter.GetBytes(ipAddr)).ToString();
 
+    }
+
+
+
+    /// <summary>
+    /// Take in a source object, and set it's integer values
+    /// </summary>
+    /// <param name="FilebeatSource"></param>
+    public void SetIntegerValues(Source FilebeatSource)
+    {
+        // Calculate the INTEGER version of the SOURCE IP address
+        FilebeatSource.sourceIpInt =
+            IpToInt(FilebeatSource.id_orig_h);
+
+        // Calculate the INTEGER version of the DESTINATION IP address
+        FilebeatSource.destIpInt =
+            IpToInt(FilebeatSource.id_resp_h);
+    }
+
+    /// <summary>
+    /// Take in a source object, and set it's integer values
+    /// </summary>
+    /// <param name="FilebeatSource"></param>
+    public void SetIntegerValues(Source_Packet PacketbeatSource)
+    {
+        // Calculate the INTEGER version of the SOURCE IP address
+        PacketbeatSource.sourceIpInt =
+            IpToInt(PacketbeatSource.packet_source.ip);
+
+        // Calculate the INTEGER version of the DESTINATION IP address
+        PacketbeatSource.destIpInt =
+            IpToInt(PacketbeatSource.dest.ip);
     }
 
 }
