@@ -2,7 +2,7 @@
   "query": {
     "match_all": { }
   },
-  "size": 50,
+  "size": 10,
   "_source": {
     "includes": [
       "transport",

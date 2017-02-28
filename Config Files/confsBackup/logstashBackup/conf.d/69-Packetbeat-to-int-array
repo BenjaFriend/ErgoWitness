@@ -1,0 +1,11 @@
+filter{
+        if [type] == "flow"{
+                mutate{ rename => {"[source]" => "packet_source" } }
+
+                mutate { split => { "[packet_source][ip]" => "." } }
+                mutate { convert => { "[packet_source][ip]" => "integer" } }
+
+                mutate { split => { "[dest][ip]" => "." } }
+                mutate { convert => { "[dest][ip]" => "integer" } }
+        }
+}

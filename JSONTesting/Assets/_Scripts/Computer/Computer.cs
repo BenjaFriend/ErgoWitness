@@ -16,12 +16,11 @@ public class Computer : MonoBehaviour
     /// Use a list for this because it is better for insertion
     /// but the same for searching, there are only benefits to this
     /// </summary>
-    public List<GameObject> connectedPcs;
+    public List<Computer> connectedPcs;
     public List<string> protocolsUsed;
     public List<string> destinationIps;
     public List<int> portsUsed;
     private IncreaseEmission particleController;
-    private Computer connectedComputer;
     private Transform targetPosition;
     #endregion
 
@@ -48,7 +47,7 @@ public class Computer : MonoBehaviour
         particleController = GetComponent<IncreaseEmission>();
         
         // Create a new list object
-        connectedPcs = new List<GameObject>();
+        connectedPcs = new List<Computer>();
 
         protocolsUsed = new List<string>();
         destinationIps = new List<string>();
@@ -67,13 +66,10 @@ public class Computer : MonoBehaviour
     /// list of connected PC's
     /// </summary>
     /// <param name="connectedToMe">the PC that is connected to me</param>
-    public void AddConnectedPC(GameObject connectedToMe)
+    public void AddConnectedPC(Computer connectedToMe)
     {
-        // Get the computer component of this object
-        connectedComputer = connectedToMe.GetComponent<Computer>();
-
         // If the object that we are given is null or it is this game object:
-        if (connectedToMe == null || connectedToMe == gameObject || connectedComputer == null)
+        if (connectedToMe == null || connectedToMe == gameObject)
         {
             // Return out of this method
             return;
@@ -92,21 +88,21 @@ public class Computer : MonoBehaviour
 
         // Check if there is any new info, like a different protocol, different port, different destination, etc
         // If we have never seen this destination before, then add it to our list. 
-        if (!destinationIps.Contains(connectedComputer.sourceInfo.id_orig_h))
+        if (!destinationIps.Contains(connectedToMe.sourceInfo.id_orig_h))
         {
-            destinationIps.Add(connectedComputer.sourceInfo.id_orig_h);
+            destinationIps.Add(connectedToMe.sourceInfo.id_orig_h);
         }
 
         // If we have never seen this protocl before, then add it to the list
-        if (!protocolsUsed.Contains(connectedComputer.sourceInfo.proto))
+        if (!protocolsUsed.Contains(connectedToMe.sourceInfo.proto))
         {
-            protocolsUsed.Add(connectedComputer.sourceInfo.proto);
+            protocolsUsed.Add(connectedToMe.sourceInfo.proto);
         }
 
         // If we have never used this port before, then add it to our list
-        if (!portsUsed.Contains(connectedComputer.sourceInfo.id_orig_p))
+        if (!portsUsed.Contains(connectedToMe.sourceInfo.id_orig_p))
         {
-            portsUsed.Add(connectedComputer.sourceInfo.id_orig_p);
+            portsUsed.Add(connectedToMe.sourceInfo.id_orig_p);
         }
     }
 

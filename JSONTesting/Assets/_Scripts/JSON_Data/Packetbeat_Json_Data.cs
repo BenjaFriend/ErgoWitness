@@ -48,6 +48,7 @@ public class SourceData_Packetbeat
     public int port;
     public string ip;
     public string mac;
+    public int ip_int;
 }
 
 [System.Serializable]
@@ -56,4 +57,5 @@ public class DestinationData_Packetbeat
     public int port;
     public string ip;
     public string mac;
+    public int ip_int;
 }

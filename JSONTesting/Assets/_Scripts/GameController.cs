@@ -18,9 +18,9 @@ public class GameController : MonoBehaviour {
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
     private GameObject obj;             // Use this as a temp calculation variable for better memory
-    private Dictionary<string, GameObject> computersDict; // A dictionary of all the computers I have
+    private Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
 
-    public Dictionary<string, GameObject> ComputersDict { get { return computersDict; } }
+    public Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
     #endregion
 
     void Awake ()
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
         currentGameController = this;
 
         // Initialize the dictionary
-        computersDict = new Dictionary<string, GameObject>();
+        computersDict = new Dictionary<int, Computer>();
 
         // Set the text
         deviceCountText.text = "0";
@@ -44,14 +44,13 @@ public class GameController : MonoBehaviour {
     public void CheckIp(Source jsonSourceData)
     {
         // Make sure that we have something in the array
-        if (jsonSourceData == null || jsonSourceData.id_orig_h == null ||
-            jsonSourceData.id_orig_h == "Null")
+        if (jsonSourceData == null || jsonSourceData.sourceIpInt == 0)
         { 
             return;
         }
 
         // If we know of the source IP already:
-        if (CheckDictionary(jsonSourceData.id_orig_h))
+        if (CheckDictionary(jsonSourceData.sourceIpInt))
         {
             // I want to check if there is a connection that I should add
             CheckConnections(jsonSourceData);
@@ -72,7 +71,7 @@ public class GameController : MonoBehaviour {
     public void NewComputer(Source jsonSourceData)
     {
         // If this is null or we already have the IP somehow...
-        if(jsonSourceData.id_orig_h == null || computersDict.ContainsKey(jsonSourceData.id_orig_h))
+        if(jsonSourceData.id_orig_h == null || computersDict.ContainsKey(jsonSourceData.sourceIpInt))
         {
             return;
         }
@@ -83,20 +82,22 @@ public class GameController : MonoBehaviour {
         // If the object is null then break out of this
         if (obj == null) return;
 
+        Computer newDevice = obj.GetComponent<Computer>();
+
         // Set the DATA on this gameobject to the data from the JSON data
-        obj.GetComponent<Computer>().SourceInfo = jsonSourceData;
+        newDevice.SourceInfo = jsonSourceData;
 
         // Set this object as active in the hierachy so that you can actually see it
         obj.SetActive(true);
 
         // Add the object to the dictionary
-        computersDict.Add(jsonSourceData.id_orig_h, obj);
+        computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
 
         // Check the connections to this, if there are connections then add them to it's list
         CheckConnections(jsonSourceData);
 
         // Check if we can add it to a group
-        IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.id_orig_h);
+        IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.sourceIpInt);
 
 
         // Update the UI that tells us how many devices there are
@@ -121,7 +122,7 @@ public class GameController : MonoBehaviour {
         }
 
         // If we fail to connect them, then create a new computer
-        if (!ConnectComputers(source.id_orig_h,source.id_resp_h))
+        if (!ConnectComputers(source.sourceIpInt, source.destIpInt))
         {
             // We DO NOT have the responding IP on our network, so add it.
             // Make a new source object
@@ -142,9 +143,9 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="IP">The IP of the computer that we want to find</param>
     /// <returns>The transform of the computer</returns>
-    public Transform GetTransform(string IP)
+    public Transform GetTransform(int IP)
     {
-        if (IP == null || IP == "null")
+        if (IP == 0)
         {
             return null;
         }
@@ -160,14 +161,14 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="IP">The IP that we want to know if we have</param>
     /// <returns>True if we have this key</returns>
-    public bool CheckDictionary(string IP)
+    public bool CheckDictionary(int IpInt)
     {
-        if(IP == null || IP == "null")
+        if(IpInt == 0)
         {
             return false;
         }
 
-        return computersDict.ContainsKey(IP);
+        return computersDict.ContainsKey(IpInt);
     }
 
     /// <summary>
@@ -176,7 +177,7 @@ public class GameController : MonoBehaviour {
     /// </summary>
     /// <param name="ipA">The first IP address</param>
     /// <param name="ipB">The second IP address</param>
-    public bool ConnectComputers(string ipA, string ipB)
+    public bool ConnectComputers(int ipA, int ipB)
     {
         if(CheckDictionary(ipA) && CheckDictionary(ipB))
         {

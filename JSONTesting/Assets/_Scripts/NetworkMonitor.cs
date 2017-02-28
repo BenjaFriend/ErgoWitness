@@ -225,7 +225,14 @@ public class NetworkMonitor : MonoBehaviour
         // Loop through our data and send that data to the netflow controller
         for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
         {
-            // Handle it being a none flow data object... so a device on the network
+            // Calculate the INTEGER version of the IP address
+            packetDataObj.hits.hits[i]._source.packet_source.ip_int
+                = IpToInt(packetDataObj.hits.hits[i]._source.packet_source.ip);
+
+            // Calculate the desp IP to an int
+            packetDataObj.hits.hits[i]._source.dest.ip_int
+                = IpToInt(packetDataObj.hits.hits[i]._source.dest.ip);
+
             NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
         }
     }
@@ -242,7 +249,7 @@ public class NetworkMonitor : MonoBehaviour
         {
             return;
         }
-
+        
         // If this data is the same as the last one that we did, 
         // then we don't need to look at any of the other stuff
         if (lastFilebeatRecieved == dataObject.hits.hits[0]._id)
@@ -258,6 +265,14 @@ public class NetworkMonitor : MonoBehaviour
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
+            // Calculate the INTEGER version of the SOURCE IP address
+            dataObject.hits.hits[i]._source.sourceIpInt =
+                IpToInt(dataObject.hits.hits[i]._source.id_orig_h);
+
+            // Calculate the INTEGER version of the DESTINATION IP address
+            dataObject.hits.hits[i]._source.destIpInt =
+                IpToInt(dataObject.hits.hits[i]._source.id_resp_h);
+
             // Send the bro data to the game controller, and add it to the network
             GameController.currentGameController.CheckIp(dataObject.hits.hits[i]._source);
         }
@@ -305,6 +320,24 @@ public class NetworkMonitor : MonoBehaviour
             statusText.text = "Monitor Status: Running";
             statusText.CrossFadeColor(runningColor, 0.3f, true, true);
         }
+    }
+
+    /// <summary>
+    /// Use Bit conversion to send the IP address to an integer
+    /// </summary>
+    /// <param name="ipAddr"></param>
+    /// <returns></returns>
+    private int IpToInt(string ipAddr)
+    {
+        if (ipAddr == null) return 0;
+
+        return BitConverter.ToInt32(IPAddress.Parse(ipAddr).GetAddressBytes(), 0);
+    }
+
+    private string ToString(int ipAddr)
+    {
+        return new IPAddress(BitConverter.GetBytes(ipAddr)).ToString();
+
     }
 
 }

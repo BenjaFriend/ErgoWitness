@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Net;
 
 /// <summary>
 /// This is will manage all of my groups, so if an IP 
@@ -12,6 +14,7 @@ public class IPGroupManager : MonoBehaviour {
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
     public List<IPGroup> groups;    // A list of all the groups that we have
+    public Dictionary<int, IPGroup> groupsDictionary;
     public GameObject groupPrefab;  // The prefab for the IP group
     public float minDistanceApart = 15f;
     public float size = 100f;
@@ -27,6 +30,7 @@ public class IPGroupManager : MonoBehaviour {
     /// </summary>
     void Start ()
     {
+        groupsDictionary = new Dictionary<int, IPGroup>();
         currentIpGroups = this;
         groups = new List<IPGroup>();
         attemptCount = 0;
@@ -38,44 +42,42 @@ public class IPGroupManager : MonoBehaviour {
     /// based on it
     /// </summary>
     /// <param name="ipToCheck">The IP that we want to check if it fits in a group</param>
-    public void CheckGroups(string ipToCheck)
+    public void CheckGroups(int ipToCheck)
     {
-        if (ipToCheck == null) return;
+        // This IP is not valid, so return out of this method
+        if (ipToCheck == 0) return;
 
-        for(int i = 0; i < groups.Count; i++)
+        // Get the first 3 numbers of this IP in an integer
+        int ipFirstThree = GetFirstThreeIpInt(ipToCheck);
+
+        // If the group dictionary has a group with the same first 3 numbers
+        if (groupsDictionary.ContainsKey(ipFirstThree))
         {
-            // if this IP fits into the group
-            if (groups[i].CheckIPv4(ipToCheck))
-            {
-                // Return out of this method, we are done
-                return;
-            }
+            // Add to that group
+            groupsDictionary[ipFirstThree].AddToGroup(ipToCheck);
+
+            // We are done here, nothing else needed
+            return;
         }
 
         // If the IP does not fit into any groups, then make a new group
-        MakeNewGroup(ipToCheck);
+        MakeNewGroup(ipToCheck, ipFirstThree);
     }
 
     /// <summary>
     /// Create a new group for computers to be added to
     /// </summary>
     /// <param name="ipToCheck"></param>
-    private void MakeNewGroup(string ipToCheck)
+    private void MakeNewGroup(int ipToCheck, int groupIPFirstThree)
     {
-        // As long as we can use this, then make a new object
-        if (!CheckIPv4IsValid(ipToCheck, 2))
-        {
-            return;
-        }
-
         // Instatiate a new instance of a group, and set it equal to temp so we can access it
         temp = (GameObject)Instantiate(groupPrefab, transform.position, Quaternion.identity);
     
         // If it doesnt fit then we have to make a new group object
         newGroup = temp.GetComponent<IPGroup>();
 
-        // Set the group address
-        newGroup.GroupAddress = newGroup.ParseIPv4(ipToCheck);
+        // Set the group address to the first 3 numbers of the new IP
+        newGroup.GroupAddress = groupIPFirstThree;
 
         // Set the position of this group to something random
         SetGroupPosition(temp);
@@ -84,42 +86,17 @@ public class IPGroupManager : MonoBehaviour {
         SetGroupColor(newGroup);
 
         // Add the new group to the list of groups
-        groups.Add(newGroup);
-
+        //groups.Add(newGroup);
+        // Add to the dictoinary of groups
+        groupsDictionary.Add(groupIPFirstThree, newGroup);
         // Add the IP to that group
         newGroup.AddToGroup(ipToCheck);
     }
 
     /// <summary>
-    /// Split the ip into an array of strings at every '.'
-    /// If there array length is less then the specified minimum length,
-    /// then return false. Otherwise return true. This is to avoid creating a new instace
-    /// of the objet and then having to destroy it anyway
+    /// Move the given game object to the group spot
     /// </summary>
-    /// <param name="ipToCheck">IP to check</param>
-    /// <param name="minLength">The minimun length of the split array of strings</param>
-    /// <returns></returns>
-    public bool CheckIPv4IsValid(string ipToCheck, int minLength)
-    {
-        // Break out if the string is null
-        if (ipToCheck == null)
-        {
-            return false;
-        }
-
-        // Split the IP address at periods first
-        string[] stringValues = ipToCheck.Split('.');
-
-        // As long as this array actually has useful info about an ip in it
-        if (stringValues.Length <= minLength)
-        {
-            return false;
-        }
-
-        return true;
-   
-    }
-
+    /// <param name="moveMe"></param>
     private void SetGroupPosition(GameObject moveMe)
     {
         attemptCount++;
@@ -188,6 +165,68 @@ public class IPGroupManager : MonoBehaviour {
 
         // Store the last color that we used
         lastColorUsed = x;
+    }
+
+    /// <summary>
+    /// Return an integer that represents
+    /// only the first three numbers of the given IP address
+    /// </summary>
+    /// <param name="ipToCheck">The IP that we are checking</param>
+    /// <returns></returns>
+    public int GetFirstThreeIpInt(int ipToCheck)
+    {
+        // Break out if the string is null
+        if (ipToCheck == 0) return 0;        
+
+        // Send the IP to a string 
+        string ipAsString = IpIntToString(ipToCheck);
+
+
+        // Split the IP address at periods first
+        string[] stringValues = ipAsString.Split('.');
+
+        // Remove the last element off of that array
+        stringValues = stringValues.Take(stringValues.Count() - 1).ToArray();
+
+        // Build up a new string
+        System.Text.StringBuilder builder = new System.Text.StringBuilder();
+        for(int i = 0; i < stringValues.Length; i++)
+        {
+            builder.Append(stringValues[i]);
+            builder.Append('.');
+        }
+
+        // Remove the last period that we dont need
+        builder.Remove(builder.Length - 1, 1);
+
+        // Return the value of the string all put together, CONVERTED TO AN INT
+        return IpToInt(builder.ToString());
+    }
+
+    /// <summary>
+    /// Convert an integer IP value to a string
+    /// </summary>
+    /// <param name="ipAddrInt"></param>
+    /// <returns></returns>
+    private string IpIntToString(int ipAddrInt)
+    {
+        // Make sure that this ip is valid
+        if (ipAddrInt == 0) return null;
+
+        return new IPAddress(System.BitConverter.GetBytes(ipAddrInt)).ToString();
+    }
+
+    /// <summary>
+    /// Convert a string IP address to an integer
+    /// </summary>
+    /// <param name="ipAddr"></param>
+    /// <returns></returns>
+    private int IpToInt(string ipAddr)
+    {
+        // Make sure that this address is valid
+        if (ipAddr == null) return 0;
+
+        return System.BitConverter.ToInt32(IPAddress.Parse(ipAddr).GetAddressBytes(), 0);
     }
 
 }

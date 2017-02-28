@@ -74,5 +74,8 @@ public class Source
     //public int resp_bytes;
     public string service;
     public string proto;
+
+    public int sourceIpInt;
+    public int destIpInt;
 }
 

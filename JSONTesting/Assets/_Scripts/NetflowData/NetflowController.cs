@@ -36,20 +36,20 @@ public class NetflowController : MonoBehaviour {
             return;
         }
 
-        if (packetbeatSource.packet_source.ip == "" || packetbeatSource.dest.ip == "")
+        if (packetbeatSource.packet_source.ip == null || packetbeatSource.dest.ip == null)
         {
             return;
         }
-
+        
         // If the source and destination IP's are known...
-        if (GameController.currentGameController.CheckDictionary(packetbeatSource.packet_source.ip) &&
-            GameController.currentGameController.CheckDictionary(packetbeatSource.dest.ip))
+        if (GameController.currentGameController.CheckDictionary(packetbeatSource.packet_source.ip_int) &&
+            GameController.currentGameController.CheckDictionary(packetbeatSource.dest.ip_int))
         {
             // Increase the emmision of the computer here, because we
             // obviously see some activity with it if we are checking
-            GameController.currentGameController.ComputersDict[packetbeatSource.packet_source.ip].GetComponent<IncreaseEmission>().AddHit();
+            GameController.currentGameController.ComputersDict[packetbeatSource.packet_source.ip_int].GetComponent<IncreaseEmission>().AddHit();
             // Then we can continue on and send out flow data out      
-            SendFlow(packetbeatSource.packet_source.ip, packetbeatSource.dest.ip, packetbeatSource.transport);
+            SendFlow(packetbeatSource.packet_source.ip_int, packetbeatSource.dest.ip_int, packetbeatSource.transport);
         }
         else
         {
@@ -72,7 +72,7 @@ public class NetflowController : MonoBehaviour {
             GameController.currentGameController.CheckIp(newSource);
 
             // Now send the data since we know about it:
-            SendFlow(packetbeatSource.packet_source.ip, packetbeatSource.dest.ip, packetbeatSource.transport);
+            SendFlow(packetbeatSource.packet_source.ip_int, packetbeatSource.dest.ip_int, packetbeatSource.transport);
         }
     }
 
@@ -83,7 +83,7 @@ public class NetflowController : MonoBehaviour {
     /// <param name="sourceIP">The source IP</param>
     /// <param name="destIP">The destination IP</param>
     /// <param name="protocol">the protocol of the object</param>
-    private void SendFlow(string sourceIP, string destIP, string protocol)
+    private void SendFlow(int sourceIP, int destIP, string protocol)
     {
         // Grab a pooled object
         obj = netflowObjectPooler.GetPooledObject();

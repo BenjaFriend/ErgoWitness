@@ -25,8 +25,10 @@ public class Raycast_ExtraInfo : MonoBehaviour {
     private GameObject target;
     private Vector3 screenCenter;
     private Computer compInfo;
+
     private MeshRenderer computerMeshRend;
     private Material[] oldMats;
+    private Material[] newMats;
     #endregion
 
     private void Start()
@@ -35,6 +37,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         screenCenter.x = Screen.width / 2;
         screenCenter.y = Screen.height / 2;
         screenCenter.z = 0;
+
     }
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         if (Physics.Raycast(ray, out hitInfo))
         {
             // Is this object a computer?
-            if (hitInfo.collider.CompareTag("Comp"))
+            if (hitInfo.collider.CompareTag("Comp") && hitInfo.collider.gameObject != target)
             {
                 // Show the info on that particular on that computer
                 target = hitInfo.collider.gameObject;
@@ -57,12 +60,11 @@ public class Raycast_ExtraInfo : MonoBehaviour {
                 // Store the old mats so that we can reset it when we look away
                 oldMats = computerMeshRend.materials;
 
+                // Create a new material array for this object
                 Material[] mats = new Material[2];
 
                 mats[0] = oldMats[0];
                 
-                //outlineMat.shader = outlineShader;
-
                 mats[1] = outlineMat;
 
                 computerMeshRend.materials = mats;
@@ -74,12 +76,14 @@ public class Raycast_ExtraInfo : MonoBehaviour {
                 SetValues(target.GetComponent<Computer>());
 
             }
-            // If we are not hitting a computer anymore, but we are hitting something
-            else if (target != null)
+            // If we are not hitting a computer anymore
+            else if (!hitInfo.collider.CompareTag("Comp") && target !=null)
             {
                 // Release the target variable
                 target = null;
-                Material[] newMats = new Material[1];
+
+                newMats = new Material[1];
+
                 newMats[0] = oldMats[0];
                 // Set the materials to whatever they were
                 computerMeshRend.materials = newMats;
