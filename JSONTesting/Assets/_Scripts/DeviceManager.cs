@@ -9,10 +9,10 @@ using UnityEngine.UI;
 /// It will have a way to STORE all my current 'computers' on the network
 /// It will have a method to check if a
 /// </summary>
-public class GameController : MonoBehaviour {
+public class DeviceManager : MonoBehaviour {
 
     #region Fields
-    public static GameController currentGameController;
+    public static DeviceManager currentDeviceManager;
 
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour {
     void Awake ()
     {
         // Set the static reference
-        currentGameController = this;
+        currentDeviceManager = this;
 
         // Initialize the dictionary
         computersDict = new Dictionary<int, Computer>();

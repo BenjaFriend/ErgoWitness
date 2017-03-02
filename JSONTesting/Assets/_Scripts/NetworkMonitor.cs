@@ -11,7 +11,6 @@ public struct ListeningOptions
     public enum Beat { Packetbeat, Filebeat , Both};
 }
 
-
 /// <summary>
 /// Author: Ben Hoffman
 /// This class will be the main controller for the network monitoring in this visualization.
@@ -259,7 +258,7 @@ public class NetworkMonitor : MonoBehaviour
             // Use the JsonUtility to send the string of data that I got from the server, to a data object
             dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
 
-            // Send to GameController
+            // Send to DeviceManager
             CheckFilebeat();
         }
 
@@ -364,7 +363,7 @@ public class NetworkMonitor : MonoBehaviour
             SetIntegerValues(dataObject.hits.hits[i]._source);
 
             // Send the bro data to the game controller, and add it to the network
-            GameController.currentGameController.CheckIp(dataObject.hits.hits[i]._source);
+            DeviceManager.currentDeviceManager.CheckIp(dataObject.hits.hits[i]._source);
         }
 
     }

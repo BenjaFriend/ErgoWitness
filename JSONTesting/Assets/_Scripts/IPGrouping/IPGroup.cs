@@ -51,10 +51,10 @@ public class IPGroup : MonoBehaviour {
         if (IpAddress == 0) return;
 
         // If our dictionary contains this...
-        if (GameController.currentGameController.CheckDictionary(IpAddress))
+        if (DeviceManager.currentDeviceManager.CheckDictionary(IpAddress))
         {
             // Cache the object here
-            tempObj = GameController.ComputersDict[IpAddress];
+            tempObj = DeviceManager.ComputersDict[IpAddress];
 
             // Add it to our list
             groupedComputers.Add(tempObj);

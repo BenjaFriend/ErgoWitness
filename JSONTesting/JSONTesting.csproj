@@ -80,9 +80,9 @@
     <Compile Include="Assets\_Scripts\Computer\ComputerUI.cs" />
     <Compile Include="Assets\_Scripts\Computer\IncreaseEmission.cs" />
     <Compile Include="Assets\_Scripts\Computer\Rotate_Texture.cs" />
+    <Compile Include="Assets\_Scripts\DeviceManager.cs" />
     <Compile Include="Assets\_Scripts\DeviceUIControlls.cs" />
     <Compile Include="Assets\_Scripts\ExceptionLogger.cs" />
-    <Compile Include="Assets\_Scripts\GameController.cs" />
     <Compile Include="Assets\_Scripts\IPGrouping\IPGroup.cs" />
     <Compile Include="Assets\_Scripts\IPGrouping\IPGroupManager.cs" />
     <Compile Include="Assets\_Scripts\JSON_Data\Json_Data.cs" />
@@ -100,7 +100,6 @@
     <Compile Include="Assets\_Scripts\Spectator\Raycast_ExtraInfo.cs" />
     <Compile Include="Assets\_Scripts\Spectator\StartMenuController.cs" />
     <Compile Include="Assets\_Scripts\Spectator\UIController.cs" />
-    <Compile Include="Assets\_Scripts\WriteNewHeaders.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art Assets\Fonts\Lato\OFL.txt" />

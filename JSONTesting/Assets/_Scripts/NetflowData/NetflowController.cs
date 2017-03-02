@@ -51,12 +51,12 @@ public class NetflowController : MonoBehaviour {
         }
 
         // If the source and destination IP's are known:
-        if (GameController.currentGameController.CheckDictionary(packetbeatSource.sourceIpInt) &&
-            GameController.currentGameController.CheckDictionary(packetbeatSource.destIpInt))
+        if (DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.sourceIpInt) &&
+            DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.destIpInt))
         {
             // Increase the emmision of the computer here, because we
             // obviously see some activity with it if we are checking
-            GameController.ComputersDict[packetbeatSource.sourceIpInt].GetComponent<IncreaseEmission>().AddHit();
+            DeviceManager.ComputersDict[packetbeatSource.sourceIpInt].GetComponent<IncreaseEmission>().AddHit();
 
             // Then we can continue on and send out flow data out      
             SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
@@ -82,7 +82,7 @@ public class NetflowController : MonoBehaviour {
             NetworkMonitor.currentNetworkMonitor.SetIntegerValues(newSource);
 
             // Add them to the network, and wait for that to finish:
-            GameController.currentGameController.CheckIp(newSource);
+            DeviceManager.currentDeviceManager.CheckIp(newSource);
 
             // Now send the data since we know about it:
             SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
@@ -112,24 +112,24 @@ public class NetflowController : MonoBehaviour {
         if(tempNet == null)
             return;
 
-        if(GameController.currentGameController.GetTransform(sourceIP) == null ||
-           GameController.currentGameController.GetTransform(destIP) == null)
+        if(DeviceManager.currentDeviceManager.GetTransform(sourceIP) == null ||
+           DeviceManager.currentDeviceManager.GetTransform(destIP) == null)
         {
             return;
         }
 
         // Set the source of the netflow 
-        tempNet.SourcePos = GameController.currentGameController.GetTransform(sourceIP);
+        tempNet.SourcePos = DeviceManager.currentDeviceManager.GetTransform(sourceIP);
 
         // Set the protocol of the netflow 
         tempNet.Protocol = protocol;
 
         // Set the destination of the netflow obj, which also start the movement 
-        tempNet.DestinationPos = GameController.currentGameController.GetTransform(destIP);
+        tempNet.DestinationPos = DeviceManager.currentDeviceManager.GetTransform(destIP);
 
         obj.SetActive(true);
 
         // Connect the computers, because now they have talked to each other
-        GameController.currentGameController.ConnectComputers(sourceIP, destIP);
+        DeviceManager.currentDeviceManager.ConnectComputers(sourceIP, destIP);
     }
 }
