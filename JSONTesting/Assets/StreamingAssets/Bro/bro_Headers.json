@@ -1,11 +1,8 @@
 {
   "query": {
-        "range": {
-      "start_time": {
-        "gt":"2017-03-01T23:27:40.467Z"
-      }
-    }
+    "match_all": { }
   },
+   "size": 10,
   "_source": {
     "includes": [
       "@timestamp",

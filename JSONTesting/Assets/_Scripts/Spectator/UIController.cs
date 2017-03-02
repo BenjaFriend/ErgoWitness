@@ -14,7 +14,6 @@ public class UIController : MonoBehaviour {
     #region Fields
     public static UIController thisUIController;
     public Movement playerMovement;     // The player movement so we can stop it on pause
-    public Canvas debugInfo;            // The debug menu
     public Canvas gameMenu;             // The pause menu
     public Animator pauseMenu_anim;      // The animator of the menu
     public Animator startMemu_Anim;
@@ -38,7 +37,7 @@ public class UIController : MonoBehaviour {
 
         // Make sure that me menus are OFF to start
         gameMenu.gameObject.SetActive(false);
-        debugInfo.gameObject.SetActive(false);
+
 
         // Make sure that the player can move to start
         playerMovement.enabled = true;
@@ -59,13 +58,6 @@ public class UIController : MonoBehaviour {
             TogglePlayerMovement();
             // Toggle the blur that we are doing
             ToggleBlur();
-        }
-
-        // Toggle the 'debug' menu with the plus key on the num pad or d-pad down
-        if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetAxis("DPadUpDown") < 0f)
-        {
-            // Show the debug menu
-            ToggleMenu(debugInfo);
         }
 	}
     

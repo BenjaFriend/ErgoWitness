@@ -5,7 +5,12 @@ using UnityEngine;
 using System.IO;
 using System.Net;
 using System.Text;
-using UnityEngine.UI;
+
+public struct ListeningOptions
+{
+    public enum Beat { Packetbeat, Filebeat , Both};
+}
+
 
 /// <summary>
 /// Author: Ben Hoffman
@@ -17,15 +22,14 @@ using UnityEngine.UI;
 /// </summary>
 public class NetworkMonitor : MonoBehaviour
 {
+    public ListeningOptions.Beat whichBeat = ListeningOptions.Beat.Both;
 
+    [Range(0f,1f)]
+    public float frequency = 1f;
     #region Fields
     public static NetworkMonitor currentNetworkMonitor;
 
     public string serverIP;
-    public Text current_Index_Text;
-    public Text statusText;
-    public Color runningColor;
-    public Color stoppedColor;
     public bool keepGoing = false;            // If we want to keep going
 
     // The URL of my ELK server
@@ -38,13 +42,27 @@ public class NetworkMonitor : MonoBehaviour
     private byte[] broPostData;        // The post data that we are using
     private byte[] packetPostData;        // The post data that we are using
 
-    private Dictionary<string, string> headers;
+    private Dictionary<string, string> headers_packetbeat;  // The dictionary with all the headers in it
+    private Dictionary<string, string> headers;  // The dictionary with all the headers in it
 
     private string broHeaderString;
-    private string packetHeaderString;
+    private string _Packetbeat_Current_Query;
 
     private string lastFlowRecived;
     private string lastFilebeatRecieved;
+
+    private string _packetbeat_TOP;
+    private string _packetbeat_BOTTOM;
+    private string _latest_packetbeat_time;
+    private string _last_successful_Query;
+    private bool _packetbeat_UseLastSuccess;
+
+
+    private string _bro_TOP;
+    private string _bro_BOTTOM;
+    private string _latest_bro_time;
+
+    private WaitForSeconds waitTime;
 
     public string ServerIP { get { return serverIP; } set { serverIP = value; StartMonitoring();  } }
     #endregion
@@ -63,26 +81,23 @@ public class NetworkMonitor : MonoBehaviour
         packetDataObj = new Packetbeat_Json_Data();
 
         // Initialize the headers
-        headers = new Dictionary<string, string>();
-
-        // Add in content type:
-        headers["Content-Type"] = "application/json";
-
-        // Read in the query that I will use for filebeat from streaming assets
-        string broHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/bro_Headers.json");
-
-        // Read in the query that I will use for packetbeat from streaming assets
-        string packetHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/packetbeat_Headers.json");
-
-        // Get the post data that I will be using, since it will always be the same
-        broPostData = Encoding.GetEncoding("UTF-8").GetBytes(broHeaderString);
-
-        // Get the post data for packetbeat
-        packetPostData = Encoding.GetEncoding("UTF-8").GetBytes(packetHeaderString);
+        headers_packetbeat = new Dictionary<string, string>();
 
         // Initalize the strings to not get a null ref exception
         lastFlowRecived = "";
         lastFilebeatRecieved = "";
+
+        // Read in the top and bottom files
+        _packetbeat_TOP = File.ReadAllText(Application.streamingAssetsPath + "/Packetbeat/packetbeat_Headers_TOP.json");
+        _packetbeat_BOTTOM = File.ReadAllText(Application.streamingAssetsPath + "/Packetbeat/packetbeat_Headers_BOTTOM.json");
+        _latest_packetbeat_time = File.ReadAllText(Application.streamingAssetsPath + "/Packetbeat/latest_packetbeat_time.txt");
+
+        // Set up the bro files how I need to
+        _bro_TOP = File.ReadAllText(Application.streamingAssetsPath + "/Bro/bro_Headers_TOP.json");
+        _bro_BOTTOM = File.ReadAllText(Application.streamingAssetsPath + "/Bro/bro_Headers_BOTTOM.json");
+        _latest_bro_time = File.ReadAllText(Application.streamingAssetsPath + "/Bro/latest_bro_time.txt");
+
+        waitTime = new WaitForSeconds(frequency);
     }
 
     /// <summary>
@@ -93,9 +108,24 @@ public class NetworkMonitor : MonoBehaviour
         // Set up my URL to get info from
         SetUpURL();
 
-        //Start monitoring packetbeat and filebeat
-        StartCoroutine(PostJsonData(elk_url_filebeat, false));
-        StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+        // Start whichever beat we want to list to, or both
+        switch (whichBeat)
+        {
+            case (ListeningOptions.Beat.Packetbeat):
+                StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+                break;
+            case (ListeningOptions.Beat.Filebeat):
+                StartCoroutine(PostJsonData(elk_url_filebeat, false));
+                break;
+            case (ListeningOptions.Beat.Both):
+                StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+                StartCoroutine(PostJsonData(elk_url_filebeat, false));
+                break;
+            default:
+                // There is something wrong here
+                // new Exception("The type of beat is not selected!");
+                break;
+        }
     }
 
     /// <summary>
@@ -148,19 +178,32 @@ public class NetworkMonitor : MonoBehaviour
     /// <returns>The data downloaded from the server</returns>
     private IEnumerator PostJsonData(string url, bool isFlowData)
     {
-        // Clear the headers:
-        headers.Clear();
+        if (isFlowData)
+        {
+            // Clear the headers:
+            headers_packetbeat.Clear();
 
-        // Add in content type:
-        headers["Content-Type"] = "application/json";
+            // Add in content type:
+            headers_packetbeat["Content-Type"] = "application/json";
+        }
+        else
+        {
+            // Clear the headers:
+            headers.Clear();
+
+            // Add in content type:
+            headers["Content-Type"] = "application/json";
+        }
+
 
         // Create a web request object
         WWW myRequest;
 
         if (!isFlowData)
         {
-            // Read in the query that I will use for filebeat from streaming assets
-            broHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/bro_Headers.json");
+            // Set up the query with the latest bro time
+            broHeaderString = _bro_TOP + "\"" + _latest_bro_time + _bro_BOTTOM;
+
             // Get the post data that I will be using, since it will always be the same
             broPostData = Encoding.GetEncoding("UTF-8").GetBytes(broHeaderString);
 
@@ -169,13 +212,22 @@ public class NetworkMonitor : MonoBehaviour
         }
         else
         {
-            // Read in the query that I will use for packetbeat from streaming assets
-            packetHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/packetbeat_Headers.json");
+            // If the last query failed, then fall back to our last successful one
+            if (_packetbeat_UseLastSuccess && _last_successful_Query != null)
+            {
+                _Packetbeat_Current_Query = _last_successful_Query;
+            }
+            else
+            {
+                // Set up the query string with teh latest packetbeat string
+                _Packetbeat_Current_Query = _packetbeat_TOP + "\"" + _latest_packetbeat_time + _packetbeat_BOTTOM;
+            }
+
             // Get the post data for packetbeat
-            packetPostData = Encoding.GetEncoding("UTF-8").GetBytes(packetHeaderString);
+            packetPostData = Encoding.GetEncoding("UTF-8").GetBytes(_Packetbeat_Current_Query);
 
             // Start up the reqest for PACKETBEAT:
-            myRequest = new WWW(url, packetPostData, headers);
+            myRequest = new WWW(url, packetPostData, headers_packetbeat);
         }
 
         // Yield until it's done:
@@ -184,6 +236,7 @@ public class NetworkMonitor : MonoBehaviour
         // Check if we got an error in our request or not
         if (myRequest.error != null || myRequest.text == null)
         {
+            //throw new Exception("There was a request error!");
             Debug.Log("THERE WAS A REQUEST ERROR: " + myRequest.error);
 
             if (myRequest.text != null)
@@ -198,7 +251,7 @@ public class NetworkMonitor : MonoBehaviour
             // Use the JSON utility with the packetbeat data to parse this text
             packetDataObj = JsonUtility.FromJson<Packetbeat_Json_Data>(myRequest.text);
 
-            // Send to Netflow Controller
+            // Start checking packetbeat
             CheckPacketbeat();
         }
         else
@@ -214,6 +267,7 @@ public class NetworkMonitor : MonoBehaviour
         if (keepGoing)
         {
             // Start this again
+            yield return waitTime;
             StartCoroutine(PostJsonData(url, isFlowData));
         }
     }
@@ -225,26 +279,43 @@ public class NetworkMonitor : MonoBehaviour
     /// </summary>
     private void CheckPacketbeat()
     {
+        // ================= Check and make sure that our data is valid =====================
         // Make sure that our data is not null
         if (packetDataObj == null || packetDataObj.hits.hits == null || packetDataObj.hits.hits.Length == 0)
         {
+            _packetbeat_UseLastSuccess = true;
+
+            // Tell this to use the last successful query
             return;
         }
-        Debug.Log(packetDataObj.hits.hits[0]._source.start_time);
-        // If we have seen this data before, then return out of this method
-        // Because that means it is esxactly the same, and no new data has been
-        // pushed to our data base's stack
+
+        // Make sure that this flow is not the same as the last one
         if (lastFlowRecived == packetDataObj.hits.hits[0]._id)
         {
             // If it is then break out and don't bother doing anything, this should
-            // Save on processing power
+            // Save on processing power, and prevent duplicate
             return;
         }
+
+        // Let this know that we no longer need to bank on the last success
+        if (_packetbeat_UseLastSuccess)
+        {
+            _packetbeat_UseLastSuccess = false;
+        }
+
+
+        // ============= Keep track of stuff to prevent duplicates ================
+        // Keep track of our last successful query
+        _last_successful_Query = _Packetbeat_Current_Query;
 
         // It is new, so set the thing we use to check it to the current ID
         lastFlowRecived = packetDataObj.hits.hits[0]._id;
 
-        // Loop through our data and send that data to the netflow controller
+        // Set our latest packetbeat time to the most recent one
+        _latest_packetbeat_time = packetDataObj.hits.hits[0]._source.start_time + "\"";
+
+
+        // ============== Actually loop through our hits data  =========================
         for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
         {
             // Set the integer IP values of this object
@@ -256,11 +327,7 @@ public class NetworkMonitor : MonoBehaviour
                 // Send the data to the netflow controller
                 NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
             }
-        }
-
-        // Keep track of the most recent timestamp, and write it into the file
-        WriteNewHeaders.currentWriter.LastTimestamp_Packetbeat = packetDataObj.hits.hits[0]._source.start_time;
-
+        }        
     }
 
     /// <summary>
@@ -270,7 +337,7 @@ public class NetworkMonitor : MonoBehaviour
     /// </summary>
     private void CheckFilebeat()
     {
-        // Make sure that our data is not null
+        // Make sure that our data is not null, if it is then return
         if (dataObject == null || dataObject.hits.hits == null || dataObject.hits.hits.Length == 0)
         {
             return;
@@ -281,13 +348,15 @@ public class NetworkMonitor : MonoBehaviour
         if (lastFilebeatRecieved == dataObject.hits.hits[0]._id)
         {
             // If it is then break out and don't bother doing anything, this should
-            // Save on processing power
+            // Save on processing power, and prevent duplicated
             return;
         }
 
         // This is a new data object, so keep track of the most recent ID
         lastFilebeatRecieved = dataObject.hits.hits[0]._id;
-        
+
+        _latest_bro_time = dataObject.hits.hits[0]._source.timestamp + "\"";
+
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
@@ -298,49 +367,10 @@ public class NetworkMonitor : MonoBehaviour
             GameController.currentGameController.CheckIp(dataObject.hits.hits[i]._source);
         }
 
-        // Keep track of the most recent timestamp, and write a new one
-        WriteNewHeaders.currentWriter.LastTimestamp_Filebeat = dataObject.hits.hits[0]._source.timestamp;
-
     }
 
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Give the user the option to stop monitoring the network
-    /// Collect the gabrage because they would not notice it happening
-    /// and it could possibly help the situation. 
-    /// </summary>
-    public void ToggleMonitoring()
-    {
-        // Collect garbage now because people wouldn't notice
-        GC.Collect();
 
-        if (keepGoing)
-        {
-            // Tell the method to stop
-            keepGoing = false;
-            // Stop all coroutines
-            StopAllCoroutines();
-            // Set up the UI
-            statusText.text = "Monitor Status: Stopped";
-            statusText.CrossFadeColor(stoppedColor, 0.3f, true, true);
-        }
-        else
-        {
-            // Tell the method to keep going
-            keepGoing = true;
-
-            // Stop all coroutines so that we cna start fresh
-            StopAllCoroutines();
-
-            //Start monitoring packetbeat and filebeat again
-            StartCoroutine(PostJsonData(elk_url_filebeat, false));
-            StartCoroutine(PostJsonData(elk_url_packetbeat, true));
-
-            // Set up the monitoring text
-            statusText.text = "Monitor Status: Running";
-            statusText.CrossFadeColor(runningColor, 0.3f, true, true);
-        }
-    }
+    #region String to integer conversion stuff
 
     /// <summary>
     /// Use Bit conversion to send the IP address to an integer
@@ -353,14 +383,6 @@ public class NetworkMonitor : MonoBehaviour
 
         return BitConverter.ToInt32(IPAddress.Parse(ipAddr).GetAddressBytes(), 0);
     }
-
-    private string ToString(int ipAddr)
-    {
-        return new IPAddress(BitConverter.GetBytes(ipAddr)).ToString();
-
-    }
-
-
 
     /// <summary>
     /// Take in a source object, and set it's integer values
@@ -392,4 +414,5 @@ public class NetworkMonitor : MonoBehaviour
             IpToInt(PacketbeatSource.dest.ip);
     }
 
+    #endregion
 }

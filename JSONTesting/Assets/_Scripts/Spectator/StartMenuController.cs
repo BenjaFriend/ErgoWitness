@@ -9,12 +9,10 @@ using UnityEngine.UI;
 /// </summary>
 public class StartMenuController : MonoBehaviour {
 
-    public InputField serverIP_Input;
     public Canvas reticleCanv;
     public Canvas startCanvas;
-    public Text pingInfoTest;
 
-    private float timeoutTime = 500f;
+    private string serverIP;
 
 	// Use this for initialization
 	void Start ()
@@ -22,15 +20,8 @@ public class StartMenuController : MonoBehaviour {
         // Stop player movement
         UIController.thisUIController.TogglePlayerMovement();
 
-        // Blur the background
-        BoxBlur.currentBlur.doTheBlur = true;
-        pingInfoTest.text = "";
-    }
-
-    public void CheckInputField()
-    {
-        pingInfoTest.text = "Started ping test...";
-        serverIP_Input.interactable = false;
+        // Load in the server IP from the text file
+        serverIP = System.IO.File.ReadAllText(Application.streamingAssetsPath + "/serverIP.txt");
     }
 
 
@@ -46,10 +37,7 @@ public class StartMenuController : MonoBehaviour {
         reticleCanv.gameObject.SetActive(true);
 
         // set the ELK server to the input field
-        NetworkMonitor.currentNetworkMonitor.ServerIP = serverIP_Input.text;
-
-        // Remove any blur
-        BoxBlur.currentBlur.doTheBlur = false;
+        NetworkMonitor.currentNetworkMonitor.ServerIP = serverIP;
 
         // Toggle this start menu
         UIController.thisUIController.ToggleMenu(startCanvas);

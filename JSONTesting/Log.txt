@@ -35094,3 +35094,128 @@ NetworkMonitor.CheckPacketbeat () (at Assets/_Scripts/NetworkMonitor.cs:248)
 NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:202)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Error
+Coroutine '2017-03-02T15:55:05.636Z' couldn't be started!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+<CheckPacketbeat>c__Iterator1:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:261)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:201)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+Coroutine '2017-03-02T15:55:05.636Z' couldn't be started!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+<CheckPacketbeat>c__Iterator1:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:261)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:201)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+Coroutine '2017-03-02T15:55:06.147Z' couldn't be started!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+<CheckPacketbeat>c__Iterator1:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:261)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:201)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+Coroutine '2017-03-02T15:55:37.131Z' couldn't be started!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+<CheckPacketbeat>c__Iterator1:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:261)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:201)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+Coroutine '2017-03-02T15:55:05.636Z' couldn't be started!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+<CheckPacketbeat>c__Iterator1:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:261)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:201)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+Coroutine '2017-03-02T15:55:05.636Z' couldn't be started!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+<CheckPacketbeat>c__Iterator1:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:261)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:201)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+Coroutine '2017-03-02T16:01:22.618Z' couldn't be started!
+UnityEngine.MonoBehaviour:StartCoroutine(String)
+<CheckPacketbeat>c__Iterator1:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:271)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:207)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+FileNotFoundException: Could not find file "D:\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetslatest_packetbeat_time.txt".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:305)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.File.OpenRead (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:363)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamReader.cs:167)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:587)
+System.IO.File.ReadAllText (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:582)
+NetworkMonitor.Start () (at Assets/_Scripts/NetworkMonitor.cs:107)
+
+Exception
+FileNotFoundException: Could not find file "D:\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssets\packetbeat_Headers.json".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:305)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.File.OpenRead (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:363)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamReader.cs:167)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:587)
+System.IO.File.ReadAllText (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:582)
+NetworkMonitor.Start () (at Assets/_Scripts/NetworkMonitor.cs:85)
+
+Exception
+FileNotFoundException: Could not find file "D:\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssets\Packetbeat\latest_bro_time.txt".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:305)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.File.OpenRead (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:363)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamReader.cs:167)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:587)
+System.IO.File.ReadAllText (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:582)
+NetworkMonitor.Start () (at Assets/_Scripts/NetworkMonitor.cs:91)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: s
+System.Text.Encoding.GetBytes (System.String s) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Text/Encoding.cs:268)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:207)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:249)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: s
+System.Text.Encoding.GetBytes (System.String s) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Text/Encoding.cs:268)
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:207)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+<PostJsonData>c__Iterator0:MoveNext() (at Assets/_Scripts/NetworkMonitor.cs:249)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:198)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+NetworkMonitor:StartMonitoring() (at Assets/_Scripts/NetworkMonitor.cs:128)
+NetworkMonitor:set_ServerIP(String) (at Assets/_Scripts/NetworkMonitor.cs:73)
+StartMenuController:StartMonitoring() (at Assets/_Scripts/Spectator/StartMenuController.cs:40)
+UnityEngine.EventSystems.EventSystem:Update()
+

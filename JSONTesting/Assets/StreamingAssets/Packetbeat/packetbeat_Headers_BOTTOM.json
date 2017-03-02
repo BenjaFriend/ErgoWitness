@@ -1,0 +1,25 @@
+} } },
+    "size": 10,
+   "_source": {
+  "includes": [
+    "@timestamp",
+    "start_time",
+    "transport",
+    "dest",
+    "dest.port",
+    "dest.ip",
+    "packet_source",
+    "packet_source.port",
+    "packet_source.ip",
+    "packet_source.mac",
+    "service",
+    "proto",
+    "tags"
+  ]
+}, "sort": [
+  {
+    "@timestamp": {
+      "order": "desc"
+    }
+  }
+] }

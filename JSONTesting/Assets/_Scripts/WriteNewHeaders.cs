@@ -10,66 +10,65 @@ using System.IO;
 /// </summary>
 public class WriteNewHeaders : MonoBehaviour {
 
-    public static WriteNewHeaders currentWriter;
     public int lineToEdit = 5;
 
-    private string sourceFile_Packetbeat;
-    private string sourceFile_Filebeat;
+    private bool isWriting;
+    private string sourceFile;
+    private string[] arrayParsed;
 
-    private string lastTimestamp_Packetbeat;
-    private string lastTimstamp_Filebeat;
+    public bool IsWritting { get { return isWriting; } }
 
-    /// <summary>
-    /// Returns the string value,
-    /// Or sets the string value and writes to the file
-    /// </summary>
-    public string LastTimestamp_Packetbeat
-    {
-        get { return lastTimestamp_Packetbeat; }
-        set
-        {
-            // Set the value of the packetbeat timestamp
-            lastTimestamp_Packetbeat = value;
-            // Rewrite the file
-            WriteHeaders(lastTimestamp_Packetbeat, sourceFile_Packetbeat, lineToEdit);
-        }
-    }
+    public string SourceFile { get { return sourceFile; } set { sourceFile = value; } }
 
-    /// <summary>
-    /// Returns the string value,
-    /// Or sets the string value and writes to the file
-    /// </summary>
-    public string LastTimestamp_Filebeat
-    {
-        get { return LastTimestamp_Filebeat; }
-        set
-        {
-            lastTimstamp_Filebeat = value;
-            WriteHeaders(lastTimstamp_Filebeat, sourceFile_Filebeat, lineToEdit);
-        }
-    }
 
     /// <summary>
     /// Set the file locations that we have 
     /// </summary>
-    void Start ()
+  /*  void Start()
     {
-        currentWriter = this;
-        // Set the source file location
-        sourceFile_Filebeat = Application.streamingAssetsPath + "/bro_Headers.json";
-        sourceFile_Packetbeat = Application.streamingAssetsPath + "/packetbeat_Headers.json";
-    }
-	
+        //currentWriter = this;
+    }*/
 
-    private void WriteHeaders(string newLineText, string fileLocation, int lineToEdit)
+    /// <summary>
+    /// This is a coroutine that will write the specified thing line to the file,
+    /// and return true when it is done
+    /// </summary>
+    /// <param name="newLineText">The line that you want to add</param>
+    /// <param name="fileLocation">The File location that you are writing to</param>
+    /// <param name="lineToEdit">The line number that you are editing</param>
+    /// <returns></returns>
+    public IEnumerator WriteHeaders(string newLineText)
     {
-        // Send the file to a string array, where each element is one line
-        string[] arrLine = File.ReadAllLines(fileLocation);
+        if (sourceFile == null || newLineText == null)
+        {
+            Debug.Log("Something is null in the writer!");
+            yield break;
+        }
+
+        if (isWriting)
+        {
+            // You are already writing, stop
+            Debug.Log("Busy writing a file!!");
+            yield break;            
+        }
+
+        isWriting = true;
+
+        Debug.Log(newLineText);
+        if(arrayParsed == null)
+        {
+            // Send the file to a string array, where each element is one line
+            arrayParsed = File.ReadAllLines(sourceFile);
+        }
+
         // set the line we want to edit to the new line of text
-        arrLine[lineToEdit - 1] = "\"gt\":" + "\"" + newLineText + "\"";
+        arrayParsed[lineToEdit - 1] = "\"gt\":" + "\"" + newLineText + "\"";
         // Write that file to the specified location
-        File.WriteAllLines(fileLocation, arrLine);
+        File.WriteAllLines(sourceFile, arrayParsed);
         
+        isWriting = false;
+
+        yield return null;
     }
 
 }
