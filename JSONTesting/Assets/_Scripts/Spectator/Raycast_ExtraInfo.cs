@@ -11,7 +11,6 @@ public class Raycast_ExtraInfo : MonoBehaviour {
 
     #region Fields
     public Material outlineMat;
-    public Shader outlineShader;
 
     public Text sourceIpText;
     public Text sourcePortText;
@@ -37,7 +36,6 @@ public class Raycast_ExtraInfo : MonoBehaviour {
         screenCenter.x = Screen.width / 2;
         screenCenter.y = Screen.height / 2;
         screenCenter.z = 0;
-
     }
 
     // Update is called once per frame

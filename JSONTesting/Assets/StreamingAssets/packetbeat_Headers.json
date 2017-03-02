@@ -1,10 +1,16 @@
 {
   "query": {
-    "match_all": { }
+    "range": {
+      "start_time": {
+"gt":"2017-03-01T23:27:40.467Z"
+      }
+    }
   },
-  "size": 50,
+  "size": 10,
   "_source": {
     "includes": [
+      "@timestamp",
+      "start_time",
       "transport",
       "dest",
       "dest.port",

@@ -20,12 +20,13 @@ public class NetworkMonitor : MonoBehaviour
 
     #region Fields
     public static NetworkMonitor currentNetworkMonitor;
+
     public string serverIP;
     public Text current_Index_Text;
     public Text statusText;
     public Color runningColor;
     public Color stoppedColor;
-    public bool keepGoing = true;            // If we want to keep going
+    public bool keepGoing = false;            // If we want to keep going
 
     // The URL of my ELK server
     private string elk_url_filebeat;        // The filebeat index
@@ -33,12 +34,19 @@ public class NetworkMonitor : MonoBehaviour
     private Json_Data dataObject;           // The actual JSON data class 
     private Packetbeat_Json_Data packetDataObj;
 
+    // The data of the post request
     private byte[] broPostData;        // The post data that we are using
     private byte[] packetPostData;        // The post data that we are using
 
-    Dictionary<string, string> headers;
+    private Dictionary<string, string> headers;
 
-    private string lastFlowRecived, lastFilebeatRecieved;
+    private string broHeaderString;
+    private string packetHeaderString;
+
+    private string lastFlowRecived;
+    private string lastFilebeatRecieved;
+
+    public string ServerIP { get { return serverIP; } set { serverIP = value; StartMonitoring();  } }
     #endregion
 
     /// <summary>
@@ -47,6 +55,7 @@ public class NetworkMonitor : MonoBehaviour
     /// </summary>
     void Start()
     {
+        // Set the static reference
         currentNetworkMonitor = this;
 
         // Initalize the data objects that I will be using
@@ -55,11 +64,9 @@ public class NetworkMonitor : MonoBehaviour
 
         // Initialize the headers
         headers = new Dictionary<string, string>();
+
         // Add in content type:
         headers["Content-Type"] = "application/json";
-
-        // Set up my URL to get info from
-        SetUpURL();
 
         // Read in the query that I will use for filebeat from streaming assets
         string broHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/bro_Headers.json");
@@ -76,17 +83,19 @@ public class NetworkMonitor : MonoBehaviour
         // Initalize the strings to not get a null ref exception
         lastFlowRecived = "";
         lastFilebeatRecieved = "";
+    }
 
-        // Start looking for filebeat data, NO this is not netflow data
-        //StartCoroutine(PostJsonData(elk_url_filebeat, false));
-        // Start looking for packetbeat data, YES this is netflow data
+    /// <summary>
+    /// Called on the setting of the IP address
+    /// </summary>
+    private void StartMonitoring()
+    {
+        // Set up my URL to get info from
+        SetUpURL();
+
+        //Start monitoring packetbeat and filebeat
+        StartCoroutine(PostJsonData(elk_url_filebeat, false));
         StartCoroutine(PostJsonData(elk_url_packetbeat, true));
-
-        // Say that the monitor is running
-        statusText.text = "Monitor Status: Running";
-        statusText.CrossFadeColor(runningColor, 0.3f, true, true);
-        // Show the current index that we are using
-        current_Index_Text.text = elk_url_filebeat;
     }
 
     /// <summary>
@@ -150,11 +159,21 @@ public class NetworkMonitor : MonoBehaviour
 
         if (!isFlowData)
         {
+            // Read in the query that I will use for filebeat from streaming assets
+            broHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/bro_Headers.json");
+            // Get the post data that I will be using, since it will always be the same
+            broPostData = Encoding.GetEncoding("UTF-8").GetBytes(broHeaderString);
+
             // Start up the reqest for FILEBEAT:
             myRequest = new WWW(url, broPostData, headers);
         }
         else
         {
+            // Read in the query that I will use for packetbeat from streaming assets
+            packetHeaderString = File.ReadAllText(Application.streamingAssetsPath + "/packetbeat_Headers.json");
+            // Get the post data for packetbeat
+            packetPostData = Encoding.GetEncoding("UTF-8").GetBytes(packetHeaderString);
+
             // Start up the reqest for PACKETBEAT:
             myRequest = new WWW(url, packetPostData, headers);
         }
@@ -211,7 +230,7 @@ public class NetworkMonitor : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log(packetDataObj.hits.hits[0]._source.start_time);
         // If we have seen this data before, then return out of this method
         // Because that means it is esxactly the same, and no new data has been
         // pushed to our data base's stack
@@ -238,6 +257,10 @@ public class NetworkMonitor : MonoBehaviour
                 NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
             }
         }
+
+        // Keep track of the most recent timestamp, and write it into the file
+        WriteNewHeaders.currentWriter.LastTimestamp_Packetbeat = packetDataObj.hits.hits[0]._source.start_time;
+
     }
 
     /// <summary>
@@ -264,7 +287,7 @@ public class NetworkMonitor : MonoBehaviour
 
         // This is a new data object, so keep track of the most recent ID
         lastFilebeatRecieved = dataObject.hits.hits[0]._id;
-
+        
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
@@ -274,6 +297,10 @@ public class NetworkMonitor : MonoBehaviour
             // Send the bro data to the game controller, and add it to the network
             GameController.currentGameController.CheckIp(dataObject.hits.hits[i]._source);
         }
+
+        // Keep track of the most recent timestamp, and write a new one
+        WriteNewHeaders.currentWriter.LastTimestamp_Filebeat = dataObject.hits.hits[0]._source.timestamp;
+
     }
 
     /// <summary>
@@ -299,11 +326,6 @@ public class NetworkMonitor : MonoBehaviour
         }
         else
         {
-            // Reset the headers
-            headers = new Dictionary<string, string>();
-            // Add in content type:
-            headers["Content-Type"] = "application/json";
-
             // Tell the method to keep going
             keepGoing = true;
 

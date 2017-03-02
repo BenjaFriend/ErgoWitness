@@ -18,9 +18,9 @@ public class GameController : MonoBehaviour {
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
     //private GameObject obj;             // Use this as a temp calculation variable for better memory
-    private Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
+    private static Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
 
-    public Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
+    public static Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
     #endregion
 
     void Awake ()

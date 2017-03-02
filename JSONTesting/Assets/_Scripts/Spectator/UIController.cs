@@ -10,12 +10,14 @@ using UnityEngine.UI;
 /// game menu
 /// </summary>
 public class UIController : MonoBehaviour {
-    
+
     #region Fields
+    public static UIController thisUIController;
     public Movement playerMovement;     // The player movement so we can stop it on pause
     public Canvas debugInfo;            // The debug menu
     public Canvas gameMenu;             // The pause menu
-    private Animator anim;      // The animator of the menu
+    public Animator pauseMenu_anim;      // The animator of the menu
+    public Animator startMemu_Anim;
 
     private bool showingMenu;           // Are we showing the menu?
     private bool isPaused;              // Are we paused?
@@ -26,10 +28,12 @@ public class UIController : MonoBehaviour {
     /// set the menus to false, enable player movement, set time scale to 1
     /// get the animator component
     /// </summary>
-    void Start ()
+    void Awake ()
     {
+        // Set the static reference
+        thisUIController = this;
+
         // Get te animator for the menu
-        anim = gameMenu.GetComponent<Animator>();
         Time.timeScale = 1f;
 
         // Make sure that me menus are OFF to start
@@ -47,7 +51,7 @@ public class UIController : MonoBehaviour {
     /// </summary>
 	void Update ()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !startMemu_Anim.isActiveAndEnabled)
         {
             // Show the pause menu
             ToggleMenu(gameMenu);
@@ -97,7 +101,7 @@ public class UIController : MonoBehaviour {
     /// not enabled. If we the player movement is not
     /// enabled then enable it
     /// </summary>
-    private void TogglePlayerMovement()
+    public void TogglePlayerMovement()
     {
         // If the player movement is enabled...
         if (playerMovement.isActiveAndEnabled)
@@ -135,7 +139,7 @@ public class UIController : MonoBehaviour {
     /// <summary>
     /// Display the help menu, or hide the help menu
     /// </summary>
-    public void ToggleHelpMenu()
+    public void ToggleHelpMenu(Animator anim)
     {
         // Use the animator to do this
         // If we are not showing the menu and we are in idle state....
@@ -185,7 +189,13 @@ public class UIController : MonoBehaviour {
     public void ShowIsSure(int newWhichMethod)
     {
         whichMethod = newWhichMethod;
-        anim.SetBool("showIsSure", true);
+        if (pauseMenu_anim.isActiveAndEnabled)
+        {
+            pauseMenu_anim.SetBool("showIsSure", true);
+        }else
+        {
+            startMemu_Anim.SetBool("showIsSure", true);
+        }
     }
 
     /// <summary>
@@ -207,7 +217,14 @@ public class UIController : MonoBehaviour {
 
         // Hide ths is sure menu
         whichMethod = -1;
-        anim.SetBool("showIsSure", false);
+        if (pauseMenu_anim.isActiveAndEnabled)
+        {
+            pauseMenu_anim.SetBool("showIsSure", false);
+        }
+        else
+        {
+            startMemu_Anim.SetBool("showIsSure", false);
+        }
 
 
     }
@@ -223,6 +240,9 @@ public class UIController : MonoBehaviour {
         Application.Quit();
     }
 
+    /// <summary>
+    /// Toggle whether or not we are gonna show blur
+    /// </summary>
     private void ToggleBlur()
     {
         if (BoxBlur.currentBlur.doTheBlur)

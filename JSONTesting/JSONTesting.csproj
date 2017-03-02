@@ -98,7 +98,9 @@
     <Compile Include="Assets\_Scripts\Spectator\LookAtCamera.cs" />
     <Compile Include="Assets\_Scripts\Spectator\Movement.cs" />
     <Compile Include="Assets\_Scripts\Spectator\Raycast_ExtraInfo.cs" />
+    <Compile Include="Assets\_Scripts\Spectator\StartMenuController.cs" />
     <Compile Include="Assets\_Scripts\Spectator\UIController.cs" />
+    <Compile Include="Assets\_Scripts\WriteNewHeaders.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art Assets\Fonts\Lato\OFL.txt" />

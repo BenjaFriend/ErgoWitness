@@ -54,7 +54,7 @@ public class IPGroup : MonoBehaviour {
         if (GameController.currentGameController.CheckDictionary(IpAddress))
         {
             // Cache the object here
-            tempObj = GameController.currentGameController.ComputersDict[IpAddress];
+            tempObj = GameController.ComputersDict[IpAddress];
 
             // Add it to our list
             groupedComputers.Add(tempObj);

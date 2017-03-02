@@ -26,7 +26,8 @@ public class HitsParent_Packet
 public class HitsData_Packet
 {
     public string _id;
-    public Source_Packet _source; 
+    //public string @timestamp;
+    public Source_Packet _source;
 }
 
 // This is really the information that I care about right now
@@ -34,6 +35,8 @@ public class HitsData_Packet
 public class Source_Packet
 {
     // Packetbeat stuff
+    public string @timestamp;
+    public string start_time;
     public string transport;
     public DestinationData_Packetbeat dest;
     public SourceData_Packetbeat packet_source;

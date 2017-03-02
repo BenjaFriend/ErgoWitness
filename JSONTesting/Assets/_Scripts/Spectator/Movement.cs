@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour {
 
     public Rigidbody Rb { get { return rb; } set { rb = value; } }
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 

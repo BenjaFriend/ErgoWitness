@@ -33,17 +33,13 @@ public class HitsData
 [System.Serializable]
 public class Source
 {
-    // Packetbeat stuff
-  /*  public string transport;
-    public DestinationData_Packetbeat dest;
-    public SourceData_Packetbeat packet_source;
-
+    public string @timestamp;
     // Snort stuff will show here
     //public int offset;
     //public string packet_data;
     //public string input_type;
     //public string source;
-    */
+    
     // Bro stuff is here
     //public int resp_pkts;
     public int id_orig_p;
@@ -58,17 +54,6 @@ public class Source
     //public int orig_ip_bytes;
     //public int orig_pkts;
     //public int missed_bytes;
-
-    // Both snort and bro have a message
-    //public string message;
-
-    // More snort stuff
-    //public float packet_event_second;
-    //public int packet_sensor_id;
-    //public int packet_length;
-    //public float packet_second;
-    //public bool alert;
-    //public int packet_event_id;
 
     // More bro stuff
     //public int resp_bytes;
