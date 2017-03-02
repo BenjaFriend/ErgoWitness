@@ -35219,3 +35219,13 @@ NetworkMonitor:set_ServerIP(String) (at Assets/_Scripts/NetworkMonitor.cs:73)
 StartMenuController:StartMonitoring() (at Assets/_Scripts/Spectator/StartMenuController.cs:40)
 UnityEngine.EventSystems.EventSystem:Update()
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext () (at Assets/_Scripts/NetworkMonitor.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+NetworkMonitor:StartMonitoring() (at Assets/_Scripts/NetworkMonitor.cs:119)
+NetworkMonitor:set_ServerIP(String) (at Assets/_Scripts/NetworkMonitor.cs:68)
+StartMenuController:StartMonitoring() (at Assets/_Scripts/Spectator/StartMenuController.cs:40)
+UnityEngine.EventSystems.EventSystem:Update()
+

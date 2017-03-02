@@ -33,33 +33,14 @@ public class HitsData
 [System.Serializable]
 public class Source
 {
-    public string @timestamp;
-    // Snort stuff will show here
-    //public int offset;
-    //public string packet_data;
-    //public string input_type;
-    //public string source;
-    
-    // Bro stuff is here
-    //public int resp_pkts;
+    public string runtime_timestamp;
     public int id_orig_p;
-    //public float duration;
-    //public string uid;
     public string id_orig_h;
     public string conn_state;
     public string id_resp_h;
     public int id_resp_p;
-    //public int resp_ip_bytes;
-    //public int orig_bytes;
-    //public int orig_ip_bytes;
-    //public int orig_pkts;
-    //public int missed_bytes;
-
-    // More bro stuff
-    //public int resp_bytes;
     public string service;
     public string proto;
-
     public int sourceIpInt;
     public int destIpInt;
 }

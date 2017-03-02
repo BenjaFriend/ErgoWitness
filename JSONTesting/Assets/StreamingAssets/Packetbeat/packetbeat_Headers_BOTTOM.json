@@ -2,8 +2,7 @@
     "size": 10,
    "_source": {
   "includes": [
-    "@timestamp",
-    "start_time",
+    "runtime_timestamp",
     "transport",
     "dest",
     "dest.port",

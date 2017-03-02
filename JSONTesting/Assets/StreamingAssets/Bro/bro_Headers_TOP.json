@@ -1,5 +1,6 @@
 {
   "query": {
     "range": {
-      "timestamp": 
+      "runtime_timestamp": {
+        "gt":
         

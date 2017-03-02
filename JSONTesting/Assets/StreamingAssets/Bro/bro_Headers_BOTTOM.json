@@ -1,8 +1,8 @@
-
-},
+} } },
+   "size": 10,
   "_source": {
     "includes": [
-      "@timestamp",
+      "runtime_timestamp",
       "id_orig_p",
       "id_orig_p",
       "id_orig_h",

@@ -35,8 +35,7 @@ public class HitsData_Packet
 public class Source_Packet
 {
     // Packetbeat stuff
-    public string @timestamp;
-    public string start_time;
+    public string runtime_timestamp;
     public string transport;
     public DestinationData_Packetbeat dest;
     public SourceData_Packetbeat packet_source;

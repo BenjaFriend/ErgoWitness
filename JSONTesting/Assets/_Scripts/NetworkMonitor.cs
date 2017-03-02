@@ -25,6 +25,7 @@ public class NetworkMonitor : MonoBehaviour
 
     [Range(0f,1f)]
     public float frequency = 1f;
+
     #region Fields
     public static NetworkMonitor currentNetworkMonitor;
 
@@ -44,7 +45,7 @@ public class NetworkMonitor : MonoBehaviour
     private Dictionary<string, string> headers_packetbeat;  // The dictionary with all the headers in it
     private Dictionary<string, string> headers;  // The dictionary with all the headers in it
 
-    private string broHeaderString;
+    private string _Bro_Current_Query;
     private string _Packetbeat_Current_Query;
 
     private string lastFlowRecived;
@@ -60,6 +61,8 @@ public class NetworkMonitor : MonoBehaviour
     private string _bro_TOP;
     private string _bro_BOTTOM;
     private string _latest_bro_time;
+    private string _bro_lastSuccess;
+    private bool _bro_UseLastSuccess;
 
     private WaitForSeconds waitTime;
 
@@ -81,6 +84,7 @@ public class NetworkMonitor : MonoBehaviour
 
         // Initialize the headers
         headers_packetbeat = new Dictionary<string, string>();
+        headers = new Dictionary<string, string>();
 
         // Initalize the strings to not get a null ref exception
         lastFlowRecived = "";
@@ -177,11 +181,11 @@ public class NetworkMonitor : MonoBehaviour
     /// <returns>The data downloaded from the server</returns>
     private IEnumerator PostJsonData(string url, bool isFlowData)
     {
+        #region Make the web Request
         if (isFlowData)
         {
             // Clear the headers:
             headers_packetbeat.Clear();
-
             // Add in content type:
             headers_packetbeat["Content-Type"] = "application/json";
         }
@@ -189,22 +193,28 @@ public class NetworkMonitor : MonoBehaviour
         {
             // Clear the headers:
             headers.Clear();
-
             // Add in content type:
             headers["Content-Type"] = "application/json";
         }
-
 
         // Create a web request object
         WWW myRequest;
 
         if (!isFlowData)
         {
-            // Set up the query with the latest bro time
-            broHeaderString = _bro_TOP + "\"" + _latest_bro_time + _bro_BOTTOM;
+            if(_bro_UseLastSuccess && _bro_lastSuccess != null)
+            {
+                // Use the last success query
+                _Bro_Current_Query = _bro_lastSuccess;
+            }
+            else
+            {
+                // Set up the query with the latest bro time
+                _Bro_Current_Query = _bro_TOP + "\"" + _latest_bro_time + _bro_BOTTOM;
+            }
 
             // Get the post data that I will be using, since it will always be the same
-            broPostData = Encoding.GetEncoding("UTF-8").GetBytes(broHeaderString);
+            broPostData = Encoding.GetEncoding("UTF-8").GetBytes(_Bro_Current_Query);
 
             // Start up the reqest for FILEBEAT:
             myRequest = new WWW(url, broPostData, headers);
@@ -232,6 +242,8 @@ public class NetworkMonitor : MonoBehaviour
         // Yield until it's done:
         yield return myRequest;
 
+        #endregion
+
         // Check if we got an error in our request or not
         if (myRequest.error != null || myRequest.text == null)
         {
@@ -249,7 +261,7 @@ public class NetworkMonitor : MonoBehaviour
         {
             // Use the JSON utility with the packetbeat data to parse this text
             packetDataObj = JsonUtility.FromJson<Packetbeat_Json_Data>(myRequest.text);
-
+            //Debug.Log(myRequest.text);
             // Start checking packetbeat
             CheckPacketbeat();
         }
@@ -257,7 +269,8 @@ public class NetworkMonitor : MonoBehaviour
         {
             // Use the JsonUtility to send the string of data that I got from the server, to a data object
             dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
-
+            
+            //Debug.Log(myRequest.text);
             // Send to DeviceManager
             CheckFilebeat();
         }
@@ -265,7 +278,7 @@ public class NetworkMonitor : MonoBehaviour
         // As long as we didn't say to stop yet
         if (keepGoing)
         {
-            // Start this again
+            // Start this again after the frequency time
             yield return waitTime;
             StartCoroutine(PostJsonData(url, isFlowData));
         }
@@ -291,6 +304,7 @@ public class NetworkMonitor : MonoBehaviour
         // Make sure that this flow is not the same as the last one
         if (lastFlowRecived == packetDataObj.hits.hits[0]._id)
         {
+            _packetbeat_UseLastSuccess = false;
             // If it is then break out and don't bother doing anything, this should
             // Save on processing power, and prevent duplicate
             return;
@@ -311,7 +325,7 @@ public class NetworkMonitor : MonoBehaviour
         lastFlowRecived = packetDataObj.hits.hits[0]._id;
 
         // Set our latest packetbeat time to the most recent one
-        _latest_packetbeat_time = packetDataObj.hits.hits[0]._source.start_time + "\"";
+        _latest_packetbeat_time = packetDataObj.hits.hits[0]._source.runtime_timestamp + "\"";
 
 
         // ============== Actually loop through our hits data  =========================
@@ -336,25 +350,41 @@ public class NetworkMonitor : MonoBehaviour
     /// </summary>
     private void CheckFilebeat()
     {
-        // Make sure that our data is not null, if it is then return
+        // ================= Check and make sure that our data is valid =====================
+        // Make sure that our data is not null
         if (dataObject == null || dataObject.hits.hits == null || dataObject.hits.hits.Length == 0)
         {
+            _bro_UseLastSuccess = true;
+
+            // Tell this to use the last successful query
             return;
         }
-        
-        // If this data is the same as the last one that we did, 
-        // then we don't need to look at any of the other stuff
+
+        // Make sure that this flow is not the same as the last one
         if (lastFilebeatRecieved == dataObject.hits.hits[0]._id)
         {
             // If it is then break out and don't bother doing anything, this should
-            // Save on processing power, and prevent duplicated
+            // Save on processing power, and prevent duplicate
+            _bro_UseLastSuccess = false;
             return;
         }
 
-        // This is a new data object, so keep track of the most recent ID
+        // Let this know that we no longer need to bank on the last success
+        if (_bro_UseLastSuccess)
+        {
+            _bro_UseLastSuccess = false;
+        }
+
+        // ============= Keep track of stuff to prevent duplicates ================
+        // Keep track of our last successful query
+        _last_successful_Query = _Bro_Current_Query;
+
+        // It is new, so set the thing we use to check it to the current ID
         lastFilebeatRecieved = dataObject.hits.hits[0]._id;
 
-        _latest_bro_time = dataObject.hits.hits[0]._source.timestamp + "\"";
+        // Set our latest packetbeat time to the most recent one
+        _latest_bro_time = dataObject.hits.hits[0]._source.runtime_timestamp + "\"";
+
 
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
@@ -365,9 +395,7 @@ public class NetworkMonitor : MonoBehaviour
             // Send the bro data to the game controller, and add it to the network
             DeviceManager.currentDeviceManager.CheckIp(dataObject.hits.hits[i]._source);
         }
-
     }
-
 
     #region String to integer conversion stuff
 
@@ -414,4 +442,15 @@ public class NetworkMonitor : MonoBehaviour
     }
 
     #endregion
+
+    /// <summary>
+    /// Write out the most recent query, and most recent timestamp at
+    /// the end of the application
+    /// </summary>
+    void OnApplicationQuit()
+    {
+        // Write out the latest bro time
+        System.IO.File.WriteAllText(Application.streamingAssetsPath + "/Packetbeat/latest_packetbeat_time.txt", _latest_packetbeat_time);
+        System.IO.File.WriteAllText(Application.streamingAssetsPath + "/Bro/latest_bro_time.txt", _latest_bro_time);
+    }
 }
