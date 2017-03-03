@@ -26,6 +26,8 @@ public class NetworkMonitor : MonoBehaviour
     [Range(0f,1f)]
     public float frequency = 1f;
 
+    public bool showDebug;
+
     #region Fields
     public static NetworkMonitor currentNetworkMonitor;
 
@@ -256,12 +258,15 @@ public class NetworkMonitor : MonoBehaviour
             yield break;
         }
 
+        if(showDebug)
+            Debug.Log(myRequest.text);
+
         // Actually send the JSON data to either the netflow controller or the game controller
         if (isFlowData)
         {
             // Use the JSON utility with the packetbeat data to parse this text
             packetDataObj = JsonUtility.FromJson<Packetbeat_Json_Data>(myRequest.text);
-            //Debug.Log(myRequest.text);
+            
             // Start checking packetbeat
             CheckPacketbeat();
         }
@@ -269,8 +274,7 @@ public class NetworkMonitor : MonoBehaviour
         {
             // Use the JsonUtility to send the string of data that I got from the server, to a data object
             dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
-            
-            //Debug.Log(myRequest.text);
+
             // Send to DeviceManager
             CheckFilebeat();
         }

@@ -184,9 +184,26 @@ public class UIController : MonoBehaviour {
         if (pauseMenu_anim.isActiveAndEnabled)
         {
             pauseMenu_anim.SetBool("showIsSure", true);
-        }else
+        }
+        else
         {
             startMemu_Anim.SetBool("showIsSure", true);
+        }
+    }
+
+    /// <summary>
+    /// Transition the is sure stuff out
+    /// </summary>
+    public void HideIsSure()
+    {
+        whichMethod = -1;
+        if (pauseMenu_anim.isActiveAndEnabled)
+        {
+            pauseMenu_anim.SetBool("showIsSure", false);
+        }
+        else
+        {
+            startMemu_Anim.SetBool("showIsSure", false);
         }
     }
 
