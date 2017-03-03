@@ -24,7 +24,9 @@ public class NetworkMonitor : MonoBehaviour
     public ListeningOptions.Beat whichBeat = ListeningOptions.Beat.Both;
 
     [Range(0f,1f)]
-    public float frequency = 1f;
+    public float broFrequency = 1f;
+    [Range(0f, 1f)]
+    public float packetbeatFrequency = 1f;
 
     public bool showDebug;
 
@@ -66,7 +68,8 @@ public class NetworkMonitor : MonoBehaviour
     private string _bro_lastSuccess;
     private bool _bro_UseLastSuccess;
 
-    private WaitForSeconds waitTime;
+    private WaitForSeconds packetbeat_waitTime;
+    private WaitForSeconds bro_waitTime;
 
     public string ServerIP { get { return serverIP; } set { serverIP = value; StartMonitoring();  } }
     #endregion
@@ -102,7 +105,8 @@ public class NetworkMonitor : MonoBehaviour
         _bro_BOTTOM = File.ReadAllText(Application.streamingAssetsPath + "/Bro/bro_Headers_BOTTOM.json");
         _latest_bro_time = File.ReadAllText(Application.streamingAssetsPath + "/Bro/latest_bro_time.txt");
 
-        waitTime = new WaitForSeconds(frequency);
+        packetbeat_waitTime = new WaitForSeconds(packetbeatFrequency);
+        bro_waitTime = new WaitForSeconds(broFrequency);
     }
 
     /// <summary>
@@ -117,14 +121,14 @@ public class NetworkMonitor : MonoBehaviour
         switch (whichBeat)
         {
             case (ListeningOptions.Beat.Packetbeat):
-                StartCoroutine(PostJsonData(elk_url_packetbeat, true));
+                StartCoroutine(PostJsonData(elk_url_packetbeat, true, packetbeat_waitTime));
                 break;
             case (ListeningOptions.Beat.Filebeat):
-                StartCoroutine(PostJsonData(elk_url_filebeat, false));
+                StartCoroutine(PostJsonData(elk_url_filebeat, false, bro_waitTime));
                 break;
             case (ListeningOptions.Beat.Both):
-                StartCoroutine(PostJsonData(elk_url_packetbeat, true));
-                StartCoroutine(PostJsonData(elk_url_filebeat, false));
+                StartCoroutine(PostJsonData(elk_url_packetbeat, true, packetbeat_waitTime));
+                StartCoroutine(PostJsonData(elk_url_filebeat, false, bro_waitTime));
                 break;
             default:
                 // There is something wrong here
@@ -181,7 +185,7 @@ public class NetworkMonitor : MonoBehaviour
     /// <param name="isFlowData">If this is flow data or not, determines if we send it to the netflow controller
     /// or the game controller</param>
     /// <returns>The data downloaded from the server</returns>
-    private IEnumerator PostJsonData(string url, bool isFlowData)
+    private IEnumerator PostJsonData(string url, bool isFlowData, WaitForSeconds wait)
     {
         #region Make the web Request
         if (isFlowData)
@@ -214,7 +218,7 @@ public class NetworkMonitor : MonoBehaviour
                 // Set up the query with the latest bro time
                 _Bro_Current_Query = _bro_TOP + "\"" + _latest_bro_time + _bro_BOTTOM;
             }
-
+            
             // Get the post data that I will be using, since it will always be the same
             broPostData = Encoding.GetEncoding("UTF-8").GetBytes(_Bro_Current_Query);
 
@@ -264,6 +268,8 @@ public class NetworkMonitor : MonoBehaviour
         // Actually send the JSON data to either the netflow controller or the game controller
         if (isFlowData)
         {
+            if (showDebug)
+                Debug.Log(_Packetbeat_Current_Query);
             // Use the JSON utility with the packetbeat data to parse this text
             packetDataObj = JsonUtility.FromJson<Packetbeat_Json_Data>(myRequest.text);
             
@@ -272,6 +278,9 @@ public class NetworkMonitor : MonoBehaviour
         }
         else
         {
+            if (showDebug)
+                Debug.Log(_Bro_Current_Query);
+
             // Use the JsonUtility to send the string of data that I got from the server, to a data object
             dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);
 
@@ -283,8 +292,8 @@ public class NetworkMonitor : MonoBehaviour
         if (keepGoing)
         {
             // Start this again after the frequency time
-            yield return waitTime;
-            StartCoroutine(PostJsonData(url, isFlowData));
+            yield return wait;
+            StartCoroutine(PostJsonData(url, isFlowData, wait));
         }
     }
 

@@ -14,11 +14,11 @@ public class UIController : MonoBehaviour {
     #region Fields
     public static UIController thisUIController;
     public Movement playerMovement;     // The player movement so we can stop it on pause
-    public Canvas gameMenu;             // The pause menu
-    public Animator pauseMenu_anim;      // The animator of the menu
-    public Animator startMemu_Anim;
+    //public Canvas gameMenu;             // The pause menu
+    public Animator MenuAnim;      // The animator of the menu
+    //public Animator startMemu_Anim;
 
-    private bool showingMenu;           // Are we showing the menu?
+    //private bool showingMenu;           // Are we showing the menu?
     private bool isPaused;              // Are we paused?
     private int whichMethod;
     #endregion
@@ -36,7 +36,7 @@ public class UIController : MonoBehaviour {
         Time.timeScale = 1f;
 
         // Make sure that me menus are OFF to start
-        gameMenu.gameObject.SetActive(false);
+        //gameMenu.gameObject.SetActive(false);
 
 
         // Make sure that the player can move to start
@@ -44,23 +44,21 @@ public class UIController : MonoBehaviour {
 	}
 	
     /// <summary>
-    /// Author: Ben Hoffman
-    /// Look for input from the player and call the 
-    /// necessary functions baced on it
+    /// Allow the player to take control of the camera with the mouse 
+    /// and keyboard
     /// </summary>
-	void Update ()
+	public void TakeControl()
     {
-        if (Input.GetButtonDown("Cancel") && !startMemu_Anim.isActiveAndEnabled)
-        {
-            // Show the pause menu
-            ToggleMenu(gameMenu);
-            // Stop the player from moving
-            TogglePlayerMovement();
-            // Toggle the blur that we are doing
-            ToggleBlur();
-        }
-	}
-    
+
+        // Show the pause menu
+        //ToggleMenu(gameMenu);
+        // Stop the player from moving
+        TogglePlayerMovement();
+        // Toggle the blur that we are doing
+        //ToggleBlur();
+
+    }
+
     /// <summary>
     /// Author: Ben Hoffman
     /// If the given menu is active, then make it not active.
@@ -120,7 +118,7 @@ public class UIController : MonoBehaviour {
         // Set the time to normal
         Time.timeScale = 1f;
         // Hide the menu
-        ToggleMenu(gameMenu);
+        //ToggleMenu(gameMenu);
         // Enable player movement
         TogglePlayerMovement();
         // Make sure that we are not blurry
@@ -181,14 +179,9 @@ public class UIController : MonoBehaviour {
     public void ShowIsSure(int newWhichMethod)
     {
         whichMethod = newWhichMethod;
-        if (pauseMenu_anim.isActiveAndEnabled)
-        {
-            pauseMenu_anim.SetBool("showIsSure", true);
-        }
-        else
-        {
-            startMemu_Anim.SetBool("showIsSure", true);
-        }
+
+        MenuAnim.SetBool("showIsSure", true);
+
     }
 
     /// <summary>
@@ -197,14 +190,9 @@ public class UIController : MonoBehaviour {
     public void HideIsSure()
     {
         whichMethod = -1;
-        if (pauseMenu_anim.isActiveAndEnabled)
-        {
-            pauseMenu_anim.SetBool("showIsSure", false);
-        }
-        else
-        {
-            startMemu_Anim.SetBool("showIsSure", false);
-        }
+
+        MenuAnim.SetBool("showIsSure", false);
+
     }
 
     /// <summary>
@@ -226,14 +214,9 @@ public class UIController : MonoBehaviour {
 
         // Hide ths is sure menu
         whichMethod = -1;
-        if (pauseMenu_anim.isActiveAndEnabled)
-        {
-            pauseMenu_anim.SetBool("showIsSure", false);
-        }
-        else
-        {
-            startMemu_Anim.SetBool("showIsSure", false);
-        }
+
+        MenuAnim.SetBool("showIsSure", false);
+
 
 
     }
