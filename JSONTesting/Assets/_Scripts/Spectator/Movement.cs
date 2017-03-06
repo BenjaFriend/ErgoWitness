@@ -99,6 +99,7 @@ public class Movement : MonoBehaviour {
         rb.velocity += (transform.forward * Input.GetAxis("Vertical") * xMoveSpeed * dt);
         // The X movement
         rb.velocity += (transform.right * Input.GetAxis("Horizontal") * xMoveSpeed * dt);
+
         // Press Q or the LEFT BUMPER to move up
         if (Input.GetKey(KeyCode.Q) || Input.GetAxis("LeftBumper") > 0f)
         {

@@ -9,6 +9,14 @@ using UnityEngine;
 public class NetflowController : MonoBehaviour {
 
     public static NetflowController currentNetflowController;
+    public StreamingInfo_UI streamingUI;
+
+    // The different colors for the protocols
+    public Material tcpMat;
+    public Material udpColor;
+    public Material httpColor;
+    public Material httpsColor;
+    public Material defaultColor;
 
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
 
@@ -79,16 +87,18 @@ public class NetflowController : MonoBehaviour {
             packetbeatSource.proto = packetbeatSource.transport;
 
             //Set the integer values for this object
-            NetworkMonitor.currentNetworkMonitor.SetIntegerValues(newSource);
+            ManageMonitors.currentMonitors.SetIntegerValues(newSource);
 
             // Add them to the network, and wait for that to finish:
             DeviceManager.currentDeviceManager.CheckIp(newSource);
 
             // Now send the data since we know about it:
             SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
+
+            // Tell the streaming UI about this
+            streamingUI.AddInfo(packetbeatSource);
         }
     }
-
 
     /// <summary>
     /// Do the setup for the netflow object
@@ -124,12 +134,44 @@ public class NetflowController : MonoBehaviour {
         // Set the protocol of the netflow 
         tempNet.Protocol = protocol;
 
+        // Set the color of the temp net object
+        SetColor(tempNet);
+
         // Set the destination of the netflow obj, which also start the movement 
         tempNet.DestinationPos = DeviceManager.currentDeviceManager.GetTransform(destIP);
 
+        // Set the object as active in the hierachy, so that the object pooler
+        // Knows not to 
         obj.SetActive(true);
 
         // Connect the computers, because now they have talked to each other
         DeviceManager.currentDeviceManager.ConnectComputers(sourceIP, destIP);
+    }
+
+    /// <summary>
+    /// Set the trail material for the given object
+    /// </summary>
+    /// <param name="objToSet"></param>
+    private void SetColor(NetflowObject objToSet)
+    {
+        // Change to the proper material
+        switch (objToSet.Protocol)
+        {
+            case ("tcp"):
+                objToSet.TrailMaterial = tcpMat;
+                break;
+            case ("udp"):
+                objToSet.TrailMaterial = udpColor;
+                break;
+            case ("http"):
+                objToSet.TrailMaterial = httpColor;
+                break;
+            case ("https"):
+                objToSet.TrailMaterial = httpsColor;
+                break;
+            default:
+                objToSet.TrailMaterial = defaultColor;
+                break;
+        }
     }
 }

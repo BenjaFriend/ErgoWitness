@@ -7,6 +7,7 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
+[RequireComponent(typeof(IncreaseEmission))]
 public class Computer : MonoBehaviour
 {
     #region Fields
@@ -83,7 +84,6 @@ public class Computer : MonoBehaviour
             // Add the connection to my linked list
             connectedPcs.Add(connectedToMe);
         }
-
 
         // Check if there is any new info, like a different protocol, different port, different destination, etc
         // If we have never seen this destination before, then add it to our list. 

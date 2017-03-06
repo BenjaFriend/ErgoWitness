@@ -19,6 +19,7 @@ public class IncreaseEmission : MonoBehaviour {
     {
         // Set the start size to the max
         currentSize = maxHits;
+
         // Set the emission rate to the current one
         AddHit();
     }

@@ -119,7 +119,9 @@
     <None Include="Assets\Art Assets\Shaders\OutlineShader.shader" />
     <None Include="Assets\Art Assets\Shaders\PulsingDissolve.shader" />
     <None Include="Assets\Art Assets\Shaders\RotateTexture.shader" />
+    <None Include="Assets\Art Assets\Shaders\Surface_Texture.shader" />
     <None Include="Assets\Art Assets\Shaders\Texture_Tint.shader" />
+    <None Include="Assets\Art Assets\Shaders\boxBlur.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
@@ -197,6 +199,9 @@
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+    <None Include="Assets\StreamingAssets\Bro\latest_bro_time.txt" />
+    <None Include="Assets\StreamingAssets\Packetbeat\latest_packetbeat_time.txt" />
+    <None Include="Assets\StreamingAssets\serverIP.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

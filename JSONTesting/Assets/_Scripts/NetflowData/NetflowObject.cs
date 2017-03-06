@@ -15,19 +15,9 @@ public class NetflowObject : MoveFromSourceToTarget
 {
 
     #region Fields
-    // The different colors for the protocols
-    public Material tcpMat;
-    public Material udpColor;
-    public Material httpColor;
-    public Material httpsColor;
-    public Material defaultColor;
-
-    //private Transform source;           // Our starting point
-   // private Transform destinaton;       // The spot that we want to be at
     private string protocol;            // Our protocol that we represent
     private TrailRenderer trailRend;    // The trail renderer comonent
     #endregion
-
 
     #region Properties
 
@@ -39,9 +29,11 @@ public class NetflowObject : MoveFromSourceToTarget
         get { return protocol; }
         set
         {
-            protocol = value; SetColor();
+            protocol = value; 
         }
     }
+
+    public Material TrailMaterial { get { return trailRend.material; } set { trailRend.material = value; } }
 
     #endregion
 
@@ -54,32 +46,5 @@ public class NetflowObject : MoveFromSourceToTarget
         // Get the trail renderer component
         trailRend = GetComponent<TrailRenderer>();
     }   
-
-
-    /// <summary>
-    /// Set the color of this based on our protocol
-    /// </summary>
-    private void SetColor()
-    {
-        // Change to the proper material
-        switch (protocol)
-        {
-            case ("tcp"):
-                trailRend.material = tcpMat;
-                break;
-            case ("udp"):
-                trailRend.material = udpColor;
-                break;
-            case ("http"):
-                trailRend.material = httpColor;
-                break;
-            case ("https"):
-                trailRend.material = httpsColor;
-                break;
-            default:
-                trailRend.material = defaultColor;
-                break;
-        }
-    }
 
 }

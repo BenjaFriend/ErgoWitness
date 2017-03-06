@@ -13,13 +13,15 @@ public class UIController : MonoBehaviour {
 
     #region Fields
     public static UIController thisUIController;
-    public Movement playerMovement;     // The player movement so we can stop it on pause
-    //public Canvas gameMenu;             // The pause menu
-    public Animator MenuAnim;      // The animator of the menu
-    //public Animator startMemu_Anim;
 
-    //private bool showingMenu;           // Are we showing the menu?
-    private bool isPaused;              // Are we paused?
+    public Movement playerMovement;     // The player movement so we can stop it on pause
+    public Animator MenuAnim;      // The animator of the menu
+
+    public Sprite playSprite;
+    public Sprite pauseSprite;
+    public Button pausePlayButton;
+
+    private bool isMonitoring;              // Are we monitoring?
     private int whichMethod;
     #endregion
 
@@ -35,27 +37,82 @@ public class UIController : MonoBehaviour {
         // Get te animator for the menu
         Time.timeScale = 1f;
 
-        // Make sure that me menus are OFF to start
-        //gameMenu.gameObject.SetActive(false);
-
-
         // Make sure that the player can move to start
         playerMovement.enabled = true;
-	}
-	
-    /// <summary>
-    /// Allow the player to take control of the camera with the mouse 
-    /// and keyboard
-    /// </summary>
-	public void TakeControl()
-    {
+    }
 
-        // Show the pause menu
-        //ToggleMenu(gameMenu);
-        // Stop the player from moving
-        TogglePlayerMovement();
-        // Toggle the blur that we are doing
-        //ToggleBlur();
+    /// <summary>
+    /// This button is to be clicked after the IP 
+    /// address of the server has been typed in. We need
+    /// to try and ping that host and see if we get a response,
+    /// if we do, then we can procede
+    /// </summary>
+    public void StartMonitoring()
+    {
+        // Make sure that the timescale is 1
+        Time.timeScale = 1f;
+
+        // Stop the player movement, and
+        isMonitoring = true;
+
+        // Start monitoring
+        ManageMonitors.currentMonitors.StartMonitoringObjects();
+    }
+
+    #region Toggles
+
+    /// <summary>
+    /// Stop the monitoring and enable player movement
+    /// </summary>
+    public void ToggleMonitoring()
+    {
+        // If we are monitoring, then stop
+        if (isMonitoring)
+        {
+            Time.timeScale = 0f;
+
+            // Make sure that we know that we are not monitoring anymore
+            isMonitoring = false;
+
+            // Stop monitoring
+            ManageMonitors.currentMonitors.StopMonitor();
+
+            // Set the play button as active
+            pausePlayButton.image.sprite = playSprite;
+        }
+        // Start monitoring again
+        else
+        {
+            pausePlayButton.image.sprite = pauseSprite;
+
+            // Actually start monitoring
+            StartMonitoring();
+
+            // Make sure that our timescale is up
+            Time.timeScale = 1f;
+
+            // Make sure that we know that we are monitoring now
+            isMonitoring = true;
+
+            // Start monitoring
+            StartMonitoring();
+        }
+
+    }
+
+    /// <summary>
+    /// Toggle whether or not we are gonna show blur
+    /// </summary>
+    private void ToggleBlur()
+    {
+        if (BoxBlur.currentBlur.doTheBlur)
+        {
+            BoxBlur.currentBlur.doTheBlur = false;
+        }
+        else
+        {
+            BoxBlur.currentBlur.doTheBlur = true;
+        }
 
     }
 
@@ -75,7 +132,7 @@ public class UIController : MonoBehaviour {
 
             // Select the first button if there is one, this will allow me to traverse the 
             // menu with a controller
-            if(menu.GetComponentInChildren<Button>() != null)
+            if (menu.GetComponentInChildren<Button>() != null)
                 menu.GetComponentInChildren<Button>().Select();
         }
         else
@@ -105,26 +162,9 @@ public class UIController : MonoBehaviour {
             // Enable player movement
             playerMovement.enabled = true;
             playerMovement.Rb.WakeUp();
-
         }
     }
 
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// Resume the game
-    /// </summary>
-    public void Resume()
-    {
-        // Set the time to normal
-        Time.timeScale = 1f;
-        // Hide the menu
-        //ToggleMenu(gameMenu);
-        // Enable player movement
-        TogglePlayerMovement();
-        // Make sure that we are not blurry
-        BoxBlur.currentBlur.doTheBlur = false;
-
-    }
 
     /// <summary>
     /// Display the help menu, or hide the help menu
@@ -146,79 +186,72 @@ public class UIController : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Toggle if we want time scale to be happening or not
-    /// </summary>
-    private void ToggleTimescale()
-    {
-        if(Time.timeScale == 0f)
-        {
-            // Set the time scale to normal
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            // Effectively pause all active effects that are scaled by time
-            Time.timeScale = 0f;
-        }
 
-    }
+    #endregion
 
-    /// <summary>
-    /// Just reload the current scene, which will reset everything
-    /// </summary>
-    public void Reset()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+
+    #region Asking the player if they are sure
 
     /// <summary>
     /// Show the 'are you sure?' prompt
     /// </summary>
     /// <param name="newWhichMethod">Which method do we want to use?</param>
     public void ShowIsSure(int newWhichMethod)
-    {
-        whichMethod = newWhichMethod;
-
-        MenuAnim.SetBool("showIsSure", true);
-
-    }
-
-    /// <summary>
-    /// Transition the is sure stuff out
-    /// </summary>
-    public void HideIsSure()
-    {
-        whichMethod = -1;
-
-        MenuAnim.SetBool("showIsSure", false);
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns>True if the player hits the 'yes' button</returns>
-    public void IsSure()
-    {
-        if(whichMethod == 0)
         {
-            // Call quit
-            Quit();
-        }
-        else if(whichMethod == 1)
-        {
-            // Call reset
-            Reset();
+            whichMethod = newWhichMethod;
+
+            MenuAnim.SetBool("showIsSure", true);
+
         }
 
-        // Hide ths is sure menu
-        whichMethod = -1;
 
-        MenuAnim.SetBool("showIsSure", false);
+        /// <summary>
+        /// Transition the is sure stuff out
+        /// </summary>
+        public void HideIsSure()
+        {
+            whichMethod = -1;
+
+            MenuAnim.SetBool("showIsSure", false);
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>True if the player hits the 'yes' button</returns>
+        public void IsSure()
+        {
+            if(whichMethod == 0)
+            {
+                // Call quit
+                Quit();
+            }
+            else if(whichMethod == 1)
+            {
+                // Call reset
+                Reset();
+            }
+
+            // Hide ths is sure menu
+            whichMethod = -1;
+
+            MenuAnim.SetBool("showIsSure", false);
 
 
 
+        }
+
+    #endregion
+
+
+    #region Application settings
+    /// <summary>
+    /// Just reload the current scene, which will reset everything
+    /// </summary>
+    public void Reset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
@@ -232,19 +265,5 @@ public class UIController : MonoBehaviour {
         Application.Quit();
     }
 
-    /// <summary>
-    /// Toggle whether or not we are gonna show blur
-    /// </summary>
-    private void ToggleBlur()
-    {
-        if (BoxBlur.currentBlur.doTheBlur)
-        {
-            BoxBlur.currentBlur.doTheBlur = false;
-        }
-        else
-        {
-            BoxBlur.currentBlur.doTheBlur = true;
-        }
-
-    }
+    #endregion
 }
