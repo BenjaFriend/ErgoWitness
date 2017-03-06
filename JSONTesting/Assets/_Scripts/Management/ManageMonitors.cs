@@ -16,6 +16,9 @@ public class ManageMonitors : MonoBehaviour {
         currentMonitors = this;
     }
 
+    /// <summary>
+    /// Start the monitoring on all of the 
+    /// </summary>
     public void StartMonitoringObjects()
     {
         // Loop through and start all the moniotrs

@@ -38,7 +38,7 @@ public class UIController : MonoBehaviour {
         Time.timeScale = 1f;
 
         // Make sure that the player can move to start
-        playerMovement.enabled = true;
+        playerMovement.enabled = false;
     }
 
     /// <summary>
@@ -79,6 +79,8 @@ public class UIController : MonoBehaviour {
 
             // Set the play button as active
             pausePlayButton.image.sprite = playSprite;
+
+            playerMovement.enabled = true;
         }
         // Start monitoring again
         else
@@ -96,6 +98,9 @@ public class UIController : MonoBehaviour {
 
             // Start monitoring
             StartMonitoring();
+
+            playerMovement.enabled = false;
+
         }
 
     }

@@ -85,8 +85,6 @@ public class IPGroupManager : MonoBehaviour {
         // Set the color of the group
         SetGroupColor(newGroup);
 
-        // Add the new group to the list of groups
-        //groups.Add(newGroup);
         // Add to the dictoinary of groups
         groupsDictionary.Add(groupIPFirstThree, newGroup);
         // Add the IP to that group
@@ -103,7 +101,7 @@ public class IPGroupManager : MonoBehaviour {
 
         // Increase the size of the groups
         size += increaseAmountPerGroup;
-
+        Automated_Camera.currentAutoCam.ChangeRadius(size);
         // I need to put it in a random spot...
         Vector3 temp = new Vector3(
             Random.Range(-size, size),
@@ -176,7 +174,7 @@ public class IPGroupManager : MonoBehaviour {
     public int GetFirstThreeIpInt(int ipToCheck)
     {
         // Break out if the string is null
-        if (ipToCheck == 0) return 0;        
+        if (ipToCheck == 0) return 0;
 
         // Send the IP to a string 
         string ipAsString = IpIntToString(ipToCheck);
