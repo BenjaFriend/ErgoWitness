@@ -6193,7 +6193,7 @@ MonoBehaviour:
   whatJson: 0
   frequency: 0.342
   showDebug: 0
-  logData: 0
+  logData: 1
   fileLocation_queryTop: /Packetbeat/packetbeat_Headers_TOP.json
   fileLocation_queryBottom: /Packetbeat/packetbeat_Headers_BOTTOM.json
   fileLocation_serverIP: /serverIP.txt

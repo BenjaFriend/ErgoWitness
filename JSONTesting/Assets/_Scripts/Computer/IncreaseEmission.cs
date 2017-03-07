@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that reduces particle system's emission rate
+/// over time
+/// </summary>
 public class IncreaseEmission : MonoBehaviour {
 
     #region Fields
@@ -13,6 +17,7 @@ public class IncreaseEmission : MonoBehaviour {
 
     private float currentSize = 0f;     // The current emission rate over time
     private ParticleSystem.EmissionModule em;   // The emission module of this particle system
+
     #endregion
 
     void Start()
@@ -44,7 +49,8 @@ public class IncreaseEmission : MonoBehaviour {
         // Clamp that emmision rate to the max
         currentSize = Mathf.Clamp(currentSize, minHits, maxHits);
         // Actually change the emission of particles
-        UpdateParticles();
+		UpdateParticles();
+		// Count he hits
     }
 
     /// <summary>

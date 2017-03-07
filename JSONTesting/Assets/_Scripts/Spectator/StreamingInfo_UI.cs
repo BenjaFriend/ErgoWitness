@@ -11,6 +11,8 @@ using UnityEngine.UI;
 public class StreamingInfo_UI : MonoBehaviour {
 
     #region Fields
+	public static StreamingInfo_UI currentStreamInfo;
+
     public SetInfo[] infoObjects;
 
     public float topYCoord = -20;
@@ -19,11 +21,14 @@ public class StreamingInfo_UI : MonoBehaviour {
 
     private Vector2 newPos;
     private RectTransform[] rectTransforms;
+	private Dictionary <int , int> topIpHits;
     #endregion
 
     // Use this for initialization
     void Start ()
     {
+		// Set the static reference
+		currentStreamInfo = this;
         // Set all of the texts to ""
         // Set the rect transform array, so that I don't need to
         // Get the component all the time
@@ -36,6 +41,9 @@ public class StreamingInfo_UI : MonoBehaviour {
             rectTransforms[i] = infoObjects[i].GetComponent<RectTransform>();
             infoObjects[i].ClearText();
         }
+
+		// Instantiate the dictionary of integers
+		topIpHits = new Dictionary<int, int>();
 	}
 
 
@@ -98,4 +106,24 @@ public class StreamingInfo_UI : MonoBehaviour {
             rectTransforms[i].anchoredPosition = newPos;
         }
     }
+
+	/// <summary>
+	/// Checks the top hits for what is the best
+	/// </summary>
+	public void CheckTopHits(int ipInteger, int numHits)
+	{
+
+		// Is the numHits integer larger then any of the ones that we have already?
+
+		// If it is, then put it one above that
+
+		// Remove the one in last place
+
+		// Check if we have this IP address in our dictionary
+		if (topIpHits.ContainsKey (ipInteger)) {
+
+		}
+
+
+	}
 }

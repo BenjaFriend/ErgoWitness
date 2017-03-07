@@ -22,6 +22,9 @@ public class Computer : MonoBehaviour
     public List<string> destinationIps;
     public List<int> portsUsed;
     private IncreaseEmission particleController;
+
+	// This is to keep track of how many times we have seen this PC
+	private int hits = 0;
     #endregion
 
     #region Mutators
@@ -103,6 +106,10 @@ public class Computer : MonoBehaviour
         {
             portsUsed.Add(connectedToMe.sourceInfo.id_orig_p);
         }
+
+		// Tell the streaming information that we got another hit on this IP
+		hits++;
+		//StreamingInfo_UI.currentStreamInfo.CheckTopHits (sourceInfo.sourceIpInt, hits);
     }
 
     /// <summary>

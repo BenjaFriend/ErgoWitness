@@ -435,7 +435,7 @@ public class MonitorObject : MonoBehaviour {
     {
         using (StreamWriter writer = new StreamWriter(filelocation))
         {
-            writer.Write("\n" + log);
+            writer.Write("\n" + log + "\n");
         }
     }
 

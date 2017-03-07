@@ -1,11 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Spectator\UIController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Spectator\StreamingInfo_UI.cs">
     <Files>
-      <File FileName="Assets\_Scripts\MonitorObject.cs" Line="2" Column="34" />
-      <File FileName="Assets\_Scripts\Spectator\Automated_Camera.cs" Line="81" Column="15" />
-      <File FileName="Assets\_Scripts\IPGrouping\IPGroupManager.cs" Line="101" Column="24" />
-      <File FileName="Assets\_Scripts\Spectator\UIController.cs" Line="66" Column="40" />
+      <File FileName="Assets\_Scripts\Spectator\StreamingInfo_UI.cs" Line="124" Column="4" />
+      <File FileName="Assets\_Scripts\Computer\Computer.cs" Line="112" Column="5" />
+      <File FileName="Assets\_Scripts\MonitorObject.cs" Line="440" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,14 +12,18 @@
           <Node name="JSONTesting" expanded="True">
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="_Scripts" expanded="True">
+                <Node name="Computer" expanded="True" />
                 <Node name="IPGrouping" expanded="True" />
                 <Node name="Spectator" expanded="True">
-                  <Node name="UIController.cs" selected="True" />
+                  <Node name="StreamingInfo_UI.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
         <State name="__root__">
