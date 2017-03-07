@@ -61,6 +61,27 @@ public class UIController : MonoBehaviour {
 
     #region Toggles
 
+
+	/// <summary>
+	/// Toggles the main panels of the UI.
+	/// </summary>
+	public void ToggleMainPanels()
+	{
+		// If we ARE showing the menu...
+		if(MenuAnim.GetBool("showMain"))
+		{
+			// Hide it
+			MenuAnim.SetBool("showMain", false);
+		}
+		// if we are NOT showing the menu...
+		else
+		{
+			// Show the menu
+			MenuAnim.SetBool("showMain", true);
+		}
+	}
+
+
     /// <summary>
     /// Stop the monitoring and enable player movement
     /// </summary>

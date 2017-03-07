@@ -10,7 +10,6 @@ public class ObjectPooler : MonoBehaviour {
     public GameObject pooledObject;     // The object that we are pooing
     public int pooledAmount = 20;       // How much we want to initially pool
     public bool willGrow = true;        // If true then this pooler will grow until it reaches the max value
-    public int maxGrowth = 200;         // The MAX size of the pooler
 
     private List<GameObject> pooledObjects;
 
@@ -53,7 +52,7 @@ public class ObjectPooler : MonoBehaviour {
         }
 
         // Grow only if we are told that we should grow, and are not exceeding the max
-        if (willGrow && pooledObjects.Count <= maxGrowth)
+        if (willGrow)
         {
             // Create a new instance of the prefab
             GameObject obj = (GameObject)Instantiate(pooledObject);

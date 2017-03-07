@@ -35656,3 +35656,126 @@ Coroutine continue failure
 Error
 Coroutine continue failure
 
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Exception
+ArgumentException: failed to convert parameters
+System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:484)
+System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
+System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
+UnityEngine.Events.PersistentCall.GetObjectCall (UnityEngine.Object target, System.Reflection.MethodInfo method, UnityEngine.Events.ArgumentCache arguments) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:426)
+UnityEngine.Events.PersistentCall.GetRuntimeCall (UnityEngine.Events.UnityEventBase theEvent) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:393)
+UnityEngine.Events.PersistentCallGroup.Initialize (UnityEngine.Events.InvokableCallList invokableList, UnityEngine.Events.UnityEventBase unityEventBase) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:566)
+UnityEngine.Events.UnityEventBase.RebuildPersistentCallsIfNeeded () (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:732)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:768)
+UnityEngine.Events.UnityEvent.Invoke () (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_0.cs:53)
+UnityEngine.UI.Button.Press () (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:35)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Exception
+ArgumentException: failed to convert parameters
+System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:484)
+System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
+System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
+UnityEngine.Events.PersistentCall.GetObjectCall (UnityEngine.Object target, System.Reflection.MethodInfo method, UnityEngine.Events.ArgumentCache arguments) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:426)
+UnityEngine.Events.PersistentCall.GetRuntimeCall (UnityEngine.Events.UnityEventBase theEvent) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:393)
+UnityEngine.Events.PersistentCallGroup.Initialize (UnityEngine.Events.InvokableCallList invokableList, UnityEngine.Events.UnityEventBase unityEventBase) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:566)
+UnityEngine.Events.UnityEventBase.RebuildPersistentCallsIfNeeded () (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:732)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:768)
+UnityEngine.Events.UnityEvent.Invoke () (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_0.cs:53)
+UnityEngine.UI.Button.Press () (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:35)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Exception
+ArgumentException: failed to convert parameters
+System.Reflection.MonoCMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:484)
+System.Reflection.MonoCMethod.Invoke (BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:528)
+System.Reflection.ConstructorInfo.Invoke (System.Object[] parameters) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/ConstructorInfo.cs:77)
+UnityEngine.Events.PersistentCall.GetObjectCall (UnityEngine.Object target, System.Reflection.MethodInfo method, UnityEngine.Events.ArgumentCache arguments) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:426)
+UnityEngine.Events.PersistentCall.GetRuntimeCall (UnityEngine.Events.UnityEventBase theEvent) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:393)
+UnityEngine.Events.PersistentCallGroup.Initialize (UnityEngine.Events.InvokableCallList invokableList, UnityEngine.Events.UnityEventBase unityEventBase) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:566)
+UnityEngine.Events.UnityEventBase.RebuildPersistentCallsIfNeeded () (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:732)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:768)
+UnityEngine.Events.UnityEvent.Invoke () (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_0.cs:53)
+UnityEngine.UI.Button.Press () (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:35)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+

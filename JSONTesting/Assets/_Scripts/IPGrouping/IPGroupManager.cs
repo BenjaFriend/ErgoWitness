@@ -87,6 +87,7 @@ public class IPGroupManager : MonoBehaviour {
 
         // Add to the dictoinary of groups
         groupsDictionary.Add(groupIPFirstThree, newGroup);
+
         // Add the IP to that group
         newGroup.AddToGroup(ipToCheck);
     }

@@ -10,7 +10,7 @@ using UnityEngine;
 public class Automated_Camera : MonoBehaviour {
 
     public static Automated_Camera currentAutoCam;
-
+	public float zoomSpeed = 1f;
     public float speed = 1f;       // How fast do we want to shoot this thing
     private Vector3 targetpos;
     private Vector3 newPos;
@@ -35,6 +35,21 @@ public class Automated_Camera : MonoBehaviour {
         //transform.LookAt(targetpos);
         //transform.Translate(Vector3.right * Time.deltaTime * speed);
         transform.RotateAround(targetpos, new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime * speed);
+
+		float scrollWheel = Input.GetAxis ("Mouse ScrollWheel");
+		if (scrollWheel > 0f) 
+		{
+			// Scroll up
+			transform.Translate (transform.forward * Time.deltaTime * zoomSpeed );
+			transform.LookAt(targetpos);
+		}
+		else if (scrollWheel < 0f)
+		{
+			// Scroll down
+			transform.Translate (-transform.forward * Time.deltaTime * zoomSpeed );
+			transform.LookAt(targetpos);
+		}
+
     }
 
     /// <summary>
@@ -50,31 +65,28 @@ public class Automated_Camera : MonoBehaviour {
         transform.LookAt(targetpos);
     }
 
+	/// <summary>
+	/// Changes the radius.
+	/// </summary>
+	/// <param name="radius">Radius.</param>
     public void ChangeRadius(float radius)
     {
         newPos = transform.position;
         newPos.z += radius - Mathf.Abs(newPos.z);
 
         // Move the object back farther
-        MoveToDestination(newPos);
+        //MoveToDestination(newPos);
     }
-
-
-    private IEnumerator MoveToDestination(Vector3 destination)
-    {
-        // Break if our destination is null
-        if (destination == null)
-        {
-            yield break;
-        }
-
-        while (Vector3.Distance(transform.position, destination) > 0.5f)
-        {
-            transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
-
-            yield return null;
-        }
-    }
-
+		
+	/// <summary>
+	/// Moves backwards the given amount with transform.translate
+	/// </summary>
+	/// <returns>The backwards.</returns>
+	/// <param name="amount">Amount.</param>
+	private IEnumerator MoveBackwards(float amount)
+	{
+		transform.Translate (-transform.right * Time.deltaTime * zoomSpeed );
+		yield return null;
+	}
 
 }
