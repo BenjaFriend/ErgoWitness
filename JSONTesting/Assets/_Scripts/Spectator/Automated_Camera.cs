@@ -60,7 +60,7 @@ public class Automated_Camera : MonoBehaviour {
     }
 
 
-    public IEnumerator MoveToDestination(Vector3 destination)
+    private IEnumerator MoveToDestination(Vector3 destination)
     {
         // Break if our destination is null
         if (destination == null)

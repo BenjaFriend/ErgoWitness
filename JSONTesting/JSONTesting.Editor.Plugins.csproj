@@ -237,6 +237,8 @@
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\StreamingAssets\Bro\latest_bro_time.txt" />
+    <None Include="Assets\StreamingAssets\ErrorLog.txt" />
+    <None Include="Assets\StreamingAssets\LogFile.txt" />
     <None Include="Assets\StreamingAssets\Packetbeat\latest_packetbeat_time.txt" />
     <None Include="Assets\StreamingAssets\serverIP.txt" />
   </ItemGroup>

@@ -35590,3 +35590,69 @@ MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Script
 MonitorObject+<MakePostRequest>c__Iterator0`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:202)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Error
+Coroutine continue failure
+
+Exception
+UnauthorizedAccessException: Access to the path 'D:/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets' is denied.
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:259)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string)
+MonitorObject.LogData (System.String log) (at Assets/_Scripts/MonitorObject.cs:433)
+MonitorObject+<MakePostRequest>c__Iterator0`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:242)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Exception
+UnauthorizedAccessException: Access to the path 'D:/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets' is denied.
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:259)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string)
+MonitorObject.LogData (System.String log, System.String filelocation) (at Assets/_Scripts/MonitorObject.cs:436)
+MonitorObject+<MakePostRequest>c__Iterator0`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:244)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+

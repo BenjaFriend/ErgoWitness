@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Text;
-using System;
 
-
+/// <summary>
+/// This object will send HTTP queries to the specified server,
+/// and then set up that data to be sent to the device manager
+/// class
+/// </summary>
 public class MonitorObject : MonoBehaviour {
 
     #region Fields
-    // Allow the picking of what beat this is (AKA what query to use)
-    //public ListeningOptions.Beat whichBeat = ListeningOptions.Beat.Both;
     // Allow the picking of which JSON object to use for thi
     public JsonOptions.Option whatJson = JsonOptions.Option.Filebeat;
 
     [Range(0f, 1f)]
-    public float frequency = 1f;
+    public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
 
-    public bool showDebug;
-    private string serverIP;
-    public bool keepGoing = false;            // If we want to keep going
+    public bool showDebug;  // If true then debug.log things
+    private string serverIP;    // The IP address of the server running our database
+    public bool logData = false; // Do we want to query the data
 
     private string indexName;    // Either packetbeat or filebeat
     private string url;        // The filebeat index
@@ -32,22 +32,36 @@ public class MonitorObject : MonoBehaviour {
     public string fileLocation_queryBottom;
     public string fileLocation_serverIP;
     public string fileLocation_latestTime;
+    public string filelocation_LogFile;
+    private string filelocation_ErrorLog = "/ErrorLog.txt";
 
     private string last_unique_id;
 
+    // The query data that we will use to build our request
     private string _query_TOP;
     private string _query_BOTTOM;
+    // The latest successful time stamp that we used to make a request
     private string _latest_time;
+    // This is true if we want to use our last success, which means that the newest query failed
     private bool _UseLastSuccess;
+
     private byte[] _PostData;        // The post data that we are using
 
-    private WaitForSeconds _waitTime;
-
+    private WaitForSeconds _waitTime;   // A wait object so that we only need to create it once
+    
+    private IEnumerator request_Coroutine;  // The coroutine that is running the web request
     #endregion
 
-    // Use this for initialization
+    /// <summary>
+    /// Read in all of the query information, the server IP, and initalize the headers
+    /// for use in the query. Set up the URL as necessary. Create a wait time object
+    /// so that we only need to create it once
+    /// </summary>
     void Start()
     {
+        filelocation_LogFile = Application.streamingAssetsPath + filelocation_LogFile;
+        filelocation_ErrorLog = Application.streamingAssetsPath + filelocation_ErrorLog;
+
         // Load in the query from the file locations
         _query_TOP = File.ReadAllText(Application.streamingAssetsPath + fileLocation_queryTop);
         _query_BOTTOM = File.ReadAllText(Application.streamingAssetsPath + fileLocation_queryBottom);
@@ -67,6 +81,11 @@ public class MonitorObject : MonoBehaviour {
         SetUpURL();
     }
 
+    /// <summary>
+    /// Set up the string that will be our URL based
+    /// on whether we are to use Filebeat or 
+    /// packetbeat, and the current date
+    /// </summary>
     private void SetUpURL()
     {
         switch (whatJson)
@@ -89,85 +108,127 @@ public class MonitorObject : MonoBehaviour {
         url = "http://" + serverIP + ":9200/" + indexName + "-";
 
         // Set up the year
-        string dateUrl = DateTime.Today.Year.ToString() + ".";
+        string dateUrl = System.DateTime.Today.Year.ToString() + ".";
 
         // Make sure we have proper format on the month
-        if (DateTime.Today.Month < 10)
+        if (System.DateTime.Today.Month < 10)
         {
-            dateUrl += "0" + DateTime.Today.Month.ToString() + ".";
+            dateUrl += "0" + System.DateTime.Today.Month.ToString() + ".";
         }
         else
         {
-            dateUrl += DateTime.Today.Month.ToString() + ".";
+            dateUrl += System.DateTime.Today.Month.ToString() + ".";
         }
         // Handle the day
-        if (DateTime.Today.Day < 10)
+        if (System.DateTime.Today.Day < 10)
         {
-            dateUrl += "0" + DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            dateUrl += "0" + System.DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
         else
         {
-            dateUrl += DateTime.Today.Day.ToString() + "/_search?pretty=true";
+            dateUrl += System.DateTime.Today.Day.ToString() + "/_search?pretty=true";
         }
 
         // Add the date to each of the URL's
         url += dateUrl;
     }
 
+    /// <summary>
+    /// Start the HTTP request coroutine, and store the instane in the 
+    /// request_Courinte field
+    /// </summary>
     public void StartMonitor()
-    { 
+    {
+        // If we are already running this corountine, then stop it first
+        if (request_Coroutine != null)
+        {
+            StopMonitor();
+        }              
+
         Packetbeat_Json_Data packetdata;
         Json_Data filebeatdata;
         // Start whichever beat we want to list to, or both
         switch (whatJson)
         {
             case (JsonOptions.Option.Packetbeat):
+                // Initalize the packetbeat request
                 packetdata = new Packetbeat_Json_Data();
-                StartCoroutine(MakePostRequest(packetdata));
+                // Store the coroutine, so that we can stop it specifically
+                request_Coroutine = MakePostRequest(packetdata);
+                // Start to request the data
+                StartCoroutine(request_Coroutine);
                 break;
             case (JsonOptions.Option.Filebeat):
                 filebeatdata = new Json_Data();
-                StartCoroutine(MakePostRequest(filebeatdata));
+
+                // Keep track of the co routine, so that we can stop it specifically
+                request_Coroutine = MakePostRequest(filebeatdata);
+
+                StartCoroutine(request_Coroutine);
                 break;
             default:
-
                 // There is something wrong here
                 // new Exception("The type of beat is not selected!");
                 break;
         }
     }
 
+    /// <summary>
+    /// Stop the request coroutine
+    /// </summary>
     public void StopMonitor()
     {
-        StopAllCoroutines();
+        // Stop the store coroutine as long as it exists
+        if(request_Coroutine != null)
+        {
+            StopCoroutine(request_Coroutine);
+        }
+        // Otherwise stop everything as a failsafe
+        else
+        {
+            StopAllCoroutines();
+        }
     }
 
+    /// <summary>
+    /// Take in what JSON class to use, and create a WWW request based off of
+    /// the queries that we were given. At the end, wait (1 - frequency) and then
+    /// start the method again recursively
+    /// </summary>
+    /// <typeparam name="T">What serialized JSON class we want to use</typeparam>
+    /// <param name="dataObject">The JSON data object</param>
+    /// <returns>A finished WWW request to the given server</returns>
     private IEnumerator MakePostRequest<T>(T dataObject) 
     {
+        // Make sure that this data object is no null
         if(dataObject == null)
         {
+            // Break out of the coroutine
             yield break;
         }
 
         // Clear the headers:
         headers.Clear();
+
         // Add in content type:
         headers["Content-Type"] = "application/json";
 
         // Create a web request object
         WWW myRequest;
 
+        // If we do not want to use the alst successful query...
         if (!_UseLastSuccess)
         {
             // Build the query
             _Current_Query = _query_TOP + "\"" + _latest_time + _query_BOTTOM;
         }
-
+        // If our query is empty then break out because it will fail
         if(_Current_Query == null) yield  break;
 
         // Get the post data that I will be using, since it will always be the same
-        _PostData = Encoding.GetEncoding("UTF-8").GetBytes(_Current_Query);
+        _PostData = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(_Current_Query);
 
+        // Initalize the WWW request to have our query and proper URL/headers
         myRequest = new WWW(url, _PostData, headers);
 
         // Set the priority to high and see what happens?
@@ -179,10 +240,11 @@ public class MonitorObject : MonoBehaviour {
         // Check if we got an error in our request or not
         if (myRequest.error != null || myRequest.text == null)
         {
-            Debug.Log("THERE WAS A REQUEST ERROR: " + myRequest.error);
-            Debug.Log("The Query that failed: \n" + _Current_Query);
+            // Log all the error data if there was one
+            LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
+            LogData("The Query that failed: \n" + _Current_Query, filelocation_ErrorLog);
             if (myRequest.text != null)
-                Debug.Log(myRequest.text);
+                LogData("The HTTP request text:\n" + myRequest.text, filelocation_ErrorLog);
             // If there was an error, then stop
             yield break;
         }
@@ -191,6 +253,11 @@ public class MonitorObject : MonoBehaviour {
         if (showDebug)
             Debug.Log(myRequest.text);
 
+        // If we want to log this data, then send this string to the log writer
+        if (logData)
+        {
+            LogData(myRequest.text, filelocation_LogFile);
+        }
 
         // Create a new data object using the type of JSON that it is
         dataObject = JsonUtility.FromJson<T>(myRequest.text);
@@ -208,15 +275,10 @@ public class MonitorObject : MonoBehaviour {
             CheckData(myFilebeat);
         }
 
-
-        // As long as we didn't say to stop yet
-        if (keepGoing)
-        {
-            // Start this again after the frequency time
-            yield return _waitTime;
-            StartCoroutine(MakePostRequest(dataObject));
-        }
-
+        // Start this again after the frequency time
+        yield return _waitTime;
+        request_Coroutine = MakePostRequest(dataObject);
+        StartCoroutine(request_Coroutine);
     }
 
     private void CheckData(Packetbeat_Json_Data packetDataObj)
@@ -330,7 +392,7 @@ public class MonitorObject : MonoBehaviour {
     {
         if (ipAddr == null) return 0;
 
-        return BitConverter.ToInt32(System.Net.IPAddress.Parse(ipAddr).GetAddressBytes(), 0);
+        return System.BitConverter.ToInt32(System.Net.IPAddress.Parse(ipAddr).GetAddressBytes(), 0);
     }
 
     /// <summary>
@@ -364,6 +426,18 @@ public class MonitorObject : MonoBehaviour {
     }
 
     #endregion
+
+    /// <summary>
+    /// Write the given string to the specifed log file field
+    /// </summary>
+    /// <param name="log">What we want to write out</param>
+    private void LogData(string log, string filelocation)
+    {
+        using (StreamWriter writer = new StreamWriter(filelocation))
+        {
+            writer.Write("\n" + log);
+        }
+    }
 
     /// <summary>
     /// Write out the most recent query, and most recent timestamp at
