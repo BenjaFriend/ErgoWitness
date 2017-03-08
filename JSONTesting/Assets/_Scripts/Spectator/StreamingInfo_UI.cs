@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,9 @@ public class StreamingInfo_UI : MonoBehaviour {
     #region Fields
 	public static StreamingInfo_UI currentStreamInfo;
 
+	public int _leadboardDisplaySize = 5;
     public SetInfo[] infoObjects;
+    public LeaderboardItem[] leaderboardItems;
 
     public float topYCoord = -20;
     public float bottomYCoord = -80;
@@ -21,7 +24,9 @@ public class StreamingInfo_UI : MonoBehaviour {
 
     private Vector2 newPos;
     private RectTransform[] rectTransforms;
-	private Dictionary <int , int> topIpHits;
+
+	private Dictionary <int , int> leaderboards;
+    
     #endregion
 
     // Use this for initialization
@@ -42,8 +47,8 @@ public class StreamingInfo_UI : MonoBehaviour {
             infoObjects[i].ClearText();
         }
 
-		// Instantiate the dictionary of integers
-		topIpHits = new Dictionary<int, int>();
+        // Instantiate the dictionary of integers
+        leaderboards = new Dictionary<int, int>();
 	}
 
 
@@ -54,8 +59,12 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source_Packet newInfoObject)
     {
-        // I need to move all of the objects down by a certain amount
-        for(int i = 0; i < rectTransforms.Length; i++)
+        if (newInfoObject.sourceIpInt == -1 || newInfoObject.destIpInt == -1 || newInfoObject.runtime_timestamp == null)
+        {
+            return;
+        }
+            // I need to move all of the objects down by a certain amount
+            for (int i = 0; i < rectTransforms.Length; i++)
         {
             // Get a reference to the variable
             newPos = rectTransforms[i].anchoredPosition;
@@ -84,6 +93,11 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source newFilebeatObj)
     {
+        if(newFilebeatObj.sourceIpInt == -1 || newFilebeatObj.destIpInt == -1 || newFilebeatObj.runtime_timestamp == null)
+        {
+            return;
+        }
+
         // I need to move all of the objects down by a certain amount
         for (int i = 0; i < rectTransforms.Length; i++)
         {
@@ -107,23 +121,55 @@ public class StreamingInfo_UI : MonoBehaviour {
         }
     }
 
-	/// <summary>
-	/// Checks the top hits for what is the best
-	/// </summary>
-	public void CheckTopHits(int ipInteger, int numHits)
-	{
+    /// <summary>
+    /// Checks the top hits for what is the best
+    /// </summary>
+    public void CheckTopHits(string ipInteger, int numHits)
+    {
+        int newScore = numHits;
+        string newName = ipInteger;
+        string oldName = "";
+        int oldScore = 0;
 
-		// Is the numHits integer larger then any of the ones that we have already?
+        for (int i = 0; i < _leadboardDisplaySize; i++)
+        {
+            if (PlayerPrefs.HasKey(i + "HScore"))
+            {
+                if (PlayerPrefs.GetInt(i + "HScore") < newScore)
+                {
+                    // new score is higher than the stored score
+                    oldScore = PlayerPrefs.GetInt(i + "HScore");
+                    oldName = PlayerPrefs.GetString(i + "HScoreName");
+                    PlayerPrefs.SetInt(i + "HScore", newScore);
+                    PlayerPrefs.SetString(i + "HScoreName", newName);
+                    newScore = oldScore;
+                    newName = oldName;
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt(i + "HScore", newScore);
+                PlayerPrefs.SetString(i + "HScoreName", newName);
+                newScore = 0;
+                newName = "";
+            }
+        }
 
-		// If it is, then put it one above that
+        // Set the UI now to what we have
+        for(int i = 0; i < leaderboardItems.Length; i++)
+        {
+            leaderboardItems[i].SetText(PlayerPrefs.GetString(i + "HScoreName"), PlayerPrefs.GetInt( i + "HScore"));
+        }
+        //Debug.Log("The highest score is: " + PlayerPrefs.GetString(0 + "HScoreName") + "  " + PlayerPrefs.GetInt(0 + "HScore"));
+    }
 
-		// Remove the one in last place
-
-		// Check if we have this IP address in our dictionary
-		if (topIpHits.ContainsKey (ipInteger)) {
-
-		}
-
-
-	}
+    /// <summary>
+    /// Write out the most recent query, and most recent timestamp at
+    /// the end of the application
+    /// </summary>
+    void OnApplicationQuit()
+    {
+        // Clear the player prefs when we quit
+        PlayerPrefs.DeleteAll();
+    }
 }

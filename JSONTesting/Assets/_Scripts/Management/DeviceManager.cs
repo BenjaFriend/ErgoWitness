@@ -100,7 +100,6 @@ public class DeviceManager : MonoBehaviour {
         // Check if we can add it to a group
         IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.sourceIpInt);
 
-
         // Update the UI that tells us how many devices there are
         deviceCountText.text = computersDict.Count.ToString();
 

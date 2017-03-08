@@ -51,6 +51,7 @@ public class SetInfo : MonoBehaviour {
         }
         catch (Exception e)
         {
+            
             Debug.Log(e.Message);
         }
     }
@@ -60,11 +61,19 @@ public class SetInfo : MonoBehaviour {
     /// </summary>
     public void ClearText()
     {
-        timestamp.text = "";
-        source.text = "";
-        dest.text = "";
-        port.text = "";
-        protocol.text = "";
+        try
+        {
+
+            timestamp.text = "";
+            source.text = "";
+            dest.text = "";
+            port.text = "";
+            protocol.text = "";
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
 }

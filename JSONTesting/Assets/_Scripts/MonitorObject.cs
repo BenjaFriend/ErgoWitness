@@ -335,6 +335,10 @@ public class MonitorObject : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Check the data for a Json Object
+    /// </summary>
+    /// <param name="dataObject"></param>
     private void CheckData(Json_Data dataObject)
     {
         // ================= Check and make sure that our data is valid =====================

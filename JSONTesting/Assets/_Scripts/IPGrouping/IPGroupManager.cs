@@ -25,6 +25,16 @@ public class IPGroupManager : MonoBehaviour {
     private GameObject temp;        // Temp reference to a gameObject
     private int attemptCount;
 
+    private void Awake()
+    {
+        if (currentIpGroups == null)
+        {
+            currentIpGroups = this;
+        }
+        else if (currentIpGroups != this)
+            Destroy(gameObject);
+    }
+
     /// <summary>
     /// Set the static referce, initialize the list of groups
     /// </summary>

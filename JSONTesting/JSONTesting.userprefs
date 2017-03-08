@@ -2,35 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Spectator\StreamingInfo_UI.cs">
     <Files>
-      <File FileName="Assets\_Scripts\Spectator\StreamingInfo_UI.cs" Line="124" Column="4" />
+      <File FileName="Assets\_Scripts\Spectator\StreamingInfo_UI.cs" Line="129" Column="3" />
       <File FileName="Assets\_Scripts\Computer\Computer.cs" Line="112" Column="5" />
-      <File FileName="Assets\_Scripts\MonitorObject.cs" Line="440" Column="6" />
+      <File FileName="Assets\_Scripts\MonitorObject.cs" Line="418" Column="6" />
+      <File FileName="Assets\_Scripts\NetflowData\NetflowController.cs" Line="78" Column="71" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="JSONTesting" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="_Scripts" expanded="True">
-                <Node name="Computer" expanded="True" />
-                <Node name="IPGrouping" expanded="True" />
-                <Node name="Spectator" expanded="True">
-                  <Node name="StreamingInfo_UI.cs" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State name="__root__">
-          <Node name="JSONTesting" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -68,6 +68,16 @@ public class NetworkMonitor : MonoBehaviour
 
     #endregion
 
+    private void Awake()
+    {
+        if (currentNetworkMonitor == null)
+        {
+            currentNetworkMonitor = this;
+        }
+        else if (currentNetworkMonitor != this)
+            Destroy(gameObject);
+    }
+
     /// <summary>
     /// Author: Ben Hoffman
     /// Purpose: Just start the coroutine that will constantly find the data

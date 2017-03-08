@@ -28,7 +28,14 @@ public class NetflowController : MonoBehaviour {
     /// </summary>
     private void Awake()
     {
-        currentNetflowController = this;
+        if (currentNetflowController == null)
+        {
+            currentNetflowController = this;
+        }
+        else if (currentNetflowController != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
