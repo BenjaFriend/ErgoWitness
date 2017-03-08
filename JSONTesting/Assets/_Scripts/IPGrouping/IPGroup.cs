@@ -8,12 +8,14 @@ using UnityEngine;
 /// first 3 numbers. I.E. 192.168.1.XXX, all IP's with "192.168.1"
 /// would be in this group
 /// </summary>
+[RequireComponent(typeof(Light))]
 public class IPGroup : MonoBehaviour {
 
     public Material groupColor;        // The color of the group
     public float increasePerComputer = 0.5f;
     public float radius = 5f;
     public float minDistanceApart = 1f;
+    public float lightRangeScaler = 5f;
 
     public List<Computer> groupedComputers;
 
@@ -25,6 +27,8 @@ public class IPGroup : MonoBehaviour {
 
     private Vector3 temp;           // Store a temp positoin for calcuations
     private Collider[] neighbors;   // Store a temp array of colliders for calculations
+    private Light myPointLight;
+
     public int GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
 
 
@@ -39,6 +43,8 @@ public class IPGroup : MonoBehaviour {
 
         // Set the attempt count
         attemptCount = 0;
+        myPointLight = GetComponent<Light>();
+        myPointLight.range = radius * lightRangeScaler;
     }
 
     /// <summary>

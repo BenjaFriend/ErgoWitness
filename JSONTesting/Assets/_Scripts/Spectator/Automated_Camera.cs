@@ -40,13 +40,13 @@ public class Automated_Camera : MonoBehaviour {
 		if (scrollWheel > 0f) 
 		{
 			// Scroll up
-			transform.Translate (transform.forward * Time.deltaTime * zoomSpeed );
+			transform.Translate (Vector3.forward * Time.deltaTime * zoomSpeed );
 			transform.LookAt(targetpos);
 		}
 		else if (scrollWheel < 0f)
 		{
 			// Scroll down
-			transform.Translate (-transform.forward * Time.deltaTime * zoomSpeed );
+			transform.Translate (-Vector3.forward * Time.deltaTime * zoomSpeed );
 			transform.LookAt(targetpos);
 		}
 

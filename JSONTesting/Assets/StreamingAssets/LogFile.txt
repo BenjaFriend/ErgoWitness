@@ -8,289 +8,339 @@
     "failed" : 0
   },
   "hits" : {
-    "total" : 24,
+    "total" : 87,
     "max_score" : null,
     "hits" : [
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3xffQL9inTyIjOB",
+        "_id" : "AVqwG8kRfQL9inTyphHt",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "stats" : {
-              "net_bytes_total" : 60,
-              "net_packets_total" : 1
-            },
-            "mac" : "00:50:56:fb:43:14"
+            "port" : 27971,
+            "ip" : "10.10.8.97",
+            "mac" : "00:16:47:9d:f2:d3"
           },
           "packet_source" : {
+            "port" : 52943,
             "stats" : {
-              "net_bytes_total" : 60,
+              "net_bytes_total" : 64,
               "net_packets_total" : 1
             },
-            "mac" : "00:0c:29:5e:39:50"
+            "ip" : "10.0.2.15",
+            "mac" : "08:00:27:4d:6c:13"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999119036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3xffQL9inTyIjOC",
+        "_id" : "AVqwG8kSfQL9inTyphHz",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
-          "transport" : "udp",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "port" : 123,
+            "port" : 445,
+            "ip" : "192.179.35.198",
+            "mac" : "00:16:47:9d:f2:cf"
+          },
+          "packet_source" : {
+            "port" : 3917,
             "stats" : {
-              "net_bytes_total" : 90,
+              "net_bytes_total" : 66,
               "net_packets_total" : 1
             },
-            "ip" : "91.189.89.198",
-            "mac" : "00:50:56:fb:43:14"
+            "ip" : "192.168.203.200",
+            "mac" : "00:0c:29:be:c9:5d"
           },
-          "packet_source" : {
-            "port" : 51149,
+          "tags" : [
+            "beats_input_raw_event"
+          ]
+        },
+        "sort" : [
+          1489013286026
+        ]
+      },
+      {
+        "_index" : "packetbeat-2017.03.08",
+        "_type" : "flow",
+        "_id" : "AVqwG8kSfQL9inTyphH6",
+        "_score" : null,
+        "_source" : {
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
+          "dest" : {
             "stats" : {
-              "net_bytes_total" : 90,
+              "net_bytes_total" : 70,
               "net_packets_total" : 1
             },
-            "ip" : "192.168.137.130",
-            "mac" : "00:0c:29:5e:39:50"
+            "port" : 52848,
+            "ip" : "192.168.204.57",
+            "mac" : "00:16:47:9d:f2:cf"
           },
-          "tags" : [
-            "beats_input_raw_event"
-          ]
-        },
-        "sort" : [
-          1488999119036
-        ]
-      },
-      {
-        "_index" : "packetbeat-2017.03.08",
-        "_type" : "flow",
-        "_id" : "AVqvQ3xffQL9inTyIjOD",
-        "_score" : null,
-        "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
-          "transport" : "udp",
-          "dest" : {
-            "port" : 123,
+          "packet_source" : {
+            "port" : 55553,
             "stats" : {
-              "net_bytes_total" : 90,
+              "net_bytes_total" : 478,
               "net_packets_total" : 1
             },
-            "ip" : "91.189.89.198",
-            "mac" : "00:50:56:fb:43:14"
-          },
-          "packet_source" : {
-            "port" : 57095,
-            "stats" : {
-              "net_bytes_total" : 90,
-              "net_packets_total" : 1
-            },
-            "ip" : "192.168.137.130",
-            "mac" : "00:0c:29:5e:39:50"
+            "ip" : "192.168.203.75",
+            "mac" : "00:90:f5:3f:40:cd"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999119036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3xffQL9inTyIjOE",
+        "_id" : "AVqwG8kSfQL9inTyphH8",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "ipv6" : "ff02::1:ff9d:f2d2",
-            "mac" : "33:33:ff:9d:f2:d2"
+            "port" : 80,
+            "stats" : {
+              "net_bytes_total" : 3633,
+              "net_packets_total" : 8
+            },
+            "ip" : "192.168.24.151",
+            "mac" : "00:16:47:9d:f2:cd"
           },
           "packet_source" : {
+            "port" : 40460,
             "stats" : {
-              "net_bytes_total" : 86,
-              "net_packets_total" : 1
+              "net_bytes_total" : 2264,
+              "net_packets_total" : 9
             },
-            "ipv6" : "fe80::c1cf:fa42:a54c:7f6c",
-            "mac" : "00:50:56:c0:00:08"
+            "ip" : "192.168.201.72",
+            "mac" : "00:0c:29:8c:17:4c"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999119036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3xffQL9inTyIjOF",
+        "_id" : "AVqwG8kSfQL9inTyphIA",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "ipv6" : "ff02::1:ff9d:f2cf",
-            "mac" : "33:33:ff:9d:f2:cf"
+            "stats" : {
+              "net_bytes_total" : 4075,
+              "net_packets_total" : 7
+            },
+            "port" : 80,
+            "ip" : "192.168.24.151",
+            "mac" : "00:16:47:9d:f2:cd"
           },
           "packet_source" : {
+            "port" : 40411,
             "stats" : {
-              "net_bytes_total" : 172,
-              "net_packets_total" : 2
+              "net_bytes_total" : 2334,
+              "net_packets_total" : 10
             },
-            "ipv6" : "fe80::c1cf:fa42:a54c:7f6c",
-            "mac" : "00:50:56:c0:00:08"
+            "ip" : "192.168.201.72",
+            "mac" : "00:0c:29:8c:17:4c"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999119036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3xffQL9inTyIjOG",
+        "_id" : "AVqwG8kSfQL9inTyphIC",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "ipv6" : "ff02::1:ff9d:f2d1",
-            "mac" : "33:33:ff:9d:f2:d1"
+            "port" : 80,
+            "stats" : {
+              "net_bytes_total" : 3633,
+              "net_packets_total" : 8
+            },
+            "ip" : "192.168.24.151",
+            "mac" : "00:16:47:9d:f2:cd"
           },
           "packet_source" : {
+            "port" : 40420,
             "stats" : {
-              "net_bytes_total" : 172,
-              "net_packets_total" : 2
+              "net_bytes_total" : 1989,
+              "net_packets_total" : 9
             },
-            "ipv6" : "fe80::c1cf:fa42:a54c:7f6c",
-            "mac" : "00:50:56:c0:00:08"
+            "ip" : "192.168.201.72",
+            "mac" : "00:0c:29:8c:17:4c"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999119036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3xffQL9inTyIjOH",
+        "_id" : "AVqwG8kSfQL9inTyphIQ",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "ipv6" : "ff02::1:ff9d:f2d0",
-            "mac" : "33:33:ff:9d:f2:d0"
+            "port" : 80,
+            "stats" : {
+              "net_bytes_total" : 2915,
+              "net_packets_total" : 5
+            },
+            "ip" : "192.168.24.151",
+            "mac" : "00:16:47:9d:f2:cd"
           },
           "packet_source" : {
+            "port" : 40441,
             "stats" : {
-              "net_bytes_total" : 86,
-              "net_packets_total" : 1
+              "net_bytes_total" : 1927,
+              "net_packets_total" : 8
             },
-            "ipv6" : "fe80::c1cf:fa42:a54c:7f6c",
-            "mac" : "00:50:56:c0:00:08"
+            "ip" : "192.168.201.72",
+            "mac" : "00:0c:29:8c:17:4c"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999119036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3xefQL9inTyIjOA",
+        "_id" : "AVqwG8kSfQL9inTyphIc",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:59.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "mac" : "ff:ff:ff:ff:ff:ff"
+            "port" : 80,
+            "stats" : {
+              "net_bytes_total" : 5380,
+              "net_packets_total" : 11
+            },
+            "ip" : "192.168.24.151",
+            "mac" : "00:16:47:9d:f2:cd"
           },
           "packet_source" : {
+            "port" : 40496,
             "stats" : {
-              "net_bytes_total" : 780,
-              "net_packets_total" : 13
+              "net_bytes_total" : 2610,
+              "net_packets_total" : 10
             },
-            "mac" : "00:50:56:c0:00:08"
+            "ip" : "192.168.201.72",
+            "mac" : "00:0c:29:8c:17:4c"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999119036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3iCfQL9inTyIjN4",
+        "_id" : "AVqwG8kSfQL9inTyphIg",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:58.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "mac" : "ff:ff:ff:ff:ff:ff"
+            "stats" : {
+              "net_bytes_total" : 4219,
+              "net_packets_total" : 9
+            },
+            "port" : 80,
+            "ip" : "192.168.24.151",
+            "mac" : "00:16:47:9d:f2:cd"
           },
           "packet_source" : {
             "stats" : {
-              "net_bytes_total" : 780,
-              "net_packets_total" : 13
+              "net_bytes_total" : 2259,
+              "net_packets_total" : 9
             },
-            "mac" : "00:50:56:c0:00:08"
+            "port" : 40487,
+            "ip" : "192.168.201.72",
+            "mac" : "00:0c:29:8c:17:4c"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999118036
+          1489013286026
         ]
       },
       {
         "_index" : "packetbeat-2017.03.08",
         "_type" : "flow",
-        "_id" : "AVqvQ3iCfQL9inTyIjN_",
+        "_id" : "AVqwG8kSfQL9inTyphIi",
         "_score" : null,
         "_source" : {
-          "runtime_timestamp" : "2017-03-08T18:51:58.036Z",
+          "runtime_timestamp" : "2017-03-08T22:48:06.026Z",
+          "transport" : "tcp",
           "dest" : {
-            "ipv6" : "ff02::1:ff9d:f2d0",
-            "mac" : "33:33:ff:9d:f2:d0"
+            "port" : 80,
+            "stats" : {
+              "net_bytes_total" : 4217,
+              "net_packets_total" : 9
+            },
+            "ip" : "192.168.24.151",
+            "mac" : "00:16:47:9d:f2:cd"
           },
           "packet_source" : {
+            "port" : 40481,
             "stats" : {
-              "net_bytes_total" : 86,
-              "net_packets_total" : 1
+              "net_bytes_total" : 2123,
+              "net_packets_total" : 7
             },
-            "ipv6" : "fe80::c1cf:fa42:a54c:7f6c",
-            "mac" : "00:50:56:c0:00:08"
+            "ip" : "192.168.201.72",
+            "mac" : "00:0c:29:8c:17:4c"
           },
           "tags" : [
             "beats_input_raw_event"
           ]
         },
         "sort" : [
-          1488999118036
+          1489013286026
         ]
       }
     ]

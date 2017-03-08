@@ -8,7 +8,8 @@ public class MoveFromSourceToTarget : MonoBehaviour {
 
     private Transform sourcePos;           // Our starting point
     private Transform destinatonPos;       // The spot that we want to be at
-
+    private IEnumerator movingRoutine;
+    private bool hasArrived;
     #region Mutators
     /// <summary>
     /// On set this changes the current position to source position
@@ -36,11 +37,19 @@ public class MoveFromSourceToTarget : MonoBehaviour {
         {
             destinatonPos = value;
             // Stop the coroutine and start it again with a new destination
-            StopCoroutine("MoveToDestination");
-            StartCoroutine("MoveToDestination");
+            if(movingRoutine != null)
+            {
+                StopCoroutine(movingRoutine);
+            }
+
+            movingRoutine = MoveToDestination();
+
+            StartCoroutine(movingRoutine);
         }
     }
 
+    public IEnumerator MovingRoutine { get { return movingRoutine; } }
+    public bool HasArrived { get { return hasArrived; } }
     #endregion
 
     /// <summary>
@@ -51,6 +60,7 @@ public class MoveFromSourceToTarget : MonoBehaviour {
     /// <returns>Movement of this object towards the destiantion</returns>
     public IEnumerator MoveToDestination()
     {
+        hasArrived = false;
         // Break if our destination is null
         if (destinatonPos == null || sourcePos == null)
         {
@@ -63,5 +73,6 @@ public class MoveFromSourceToTarget : MonoBehaviour {
 
             yield return null;
         }
+        hasArrived = true;
     }
 }
