@@ -72,7 +72,7 @@ public class SetInfo : MonoBehaviour {
         }
         catch (Exception e)
         {
-
+            Debug.Log(e.Message);
         }
     }
 

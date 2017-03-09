@@ -112,7 +112,7 @@ public class IPGroupManager : MonoBehaviour {
 
         // Increase the size of the groups
         size += increaseAmountPerGroup;
-        Automated_Camera.currentAutoCam.ChangeRadius(size);
+
         // I need to put it in a random spot...
         Vector3 temp = new Vector3(
             Random.Range(-size, size),
@@ -134,7 +134,10 @@ public class IPGroupManager : MonoBehaviour {
             moveMe.transform.position = temp;
             // Reset the attempt count
             attemptCount = 0;
-        }         
+
+            // Have the camera look at my final position
+            //Automated_Camera.currentAutoCam.ChangeTarget(moveMe.transform);
+        }
     }
 
     /// <summary>

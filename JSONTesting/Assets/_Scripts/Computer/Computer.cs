@@ -117,7 +117,7 @@ public class Computer : MonoBehaviour
     /// <summary>
     /// I will use this to draw lines for right now
     /// </summary>
-    private void OnRenderObject()
+  /*  private void OnRenderObject()
     {
         // Set the material to be used for the first line
         connectionColor.SetPass(0);
@@ -131,6 +131,6 @@ public class Computer : MonoBehaviour
         }
 
         GL.End();
-    }
+    }*/
 
 }

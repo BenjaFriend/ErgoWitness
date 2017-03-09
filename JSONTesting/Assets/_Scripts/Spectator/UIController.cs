@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour {
     public static UIController thisUIController;
 
     public Movement playerMovement;     // The player movement so we can stop it on pause
+    public Automated_Camera autoCam;
     public Animator MenuAnim;      // The animator of the menu
 
     public Sprite playSprite;
@@ -39,6 +40,7 @@ public class UIController : MonoBehaviour {
 
         // Make sure that the player can move to start
         playerMovement.enabled = false;
+        autoCam.enabled = true;
     }
 
     /// <summary>
@@ -60,6 +62,35 @@ public class UIController : MonoBehaviour {
     }
 
     #region Toggles
+
+    /// <summary>
+    /// This method will toggle between the player being in control,
+    /// and the camera automatically rotating
+    /// </summary>
+    public void TogglePlayerControl()
+    {
+        // If the player is in controll, then make then not in controll
+        if (playerMovement.enabled)
+        {
+            // Disable player movement
+            playerMovement.enabled = false;
+            // Sleep the player rigidbody
+            playerMovement.Rb.Sleep();
+
+            //Enable camera movement
+            autoCam.enabled = true;
+        }
+        else
+        {
+            // Disable camera movement
+            autoCam.enabled = false;
+
+            // Enable player movement
+            playerMovement.enabled = true;
+            // Wake up the player rigidbody
+            playerMovement.Rb.WakeUp();
+        }
+    }
 
 
 	/// <summary>
@@ -126,21 +157,6 @@ public class UIController : MonoBehaviour {
 
     }
 
-    /// <summary>
-    /// Toggle whether or not we are gonna show blur
-    /// </summary>
-    private void ToggleBlur()
-    {
-        if (BoxBlur.currentBlur.doTheBlur)
-        {
-            BoxBlur.currentBlur.doTheBlur = false;
-        }
-        else
-        {
-            BoxBlur.currentBlur.doTheBlur = true;
-        }
-
-    }
 
     /// <summary>
     /// Author: Ben Hoffman
@@ -195,20 +211,20 @@ public class UIController : MonoBehaviour {
     /// <summary>
     /// Display the help menu, or hide the help menu
     /// </summary>
-    public void ToggleHelpMenu(Animator anim)
+    public void ToggleHelpMenu()
     {
         // Use the animator to do this
         // If we are not showing the menu and we are in idle state....
-        if (!anim.GetBool("showHelp") && anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (!MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             // Show the menu
-            anim.SetBool(("showHelp"), true);
+            MenuAnim.SetBool(("showHelp"), true);
         }
         // If we are showing the menu and we are in that state too
-        else if (anim.GetBool("showHelp") && anim.GetCurrentAnimatorStateInfo(0).IsName("ShowHelpMenu"))
+        else if (MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("ShowHelpMenu"))
         {
             // Hide the menu
-            anim.SetBool(("showHelp"), false);
+            MenuAnim.SetBool(("showHelp"), false);
         }
     }
 
@@ -223,50 +239,50 @@ public class UIController : MonoBehaviour {
     /// </summary>
     /// <param name="newWhichMethod">Which method do we want to use?</param>
     public void ShowIsSure(int newWhichMethod)
+    {
+        whichMethod = newWhichMethod;
+
+        MenuAnim.SetBool("showIsSure", true);
+
+    }
+
+
+    /// <summary>
+    /// Transition the is sure stuff out
+    /// </summary>
+    public void HideIsSure()
+    {
+        whichMethod = -1;
+
+        MenuAnim.SetBool("showIsSure", false);
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>True if the player hits the 'yes' button</returns>
+    public void IsSure()
+    {
+        if (whichMethod == 0)
         {
-            whichMethod = newWhichMethod;
-
-            MenuAnim.SetBool("showIsSure", true);
-
+            // Call quit
+            Quit();
+        }
+        else if (whichMethod == 1)
+        {
+            // Call reset
+            Reset();
         }
 
+        // Hide ths is sure menu
+        whichMethod = -1;
 
-        /// <summary>
-        /// Transition the is sure stuff out
-        /// </summary>
-        public void HideIsSure()
-        {
-            whichMethod = -1;
-
-            MenuAnim.SetBool("showIsSure", false);
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>True if the player hits the 'yes' button</returns>
-        public void IsSure()
-        {
-            if(whichMethod == 0)
-            {
-                // Call quit
-                Quit();
-            }
-            else if(whichMethod == 1)
-            {
-                // Call reset
-                Reset();
-            }
-
-            // Hide ths is sure menu
-            whichMethod = -1;
-
-            MenuAnim.SetBool("showIsSure", false);
+        MenuAnim.SetBool("showIsSure", false);
 
 
 
-        }
+    }
 
     #endregion
 

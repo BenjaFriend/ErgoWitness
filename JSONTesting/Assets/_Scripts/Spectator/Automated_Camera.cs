@@ -12,43 +12,53 @@ public class Automated_Camera : MonoBehaviour {
     public static Automated_Camera currentAutoCam;
 	public float zoomSpeed = 1f;
     public float speed = 1f;       // How fast do we want to shoot this thing
-    private Vector3 targetpos;
+    public MoveFromSourceToTarget targetpos;
+
+    private GameObject centerOfWorld;
     private Vector3 newPos;
 
-	/// <summary>
+
+
+    /// <summary>
     /// Set up the target position and look at it
     /// </summary>
-	void Start ()
+    void Start ()
     {
         // Set the reference
         currentAutoCam = this;
         // Set the target position
-        targetpos = Vector3.zero;
-        transform.LookAt(targetpos);
+        //targetpos = Vector3.zero;
+        transform.LookAt(targetpos.transform.position);
+
+        // Make a new game object at the center of the world
+        centerOfWorld = new GameObject("centerOfWorld");
+        centerOfWorld.transform.position = Vector3.zero;
+        centerOfWorld.transform.rotation = Quaternion.identity;
     }
 
     /// <summary>
     /// Move the camera aroudn the target
     /// </summary>
-    void Update ()
+    void Update()
     {
         //transform.LookAt(targetpos);
         //transform.Translate(Vector3.right * Time.deltaTime * speed);
-        transform.RotateAround(targetpos, new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime * speed);
+        transform.RotateAround(targetpos.transform.position, new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime * speed);
 
-		float scrollWheel = Input.GetAxis ("Mouse ScrollWheel");
-		if (scrollWheel > 0f) 
-		{
-			// Scroll up
-			transform.Translate (transform.forward * Time.deltaTime * zoomSpeed );
-			transform.LookAt(targetpos);
-		}
-		else if (scrollWheel < 0f)
-		{
-			// Scroll down
-			transform.Translate (-transform.forward * Time.deltaTime * zoomSpeed );
-			transform.LookAt(targetpos);
-		}
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollWheel > 0f)
+        {
+            // Scroll in
+            transform.Translate(Vector3.forward * Time.deltaTime * zoomSpeed);
+            transform.LookAt(targetpos.transform.position);
+        }
+        else if (scrollWheel < 0f)
+        {
+            // Scroll out
+            transform.Translate(-Vector3.forward * Time.deltaTime * zoomSpeed);
+            transform.LookAt(targetpos.transform.position);
+        }
+        transform.LookAt(targetpos.transform.position);
 
     }
 
@@ -56,37 +66,28 @@ public class Automated_Camera : MonoBehaviour {
     /// Set the new target position and look at it
     /// </summary>
     /// <param name="newTarget">The new target to set</param>
-    public void ChangeTarget(Vector3 newTarget)
+    public void ChangeTarget(Transform newTarget)
     {
         // Set the new target
-        targetpos = newTarget;
-
+        targetpos.SourcePos = newTarget;
+        targetpos.DestinationPos = centerOfWorld.transform;
         // Look at the new target
-        transform.LookAt(targetpos);
+        transform.LookAt(targetpos.transform.position);
+        
     }
 
-	/// <summary>
-	/// Changes the radius.
-	/// </summary>
-	/// <param name="radius">Radius.</param>
-    public void ChangeRadius(float radius)
-    {
-        newPos = transform.position;
-        newPos.z += radius - Mathf.Abs(newPos.z);
 
-        // Move the object back farther
-        //MoveToDestination(newPos);
-    }
-		
-	/// <summary>
-	/// Moves backwards the given amount with transform.translate
-	/// </summary>
-	/// <returns>The backwards.</returns>
-	/// <param name="amount">Amount.</param>
-	private IEnumerator MoveBackwards(float amount)
+    /// <summary>
+    /// Moves backwards the given amount with transform.translate
+    /// </summary>
+    /// <returns>The backwards.</returns>
+    /// <param name="amount">Amount.</param>
+    public IEnumerator MoveBackwards(float amount)
 	{
-		transform.Translate (-transform.right * Time.deltaTime * zoomSpeed );
-		yield return null;
+		transform.Translate (-Vector3.forward * Time.deltaTime * zoomSpeed * amount);
+        transform.LookAt(targetpos.transform.position);
+
+        yield return null;
 	}
 
 }
