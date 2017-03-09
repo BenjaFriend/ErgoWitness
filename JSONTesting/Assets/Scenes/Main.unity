@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 117142596}
         m_MethodName: IsSure
         m_Mode: 1
         m_Arguments:
@@ -5077,7 +5077,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 117142596}
         m_MethodName: HideIsSure
         m_Mode: 1
         m_Arguments:
@@ -5166,6 +5166,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23176314179641296, guid: 9bb513620fab58047beadbb35b0edc6e,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd07e54cacd2f274aa33d9196154a0c6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bb513620fab58047beadbb35b0edc6e, type: 2}
   m_IsPrefabParent: 0
@@ -6328,8 +6333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleColors:
-  - {fileID: 2100000, guid: ce237107939ca6045bac1aa8ed319c84, type: 2}
-  - {fileID: 2100000, guid: b95b8b7ecbf8ea94b88d4d26949e62e9, type: 2}
+  - {fileID: 2100000, guid: cd07e54cacd2f274aa33d9196154a0c6, type: 2}
+  blueTeamMat: {fileID: 2100000, guid: ce237107939ca6045bac1aa8ed319c84, type: 2}
+  redTeamMat: {fileID: 2100000, guid: 2cd4086391274ff45b128af3fd083444, type: 2}
   groups: []
   groupPrefab: {fileID: 1964255048097172, guid: edacc949154c026459dcd01c75097b1d,
     type: 2}
