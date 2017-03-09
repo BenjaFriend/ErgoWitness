@@ -11,6 +11,8 @@ using System.Net;
 public class IPGroupManager : MonoBehaviour {
 
     public Material[] possibleColors;      // The possible colors that we want to assign the groups at random
+    public Material blueTeamMat;
+    public Material redTeamMat;
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
     public List<IPGroup> groups;    // A list of all the groups that we have
@@ -24,6 +26,9 @@ public class IPGroupManager : MonoBehaviour {
     private IPGroup newGroup;       // variable that I will use as a temp
     private GameObject temp;        // Temp reference to a gameObject
     private int attemptCount;
+
+    private int redTeamIpInt;
+    private int blueTeamIpInt;
 
     private void Awake()
     {
@@ -44,8 +49,11 @@ public class IPGroupManager : MonoBehaviour {
         currentIpGroups = this;
         groups = new List<IPGroup>();
         attemptCount = 0;
+
+        redTeamIpInt = IpToInt(System.IO.File.ReadAllText(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt"));
+        blueTeamIpInt = IpToInt(System.IO.File.ReadAllText(Application.streamingAssetsPath + "/TeamIPs/blueTeam.txt"));
     }
-	
+
     /// <summary>
     /// Loops through and checks if this IP fits into any of these groups
     /// If it does, then add it to the group. If not, create a new group 
@@ -153,6 +161,21 @@ public class IPGroupManager : MonoBehaviour {
             // Return if we dont
             return;
         }
+
+        // Check if the IP is red team or blue
+        if(groupToColor.groupAddress == redTeamIpInt)
+        {
+            // Set the color to the red team specific color
+            groupToColor.groupColor = redTeamMat;
+            return;
+        }
+        else if(groupToColor.groupAddress == blueTeamIpInt)
+        {
+            // Set the color to the blue team specific color
+            groupToColor.groupColor = blueTeamMat;
+            return;
+        }
+
         // If we only have one color
         else if(possibleColors.Length == 1)
         {

@@ -1,5 +1,0 @@
-Exception
-NullReferenceException: Object reference not set to an instance of an object
-NetworkMonitor+<PostJsonData>c__Iterator0.MoveNext ()
-UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress)
-
