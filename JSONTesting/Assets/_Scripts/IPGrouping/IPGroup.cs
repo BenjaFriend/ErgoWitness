@@ -73,6 +73,9 @@ public class IPGroup : MonoBehaviour {
 
             // Assign the the group color to this object
             SetColor(tempObj);
+
+            // Increase the size of my light
+            myPointLight.range = radius * lightRangeScaler;
         }
     }
 

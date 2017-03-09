@@ -87,8 +87,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupColor: {fileID: 0}
-  increasePerComputer: 0
+  increasePerComputer: 0.5
   radius: 3
   minDistanceApart: 0.3
+  lightRangeScaler: 2
   groupedComputers: []
   groupAddress: 0
