@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// This script will take in a data object, and display the
 /// informatino in the streaming information UI like
-/// Norse.
+/// Norse. 
 /// </summary>
 public class StreamingInfo_UI : MonoBehaviour {
 
@@ -23,10 +23,7 @@ public class StreamingInfo_UI : MonoBehaviour {
     public float movementAmount= -20f;
 
     private Vector2 newPos;
-    private RectTransform[] rectTransforms;
-
-	private Dictionary <int , int> leaderboards;
-    
+    private RectTransform[] rectTransforms;    
     #endregion
 
     // Use this for initialization
@@ -46,9 +43,6 @@ public class StreamingInfo_UI : MonoBehaviour {
             rectTransforms[i] = infoObjects[i].GetComponent<RectTransform>();
             infoObjects[i].ClearText();
         }
-
-        // Instantiate the dictionary of integers
-        leaderboards = new Dictionary<int, int>();
 	}
 
 
