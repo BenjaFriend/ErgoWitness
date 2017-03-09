@@ -18,6 +18,8 @@ public class NetflowObject : MoveFromSourceToTarget
     private string protocol;            // Our protocol that we represent
     private TrailRenderer trailRend;    // The trail renderer comonent
     public Material connectionColor;
+    public Gradient startColor;
+    public ParticleSystem mainParticles;
     private Material myMaterial;
     #endregion
 
@@ -64,9 +66,6 @@ public class NetflowObject : MoveFromSourceToTarget
             myMaterial.SetColor("_TintColor", newColor);
         }
     }
-    
-
-
 
     /// <summary>
     /// I will use this to draw lines for right now

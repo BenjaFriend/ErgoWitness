@@ -16,6 +16,7 @@ public class IPGroup : MonoBehaviour {
     public float radius = 5f;
     public float minDistanceApart = 1f;
     public float lightRangeScaler = 5f;
+    public float smoothing = 5f;
 
     public List<Computer> groupedComputers;
 
@@ -28,6 +29,7 @@ public class IPGroup : MonoBehaviour {
     private Vector3 temp;           // Store a temp positoin for calcuations
     private Collider[] neighbors;   // Store a temp array of colliders for calculations
     private Light myPointLight;
+    private IEnumerator currentScalingRoutine;
 
     public int GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
 
@@ -75,7 +77,15 @@ public class IPGroup : MonoBehaviour {
             SetColor(tempObj);
 
             // Increase the size of my light
-            myPointLight.range = radius * lightRangeScaler;
+            //myPointLight.range = radius * lightRangeScaler;
+            // if we are currently scalling the light, then stop
+            if(currentScalingRoutine != null)
+            {
+                StopCoroutine(currentScalingRoutine);
+            }
+            // Start scaling with a new number!
+            currentScalingRoutine = ScaleLightRange(radius * 2f);
+            StartCoroutine(currentScalingRoutine);
         }
     }
 
@@ -127,4 +137,21 @@ public class IPGroup : MonoBehaviour {
         // Set the material to the group materials
         temp.material = groupColor;
     }
+
+    /// <summary>
+    /// Smoothly lerp the radius of this object
+    /// </summary>
+    /// <param name="newRange">The desired radius of this</param>
+    /// <returns></returns>
+    private IEnumerator ScaleLightRange(float newRange)
+    {
+        // While I am smaller then what I want to be
+        while (myPointLight.range < newRange)
+        {
+            myPointLight.range = Mathf.Lerp(myPointLight.range, newRange, smoothing * Time.deltaTime);
+
+            yield return null;
+        }
+    }
+
 }

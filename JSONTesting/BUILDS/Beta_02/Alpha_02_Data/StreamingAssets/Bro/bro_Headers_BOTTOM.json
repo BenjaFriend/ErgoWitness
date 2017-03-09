@@ -1,0 +1,24 @@
+} } },
+   "size": 10,
+  "_source": {
+    "includes": [
+      "runtime_timestamp",
+      "id_orig_p",
+      "id_orig_p",
+      "id_orig_h",
+      "conn_state",
+      "id_resp_h",
+      "id_resp_p",
+      "service",
+      "proto",
+      "tags"
+    ]
+  },
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ]
+}
