@@ -138,15 +138,10 @@ public class MonitorObject : MonoBehaviour {
     /// request_Courinte field
     /// </summary>
     public void StartMonitor()
-    {
-        // If we are already running this corountine, then stop it first
-        if (request_Coroutine != null)
-        {
-            StopMonitor();
-        }              
-
+    {                
         Packetbeat_Json_Data packetdata;
         Json_Data filebeatdata;
+
         // Start whichever beat we want to list to, or both
         switch (whatJson)
         {

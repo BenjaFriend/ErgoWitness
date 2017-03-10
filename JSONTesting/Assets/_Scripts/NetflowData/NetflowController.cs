@@ -15,7 +15,6 @@ public class NetflowController : MonoBehaviour {
     public Material tcpMat;
     public Material udpColor;
     public Material httpColor;
-    public Material httpsColor;
     public Material defaultColor;
 
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
@@ -165,19 +164,16 @@ public class NetflowController : MonoBehaviour {
         switch (objToSet.Protocol)
         {
             case ("tcp"):
-                objToSet.TrailMaterial = tcpMat;
+                objToSet.ProtoMaterial = tcpMat;
                 break;
             case ("udp"):
-                objToSet.TrailMaterial = udpColor;
+                objToSet.ProtoMaterial = udpColor;
                 break;
             case ("http"):
-                objToSet.TrailMaterial = httpColor;
-                break;
-            case ("https"):
-                objToSet.TrailMaterial = httpsColor;
+                objToSet.ProtoMaterial = httpColor;
                 break;
             default:
-                objToSet.TrailMaterial = defaultColor;
+                objToSet.ProtoMaterial = defaultColor;
                 break;
         }
     }
