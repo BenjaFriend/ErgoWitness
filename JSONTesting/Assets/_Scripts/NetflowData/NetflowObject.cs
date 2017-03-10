@@ -19,12 +19,28 @@ public class NetflowObject : MoveFromSourceToTarget
     private TrailRenderer trailRend;    // The trail renderer comonent
     public Material connectionColor;
     public Gradient startColor;
-    public ParticleSystem mainParticles;
-    private Material myMaterial;
+    private ParticleSystemRenderer particles;
+    private Material protoMaterial;
+    private Material lineMaterial;
+
+    private ParticleSystem trailPartical ;   // The emission module of this particle system
+
     #endregion
 
     #region Properties
-
+    
+    public Material ProtoMaterial { get { return protoMaterial; } set { particles.material = value; } }
+    public Gradient StartColor
+    {
+        set
+        {
+            var main = trailPartical.main;            
+            main.startColor = value;
+            trailPartical.Clear();
+            trailPartical.Play();
+        }
+    }
+   // public Color ParticleTrailColor { get { return particles. ; } }
     /// <summary>
     /// This sets the color, and if you set it then it changes the material of the line renderer
     /// </summary>
@@ -36,34 +52,34 @@ public class NetflowObject : MoveFromSourceToTarget
             protocol = value; 
         }
     }
-
-    public Material TrailMaterial { get { return trailRend.material; } set { trailRend.material = value; } }
-
     #endregion
 
-
-    /// <summary>
-    /// Get the line renderer component
-    /// </summary>
-    void Awake ()
+    void Awake()
     {
-        // Get the trail renderer component
-        trailRend = GetComponent<TrailRenderer>();
+        // Get the pulsing particles
+        particles = GetComponent<ParticleSystemRenderer>();
+        // Get the trail particles
+        trailPartical = GetComponentInChildren<ParticleSystem>();
     }
+
 
     void OnEnable()
     {
-        myMaterial = new Material(connectionColor);
+        lineMaterial = new Material(connectionColor);
     }
 
+    /// <summary>
+    /// If we arrived at the destination then
+    /// fade out the line material
+    /// </summary>
     void Update()
     {
         if (HasArrived)
         {
             // Start the coroutine for fading out the color
-            Color newColor = myMaterial.GetColor("_TintColor");
+            Color newColor = lineMaterial.GetColor("_TintColor");
             newColor.a = Mathf.Lerp(newColor.a, 0, Time.deltaTime);
-            myMaterial.SetColor("_TintColor", newColor);
+            lineMaterial.SetColor("_TintColor", newColor);
         }
     }
 
@@ -72,10 +88,8 @@ public class NetflowObject : MoveFromSourceToTarget
     /// </summary>
     private void OnRenderObject()
     {
-
-
         // Set the material to be used for the first line
-        myMaterial.SetPass(0);
+        lineMaterial.SetPass(0);
 
         //Draw one line
         GL.Begin(GL.LINES);
@@ -83,10 +97,7 @@ public class NetflowObject : MoveFromSourceToTarget
         GL.Vertex(transform.position);        // The beginning spot of the draw line
         GL.Vertex(SourcePos.position);         // The endpoint of the draw line
 
-
         GL.End();
-
-
     }
 
 }
