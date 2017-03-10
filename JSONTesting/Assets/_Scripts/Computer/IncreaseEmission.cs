@@ -50,7 +50,7 @@ public class IncreaseEmission : MonoBehaviour {
         currentSize = Mathf.Clamp(currentSize, minHits, maxHits);
         // Actually change the emission of particles
 		UpdateParticles();
-		// Count he hits
+		
     }
 
     /// <summary>

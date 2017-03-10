@@ -17,6 +17,12 @@ public class NetflowController : MonoBehaviour {
     public Material httpColor;
     public Material defaultColor;
 
+    public Gradient tcpTrailColor;
+    public Gradient udpTrailColor;
+    public Gradient httpTrailColor;
+    public Gradient defaultTrailColor;
+
+
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
 
     private GameObject obj; // This is better for memory
@@ -165,15 +171,19 @@ public class NetflowController : MonoBehaviour {
         {
             case ("tcp"):
                 objToSet.ProtoMaterial = tcpMat;
+                objToSet.StartColor = tcpTrailColor;
                 break;
             case ("udp"):
                 objToSet.ProtoMaterial = udpColor;
+                objToSet.StartColor = udpTrailColor;
                 break;
             case ("http"):
                 objToSet.ProtoMaterial = httpColor;
+                objToSet.StartColor = httpTrailColor;      
                 break;
             default:
                 objToSet.ProtoMaterial = defaultColor;
+                objToSet.StartColor = defaultTrailColor;
                 break;
         }
     }

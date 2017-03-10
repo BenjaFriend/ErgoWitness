@@ -163,16 +163,16 @@ public class IPGroupManager : MonoBehaviour {
         }
 
         // Check if the IP is red team or blue
-        if(groupToColor.groupAddress == redTeamIpInt)
+        if(groupToColor.GroupAddress == redTeamIpInt)
         {
             // Set the color to the red team specific color
-            groupToColor.groupColor = redTeamMat;
+            groupToColor.GroupColor = redTeamMat;
             return;
         }
-        else if(groupToColor.groupAddress == blueTeamIpInt)
+        else if(groupToColor.GroupAddress == blueTeamIpInt)
         {
             // Set the color to the blue team specific color
-            groupToColor.groupColor = blueTeamMat;
+            groupToColor.GroupColor = blueTeamMat;
             return;
         }
 
@@ -180,7 +180,7 @@ public class IPGroupManager : MonoBehaviour {
         else if(possibleColors.Length == 1)
         {
             // Set that color to the only one that we have
-            groupToColor.groupColor = possibleColors[0];
+            groupToColor.GroupColor = possibleColors[0];
             // We are done so return
             return;
         }
@@ -196,7 +196,7 @@ public class IPGroupManager : MonoBehaviour {
         }
 
         // Set the group color to that
-        groupToColor.groupColor = possibleColors[x];
+        groupToColor.GroupColor = possibleColors[x];
 
         // Store the last color that we used
         lastColorUsed = x;

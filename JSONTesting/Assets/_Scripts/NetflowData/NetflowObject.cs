@@ -22,12 +22,25 @@ public class NetflowObject : MoveFromSourceToTarget
     private ParticleSystemRenderer particles;
     private Material protoMaterial;
     private Material lineMaterial;
+
+    private ParticleSystem trailPartical ;   // The emission module of this particle system
+
     #endregion
 
     #region Properties
-
+    
     public Material ProtoMaterial { get { return protoMaterial; } set { particles.material = value; } }
-
+    public Gradient StartColor
+    {
+        set
+        {
+            var main = trailPartical.main;            
+            main.startColor = value;
+            trailPartical.Clear();
+            trailPartical.Play();
+        }
+    }
+   // public Color ParticleTrailColor { get { return particles. ; } }
     /// <summary>
     /// This sets the color, and if you set it then it changes the material of the line renderer
     /// </summary>
@@ -43,7 +56,10 @@ public class NetflowObject : MoveFromSourceToTarget
 
     void Awake()
     {
+        // Get the pulsing particles
         particles = GetComponent<ParticleSystemRenderer>();
+        // Get the trail particles
+        trailPartical = GetComponentInChildren<ParticleSystem>();
     }
 
 

@@ -14,13 +14,15 @@ public class StreamingInfo_UI : MonoBehaviour {
     #region Fields
 	public static StreamingInfo_UI currentStreamInfo;
 
-	public int _leadboardDisplaySize = 5;
     public SetInfo[] infoObjects;
     public LeaderboardItem[] leaderboardItems;
 
-    public float topYCoord = -20;
-    public float bottomYCoord = -80;
-    public float movementAmount= -20f;
+    [SerializeField]
+    private int _leadboardDisplaySize = 5;
+
+    [SerializeField] private float topYCoord = -20;
+    [SerializeField] private float bottomYCoord = -80;
+    [SerializeField] private float movementAmount= -20f;
 
     private Vector2 newPos;
     private RectTransform[] rectTransforms;    
@@ -125,28 +127,45 @@ public class StreamingInfo_UI : MonoBehaviour {
         string oldName = "";
         int oldScore = 0;
 
+        // If I don't have this IP, then I dont care
+        // Set the UI now to what we have
         for (int i = 0; i < _leadboardDisplaySize; i++)
         {
-            if (PlayerPrefs.HasKey(i + "HScore"))
+            // If this key exists then keep checking it
+            if (PlayerPrefs.HasKey(i + "HScoreName"))
             {
-                if (PlayerPrefs.GetInt(i + "HScore") < newScore)
+                // If the number of hits that we got is greater then
+                // what is currently in spot 'i' of the leaderboard
+                if (newScore > PlayerPrefs.GetInt(i + "HScore"))
                 {
-                    // new score is higher than the stored score
+                    // Store the old values in temp variables
                     oldScore = PlayerPrefs.GetInt(i + "HScore");
                     oldName = PlayerPrefs.GetString(i + "HScoreName");
+
+                    // Set the current spot 'i' to the values that are new
                     PlayerPrefs.SetInt(i + "HScore", newScore);
                     PlayerPrefs.SetString(i + "HScoreName", newName);
+
+                    // Set the 'new' temp variables to the old ones
                     newScore = oldScore;
                     newName = oldName;
                 }
             }
+            // This sport in the leaderbaord does not exist yet! We need to add it
             else
             {
-                PlayerPrefs.SetInt(i + "HScore", newScore);
-                PlayerPrefs.SetString(i + "HScoreName", newName);
-                newScore = 0;
-                newName = "";
+                // Set this value to the IP address that we know. 
+                // Now spot 'i' in the leaderboard is the IP address
+                PlayerPrefs.SetString(i + "HScoreName", ipInteger);
+
+                // Set the value of spot 'i' in the leaderboard to
+                // the number of hits that we have
+                PlayerPrefs.SetInt(i + "HScore", numHits);
+
+                // We are done So let's break out of this loop
+                break;
             }
+
         }
 
         // Set the UI now to what we have
