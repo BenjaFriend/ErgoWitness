@@ -22,6 +22,8 @@ public class UIController : MonoBehaviour {
     public Sprite pauseSprite;
     public Button pausePlayButton;
 
+    public Text ControlButton_Text;
+
     private bool isMonitoring;              // Are we monitoring?
     private int whichMethod;
     private Canvas mainCanvas;
@@ -56,7 +58,34 @@ public class UIController : MonoBehaviour {
         // UI elements
         if (Input.GetKeyDown(KeyCode.P))
         {
-            ToggleMenu(mainCanvas);
+            // Toggle is we are hiding all the UI or not
+            HideAllUI();
+        }
+
+        // If the user presses start or ESC, then pause monitoring
+        if (Input.GetButton("Cancel"))
+        {
+            ToggleMonitoring();
+        }
+    }
+
+    /// <summary>
+    /// Toggle all the UI on or off with the main canvas
+    /// field
+    /// </summary>
+    private void HideAllUI()
+    {
+        // If we ARE hiding all the UI already....
+        if (!mainCanvas.enabled)
+        {
+            // Show the UI
+            mainCanvas.enabled = true;
+        }
+        // If we are NOT hiding the UI already....
+        else
+        {
+            // hide the UI
+            mainCanvas.enabled = false;
         }
     }
 
@@ -77,8 +106,6 @@ public class UIController : MonoBehaviour {
         // Start monitoring
         ManageMonitors.currentMonitors.StartMonitoringObjects();
     }  
-
-
     #region Toggles
 
     /// <summary>
@@ -92,11 +119,15 @@ public class UIController : MonoBehaviour {
         {
             // Disable player movement
             playerMovement.enabled = false;
+
             // Sleep the player rigidbody
             playerMovement.Rb.Sleep();
 
             //Enable camera movement
             autoCam.enabled = true;
+
+            // Change the UI button to 'Control'
+            ControlButton_Text.text = "Control";
         }
         else
         {
@@ -105,11 +136,14 @@ public class UIController : MonoBehaviour {
 
             // Enable player movement
             playerMovement.enabled = true;
+
             // Wake up the player rigidbody
             playerMovement.Rb.WakeUp();
+
+            // Change the UI button to 'Auto'
+            ControlButton_Text.text = "Auto";
         }
     }
-
 
 	/// <summary>
 	/// Toggles the main panels of the UI.
@@ -130,7 +164,6 @@ public class UIController : MonoBehaviour {
 		}
 	}
 
-
     /// <summary>
     /// Stop the monitoring and enable player movement
     /// </summary>
@@ -139,7 +172,7 @@ public class UIController : MonoBehaviour {
         // If we are monitoring, then stop
         if (isMonitoring)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
 
             // Make sure that we know that we are not monitoring anymore
             isMonitoring = false;
@@ -150,18 +183,18 @@ public class UIController : MonoBehaviour {
             // Set the play button as active
             pausePlayButton.image.sprite = playSprite;
 
-            playerMovement.enabled = true;
+            //playerMovement.enabled = true;
         }
         // Start monitoring again
         else
         {
             pausePlayButton.image.sprite = pauseSprite;
 
-            // Actually start monitoring
-            StartMonitoring();
+            // Stop all coroutines first becore we start monitoring
+            ManageMonitors.currentMonitors.StopMonitor();
 
             // Make sure that our timescale is up
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
 
             // Make sure that we know that we are monitoring now
             isMonitoring = true;
@@ -169,12 +202,11 @@ public class UIController : MonoBehaviour {
             // Start monitoring
             StartMonitoring();
 
-            playerMovement.enabled = false;
-
+            // Disable player movement
+            //playerMovement.enabled = false;
         }
 
     }
-
 
     /// <summary>
     /// Author: Ben Hoffman
@@ -191,48 +223,16 @@ public class UIController : MonoBehaviour {
             menu.gameObject.SetActive(true);
 
             // Select the first button if there is one, this will allow me to traverse the 
-            // menu with a controller
-            
+            // menu with a controller          
            if (menu.GetComponentInChildren<Button>() != null)
                 menu.GetComponentInChildren<Button>().Select();
-
-            // ToggleMainPanels();
-            MenuAnim.Play("Idle");
         }
         else
         {
-            // Hide the game menu
-            MenuAnim.Stop();
-            ToggleMainPanels();
-
             menu.gameObject.SetActive(false);
         }
         
     }
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// If the player movement is enabled, then make it 
-    /// not enabled. If we the player movement is not
-    /// enabled then enable it
-    /// </summary>
-    public void TogglePlayerMovement()
-    {
-        // If the player movement is enabled...
-        if (playerMovement.isActiveAndEnabled)
-        {
-            // Disable player movement
-            playerMovement.enabled = false;
-            playerMovement.Rb.Sleep();
-        }
-        else
-        {
-            // Enable player movement
-            playerMovement.enabled = true;
-            playerMovement.Rb.WakeUp();
-        }
-    }
-
 
     /// <summary>
     /// Display the help menu, or hide the help menu
@@ -253,10 +253,7 @@ public class UIController : MonoBehaviour {
             MenuAnim.SetBool(("showHelp"), false);
         }
     }
-
-
     #endregion
-
 
     #region Asking the player if they are sure
 
@@ -272,7 +269,6 @@ public class UIController : MonoBehaviour {
 
     }
 
-
     /// <summary>
     /// Transition the is sure stuff out
     /// </summary>
@@ -281,11 +277,10 @@ public class UIController : MonoBehaviour {
         whichMethod = -1;
 
         MenuAnim.SetBool("showIsSure", false);
-
     }
 
     /// <summary>
-    /// 
+    /// This will be called when the 'Yes' option is sure
     /// </summary>
     /// <returns>True if the player hits the 'yes' button</returns>
     public void IsSure()
@@ -305,9 +300,6 @@ public class UIController : MonoBehaviour {
         whichMethod = -1;
 
         MenuAnim.SetBool("showIsSure", false);
-
-
-
     }
 
     #endregion

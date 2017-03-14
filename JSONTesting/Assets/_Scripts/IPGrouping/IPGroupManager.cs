@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Net;
-
+using System.IO;
 /// <summary>
 /// This is will manage all of my groups, so if an IP 
 /// does not fit into a group then I will make a new one
@@ -50,8 +50,24 @@ public class IPGroupManager : MonoBehaviour {
         groups = new List<IPGroup>();
         attemptCount = 0;
 
-        redTeamIpInt = IpToInt(System.IO.File.ReadAllText(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt"));
-        blueTeamIpInt = IpToInt(System.IO.File.ReadAllText(Application.streamingAssetsPath + "/TeamIPs/blueTeam.txt"));
+        // Get the red team string
+        string redTeamIpString = "";
+        using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt"))
+        {
+            redTeamIpString = reader.ReadLine() ?? "";
+        }
+
+        // Get the blue team string
+
+        string blueTeamIpString = "";
+        using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + "/TeamIPs/blueTeam.txt"))
+        {
+            blueTeamIpString = reader.ReadLine() ?? "";
+        }
+
+        redTeamIpInt = IpToInt(redTeamIpString);
+
+        blueTeamIpInt = IpToInt(blueTeamIpString);
     }
 
     /// <summary>

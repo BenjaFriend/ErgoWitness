@@ -71,6 +71,11 @@ public class MonitorObject : MonoBehaviour {
 
         // Read in the server IP from the path that is specifed
         serverIP = File.ReadAllText(Application.streamingAssetsPath + fileLocation_serverIP);
+        using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + fileLocation_serverIP))
+        {
+            serverIP = reader.ReadLine() ?? "";
+        }
+
 
         headers = new Dictionary<string, string>();
 
@@ -105,7 +110,7 @@ public class MonitorObject : MonoBehaviour {
         }
 
         // Add the port and packet type
-        url = "http://" + serverIP + ":9200/" + indexName + "-";
+        url = serverIP  + indexName + "-";
 
         // Set up the year
         string dateUrl = System.DateTime.Today.Year.ToString() + ".";
