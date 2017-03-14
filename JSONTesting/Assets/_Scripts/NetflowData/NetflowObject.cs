@@ -10,37 +10,46 @@ using UnityEngine;
 /// Controll the color of this netflow data, which represents the type
 /// of traffic that it is
 /// </summary>
-[RequireComponent(typeof(TrailRenderer))]
 public class NetflowObject : MoveFromSourceToTarget
 {
-
     #region Fields
+    public Material connectionColor;        
+    public ParticleSystem trailPartical;   // The emission module of this particle system
+
     private string protocol;            // Our protocol that we represent
-    private TrailRenderer trailRend;    // The trail renderer comonent
-    public Material connectionColor;
-    public Gradient startColor;
-    private ParticleSystemRenderer particles;
+    private ParticleSystemRenderer headParticle; //The Particle system on this object
+
     private Material protoMaterial;
     private Material lineMaterial;
 
-    private ParticleSystem trailPartical ;   // The emission module of this particle system
 
     #endregion
 
     #region Properties
     
-    public Material ProtoMaterial { get { return protoMaterial; } set { particles.material = value; } }
-    public Gradient StartColor
+    public Material ProtoMaterial
+    {
+        get
+        {
+            return protoMaterial;
+        }
+
+        set
+        {
+            headParticle.material = value;
+        }
+    }
+
+    public Color LineDrawColor
     {
         set
         {
-            var main = trailPartical.main;            
-            main.startColor = value;
-            trailPartical.Clear();
-            trailPartical.Play();
+            Color newColor = value;
+
+            lineMaterial.SetColor("_TintColor", newColor);
         }
     }
-   // public Color ParticleTrailColor { get { return particles. ; } }
+
     /// <summary>
     /// This sets the color, and if you set it then it changes the material of the line renderer
     /// </summary>
@@ -54,17 +63,21 @@ public class NetflowObject : MoveFromSourceToTarget
     }
     #endregion
 
+    /// <summary>
+    /// Get a reference to the particles
+    /// </summary>
     void Awake()
     {
         // Get the pulsing particles
-        particles = GetComponent<ParticleSystemRenderer>();
-        // Get the trail particles
-        trailPartical = GetComponentInChildren<ParticleSystem>();
+        headParticle = GetComponent<ParticleSystemRenderer>();
     }
 
-
+    /// <summary>
+    /// Create a new material 
+    /// </summary>
     void OnEnable()
     {
+        // Create a reference to the line material
         lineMaterial = new Material(connectionColor);
     }
 
@@ -84,6 +97,30 @@ public class NetflowObject : MoveFromSourceToTarget
     }
 
     /// <summary>
+    /// Set's the start color of the trail particles to this color
+    /// </summary>
+    /// <param name="changeTo"></param>
+    public void SetColor(Color changeTo)
+    {
+        // Get a reference to the main
+        ParticleSystem.MainModule main = trailPartical.main;
+        // Change the color
+        main.startColor = changeTo;
+    }
+
+    /// <summary>
+    /// Sets the color of the trail particles to this gradient
+    /// </summary>
+    /// <param name="changeTo"></param>
+    public void SetColor(Gradient changeTo)
+    {
+        // Get a reference to the main
+        ParticleSystem.MainModule main = trailPartical.main;
+        // Change the color to the gradient
+        main.startColor = changeTo;
+    }
+
+    /// <summary>
     /// I will use this to draw lines for right now
     /// </summary>
     private void OnRenderObject()
@@ -91,12 +128,14 @@ public class NetflowObject : MoveFromSourceToTarget
         // Set the material to be used for the first line
         lineMaterial.SetPass(0);
 
-        //Draw one line
+        // Draw one line
         GL.Begin(GL.LINES);
 
+        // Set the vertecies of the line
         GL.Vertex(transform.position);        // The beginning spot of the draw line
         GL.Vertex(SourcePos.position);         // The endpoint of the draw line
 
+        // Close the GL pass
         GL.End();
     }
 

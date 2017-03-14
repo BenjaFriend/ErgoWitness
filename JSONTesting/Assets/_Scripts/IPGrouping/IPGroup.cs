@@ -11,11 +11,16 @@ using UnityEngine;
 [RequireComponent(typeof(Light))]
 public class IPGroup : MonoBehaviour {
 
-    public float increasePerComputer = 0.5f;
-    public float radius = 5f;
-    public float minDistanceApart = 1f;
-    public float lightRangeScaler = 5f;
-    public float smoothing = 5f;
+    [SerializeField]
+    private float increasePerComputer = 0.5f;
+    [SerializeField]
+    private float radius = 5f;
+    [SerializeField]
+    private float minDistanceApart = 1f;
+    [SerializeField]
+    private float lightRangeScaler = 5f;
+    [SerializeField]
+    private float smoothing = 5f;
 
     public List<Computer> groupedComputers;
 
@@ -30,6 +35,7 @@ public class IPGroup : MonoBehaviour {
     private Collider[] neighbors;   // Store a temp array of colliders for calculations
     private Light myPointLight;
     private IEnumerator currentScalingRoutine;
+    private Vector3 positionWithRadius;
 
     public int GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
     public Material GroupColor { get { return groupColor; } set { groupColor = value; } }
@@ -77,7 +83,6 @@ public class IPGroup : MonoBehaviour {
             SetColor(tempObj);
 
             // Increase the size of my light
-            //myPointLight.range = radius * lightRangeScaler;
             // if we are currently scalling the light, then stop
             if(currentScalingRoutine != null)
             {
@@ -99,23 +104,21 @@ public class IPGroup : MonoBehaviour {
         // Make the this group the parent of the computer object
         thingToMove.transform.parent = gameObject.transform;
 
-        // I need to put it in a random spot...
-        temp = new Vector3(
-            UnityEngine.Random.Range(transform.position.x - radius, transform.position.x + radius),
-            UnityEngine.Random.Range(transform.position.y - radius, transform.position.y + radius),
-            UnityEngine.Random.Range(transform.position.z - radius, transform.position.z + radius));
+        // Calculate a random spot that is within a certain radius of our positon
+        temp = transform.position + UnityEngine.Random.onUnitSphere * radius;
 
         // Check if I am colliding with any other groups
         neighbors = Physics.OverlapSphere(temp, minDistanceApart);
 
         // There is something colliding with us, recursively call this function
-        if (neighbors.Length > 0 && attemptCount <= 10)
+        if (neighbors.Length > 0 && attemptCount <= 3)
         {
             // Try again
             MoveToGroupSpot(thingToMove);
         }
         else
         {
+            // Actually move the object to the position
             thingToMove.transform.position = temp;
         }
     }

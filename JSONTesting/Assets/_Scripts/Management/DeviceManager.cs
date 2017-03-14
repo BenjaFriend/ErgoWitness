@@ -26,8 +26,13 @@ public class DeviceManager : MonoBehaviour {
 
     void Awake ()
     {
-        // Set the static reference
-        currentDeviceManager = this;
+        // Make sure tha thtis is the only one of these objects in the scene
+        if (currentDeviceManager == null)
+        {
+            currentDeviceManager = this;
+        }
+        else if (currentDeviceManager != this)
+            Destroy(gameObject);
 
         // Initialize the dictionary
         computersDict = new Dictionary<int, Computer>();

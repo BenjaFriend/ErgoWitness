@@ -10,10 +10,21 @@ public class ManageMonitors : MonoBehaviour {
     public MonitorObject[] monitors;
     public static ManageMonitors currentMonitors;
 
+    /// <summary>
+    /// Set the static reference to this object
+    /// </summary>
     void Awake()
     {
-        // Set the static reference
-        currentMonitors = this;
+        // Make sure that this is the only one of these components in the scene
+        if (currentMonitors == null)
+        {
+            currentMonitors = this;
+        }
+        else if (currentMonitors != this)
+            Destroy(gameObject);
+
+        // Dont destroy this object on load
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>

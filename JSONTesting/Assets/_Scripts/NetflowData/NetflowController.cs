@@ -6,8 +6,9 @@ using UnityEngine;
 /// This will manage the netflow data objects that we have
 /// and handle the comparisons and what not that we have
 /// </summary>
-public class NetflowController : MonoBehaviour {
-
+public class NetflowController : MonoBehaviour
+{
+    #region Fields
     public static NetflowController currentNetflowController;
     public StreamingInfo_UI streamingUI;
 
@@ -27,6 +28,8 @@ public class NetflowController : MonoBehaviour {
 
     private GameObject obj; // This is better for memory
     private NetflowObject tempNet; // Temp object for when we alter stuff
+
+    #endregion
 
     /// <summary>
     /// Set the static reference to this
@@ -171,19 +174,29 @@ public class NetflowController : MonoBehaviour {
         {
             case ("tcp"):
                 objToSet.ProtoMaterial = tcpMat;
-                objToSet.StartColor = tcpTrailColor;
+                objToSet.SetColor(tcpTrailColor);
+                objToSet.LineDrawColor = Color.red ;
                 break;
             case ("udp"):
                 objToSet.ProtoMaterial = udpColor;
-                objToSet.StartColor = udpTrailColor;
+                objToSet.SetColor(udpTrailColor);
+                objToSet.LineDrawColor = Color.cyan;
+
                 break;
             case ("http"):
                 objToSet.ProtoMaterial = httpColor;
-                objToSet.StartColor = httpTrailColor;      
+                objToSet.SetColor(httpTrailColor);
+                objToSet.LineDrawColor = Color.green;
+
                 break;
             default:
+                // Set the material of the single node/head of the particle system
                 objToSet.ProtoMaterial = defaultColor;
-                objToSet.StartColor = defaultTrailColor;
+                // Set the Trail particles color
+                objToSet.SetColor(defaultTrailColor);
+                objToSet.LineDrawColor = Color.gray;
+
+
                 break;
         }
     }
