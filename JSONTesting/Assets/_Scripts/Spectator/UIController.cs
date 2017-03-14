@@ -24,6 +24,7 @@ public class UIController : MonoBehaviour {
 
     private bool isMonitoring;              // Are we monitoring?
     private int whichMethod;
+    private Canvas mainCanvas;
     #endregion
 
     /// <summary>
@@ -41,6 +42,22 @@ public class UIController : MonoBehaviour {
         // Make sure that the player can move to start
         playerMovement.enabled = false;
         autoCam.enabled = true;
+
+        // Get the main canvas element so that we can toggle it on and off
+        mainCanvas = GetComponentInChildren<Canvas>();
+    }
+
+    /// <summary>
+    /// Check if we want to toggle the menu or not so that we can hide it
+    /// </summary>
+    void Update()
+    {
+        // If the user presses the P button then hide all of the 
+        // UI elements
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ToggleMenu(mainCanvas);
+        }
     }
 
     /// <summary>
@@ -59,7 +76,8 @@ public class UIController : MonoBehaviour {
 
         // Start monitoring
         ManageMonitors.currentMonitors.StartMonitoringObjects();
-    }
+    }  
+
 
     #region Toggles
 
@@ -174,14 +192,22 @@ public class UIController : MonoBehaviour {
 
             // Select the first button if there is one, this will allow me to traverse the 
             // menu with a controller
-            if (menu.GetComponentInChildren<Button>() != null)
+            
+           if (menu.GetComponentInChildren<Button>() != null)
                 menu.GetComponentInChildren<Button>().Select();
+
+            // ToggleMainPanels();
+            MenuAnim.Play("Idle");
         }
         else
         {
             // Hide the game menu
+            MenuAnim.Stop();
+            ToggleMainPanels();
+
             menu.gameObject.SetActive(false);
         }
+        
     }
 
     /// <summary>
