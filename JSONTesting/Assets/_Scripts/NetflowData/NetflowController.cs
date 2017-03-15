@@ -14,14 +14,19 @@ public class NetflowController : MonoBehaviour
 
     // The different colors for the protocols
     public Material tcpMat;
-    public Material udpColor;
-    public Material httpColor;
-    public Material defaultColor;
+    public Material udpMat;
+    public Material httpMat;
+    public Material defaultMat;
 
     public Gradient tcpTrailColor;
     public Gradient udpTrailColor;
     public Gradient httpTrailColor;
     public Gradient defaultTrailColor;
+
+    public Color tcpColor;
+    public Color udpColor;
+    public Color httpColor;
+    public Color defaultColor;
 
 
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
@@ -175,28 +180,25 @@ public class NetflowController : MonoBehaviour
             case ("tcp"):
                 objToSet.ProtoMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
-                objToSet.LineDrawColor = Color.red ;
+                objToSet.LineDrawColor = tcpColor;
                 break;
             case ("udp"):
-                objToSet.ProtoMaterial = udpColor;
+                objToSet.ProtoMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
-                objToSet.LineDrawColor = Color.cyan;
-
+                objToSet.LineDrawColor = udpColor;
                 break;
             case ("http"):
-                objToSet.ProtoMaterial = httpColor;
+                objToSet.ProtoMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
-                objToSet.LineDrawColor = Color.green;
+                objToSet.LineDrawColor = httpColor;
 
                 break;
             default:
                 // Set the material of the single node/head of the particle system
-                objToSet.ProtoMaterial = defaultColor;
+                objToSet.ProtoMaterial = defaultMat;
                 // Set the Trail particles color
                 objToSet.SetColor(defaultTrailColor);
-                objToSet.LineDrawColor = Color.gray;
-
-
+                objToSet.LineDrawColor = defaultColor;
                 break;
         }
     }

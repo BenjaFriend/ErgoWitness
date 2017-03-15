@@ -47293,3 +47293,46 @@ NullReferenceException: Object reference not set to an instance of an object
 NetflowObject.OnRenderObject () (at Assets/_Scripts/NetflowData/NetflowObject.cs:108)
 UnityEditor.DockArea:OnGUI()
 
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Exception
+IndexOutOfRangeException: Array index is out of range.
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:331)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+SocketException: An attempt was made to access a socket in a way forbidden by its access permissions.
+
+System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end)
+SyntaxTree.VisualStudio.Unity.Messaging.UdpSocket.Bind (System.Net.IPAddress address, Int32 port)
+SyntaxTree.VisualStudio.Unity.Messaging.Messager..ctor (Int32 port)
+SyntaxTree.VisualStudio.Unity.Messaging.Messager.BindTo (Int32 port)
+SyntaxTree.VisualStudio.Unity.Bridge.VisualStudioIntegration+<>c__DisplayClass9_0.<.cctor>b__0 ()
+SyntaxTree.VisualStudio.Unity.Bridge.Project+<>c__DisplayClass29_0.<RunOnceOnUpdate>b__0 ()
+UnityEditor.EditorApplication.Internal_CallUpdateFunctions () (at C:/buildslave/unity/build/artifacts/generated/common/editor/EditorApplicationBindings.gen.cs:197)
+

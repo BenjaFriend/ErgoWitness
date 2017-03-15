@@ -22,7 +22,6 @@ public class NetflowObject : MoveFromSourceToTarget
     private Material protoMaterial;
     private Material lineMaterial;
 
-
     #endregion
 
     #region Properties
@@ -45,7 +44,7 @@ public class NetflowObject : MoveFromSourceToTarget
         set
         {
             Color newColor = value;
-
+            newColor.a = .4f;
             lineMaterial.SetColor("_TintColor", newColor);
         }
     }

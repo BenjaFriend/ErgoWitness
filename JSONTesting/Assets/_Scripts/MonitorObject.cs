@@ -10,7 +10,16 @@ using System.IO;
 /// </summary>
 public class MonitorObject : MonoBehaviour {
 
+    private enum State
+    {
+        CurrentlyRunning,
+        FinishedTheRequestAndParse,
+        Stop
+    }
+
     #region Fields
+    private State currentState;
+
     // Allow the picking of which JSON object to use for thi
     public JsonOptions.Option whatJson = JsonOptions.Option.Filebeat;
 
@@ -50,6 +59,10 @@ public class MonitorObject : MonoBehaviour {
     private WaitForSeconds _waitTime;   // A wait object so that we only need to create it once
     
     private IEnumerator request_Coroutine;  // The coroutine that is running the web request
+    private Packetbeat_Json_Data _packetbeatJsonData;
+    private Json_Data _filebeatJsonData;
+    private bool keepGoing = true;
+
     #endregion
 
     /// <summary>
@@ -76,7 +89,6 @@ public class MonitorObject : MonoBehaviour {
             serverIP = reader.ReadLine() ?? "";
         }
 
-
         headers = new Dictionary<string, string>();
 
         last_unique_id = "";
@@ -84,6 +96,9 @@ public class MonitorObject : MonoBehaviour {
         _waitTime = new WaitForSeconds(1 - frequency);
 
         SetUpURL();
+
+        // Set the current state
+        currentState = State.FinishedTheRequestAndParse;
     }
 
     /// <summary>
@@ -143,28 +158,33 @@ public class MonitorObject : MonoBehaviour {
     /// request_Courinte field
     /// </summary>
     public void StartMonitor()
-    {                
-        Packetbeat_Json_Data packetdata;
-        Json_Data filebeatdata;
+    {
+        //Packetbeat_Json_Data packetdata;
+        //Json_Data filebeatdata;
+        keepGoing = true;
 
         // Start whichever beat we want to list to, or both
         switch (whatJson)
         {
             case (JsonOptions.Option.Packetbeat):
                 // Initalize the packetbeat request
-                packetdata = new Packetbeat_Json_Data();
+                _packetbeatJsonData = new Packetbeat_Json_Data();
+                currentState = State.FinishedTheRequestAndParse;
+
+                StartCoroutine(FSM(_packetbeatJsonData));
                 // Store the coroutine, so that we can stop it specifically
-                request_Coroutine = MakePostRequest(packetdata);
+                //request_Coroutine = MakePostRequest(packetdata);
                 // Start to request the data
-                StartCoroutine(request_Coroutine);
+                //StartCoroutine(request_Coroutine);
                 break;
             case (JsonOptions.Option.Filebeat):
-                filebeatdata = new Json_Data();
+                _filebeatJsonData = new Json_Data();
 
                 // Keep track of the co routine, so that we can stop it specifically
-                request_Coroutine = MakePostRequest(filebeatdata);
+                //request_Coroutine = MakePostRequest(filebeatdata);
+                currentState = State.FinishedTheRequestAndParse;
 
-                StartCoroutine(request_Coroutine);
+                StartCoroutine(FSM(_filebeatJsonData));
                 break;
             default:
                 // There is something wrong here
@@ -178,17 +198,59 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     public void StopMonitor()
     {
-        // Stop the store coroutine as long as it exists
-        if(request_Coroutine != null)
+        // Set the current state to stop
+        currentState = State.Stop;
+        keepGoing = false;
+    }
+
+    /// <summary>
+    /// This method will manage the web request coroutine
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="dataObject"></param>
+    /// <returns></returns>
+    private IEnumerator FSM<T>(T dataObject)
+    {
+        // We always want to be looping and check what state we are in
+        while(keepGoing)
         {
-            StopCoroutine(request_Coroutine);
-        }
-        // Otherwise stop everything as a failsafe
-        else
-        {
-            StopAllCoroutines();
+            if(currentState == State.Stop)
+            {
+                Debug.Log("Stop!!!!!    IF STATEMENT" );
+                StopCoroutine(request_Coroutine);
+                keepGoing = false;
+                break;
+            }
+
+            switch (currentState)
+            {
+                case (State.Stop):
+                    // If we have told it to stop, then break out of this coroutine
+                    Debug.Log("Stop!!!!!   SWITCH STATEMENT");
+                    StopCoroutine(request_Coroutine);
+                    keepGoing = false;
+                    break;
+                case (State.FinishedTheRequestAndParse):
+                        // If we finished, then start a new one 
+                        // Make a request and start it
+                        yield return _waitTime;
+                        // Create a new request with teh given data type
+                        request_Coroutine = MakePostRequest(dataObject);
+                        // Actually start that coroutine
+                        StartCoroutine(request_Coroutine);
+                        // Make sure we know that the state is currently running
+                        currentState = State.CurrentlyRunning;
+                    break;
+
+                //case (State.CurrentlyRunning):
+                default:
+                    // If we are currently running, or something else is happening
+                    yield return null;
+                    break;
+            }
         }
     }
+
 
     /// <summary>
     /// Take in what JSON class to use, and create a WWW request based off of
@@ -275,10 +337,10 @@ public class MonitorObject : MonoBehaviour {
             CheckData(myFilebeat);
         }
 
-        // Start this again after the frequency time
-        yield return _waitTime;
-        request_Coroutine = MakePostRequest(dataObject);
-        StartCoroutine(request_Coroutine);
+        // Mark the state as finished, as long as we were not told to stop
+        if(currentState != State.Stop)
+            currentState = State.FinishedTheRequestAndParse;
+
     }
 
     private void CheckData(Packetbeat_Json_Data packetDataObj)
@@ -329,6 +391,10 @@ public class MonitorObject : MonoBehaviour {
             // As long as what we got from those IP's is valid:
             if (packetDataObj.hits.hits[i]._source.destIpInt != 0 && packetDataObj.hits.hits[i]._source.sourceIpInt != 0)
             {
+                if(packetDataObj.hits.hits[i]._type == "http" || packetDataObj.hits.hits[i]._source.dest.port == 80)
+                {
+                    Debug.Log("http\nSource Proto:"+ packetDataObj.hits.hits[i]._source.proto + "\n Transport: " + packetDataObj.hits.hits[i]._source.transport);
+                }
                 // Send the data to the netflow controller
                 NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
             }

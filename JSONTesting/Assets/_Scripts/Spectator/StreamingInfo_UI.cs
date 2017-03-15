@@ -25,7 +25,8 @@ public class StreamingInfo_UI : MonoBehaviour {
     [SerializeField] private float movementAmount= -20f;
 
     private Vector2 newPos;
-    private RectTransform[] rectTransforms;    
+    private RectTransform[] rectTransforms;
+    private Dictionary<string, int> _topThree;
     #endregion
 
     // Use this for initialization
@@ -45,7 +46,9 @@ public class StreamingInfo_UI : MonoBehaviour {
             rectTransforms[i] = infoObjects[i].GetComponent<RectTransform>();
             infoObjects[i].ClearText();
         }
-	}
+        _topThree = new Dictionary<string, int>();
+
+    }
 
 
     /// <summary>
@@ -120,10 +123,10 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <summary>
     /// Checks the top hits for what is the best
     /// </summary>
-    public void CheckTopHits(string ipInteger, int numHits)
+    public void CheckTopHits(string ipString, int numHits)
     {
         int newScore = numHits;
-        string newName = ipInteger;
+        string newName = ipString;
         string oldName = "";
         int oldScore = 0;
 
@@ -138,6 +141,12 @@ public class StreamingInfo_UI : MonoBehaviour {
                 // what is currently in spot 'i' of the leaderboard
                 if (newScore > PlayerPrefs.GetInt(i + "HScore"))
                 {
+                    // If this IP is the same as the other one, then just change the value
+                    if(PlayerPrefs.GetString(i + "HScoreName") == ipString)
+                    {
+                        PlayerPrefs.SetInt(i + "HScore", newScore);
+                        break;
+                    }
                     // Store the old values in temp variables
                     oldScore = PlayerPrefs.GetInt(i + "HScore");
                     oldName = PlayerPrefs.GetString(i + "HScoreName");
@@ -156,7 +165,7 @@ public class StreamingInfo_UI : MonoBehaviour {
             {
                 // Set this value to the IP address that we know. 
                 // Now spot 'i' in the leaderboard is the IP address
-                PlayerPrefs.SetString(i + "HScoreName", ipInteger);
+                PlayerPrefs.SetString(i + "HScoreName", ipString);
 
                 // Set the value of spot 'i' in the leaderboard to
                 // the number of hits that we have
@@ -173,7 +182,6 @@ public class StreamingInfo_UI : MonoBehaviour {
         {
             leaderboardItems[i].SetText(PlayerPrefs.GetString(i + "HScoreName"), PlayerPrefs.GetInt( i + "HScore"));
         }
-        //Debug.Log("The highest score is: " + PlayerPrefs.GetString(0 + "HScoreName") + "  " + PlayerPrefs.GetInt(0 + "HScore"));
     }
 
     /// <summary>

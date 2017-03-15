@@ -4,15 +4,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This script will have a reference to the UI elements of this object
+/// and have a method to set each of them
+/// </summary>
+[RequireComponent(typeof(Text))]
 public class LeaderboardItem : MonoBehaviour {
 
-    public Text ipText;
-    public Text countText;
+    private Text ipText;        // The text component of the IP address
+    private Text countText;     // The text componenet of the count text
 
+    /// <summary>
+    /// Set up the references to the text components
+    /// </summary>
     private void Start()
     {
-        ipText.text = "";
-        countText.text = "";
+        // Get all text components on this object
+        Text[] textComponents = GetComponentsInChildren<Text>();
+        for(int i = 0; i <textComponents.Length; i++)
+        {
+            // If we don't have the first IP component yet, then set it equal to this
+            if(ipText == null)
+            {
+                ipText = textComponents[i];
+            }
+
+            // If this is the second component, then set it equal to the count text
+            if(textComponents[i].GetInstanceID() != ipText.GetInstanceID())
+            {
+                countText = textComponents[i];
+                break;
+            }
+        }
+
+        // Set their text fields to empty to start as long as they are not null
+        try
+        {
+            ipText.text = "";
+            countText.text = "";
+        }
+        catch(Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+
     }
 
     /// <summary>
@@ -32,6 +67,5 @@ public class LeaderboardItem : MonoBehaviour {
             Debug.Log(e.Message);
         }
     }
-
 
 }
