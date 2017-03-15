@@ -26,10 +26,9 @@ public class MonitorObject : MonoBehaviour {
     [Range(0f, 1f)]
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
 
-    public bool showDebug;  // If true then debug.log things
     private string serverIP;    // The IP address of the server running our database
     public bool logData = false; // Do we want to query the data
-
+    public bool assumeHttp = false;
     private string indexName;    // Either packetbeat or filebeat
     private string url;        // The filebeat index
 
@@ -42,6 +41,7 @@ public class MonitorObject : MonoBehaviour {
     public string fileLocation_serverIP;
     public string fileLocation_latestTime;
     public string filelocation_LogFile;
+
     private string filelocation_ErrorLog = "/ErrorLog.txt";
 
     private string last_unique_id;
@@ -167,21 +167,21 @@ public class MonitorObject : MonoBehaviour {
         switch (whatJson)
         {
             case (JsonOptions.Option.Packetbeat):
-                // Initalize the packetbeat request
-                _packetbeatJsonData = new Packetbeat_Json_Data();
+                // Create a new object only if we ahve to
+                if(_packetbeatJsonData == null)
+                    _packetbeatJsonData = new Packetbeat_Json_Data();
+
                 currentState = State.FinishedTheRequestAndParse;
 
+                // Start the finite satate machine for the web request
                 StartCoroutine(FSM(_packetbeatJsonData));
-                // Store the coroutine, so that we can stop it specifically
-                //request_Coroutine = MakePostRequest(packetdata);
-                // Start to request the data
-                //StartCoroutine(request_Coroutine);
                 break;
             case (JsonOptions.Option.Filebeat):
-                _filebeatJsonData = new Json_Data();
+                // Create a new object only if we have to
+                if(_filebeatJsonData == null)
+                    _filebeatJsonData = new Json_Data();
 
                 // Keep track of the co routine, so that we can stop it specifically
-                //request_Coroutine = MakePostRequest(filebeatdata);
                 currentState = State.FinishedTheRequestAndParse;
 
                 StartCoroutine(FSM(_filebeatJsonData));
@@ -311,13 +311,10 @@ public class MonitorObject : MonoBehaviour {
             yield break;
         }
 
-        // If we want to see debug info, then show it
-        if (showDebug)
-            Debug.Log(myRequest.text);
-
         // If we want to log this data, then send this string to the log writer
         if (logData)
         {
+            // Send the resulting query to the log file
             LogData(myRequest.text, filelocation_LogFile);
         }
 
@@ -388,12 +385,21 @@ public class MonitorObject : MonoBehaviour {
             // Set the integer IP values of this object
             SetIntegerValues(packetDataObj.hits.hits[i]._source);
 
-            // As long as what we got from those IP's is valid:
-            if (packetDataObj.hits.hits[i]._source.destIpInt != 0 && packetDataObj.hits.hits[i]._source.sourceIpInt != 0)
+            // If either of these is 0 then break out of this loop
+            if(packetDataObj.hits.hits[i]._source.sourceIpInt == 0 || packetDataObj.hits.hits[i]._source.destIpInt == 0)
             {
-                if(packetDataObj.hits.hits[i]._type == "http" || packetDataObj.hits.hits[i]._source.dest.port == 80)
+                break;
+            }
+
+            // As long as what we got from those IP's is valid:
+            if (packetDataObj.hits.hits[i]._source.destIpInt != -1 && packetDataObj.hits.hits[i]._source.sourceIpInt != -1)
+            {
+                // Change the protocol to HTTP if we want to, this is optional because
+                // sometimes it is techincally incorrect
+                if(assumeHttp && packetDataObj.hits.hits[i]._source.dest.port == 80 || 
+                   packetDataObj.hits.hits[i]._source.dest.port == 8080)
                 {
-                    Debug.Log("http\nSource Proto:"+ packetDataObj.hits.hits[i]._source.proto + "\n Transport: " + packetDataObj.hits.hits[i]._source.transport);
+                    packetDataObj.hits.hits[i]._source.transport = "http";
                 }
                 // Send the data to the netflow controller
                 NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);

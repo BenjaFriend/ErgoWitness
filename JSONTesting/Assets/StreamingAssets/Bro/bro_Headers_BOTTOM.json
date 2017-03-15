@@ -1,5 +1,4 @@
 } } },
-   "size": 10,
   "_source": {
     "includes": [
       "runtime_timestamp",

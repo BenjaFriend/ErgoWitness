@@ -86,10 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02ec2191fc3d634290517ca47a54db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groupColor: {fileID: 0}
-  increasePerComputer: 0.5
-  radius: 3
-  minDistanceApart: 0.3
-  lightRangeScaler: 2
+  increasePerComputer: 0.1
+  radius: 2
+  minDistanceApart: 0.1
+  lightRangeScaler: 2.3
+  smoothing: 5
   groupedComputers: []
-  groupAddress: 0

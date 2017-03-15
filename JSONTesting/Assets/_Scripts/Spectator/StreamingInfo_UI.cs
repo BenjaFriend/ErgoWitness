@@ -27,6 +27,10 @@ public class StreamingInfo_UI : MonoBehaviour {
     private Vector2 newPos;
     private RectTransform[] rectTransforms;
     private Dictionary<string, int> _topThree;
+
+    private bool isShowing = true;
+
+    public bool IsShowing { get { return isShowing; } set { isShowing = value; } }
     #endregion
 
     // Use this for initialization
@@ -46,10 +50,10 @@ public class StreamingInfo_UI : MonoBehaviour {
             rectTransforms[i] = infoObjects[i].GetComponent<RectTransform>();
             infoObjects[i].ClearText();
         }
+
+        // Initalize the dictionary
         _topThree = new Dictionary<string, int>();
-
     }
-
 
     /// <summary>
     /// Set the information of the one that is on top 
@@ -58,12 +62,13 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source_Packet newInfoObject)
     {
-        if (newInfoObject.sourceIpInt == -1 || newInfoObject.destIpInt == -1 || newInfoObject.runtime_timestamp == null)
+
+        if (!isShowing)
         {
             return;
         }
             // I need to move all of the objects down by a certain amount
-            for (int i = 0; i < rectTransforms.Length; i++)
+        for (int i = 0; i < rectTransforms.Length; i++)
         {
             // Get a reference to the variable
             newPos = rectTransforms[i].anchoredPosition;
@@ -92,7 +97,8 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source newFilebeatObj)
     {
-        if(newFilebeatObj.sourceIpInt == -1 || newFilebeatObj.destIpInt == -1 || newFilebeatObj.runtime_timestamp == null)
+
+        if (!isShowing)
         {
             return;
         }
@@ -111,6 +117,10 @@ public class StreamingInfo_UI : MonoBehaviour {
             if (newPos.y < bottomYCoord)
             {
                 newPos.y = topYCoord;
+                if(infoObjects[i] == null)
+                {
+                    break;
+                }
                 // Change the value of this one, because it is the most recent
                 infoObjects[i].SetText(newFilebeatObj);
             }
@@ -123,7 +133,7 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <summary>
     /// Checks the top hits for what is the best
     /// </summary>
-    public void CheckTopHits(string ipString, int numHits)
+ /*   public void CheckTopHits(string ipString, int numHits)
     {
         int newScore = numHits;
         string newName = ipString;
@@ -181,6 +191,51 @@ public class StreamingInfo_UI : MonoBehaviour {
         for(int i = 0; i < leaderboardItems.Length; i++)
         {
             leaderboardItems[i].SetText(PlayerPrefs.GetString(i + "HScoreName"), PlayerPrefs.GetInt( i + "HScore"));
+        }
+    }*/
+
+
+    public void CheckTopHits(string ipAddr, int count)
+    {
+        // If I already have this IP, then I want to change the value at this spot, 
+        // to the updated count
+        if (_topThree.ContainsKey(ipAddr))
+        {
+            _topThree[ipAddr] = count;
+            return;
+        }
+        _topThree.Add(ipAddr, count);
+        // Sort the dictionary and put it back on itself, with the integer value being on top
+        _topThree = _topThree.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+        //   if (_topThree.Count >= _leadboardDisplaySize)
+        //   {
+        // Set the UI now to what we have
+        if (_topThree.Count >= leaderboardItems.Length)
+        {
+            for (int i = 0; i < leaderboardItems.Length; i++)
+            {
+
+                leaderboardItems[i].SetText(
+                    _topThree.Keys.ElementAt(i),
+                    _topThree.Values.ElementAt(i));
+            }
+        }
+           
+        //}
+      /*  else
+        {
+            // Set the UI now to what we have
+            for (int i = 0; i < _topThree.Count; i++)
+            {
+                leaderboardItems[i].SetText(_topThree.Keys.ElementAt(i), _topThree.Values.ElementAt(i));
+            }
+        }*/
+
+        if(_topThree.Count > _leadboardDisplaySize)
+        {
+            // Remove the last item
+            _topThree.Remove(_topThree.Keys.Last());
         }
     }
 

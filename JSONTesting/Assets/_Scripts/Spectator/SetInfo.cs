@@ -23,11 +23,12 @@ public class SetInfo : MonoBehaviour {
     {
         try
         {
-            timestamp.text = data.runtime_timestamp;
+            protocol.text = data.transport;
+            string[] goodTimes = data.runtime_timestamp.Split('T');
+            timestamp.text = goodTimes[1];
             source.text = data.packet_source.ip;
             dest.text = data.dest.ip;
             port.text = data.dest.port.ToString();
-            protocol.text = data.proto;
         }
         catch(Exception e)
         {
@@ -43,16 +44,18 @@ public class SetInfo : MonoBehaviour {
     {
         try
         {
-            timestamp.text = data.runtime_timestamp;
+            // Set the time stamp to actuall be readable
+            string[] goodTimes = data.runtime_timestamp.Split('T');
+            timestamp.text = goodTimes[1];
+
             source.text = data.id_orig_h;
             dest.text = data.id_resp_h;
             port.text = data.id_resp_p.ToString();
             protocol.text = data.proto;
         }
         catch (Exception e)
-        {
-            
-            Debug.Log(e.Message);
+        {           
+
         }
     }
 

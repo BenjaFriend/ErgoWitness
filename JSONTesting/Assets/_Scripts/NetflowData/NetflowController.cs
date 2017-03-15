@@ -63,7 +63,7 @@ public class NetflowController : MonoBehaviour
             return;
         }
         // Break out if something is null
-        if (packetbeatSource.packet_source.ip == null || packetbeatSource.dest.ip == null)
+   /*     if (packetbeatSource.packet_source.ip == null || packetbeatSource.dest.ip == null)
         {
             return;
         }
@@ -76,7 +76,7 @@ public class NetflowController : MonoBehaviour
         if(packetbeatSource.sourceIpInt == 0 || packetbeatSource.destIpInt == 0)
         {
             return;
-        }
+        }*/
 
         // If the source and destination IP's are known:
         if (DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.sourceIpInt) &&
@@ -85,9 +85,6 @@ public class NetflowController : MonoBehaviour
             // Increase the emmision of the computer here, because we
             // obviously see some activity with it if we are checking
             DeviceManager.ComputersDict[packetbeatSource.sourceIpInt].GetComponent<IncreaseEmission>().AddHit();
-
-            // Then we can continue on and send out flow data out      
-            SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
         }
         else
         {
@@ -104,17 +101,21 @@ public class NetflowController : MonoBehaviour
             newSource.id_resp_p = packetbeatSource.dest.port;
 
             // Set the protocol so that the game controller can read it
-            packetbeatSource.proto = packetbeatSource.transport;
-
+            newSource.proto = packetbeatSource.transport;
+            
             //Set the integer values for this object
             ManageMonitors.currentMonitors.SetIntegerValues(newSource);
 
             // Add them to the network, and wait for that to finish:
             DeviceManager.currentDeviceManager.CheckIp(newSource);
+        }
 
-            // Now send the data since we know about it:
-            SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
+        // Then we can continue on and send out flow data out      
+        SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
 
+        // If we are showing the streaming UI, then send this data to it. If not then we do not care
+        if (streamingUI.IsShowing)
+        {
             // Tell the streaming UI about this
             streamingUI.AddInfo(packetbeatSource);
         }

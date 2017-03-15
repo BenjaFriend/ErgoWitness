@@ -110,7 +110,8 @@ public class Computer : MonoBehaviour
 		// Tell the streaming information that we got another hit on this IP
 		hits++;
 
-        StreamingInfo_UI.currentStreamInfo.CheckTopHits (sourceInfo.id_orig_h, hits);
+        if(StreamingInfo_UI.currentStreamInfo.IsShowing)
+            StreamingInfo_UI.currentStreamInfo.CheckTopHits (sourceInfo.id_orig_h, hits);
 
     }
 
