@@ -27,6 +27,8 @@ public class StreamingInfo_UI : MonoBehaviour {
     private Vector2 newPos;
     private RectTransform[] rectTransforms;
     private Dictionary<string, int> _topThree;
+    private IEnumerator currentCheck;
+    private bool isRunning;
 
     private bool isShowing = true;
 
@@ -130,122 +132,71 @@ public class StreamingInfo_UI : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Checks the top hits for what is the best
-    /// </summary>
- /*   public void CheckTopHits(string ipString, int numHits)
+
+    public void CheckTop(string ipAddr, int count)
     {
-        int newScore = numHits;
-        string newName = ipString;
-        string oldName = "";
-        int oldScore = 0;
-
-        // If I don't have this IP, then I dont care
-        // Set the UI now to what we have
-        for (int i = 0; i < _leadboardDisplaySize; i++)
+        // If I am not currently checking, then yea check
+        if(isRunning)
         {
-            // If this key exists then keep checking it
-            if (PlayerPrefs.HasKey(i + "HScoreName"))
-            {
-                // If the number of hits that we got is greater then
-                // what is currently in spot 'i' of the leaderboard
-                if (newScore > PlayerPrefs.GetInt(i + "HScore"))
-                {
-                    // If this IP is the same as the other one, then just change the value
-                    if(PlayerPrefs.GetString(i + "HScoreName") == ipString)
-                    {
-                        PlayerPrefs.SetInt(i + "HScore", newScore);
-                        break;
-                    }
-                    // Store the old values in temp variables
-                    oldScore = PlayerPrefs.GetInt(i + "HScore");
-                    oldName = PlayerPrefs.GetString(i + "HScoreName");
-
-                    // Set the current spot 'i' to the values that are new
-                    PlayerPrefs.SetInt(i + "HScore", newScore);
-                    PlayerPrefs.SetString(i + "HScoreName", newName);
-
-                    // Set the 'new' temp variables to the old ones
-                    newScore = oldScore;
-                    newName = oldName;
-                }
-            }
-            // This sport in the leaderbaord does not exist yet! We need to add it
-            else
-            {
-                // Set this value to the IP address that we know. 
-                // Now spot 'i' in the leaderboard is the IP address
-                PlayerPrefs.SetString(i + "HScoreName", ipString);
-
-                // Set the value of spot 'i' in the leaderboard to
-                // the number of hits that we have
-                PlayerPrefs.SetInt(i + "HScore", numHits);
-
-                // We are done So let's break out of this loop
-                break;
-            }
-
-        }
-
-        // Set the UI now to what we have
-        for(int i = 0; i < leaderboardItems.Length; i++)
-        {
-            leaderboardItems[i].SetText(PlayerPrefs.GetString(i + "HScoreName"), PlayerPrefs.GetInt( i + "HScore"));
-        }
-    }*/
-
-
-    public void CheckTopHits(string ipAddr, int count)
-    {
-        // If I already have this IP, then I want to change the value at this spot, 
-        // to the updated count
-        if (_topThree.ContainsKey(ipAddr))
-        {
-            _topThree[ipAddr] = count;
+            // Do nothing
             return;
         }
-        _topThree.Add(ipAddr, count);
-        // Sort the dictionary and put it back on itself, with the integer value being on top
-        _topThree = _topThree.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-        //   if (_topThree.Count >= _leadboardDisplaySize)
-        //   {
-        // Set the UI now to what we have
-        if (_topThree.Count >= leaderboardItems.Length)
+        else
         {
-            for (int i = 0; i < leaderboardItems.Length; i++)
-            {
-
-                leaderboardItems[i].SetText(
-                    _topThree.Keys.ElementAt(i),
-                    _topThree.Values.ElementAt(i));
-            }
-        }
-           
-        //}
-      /*  else
-        {
-            // Set the UI now to what we have
-            for (int i = 0; i < _topThree.Count; i++)
-            {
-                leaderboardItems[i].SetText(_topThree.Keys.ElementAt(i), _topThree.Values.ElementAt(i));
-            }
-        }*/
-
-        if(_topThree.Count > _leadboardDisplaySize)
-        {
-            // Remove the last item
-            _topThree.Remove(_topThree.Keys.Last());
+            currentCheck = CheckTopHits(ipAddr, count);
+            StartCoroutine(currentCheck);
+            //Debug.Log("Started!");
         }
     }
 
     /// <summary>
-    /// Write out the most recent query, and most recent timestamp at
-    /// the end of the application
+    /// Checks the top hits for this
     /// </summary>
-    void OnApplicationQuit()
+    /// <param name="ipAddr"></param>
+    /// <param name="count"></param>
+    public IEnumerator CheckTopHits(string ipAddr, int count)
     {
-        // Clear the player prefs when we quit
-        PlayerPrefs.DeleteAll();
+        isRunning = true;
+        // If I already have this IP, then I want to change the value at this spot, 
+        // to the updated count
+
+        // If this count not greater then the last one we have, then discard it
+        if(_topThree.Count >= _leadboardDisplaySize && count < _topThree.Values.Last() )
+        {
+            yield break;
+        }
+
+        if (_topThree.ContainsKey(ipAddr))
+        {
+            _topThree[ipAddr] = count;
+        }
+        else
+        {
+            _topThree.Add(ipAddr, count);           
+        }
+
+        // Sort the dictionary and put it back on itself, with the integer value being on top
+        _topThree = _topThree.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+        // Print out the top 3 items
+        if (_topThree.Keys.Count >= leaderboardItems.Length)
+        {
+            for (int i = 0; i < leaderboardItems.Length; i++)
+            {
+                leaderboardItems[i].SetText(
+                    _topThree.Keys.ElementAt(_topThree.Keys.Count - i - 1),
+                    _topThree.Values.ElementAt(_topThree.Values.Count - i - 1));
+                // Wait till the next frame
+                yield return null;
+            }
+        }          
+
+        if(_topThree.Count > _leadboardDisplaySize + 5)
+        {
+            // Remove the last item
+            _topThree.Remove(_topThree.Keys.Last());
+        }
+
+        isRunning = false;
     }
 }

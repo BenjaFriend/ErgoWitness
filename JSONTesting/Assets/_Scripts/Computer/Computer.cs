@@ -111,7 +111,7 @@ public class Computer : MonoBehaviour
 		hits++;
 
         if(StreamingInfo_UI.currentStreamInfo.IsShowing)
-            StreamingInfo_UI.currentStreamInfo.CheckTopHits (sourceInfo.id_orig_h, hits);
+            StreamingInfo_UI.currentStreamInfo.CheckTop(sourceInfo.id_orig_h, hits);
 
     }
 

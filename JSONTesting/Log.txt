@@ -47401,3 +47401,89 @@ MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Script
 MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:328)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Exception
+ArgumentOutOfRangeException: Argument is out of range.
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index, Fallback fallback)
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index)
+StreamingInfo_UI.CheckTopHits (System.String ipAddr, Int32 count) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:159)
+Computer.AddConnectedPC (.Computer connectedToMe) (at Assets/_Scripts/Computer/Computer.cs:114)
+DeviceManager.ConnectComputers (Int32 ipA, Int32 ipB) (at Assets/_Scripts/Management/DeviceManager.cs:196)
+NetflowController.SendFlow (Int32 sourceIP, Int32 destIP, System.String protocol) (at Assets/_Scripts/NetflowData/NetflowController.cs:169)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:114)
+MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/MonitorObject.cs:405)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentOutOfRangeException: Argument is out of range.
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index, Fallback fallback)
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index)
+StreamingInfo_UI.CheckTopHits (System.String ipAddr, Int32 count) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:159)
+Computer.AddConnectedPC (.Computer connectedToMe) (at Assets/_Scripts/Computer/Computer.cs:114)
+DeviceManager.ConnectComputers (Int32 ipA, Int32 ipB) (at Assets/_Scripts/Management/DeviceManager.cs:196)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:133)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+MonitorObject.CheckData (.Json_Data dataObject) (at Assets/_Scripts/MonitorObject.cs:456)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:334)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentOutOfRangeException: Argument is out of range.
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index, Fallback fallback)
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index)
+StreamingInfo_UI.CheckTopHits (System.String ipAddr, Int32 count) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:159)
+Computer.AddConnectedPC (.Computer connectedToMe) (at Assets/_Scripts/Computer/Computer.cs:114)
+DeviceManager.ConnectComputers (Int32 ipA, Int32 ipB) (at Assets/_Scripts/Management/DeviceManager.cs:196)
+NetflowController.SendFlow (Int32 sourceIP, Int32 destIP, System.String protocol) (at Assets/_Scripts/NetflowData/NetflowController.cs:169)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:114)
+MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/MonitorObject.cs:405)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentOutOfRangeException: Argument is out of range.
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index, Fallback fallback)
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:180)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:147)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:114)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:196)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/_Scripts/NetflowData/NetflowController.cs:169)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:114)
+MonitorObject:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/MonitorObject.cs:405)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentOutOfRangeException: Argument is out of range.
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index, Fallback fallback)
+System.Linq.Enumerable.ElementAt[String] (IEnumerable`1 source, Int32 index)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:180)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:147)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:114)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:196)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:133)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+MonitorObject:CheckData(Json_Data) (at Assets/_Scripts/MonitorObject.cs:456)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:334)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+InvalidOperationException: Operation is not valid due to the current state of the object
+System.Linq.Enumerable.Last[Int32] (IEnumerable`1 source)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:164)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:147)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:114)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:196)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:133)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+MonitorObject:CheckData(Json_Data) (at Assets/_Scripts/MonitorObject.cs:456)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:334)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+

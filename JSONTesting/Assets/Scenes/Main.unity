@@ -1926,8 +1926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monitors:
-  - {fileID: 1935440672}
   - {fileID: 949298121}
+  - {fileID: 1935440672}
 --- !u!4 &878581713
 Transform:
   m_ObjectHideFlags: 0
@@ -2239,7 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatJson: 1
-  frequency: 0.707
+  frequency: 1
   logData: 0
   assumeHttp: 0
   fileLocation_queryTop: /Bro/bro_Headers_TOP.json
@@ -6199,7 +6199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatJson: 0
-  frequency: 1
+  frequency: 0.823
   logData: 0
   assumeHttp: 1
   fileLocation_queryTop: /Packetbeat/packetbeat_Headers_TOP.json

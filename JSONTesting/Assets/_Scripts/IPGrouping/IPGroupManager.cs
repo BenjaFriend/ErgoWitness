@@ -38,6 +38,9 @@ public class IPGroupManager : MonoBehaviour {
         }
         else if (currentIpGroups != this)
             Destroy(gameObject);
+
+        // Dont destroy this object on load
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
