@@ -1,0 +1,24 @@
+
+The HTTP request text:
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "packetbeat-2017.03.13",
+        "index_uuid" : "_na_",
+        "index" : "packetbeat-2017.03.13"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "packetbeat-2017.03.13",
+    "index_uuid" : "_na_",
+    "index" : "packetbeat-2017.03.13"
+  },
+  "status" : 404
+}
+
