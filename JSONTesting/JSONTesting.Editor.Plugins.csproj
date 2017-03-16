@@ -235,6 +235,7 @@
     <None Include="Assets\StreamingAssets\LogFile.txt" />
     <None Include="Assets\StreamingAssets\Packetbeat\latest_packetbeat_time.txt" />
     <None Include="Assets\StreamingAssets\TeamIPs\blueTeam.txt" />
+    <None Include="Assets\StreamingAssets\TeamIPs\blueTeamIPs.txt" />
     <None Include="Assets\StreamingAssets\TeamIPs\redTeam.txt" />
     <None Include="Assets\StreamingAssets\serverIP.txt" />
     <None Include="Assets\StreamingAssets\serverIP_EXAMPLE.txt" />

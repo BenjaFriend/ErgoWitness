@@ -11,7 +11,7 @@ using System.IO;
 public class IPGroupManager : MonoBehaviour {
 
     public Material[] possibleColors;      // The possible colors that we want to assign the groups at random
-    public Material blueTeamMat;
+    public Material[] blueTeamMats;
     public Material redTeamMat;
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
@@ -27,8 +27,14 @@ public class IPGroupManager : MonoBehaviour {
     private GameObject temp;        // Temp reference to a gameObject
     private int attemptCount;
 
+
+
+    // Team fields
+    private int currentBlueTeamColor = 0;
+    private int numberOfBlueTeams = 10;
     private int redTeamIpInt;
     private int blueTeamIpInt;
+    private int[] blueTeamIntArray;
 
     private void Awake()
     {
@@ -72,6 +78,36 @@ public class IPGroupManager : MonoBehaviour {
 
         blueTeamIpInt = IpToInt(blueTeamIpString);
     }
+
+
+    /// <summary>
+    /// This method will read in the blue team IP address,s
+    /// </summary>
+    private void ReadInBlueTeamIps()
+    {
+        
+        List<string> blueTeamIpString = new List<string>();
+        int counter = 0;
+        string line;
+
+
+        // Read the file and display it line by line.  
+        System.IO.StreamReader file =
+            new System.IO.StreamReader(Application.streamingAssetsPath + "/TeamIPs/blueTeamIPs.txt");
+        while ((line = file.ReadLine()) != null)
+        {
+            blueTeamIpString.Add(line);
+
+            //System.Console.WriteLine(line);
+            counter++;
+        }
+
+        file.Close();
+    }
+
+
+
+
 
     /// <summary>
     /// Loops through and checks if this IP fits into any of these groups
@@ -191,7 +227,8 @@ public class IPGroupManager : MonoBehaviour {
         else if(groupToColor.GroupAddress == blueTeamIpInt)
         {
             // Set the color to the blue team specific color
-            groupToColor.GroupColor = blueTeamMat;
+            groupToColor.GroupColor = blueTeamMats[currentBlueTeamColor];
+            currentBlueTeamColor++;
             return;
         }
 
