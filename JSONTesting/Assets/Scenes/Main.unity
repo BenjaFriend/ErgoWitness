@@ -2239,7 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatJson: 1
-  frequency: 1
+  frequency: 0.751
   logData: 0
   assumeHttp: 0
   fileLocation_queryTop: /Bro/bro_Headers_TOP.json
@@ -6199,7 +6199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatJson: 0
-  frequency: 0.823
+  frequency: 1
   logData: 0
   assumeHttp: 1
   fileLocation_queryTop: /Packetbeat/packetbeat_Headers_TOP.json
