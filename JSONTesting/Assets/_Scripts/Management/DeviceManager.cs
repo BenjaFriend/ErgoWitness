@@ -167,6 +167,12 @@ public class DeviceManager : MonoBehaviour {
         return null;
     }
 
+    // Returns true if this computer is on blue team
+    public bool isBlueTeam(int ipInt)
+    {
+        return computersDict[ipInt].IsBlueTeam;
+    }
+
     /// <summary>
     /// Check if our dictionary comtaints this IP
     /// </summary>

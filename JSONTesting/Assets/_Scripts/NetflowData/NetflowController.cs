@@ -17,17 +17,21 @@ public class NetflowController : MonoBehaviour
     public Material udpMat;
     public Material httpMat;
     public Material defaultMat;
+    public Material AttackingBlueTeam_Material;
+
 
     public Gradient tcpTrailColor;
     public Gradient udpTrailColor;
     public Gradient httpTrailColor;
     public Gradient defaultTrailColor;
+    public Gradient AttackingBlueTeam_Gradient;
+
 
     public Color tcpColor;
     public Color udpColor;
     public Color httpColor;
     public Color defaultColor;
-
+    public Color AttackingBlueTeam_Color;
 
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
 
@@ -62,21 +66,6 @@ public class NetflowController : MonoBehaviour
         {
             return;
         }
-        // Break out if something is null
-   /*     if (packetbeatSource.packet_source.ip == null || packetbeatSource.dest.ip == null)
-        {
-            return;
-        }
-
-        if (packetbeatSource.packet_source.ip == null || packetbeatSource.dest.ip == null)
-        {
-            return;
-        }
-        
-        if(packetbeatSource.sourceIpInt == 0 || packetbeatSource.destIpInt == 0)
-        {
-            return;
-        }*/
 
         // If the source and destination IP's are known:
         if (DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.sourceIpInt) &&
@@ -149,6 +138,7 @@ public class NetflowController : MonoBehaviour
             return;
         }
 
+
         // Set the source of the netflow 
         tempNet.SourcePos = DeviceManager.currentDeviceManager.GetTransform(sourceIP);
 
@@ -156,7 +146,7 @@ public class NetflowController : MonoBehaviour
         tempNet.Protocol = protocol;
 
         // Set the color of the temp net object
-        SetColor(tempNet);
+        SetColor(tempNet, DeviceManager.currentDeviceManager.isBlueTeam(destIP));
 
         // Set the destination of the netflow obj, which also start the movement 
         tempNet.DestinationPos = DeviceManager.currentDeviceManager.GetTransform(destIP);
@@ -173,30 +163,44 @@ public class NetflowController : MonoBehaviour
     /// Set the trail material for the given object
     /// </summary>
     /// <param name="objToSet"></param>
-    private void SetColor(NetflowObject objToSet)
+    private void SetColor(NetflowObject objToSet, bool destIsBlue)
     {
+        // If this is attacking a blue team object, then set it to all the proper stuff
+        if (destIsBlue)
+        {
+            // Set the head particle
+            objToSet.HeadParticleMaterial = AttackingBlueTeam_Material;
+            // Set the START COLOR of the trail particle system
+            objToSet.SetColor(AttackingBlueTeam_Gradient);
+            // Set the line that will be drawn and faded out color
+            objToSet.LineDrawColor = AttackingBlueTeam_Color;
+            return;
+        }
+                 
         // Change to the proper material
         switch (objToSet.Protocol)
         {
             case ("tcp"):
-                objToSet.ProtoMaterial = tcpMat;
+                objToSet.HeadParticleMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
                 objToSet.LineDrawColor = tcpColor;
                 break;
+
             case ("udp"):
-                objToSet.ProtoMaterial = udpMat;
+                objToSet.HeadParticleMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
                 objToSet.LineDrawColor = udpColor;
                 break;
+
             case ("http"):
-                objToSet.ProtoMaterial = httpMat;
+                objToSet.HeadParticleMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
                 objToSet.LineDrawColor = httpColor;
-
                 break;
+
             default:
                 // Set the material of the single node/head of the particle system
-                objToSet.ProtoMaterial = defaultMat;
+                objToSet.HeadParticleMaterial = defaultMat;
                 // Set the Trail particles color
                 objToSet.SetColor(defaultTrailColor);
                 objToSet.LineDrawColor = defaultColor;

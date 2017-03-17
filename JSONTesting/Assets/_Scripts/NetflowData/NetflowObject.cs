@@ -19,18 +19,17 @@ public class NetflowObject : MoveFromSourceToTarget
     private string protocol;            // Our protocol that we represent
     private ParticleSystemRenderer headParticle; //The Particle system on this object
 
-    private Material protoMaterial;
     private Material lineMaterial;
 
     #endregion
 
     #region Properties
     
-    public Material ProtoMaterial
+    public Material HeadParticleMaterial
     {
         get
         {
-            return protoMaterial;
+            return headParticle.material;
         }
 
         set
@@ -44,7 +43,7 @@ public class NetflowObject : MoveFromSourceToTarget
         set
         {
             Color newColor = value;
-            newColor.a = .4f;
+            newColor.a = .3f;
             lineMaterial.SetColor("_TintColor", newColor);
         }
     }

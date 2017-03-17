@@ -216,7 +216,7 @@ public class MonitorObject : MonoBehaviour {
         {
             if(currentState == State.Stop)
             {
-                Debug.Log("Stop!!!!!    IF STATEMENT" );
+                //Debug.Log("Stop!!!!!    IF STATEMENT" );
                 StopCoroutine(request_Coroutine);
                 keepGoing = false;
                 break;
@@ -226,7 +226,7 @@ public class MonitorObject : MonoBehaviour {
             {
                 case (State.Stop):
                     // If we have told it to stop, then break out of this coroutine
-                    Debug.Log("Stop!!!!!   SWITCH STATEMENT");
+                    //Debug.Log("Stop!!!!!   SWITCH STATEMENT");
                     StopCoroutine(request_Coroutine);
                     keepGoing = false;
                     break;

@@ -267,21 +267,21 @@ public class NetworkMonitor : MonoBehaviour
         // Check if we got an error in our request or not
         if (myRequest.error != null || myRequest.text == null)
         {
-            Debug.Log("THERE WAS A REQUEST ERROR: " + myRequest.error);
+            //Debug.Log("THERE WAS A REQUEST ERROR: " + myRequest.error);
 
-            if (myRequest.text != null)
-                Debug.Log(myRequest.text);
+           /* if (myRequest.text != null)
+                Debug.Log(myRequest.text);*/
 
             yield break;
         }
-        if(showDebug)
-            Debug.Log(myRequest.text);
+     /*   if(showDebug)
+            Debug.Log(myRequest.text);*/
 
         // Actually send the JSON data to either the netflow controller or the game controller
         if (isFlowData)
         {
-            if (showDebug)
-                Debug.Log(_Packetbeat_Current_Query);
+           /* if (showDebug)
+                Debug.Log(_Packetbeat_Current_Query);*/
             // Use the JSON utility with the packetbeat data to parse this text
             packetDataObj = JsonUtility.FromJson<Packetbeat_Json_Data>(myRequest.text);
             
@@ -290,8 +290,8 @@ public class NetworkMonitor : MonoBehaviour
         }
         else
         {
-            if (showDebug)
-                Debug.Log(_Bro_Current_Query);
+           /* if (showDebug)
+                Debug.Log(_Bro_Current_Query);*/
 
             // Use the JsonUtility to send the string of data that I got from the server, to a data object
             dataObject = JsonUtility.FromJson<Json_Data>(myRequest.text);

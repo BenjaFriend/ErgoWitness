@@ -63,7 +63,7 @@ public class UIController : MonoBehaviour {
         }
 
         // If the user presses start or ESC, then pause monitoring
-        if (Input.GetButton("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
             ToggleMonitoring();
         }

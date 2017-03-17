@@ -23,11 +23,17 @@ public class Computer : MonoBehaviour
     public List<int> portsUsed;
     private IncreaseEmission particleController;
 
+    [SerializeField]
+    private bool isBlueTeam;
+
 	// This is to keep track of how many times we have seen this PC
 	private int hits = 0;
     #endregion
 
     #region Mutators
+
+    public bool IsBlueTeam { get { return isBlueTeam;  }
+        set { isBlueTeam = value; } }
 
     public Source SourceInfo {
         get { return sourceInfo; }

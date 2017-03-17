@@ -12,6 +12,9 @@ using UnityEngine;
 public class IPGroup : MonoBehaviour {
 
     [SerializeField]
+    private bool isBlueTeam; // True if this IP is a blue team
+
+    [SerializeField]
     private float increasePerComputer = 0.5f;
     [SerializeField]
     private float radius = 5f;
@@ -39,6 +42,7 @@ public class IPGroup : MonoBehaviour {
 
     public int GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
     public Material GroupColor { get { return groupColor; } set { groupColor = value; } }
+    public bool IsBlueTeam { get { return isBlueTeam; } set { isBlueTeam = value; } }
 
     /// <summary>
     /// Instantiate the list of grouped computers, 
@@ -69,6 +73,10 @@ public class IPGroup : MonoBehaviour {
         {
             // Cache the object here
             tempObj = DeviceManager.ComputersDict[IpAddress];
+
+            // Make sure that we know that this is a blue team object if we are blue team
+            if(isBlueTeam)
+                tempObj.IsBlueTeam = true;
 
             // Add it to our list
             groupedComputers.Add(tempObj);

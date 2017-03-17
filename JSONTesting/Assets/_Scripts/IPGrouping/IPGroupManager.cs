@@ -27,13 +27,11 @@ public class IPGroupManager : MonoBehaviour {
     private GameObject temp;        // Temp reference to a gameObject
     private int attemptCount;
 
-
-
     // Team fields
     private int currentBlueTeamColor = 0;
-    private int numberOfBlueTeams = 10;
+    //private int numberOfBlueTeams = 10;
     private int redTeamIpInt;
-    private int blueTeamIpInt;
+    //private int blueTeamIpInt;
     private int[] blueTeamIntArray;
 
     private void Awake()
@@ -66,17 +64,10 @@ public class IPGroupManager : MonoBehaviour {
             redTeamIpString = reader.ReadLine() ?? "";
         }
 
-        // Get the blue team string
-
-        string blueTeamIpString = "";
-        using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + "/TeamIPs/blueTeam.txt"))
-        {
-            blueTeamIpString = reader.ReadLine() ?? "";
-        }
-
         redTeamIpInt = IpToInt(redTeamIpString);
 
-        blueTeamIpInt = IpToInt(blueTeamIpString);
+        // Read in all the blue team IP addresses
+        ReadInBlueTeamIps();
     }
 
 
@@ -84,25 +75,31 @@ public class IPGroupManager : MonoBehaviour {
     /// This method will read in the blue team IP address,s
     /// </summary>
     private void ReadInBlueTeamIps()
-    {
-        
+    {       
+        // A list of strings to keep track of the IP addresses
         List<string> blueTeamIpString = new List<string>();
-        int counter = 0;
         string line;
-
+        int counter = 0;
 
         // Read the file and display it line by line.  
         System.IO.StreamReader file =
             new System.IO.StreamReader(Application.streamingAssetsPath + "/TeamIPs/blueTeamIPs.txt");
         while ((line = file.ReadLine()) != null)
         {
+            // Read in the line that has the IP address
             blueTeamIpString.Add(line);
-
-            //System.Console.WriteLine(line);
             counter++;
         }
-
+        // Close te file reader
         file.Close();
+
+        blueTeamIntArray = new int[counter];
+
+        for (int i = 0; i < blueTeamIpString.Count; i++)
+        {
+            // Set the integer array value to the string value
+            blueTeamIntArray[i] = IpToInt(blueTeamIpString[i]);
+        }
     }
 
 
@@ -217,18 +214,28 @@ public class IPGroupManager : MonoBehaviour {
             return;
         }
 
+        int whichBlueTeam = isBlueTeam(groupToColor.GroupAddress);
+
         // Check if the IP is red team or blue
-        if(groupToColor.GroupAddress == redTeamIpInt)
+        if (groupToColor.GroupAddress == redTeamIpInt)
         {
             // Set the color to the red team specific color
             groupToColor.GroupColor = redTeamMat;
             return;
         }
-        else if(groupToColor.GroupAddress == blueTeamIpInt)
+        else if(whichBlueTeam >= 0)
         {
+            groupToColor.IsBlueTeam = true;
             // Set the color to the blue team specific color
-            groupToColor.GroupColor = blueTeamMats[currentBlueTeamColor];
+            groupToColor.GroupColor = blueTeamMats[whichBlueTeam];
+            // Increment how many blue teams we have seen
             currentBlueTeamColor++;
+            // If this is greater then the number of materials we have set up then 
+            // make it not like that anymore!cd 
+            if(currentBlueTeamColor > blueTeamMats.Length)
+            {
+                currentBlueTeamColor = blueTeamMats.Length;
+            }
             return;
         }
 
@@ -256,6 +263,24 @@ public class IPGroupManager : MonoBehaviour {
 
         // Store the last color that we used
         lastColorUsed = x;
+    }
+
+    /// <summary>
+    /// Returns true if this is one of the blue teams subnets
+    /// </summary>
+    /// <param name="ipInt"></param>
+    /// <returns></returns>
+    private int isBlueTeam(int ipInt)
+    {
+        for(int i = 0; i < blueTeamIntArray.Length; i++)
+        {
+            if(ipInt == blueTeamIntArray[i])
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     /// <summary>
