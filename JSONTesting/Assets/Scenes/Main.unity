@@ -7025,7 +7025,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 19ac462a4d4d4b440947b3af26c6c3df, type: 2}
   - {fileID: 2100000, guid: 53baf92d132e821458849a409ecfcdeb, type: 2}
   - {fileID: 2100000, guid: 3bb6244cf9883c94c9a47311ce167c32, type: 2}
-  redTeamMat: {fileID: 2100000, guid: 2cd4086391274ff45b128af3fd083444, type: 2}
+  - {fileID: 2100000, guid: 3bb6244cf9883c94c9a47311ce167c32, type: 2}
+  redTeamMat: {fileID: 2100000, guid: 4b64621f43566dc42a1d8b3ce78ff081, type: 2}
   groups: []
   groupPrefab: {fileID: 1964255048097172, guid: edacc949154c026459dcd01c75097b1d,
     type: 2}

@@ -92,7 +92,6 @@ public class IPGroupManager : MonoBehaviour {
         }
         // Close te file reader
         file.Close();
-
         blueTeamIntArray = new int[counter];
 
         for (int i = 0; i < blueTeamIpString.Count; i++)
@@ -100,6 +99,8 @@ public class IPGroupManager : MonoBehaviour {
             // Set the integer array value to the string value
             blueTeamIntArray[i] = IpToInt(blueTeamIpString[i]);
         }
+
+
     }
 
 

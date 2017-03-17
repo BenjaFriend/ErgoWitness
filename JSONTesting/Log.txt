@@ -51390,3 +51390,75 @@ Exception
 NullReferenceException: Object reference not set to an instance of an object
 NetflowObject.OnRenderObject () (at Assets/_Scripts/NetflowData/NetflowObject.cs:134)
 
+Exception
+IndexOutOfRangeException: Array index is out of range.
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:230)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:156)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:134)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:106)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+MonitorObject.CheckData (.Json_Data dataObject) (at Assets/_Scripts/MonitorObject.cs:456)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:334)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+IndexOutOfRangeException: Array index is out of range.
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:230)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:156)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:134)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:106)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:148)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:103)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:99)
+MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/MonitorObject.cs:405)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+IndexOutOfRangeException: Array index is out of range.
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:230)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:156)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:134)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:106)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+MonitorObject.CheckData (.Json_Data dataObject) (at Assets/_Scripts/MonitorObject.cs:456)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:334)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+IndexOutOfRangeException: Array index is out of range.
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:230)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:156)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:134)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:106)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:148)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:103)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:99)
+MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/MonitorObject.cs:405)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+IndexOutOfRangeException: Array index is out of range.
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:230)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:156)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:134)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:106)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+MonitorObject.CheckData (.Json_Data dataObject) (at Assets/_Scripts/MonitorObject.cs:456)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:334)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+IndexOutOfRangeException: Array index is out of range.
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:231)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:157)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:135)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:106)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+MonitorObject.CheckData (.Json_Data dataObject) (at Assets/_Scripts/MonitorObject.cs:456)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:334)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
