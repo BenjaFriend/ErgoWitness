@@ -93,9 +93,7 @@
     <Compile Include="Assets\_Scripts\Management\DeviceManager.cs" />
     <Compile Include="Assets\_Scripts\Management\ExceptionLogger.cs" />
     <Compile Include="Assets\_Scripts\Management\JsonOptions.cs" />
-    <Compile Include="Assets\_Scripts\Management\ListeningOptions.cs" />
     <Compile Include="Assets\_Scripts\Management\ManageMonitors.cs" />
-    <Compile Include="Assets\_Scripts\Management\NetworkMonitor.cs" />
     <Compile Include="Assets\_Scripts\MonitorObject.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\MoveFromSourceToTarget.cs" />
     <Compile Include="Assets\_Scripts\NetflowData\NetflowController.cs" />

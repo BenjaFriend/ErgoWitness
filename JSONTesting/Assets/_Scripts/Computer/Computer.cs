@@ -7,10 +7,13 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
-[RequireComponent(typeof(IncreaseEmission))]
 public class Computer : MonoBehaviour
 {
     #region Fields
+    [SerializeField]
+    private float lifetime = 60f;       // How long until the computer will go off of the network
+    private float timeSinceDiscovery = 0f;
+
     public Source sourceInfo;            // The info that bro gives you
     public Material connectionColor;
     /// <summary>
@@ -18,10 +21,9 @@ public class Computer : MonoBehaviour
     /// but the same for searching, there are only benefits to this
     /// </summary>
     public List<Computer> connectedPcs;
-    public List<string> protocolsUsed;
+   /* public List<string> protocolsUsed;
     public List<string> destinationIps;
-    public List<int> portsUsed;
-    private IncreaseEmission particleController;
+    public List<int> portsUsed;*/
 
     [SerializeField]
     private bool isBlueTeam;
@@ -52,21 +54,52 @@ public class Computer : MonoBehaviour
     /// </summary>
     void OnEnable()
     {
-        // Get the particle controller for this object
-        particleController = GetComponent<IncreaseEmission>();
-        
-        // Create a new list object
+        // Initialize a new list object
         connectedPcs = new List<Computer>();
+        
+        // Make sure tha we know that the time since my discover is reset
+        timeSinceDiscovery = 0f;
+    }
 
-        protocolsUsed = new List<string>();
-        destinationIps = new List<string>();
-        portsUsed = new List<int>();
+    /// <summary>
+    /// Disable this computer object because it has been inactive for long enough
+    /// </summary>
+    private void DisableMe()
+    {
+        // If I am on blue team then I do not want to the this, this is a doulble check
+        if (isBlueTeam)
+        {
+            return;
+        }
 
-        if(SourceInfo.proto != null)
-            protocolsUsed.Add(sourceInfo.proto);
+        // Play the animation of fading or something
 
-        destinationIps.Add(sourceInfo.id_resp_h);
-        portsUsed.Add(sourceInfo.id_orig_p);
+        // Remove myself from the dictoinary
+        DeviceManager.ComputersDict.Remove(sourceInfo.sourceIpInt);
+
+        // Check if the group is empty, if it is then disable the group
+
+        // Set myself to inactive in the heigharchy, so that I be used again
+        gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Keep track of how active this node is, and if it has exceeded its lifetime
+    /// then take it out of the dictionary
+    /// </summary>
+    private void Update()
+    {
+        // If we havce exceeded our active lifetime, and we are not on blue team...
+        if(!isBlueTeam & timeSinceDiscovery >= lifetime)
+        {
+            // Remove it from the dictionary
+            DisableMe();
+        }
+        else
+        {
+            // Add how long it has been to the field
+            timeSinceDiscovery += Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -77,6 +110,7 @@ public class Computer : MonoBehaviour
     /// <param name="connectedToMe">the PC that is connected to me</param>
     public void AddConnectedPC(Computer connectedToMe)
     {
+        timeSinceDiscovery = 0f;
         // If the object that we are given is null or it is this game object:
         if (connectedToMe == null || connectedToMe == gameObject)
         {
@@ -87,32 +121,9 @@ public class Computer : MonoBehaviour
         // If this device is NOT in my list already:
         if (!connectedPcs.Contains(connectedToMe))
         {
-            // Increase the emmision of my the particle system
-            particleController.AddHit();
-
             // Add the connection to my linked list
             connectedPcs.Add(connectedToMe);
         }
-
-        // Check if there is any new info, like a different protocol, different port, different destination, etc
-        // If we have never seen this destination before, then add it to our list. 
-        if (!destinationIps.Contains(connectedToMe.sourceInfo.id_orig_h))
-        {
-            destinationIps.Add(connectedToMe.sourceInfo.id_orig_h);
-        }
-
-        // If we have never seen this protocl before, then add it to the list
-        if (!protocolsUsed.Contains(connectedToMe.sourceInfo.proto))
-        {
-            protocolsUsed.Add(connectedToMe.sourceInfo.proto);
-        }
-
-        // If we have never used this port before, then add it to our list
-        if (!portsUsed.Contains(connectedToMe.sourceInfo.id_orig_p))
-        {
-            portsUsed.Add(connectedToMe.sourceInfo.id_orig_p);
-        }
-
 		// Tell the streaming information that we got another hit on this IP
 		hits++;
 
@@ -120,24 +131,5 @@ public class Computer : MonoBehaviour
             StreamingInfo_UI.currentStreamInfo.CheckTop(sourceInfo.id_orig_h, hits);
 
     }
-
-    /// <summary>
-    /// I will use this to draw lines for right now
-    /// </summary>
-  /*  private void OnRenderObject()
-    {
-        // Set the material to be used for the first line
-        connectionColor.SetPass(0);
-
-        //Draw one line
-        GL.Begin(GL.LINES);
-        for (int i = 0; i < connectedPcs.Count; i++)
-        {
-            GL.Vertex(transform.position);        // The beginning spot of the draw line
-            GL.Vertex(connectedPcs[i].transform.position);         // The endpoint of the draw line
-        }
-
-        GL.End();
-    }*/
 
 }

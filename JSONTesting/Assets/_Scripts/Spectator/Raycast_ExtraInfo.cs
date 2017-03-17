@@ -115,7 +115,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
 
         // If our destination IP is null, then say that
         // Only change the words if we need to
-        if (data.destinationIps.Count == 0 && destIpText.text != "None")
+   /*     if (data.destinationIps.Count == 0 && destIpText.text != "None")
         {
             destIpText.text = "None";
         }
@@ -160,7 +160,7 @@ public class Raycast_ExtraInfo : MonoBehaviour {
             {
                 protoText.text += "  " + data.protocolsUsed[i];
             }
-        }
+        }*/
 
     }
 }

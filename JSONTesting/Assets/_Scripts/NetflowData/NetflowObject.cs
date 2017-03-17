@@ -13,6 +13,7 @@ using UnityEngine;
 public class NetflowObject : MoveFromSourceToTarget
 {
     #region Fields
+
     public Material connectionColor;        
     public ParticleSystem trailPartical;   // The emission module of this particle system
 
@@ -42,9 +43,10 @@ public class NetflowObject : MoveFromSourceToTarget
     {
         set
         {
-            Color newColor = value;
-            newColor.a = .3f;
-            lineMaterial.SetColor("_TintColor", newColor);
+            // Set the alpha level lower, so that it fades nicer
+            value.a = .3f;
+            // Set the tint color of the material
+            lineMaterial.SetColor("_TintColor", value);
         }
     }
 

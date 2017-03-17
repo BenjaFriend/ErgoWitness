@@ -215,6 +215,7 @@ public class IPGroupManager : MonoBehaviour {
             return;
         }
 
+        // See if we are looking at blue team address or not
         int whichBlueTeam = isBlueTeam(groupToColor.GroupAddress);
 
         // Check if the IP is red team or blue

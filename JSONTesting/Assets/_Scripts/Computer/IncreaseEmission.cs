@@ -49,8 +49,7 @@ public class IncreaseEmission : MonoBehaviour {
         // Clamp that emmision rate to the max
         currentSize = Mathf.Clamp(currentSize, minHits, maxHits);
         // Actually change the emission of particles
-		UpdateParticles();
-		
+		UpdateParticles();	
     }
 
     /// <summary>

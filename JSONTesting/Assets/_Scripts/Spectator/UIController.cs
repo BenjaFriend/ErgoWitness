@@ -159,12 +159,15 @@ public class UIController : MonoBehaviour {
 		{
 			// Hide it
 			MenuAnim.SetBool("showMain", false);
-		}
-		// if we are NOT showing the menu...
-		else
+            StreamingInfo_UI.currentStreamInfo.IsShowing = false;
+
+        }
+        // if we are NOT showing the menu...
+        else
 		{
-			// Show the menu
-			MenuAnim.SetBool("showMain", true);
+            // Show the menu
+            StreamingInfo_UI.currentStreamInfo.IsShowing = true;
+            MenuAnim.SetBool("showMain", true);
 		}
 	}
 
@@ -186,8 +189,6 @@ public class UIController : MonoBehaviour {
 
             // Set the play button as active
             pausePlayButton.image.sprite = playSprite;
-
-            //playerMovement.enabled = true;
         }
         // Start monitoring again
         else

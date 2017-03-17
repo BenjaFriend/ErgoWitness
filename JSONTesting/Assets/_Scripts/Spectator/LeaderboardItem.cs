@@ -21,16 +21,16 @@ public class LeaderboardItem : MonoBehaviour {
     {
         // Get all text components on this object
         Text[] textComponents = GetComponentsInChildren<Text>();
-        for(int i = 0; i <textComponents.Length; i++)
+        for (int i = 0; i < textComponents.Length; i++)
         {
             // If we don't have the first IP component yet, then set it equal to this
-            if(ipText == null)
+            if (ipText == null)
             {
                 ipText = textComponents[i];
             }
 
             // If this is the second component, then set it equal to the count text
-            if(textComponents[i].GetInstanceID() != ipText.GetInstanceID())
+            if (textComponents[i].GetInstanceID() != ipText.GetInstanceID())
             {
                 countText = textComponents[i];
                 break;
@@ -40,14 +40,11 @@ public class LeaderboardItem : MonoBehaviour {
         // Set their text fields to empty to start as long as they are not null
         try
         {
+            // Set the text components
             ipText.text = "";
             countText.text = "";
         }
-        catch(Exception e)
-        {
-            //Debug.Log(e.Message);
-        }
-
+        catch { }
     }
 
     /// <summary>
@@ -62,10 +59,6 @@ public class LeaderboardItem : MonoBehaviour {
             ipText.text = ip;
             countText.text = count.ToString();
         }
-        catch (Exception e)
-        {
-            //Debug.Log(e.Message);
-        }
+        catch { }
     }
-
 }

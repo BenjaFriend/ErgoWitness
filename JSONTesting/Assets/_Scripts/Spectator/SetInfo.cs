@@ -30,7 +30,7 @@ public class SetInfo : MonoBehaviour {
             dest.text = data.dest.ip;
             port.text = data.dest.port.ToString();
         }
-        catch(Exception e)
+        catch
         {
            // Debug.Log(e.Message);
         }
@@ -53,7 +53,7 @@ public class SetInfo : MonoBehaviour {
             port.text = data.id_resp_p.ToString();
             protocol.text = data.proto;
         }
-        catch (Exception e)
+        catch
         {           
 
         }
@@ -73,9 +73,8 @@ public class SetInfo : MonoBehaviour {
             port.text = "";
             protocol.text = "";
         }
-        catch (Exception e)
+        catch
         {
-            //Debug.Log(e.Message);
         }
     }
 

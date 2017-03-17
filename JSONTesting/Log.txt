@@ -51462,3 +51462,47 @@ MonitorObject.CheckData (.Json_Data dataObject) (at Assets/_Scripts/MonitorObjec
 MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:334)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:169)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:147)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:170)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:183)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:121)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:97)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:136)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:97)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:136)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:97)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:99)
+MonitorObject:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/MonitorObject.cs:405)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:169)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:147)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:170)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:183)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:121)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:97)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:136)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:97)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:136)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:97)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:67)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:99)
+MonitorObject:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/MonitorObject.cs:405)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+

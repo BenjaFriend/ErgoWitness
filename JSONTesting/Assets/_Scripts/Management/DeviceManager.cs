@@ -29,6 +29,7 @@ public class DeviceManager : MonoBehaviour {
         // Make sure tha thtis is the only one of these objects in the scene
         if (currentDeviceManager == null)
         {
+            // Set the currenent referece
             currentDeviceManager = this;
         }
         else if (currentDeviceManager != this)
@@ -49,12 +50,6 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="jsonSourceData">The source data that we are checking</param>
     public void CheckIp(Source jsonSourceData)
     {
-        // Make sure that we have something in the array
-        if (jsonSourceData == null || jsonSourceData.sourceIpInt == 0)
-        { 
-            return;
-        }
-
         // If we know of the source IP already:
         if (CheckDictionary(jsonSourceData.sourceIpInt))
         {
@@ -76,25 +71,14 @@ public class DeviceManager : MonoBehaviour {
     /// </summary>
     public void NewComputer(Source jsonSourceData)
     {
-        // If this is null or we already have the IP somehow...
-        if(jsonSourceData.id_orig_h == null || computersDict.ContainsKey(jsonSourceData.sourceIpInt))
-        {
-            return;
-        }
-
-        // Get a temporary object from the object pooler
-        GameObject newTempObj = computerPooler.GetPooledObject();
-    
-        // If the object is null then break out of this
-        if (newTempObj == null) return;
-
-        Computer newDevice = newTempObj.GetComponent<Computer>();
+        // Get a new computer device from the object pooler
+        Computer newDevice = computerPooler.GetPooledObject().GetComponent<Computer>();
 
         // Set the DATA on this gameobject to the data from the JSON data
         newDevice.SourceInfo = jsonSourceData;
 
         // Set this object as active in the hierachy so that you can actually see it
-        newTempObj.SetActive(true);
+        newDevice.gameObject.SetActive(true);
 
         // Add the object to the dictionary
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
@@ -123,8 +107,8 @@ public class DeviceManager : MonoBehaviour {
     /// of that or not.</param>
     private void CheckConnections(Source source)
     {
-        // I need to check if my destination is a source  address, which would mean that it is in my dictionary already
-        if (source.id_resp_h == null || source.id_resp_h == "Null")
+        // If this source is 0, then we want to get rid of it
+        if(source.sourceIpInt == 0 || source.destIpInt == 0)
         {
             return;
         }
@@ -155,21 +139,18 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="IP">The IP of the computer that we want to find</param>
     /// <returns>The transform of the computer</returns>
     public Transform GetTransform(int IP)
-    {
-        if (IP == 0)
-        {
-            return null;
-        }
-
+    { 
+        // If we contrain this IP address, then return the transform
         if(computersDict.ContainsKey(IP))
             return computersDict[IP].transform;
-
+        // Otherwise return null
         return null;
     }
 
-    // Returns true if this computer is on blue team
+    /// Returns true if this computer is on blue team
     public bool isBlueTeam(int ipInt)
     {
+        // return if this is blue team
         return computersDict[ipInt].IsBlueTeam;
     }
 
@@ -180,11 +161,7 @@ public class DeviceManager : MonoBehaviour {
     /// <returns>True if we have this key</returns>
     public bool CheckDictionary(int IpInt)
     {
-        if(IpInt == 0)
-        {
-            return false;
-        }
-
+        // return if we contrain this address or not
         return computersDict.ContainsKey(IpInt);
     }
 
@@ -210,5 +187,4 @@ public class DeviceManager : MonoBehaviour {
         return false;
 
     }
-
 }

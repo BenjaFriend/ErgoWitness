@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114521376469234094}
   - component: {fileID: 33872432246634730}
   - component: {fileID: 23176314179641296}
-  - component: {fileID: 114425075393983608}
   m_Layer: 0
   m_Name: Computer_Prefab
   m_TagString: Comp
@@ -48,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4009685451895686
 Transform:
   m_ObjectHideFlags: 1
@@ -114,26 +113,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114425075393983608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff2977d2f1e23240ad6998f9e762699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSpeed: 0.1
-  maxSpeed: 0.3
 --- !u!114 &114521376469234094
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cfdb358d09f5f544939e8b93a174aec, type: 3}
   m_Name: 
@@ -153,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa562669e9003734eb1c92384ad7cf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 30
   sourceInfo:
     runtime_timestamp: 
     id_orig_p: 0
@@ -166,9 +153,7 @@ MonoBehaviour:
     destIpInt: 0
   connectionColor: {fileID: 2100000, guid: b6ec70e49a7db7b40ab8c5308853a167, type: 2}
   connectedPcs: []
-  protocolsUsed: []
-  destinationIps: []
-  portsUsed: 
+  isBlueTeam: 0
 --- !u!135 &135971264439090388
 SphereCollider:
   m_ObjectHideFlags: 1

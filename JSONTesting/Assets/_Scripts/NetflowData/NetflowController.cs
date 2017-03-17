@@ -99,6 +99,8 @@ public class NetflowController : MonoBehaviour
             DeviceManager.currentDeviceManager.CheckIp(newSource);
         }
 
+
+
         // Then we can continue on and send out flow data out      
         SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
 

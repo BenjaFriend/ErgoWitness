@@ -13,7 +13,6 @@ public class IPGroup : MonoBehaviour {
 
     [SerializeField]
     private bool isBlueTeam; // True if this IP is a blue team
-
     [SerializeField]
     private float increasePerComputer = 0.5f;
     [SerializeField]
