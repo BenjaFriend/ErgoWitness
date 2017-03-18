@@ -54250,3 +54250,9 @@ IPGroupManager.RemoveIpFromGroup (Int32 ipAddr) (at Assets/_Scripts/IPGrouping/I
 Computer.DisableMe () (at Assets/_Scripts/Computer/Computer.cs:81)
 Computer.Update () (at Assets/_Scripts/Computer/Computer.cs:98)
 
+Exception
+IndexOutOfRangeException: Array index is out of range.
+MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/MonitorObject.cs:376)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:328)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

@@ -6555,7 +6555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatJson: 0
-  frequency: 1
+  frequency: 0.7
   logData: 0
   assumeHttp: 1
   fileLocation_queryTop: /Packetbeat/packetbeat_Headers_TOP.json

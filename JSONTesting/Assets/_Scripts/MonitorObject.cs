@@ -373,10 +373,14 @@ public class MonitorObject : MonoBehaviour {
         //_last_successful_Query = _Packetbeat_Current_Query;
 
         // It is new, so set the thing we use to check it to the current ID
-        last_unique_id = packetDataObj.hits.hits[0]._id;
+        last_unique_id = packetDataObj.hits.hits[packetDataObj.hits.hits.Length -1]._id;
 
         // Set our latest packetbeat time to the most recent one
-        _latest_time = packetDataObj.hits.hits[0]._source.runtime_timestamp + "\"";
+        _latest_time = packetDataObj.hits.hits[packetDataObj.hits.hits.Length -1]._source.runtime_timestamp + "\"";
+
+        //Debug.Log(packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._source.runtime_timestamp + "\"");
+
+        //Debug.Log(packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._source.runtime_timestamp + "\"");
 
 
         // ============== Actually loop through our hits data  =========================

@@ -59,6 +59,11 @@ public class Computer : MonoBehaviour
         
         // Make sure tha we know that the time since my discover is reset
         timeSinceDiscovery = 0f;
+
+        if (isBlueTeam)
+        {
+            lifetime *= 3;
+        }
     }
 
     /// <summary>
@@ -66,12 +71,6 @@ public class Computer : MonoBehaviour
     /// </summary>
     private void DisableMe()
     {
-        // If I am on blue team then I do not want to the this, this is a doulble check
-        if (isBlueTeam)
-        {
-            return;
-        }
-
         // Check if the group is empty, if it is then disable the group
         IPGroupManager.currentIpGroups.RemoveIpFromGroup(this);
 
