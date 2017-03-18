@@ -16,7 +16,9 @@ public class IPGroup : MonoBehaviour {
     [SerializeField]
     private float increasePerComputer = 0.5f;
     [SerializeField]
+    
     private float radius = 5f;
+    private float startRadius;
     [SerializeField]
     private float minDistanceApart = 1f;
     [SerializeField]
@@ -56,6 +58,8 @@ public class IPGroup : MonoBehaviour {
         attemptCount = 0;
         myPointLight = GetComponent<Light>();
         myPointLight.range = radius * lightRangeScaler;
+
+        startRadius = radius;
     }
 
     /// <summary>
@@ -162,6 +166,38 @@ public class IPGroup : MonoBehaviour {
 
             yield return null;
         }
+    }
+
+    public bool RemoveIp(Computer removeMe)
+    {
+        // Remove this computer object from this group
+        groupedComputers.Remove(DeviceManager.ComputersDict[removeMe.sourceInfo.sourceIpInt]);
+
+        radius -= increasePerComputer;
+        if(radius <= startRadius)
+        {
+            radius = startRadius;
+        }
+      
+        if (groupedComputers.Count <= 0)
+        {
+            // we have nothing left
+            RemoveLight();
+            return true;
+        }
+
+        // Start scaling with a new number!
+        currentScalingRoutine = ScaleLightRange(radius * 2f);
+        StartCoroutine(currentScalingRoutine);
+
+        return false;
+    }
+
+    public void RemoveLight()
+    {
+        // Start scaling with a new number!
+        currentScalingRoutine = ScaleLightRange(0f);
+        StartCoroutine(currentScalingRoutine);
     }
 
 }

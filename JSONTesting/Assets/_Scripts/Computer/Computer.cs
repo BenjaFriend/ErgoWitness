@@ -11,7 +11,7 @@ public class Computer : MonoBehaviour
 {
     #region Fields
     [SerializeField]
-    private float lifetime = 60f;       // How long until the computer will go off of the network
+    private float lifetime = 5f;       // How long until the computer will go off of the network
     private float timeSinceDiscovery = 0f;
 
     public Source sourceInfo;            // The info that bro gives you
@@ -72,12 +72,11 @@ public class Computer : MonoBehaviour
             return;
         }
 
-        // Play the animation of fading or something
+        // Check if the group is empty, if it is then disable the group
+        IPGroupManager.currentIpGroups.RemoveIpFromGroup(this);
 
         // Remove myself from the dictoinary
         DeviceManager.ComputersDict.Remove(sourceInfo.sourceIpInt);
-
-        // Check if the group is empty, if it is then disable the group
 
         // Set myself to inactive in the heigharchy, so that I be used again
         gameObject.SetActive(false);

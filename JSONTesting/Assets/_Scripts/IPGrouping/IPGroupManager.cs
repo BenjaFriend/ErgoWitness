@@ -100,10 +100,36 @@ public class IPGroupManager : MonoBehaviour {
             blueTeamIntArray[i] = IpToInt(blueTeamIpString[i]);
         }
 
-
     }
 
+    public void RemoveIpFromGroup(Computer compToRemove)
+    {
+        // Get the first 3 numbers of this IP in an integer
+        int ipFirstThree = GetFirstThreeIpInt(compToRemove.sourceInfo.sourceIpInt);
 
+        // If the group dictionary has a group with the same first 3 numbers
+        if (groupsDictionary.ContainsKey(ipFirstThree))
+        {
+            // Remove this IP address from that group
+            if (groupsDictionary[ipFirstThree].RemoveIp(compToRemove))
+            {
+                // Set the onbject as inactive
+                groupsDictionary[ipFirstThree].gameObject.SetActive(false);
+                IPGroup temp = groupsDictionary[ipFirstThree];
+                // Remove it from the gorup dictionary
+                groupsDictionary.Remove(ipFirstThree);
+                Destroy(temp);
+            }
+            //groupsDictionary[ipFirstThree].groupedComputers.Remove(compToRemove);
+
+            
+                
+            
+            size -= increaseAmountPerGroup;
+            // We are done here, nothing else needed
+            return;
+        }
+    }
 
 
 
