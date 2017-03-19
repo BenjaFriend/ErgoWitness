@@ -312,6 +312,7 @@ MonoBehaviour:
   zoomSpeed: 500
   speed: 0.5
   targetpos: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!124 &124120683780334804
 Behaviour:
   m_ObjectHideFlags: 1

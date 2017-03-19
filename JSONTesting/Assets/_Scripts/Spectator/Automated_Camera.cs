@@ -11,12 +11,13 @@ public class Automated_Camera : MonoBehaviour {
 
     public static Automated_Camera currentAutoCam;
 	public float zoomSpeed = 1f;
-    public float speed = 1f;       // How fast do we want to shoot this thing
+    [SerializeField]
+    private float speed = 0.5f;       // How fast do we want to shoot this thing
     public MoveFromSourceToTarget targetpos;
 
     private GameObject centerOfWorld;
     private Vector3 newPos;
-
+    public UnityEngine.UI.Slider slider;
 
 
     /// <summary>
@@ -90,4 +91,9 @@ public class Automated_Camera : MonoBehaviour {
         yield return null;
 	}
 
+    //Change the speed based on slider value
+    public void SubmitSliderSettings()
+    {
+        speed = slider.value;
+    }
 }
