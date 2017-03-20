@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7931032, b: 1, a: 0.616}
+  m_Color: {r: 0, g: 0.7931032, b: 1, a: 0.953}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 431167160}
   - component: {fileID: 431167161}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: CamSpeedSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
