@@ -246,16 +246,38 @@ public class UIController : MonoBehaviour {
     {
         // Use the animator to do this
         // If we are not showing the menu and we are in idle state....
-        if (!MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        //if (!MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (!MenuAnim.GetBool("showHelp"))
         {
             // Show the menu
             MenuAnim.SetBool(("showHelp"), true);
         }
         // If we are showing the menu and we are in that state too
-        else if (MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("ShowHelpMenu"))
+        //else if (MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("ShowHelpMenu"))
+        else if (MenuAnim.GetBool("showHelp"))
         {
             // Hide the menu
             MenuAnim.SetBool(("showHelp"), false);
+        }
+    }
+
+    /// <summary>
+    /// Toggles if we are looking at the options menu or not
+    /// </summary>
+    public void ToggleOptionsMenu()
+    {
+        // Use the animator to do this
+        // If we are not showing the menu and we are in idle state....
+        if (!MenuAnim.GetBool("showOptions") )
+        {
+            // Show the menu
+            MenuAnim.SetBool(("showOptions"), true);
+        }
+        // If we are showing the menu and we are in that state too
+        else if (MenuAnim.GetBool("showOptions") )
+        {
+            // Hide the menu
+            MenuAnim.SetBool(("showOptions"), false);
         }
     }
     #endregion

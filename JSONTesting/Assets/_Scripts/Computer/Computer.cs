@@ -21,9 +21,6 @@ public class Computer : MonoBehaviour
     /// but the same for searching, there are only benefits to this
     /// </summary>
     public List<Computer> connectedPcs;
-   /* public List<string> protocolsUsed;
-    public List<string> destinationIps;
-    public List<int> portsUsed;*/
 
     [SerializeField]
     private bool isBlueTeam;

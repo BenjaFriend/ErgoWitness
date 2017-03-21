@@ -4,21 +4,13 @@ The HTTP request text:
   "error" : {
     "root_cause" : [
       {
-        "type" : "index_not_found_exception",
-        "reason" : "no such index",
-        "resource.type" : "index_or_alias",
-        "resource.id" : "filebeat-2017.03.18",
-        "index_uuid" : "_na_",
-        "index" : "filebeat-2017.03.18"
+        "type" : "json_parse_exception",
+        "reason" : "Illegal unquoted character ((CTRL-CHAR, code 13)): has to be escaped using backslash to be included in string value\n at [Source: org.elasticsearch.transport.netty4.ByteBufStreamInput@3326dc89; line: 6, column: 17]"
       }
     ],
-    "type" : "index_not_found_exception",
-    "reason" : "no such index",
-    "resource.type" : "index_or_alias",
-    "resource.id" : "filebeat-2017.03.18",
-    "index_uuid" : "_na_",
-    "index" : "filebeat-2017.03.18"
+    "type" : "json_parse_exception",
+    "reason" : "Illegal unquoted character ((CTRL-CHAR, code 13)): has to be escaped using backslash to be included in string value\n at [Source: org.elasticsearch.transport.netty4.ByteBufStreamInput@3326dc89; line: 6, column: 17]"
   },
-  "status" : 404
+  "status" : 500
 }
 

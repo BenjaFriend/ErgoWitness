@@ -19,17 +19,15 @@ public class MonitorObject : MonoBehaviour {
 
     #region Fields
     private State currentState;
-
-    // Allow the picking of which JSON object to use for thi
-    public JsonOptions.Option whatJson = JsonOptions.Option.Filebeat;
+    // Have this bool so that the user can use a toggle box in the menu
+    private bool keepGoing = true;
 
     [Range(0f, 1f)]
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
 
     private string serverIP;    // The IP address of the server running our database
     public bool logData = false; // Do we want to query the data
-    public bool assumeHttp = false;
-    private string indexName;    // Either packetbeat or filebeat
+    public string indexName;    // Either packetbeat or filebeat
     private string url;        // The filebeat index
 
     private Dictionary<string, string> headers;  // The dictionary with all the headers in it
@@ -44,24 +42,22 @@ public class MonitorObject : MonoBehaviour {
 
     private string filelocation_ErrorLog = "/ErrorLog.txt";
 
-    private string last_unique_id;
+    public string last_unique_id;
 
     // The query data that we will use to build our request
     private string _query_TOP;
     private string _query_BOTTOM;
     // The latest successful time stamp that we used to make a request
-    private string _latest_time;
+    public string _latest_time;
     // This is true if we want to use our last success, which means that the newest query failed
-    private bool _UseLastSuccess;
+    public bool _UseLastSuccess;
 
     private byte[] _PostData;        // The post data that we are using
 
     private WaitForSeconds _waitTime;   // A wait object so that we only need to create it once
     
     private IEnumerator request_Coroutine;  // The coroutine that is running the web request
-    private Packetbeat_Json_Data _packetbeatJsonData;
     private Json_Data _filebeatJsonData;
-    private bool keepGoing = true;
 
     #endregion
 
@@ -95,7 +91,7 @@ public class MonitorObject : MonoBehaviour {
 
         _waitTime = new WaitForSeconds(1 - frequency);
 
-        SetUpURL();
+        SetUpURL(indexName);
 
         // Set the current state
         currentState = State.FinishedTheRequestAndParse;
@@ -106,23 +102,8 @@ public class MonitorObject : MonoBehaviour {
     /// on whether we are to use Filebeat or 
     /// packetbeat, and the current date
     /// </summary>
-    private void SetUpURL()
+    public virtual void SetUpURL(string indexName)
     {
-        switch (whatJson)
-        {
-            case (JsonOptions.Option.Packetbeat):
-                indexName = "packetbeat";
-                break;
-
-            case (JsonOptions.Option.Filebeat):
-                indexName = "filebeat";
-                break;
-
-            default:
-                indexName = "filebeat";
-                break;
-                   
-        }
 
         // Add the port and packet type
         url = serverIP  + indexName + "-";
@@ -157,40 +138,11 @@ public class MonitorObject : MonoBehaviour {
     /// Start the HTTP request coroutine, and store the instane in the 
     /// request_Courinte field
     /// </summary>
-    public void StartMonitor()
+    public virtual void StartMonitor()
     {
-        //Packetbeat_Json_Data packetdata;
-        //Json_Data filebeatdata;
         keepGoing = true;
 
-        // Start whichever beat we want to list to, or both
-        switch (whatJson)
-        {
-            case (JsonOptions.Option.Packetbeat):
-                // Create a new object only if we ahve to
-                if(_packetbeatJsonData == null)
-                    _packetbeatJsonData = new Packetbeat_Json_Data();
-
-                currentState = State.FinishedTheRequestAndParse;
-
-                // Start the finite satate machine for the web request
-                StartCoroutine(FSM(_packetbeatJsonData));
-                break;
-            case (JsonOptions.Option.Filebeat):
-                // Create a new object only if we have to
-                if(_filebeatJsonData == null)
-                    _filebeatJsonData = new Json_Data();
-
-                // Keep track of the co routine, so that we can stop it specifically
-                currentState = State.FinishedTheRequestAndParse;
-
-                StartCoroutine(FSM(_filebeatJsonData));
-                break;
-            default:
-                // There is something wrong here
-                // new Exception("The type of beat is not selected!");
-                break;
-        }
+        currentState = State.FinishedTheRequestAndParse;
     }
 
     /// <summary>
@@ -204,19 +156,37 @@ public class MonitorObject : MonoBehaviour {
     }
 
     /// <summary>
+    /// This is so that we can toggle the monitoring with a UI checkbox
+    /// </summary>
+    public void ToggleMoniotr()
+    {
+        // If we are running, then call the stop method...
+        if (keepGoing || currentState != State.Stop)
+        {
+            // Stop teh monitor
+            StopMonitor();
+        }
+        else
+        {
+           // Start the monitor
+            StartMonitor();
+        }
+
+    }
+
+    /// <summary>
     /// This method will manage the web request coroutine
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="dataObject"></param>
     /// <returns></returns>
-    private IEnumerator FSM<T>(T dataObject)
+    public IEnumerator FSM<T>(T dataObject)
     {
         // We always want to be looping and check what state we are in
         while(keepGoing)
         {
             if(currentState == State.Stop)
             {
-                //Debug.Log("Stop!!!!!    IF STATEMENT" );
                 StopCoroutine(request_Coroutine);
                 keepGoing = false;
                 break;
@@ -242,7 +212,6 @@ public class MonitorObject : MonoBehaviour {
                         currentState = State.CurrentlyRunning;
                     break;
 
-                //case (State.CurrentlyRunning):
                 default:
                     // If we are currently running, or something else is happening
                     yield return null;
@@ -250,7 +219,6 @@ public class MonitorObject : MonoBehaviour {
             }
         }
     }
-
 
     /// <summary>
     /// Take in what JSON class to use, and create a WWW request based off of
@@ -306,7 +274,12 @@ public class MonitorObject : MonoBehaviour {
             LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
             LogData("The Query that failed: \n" + _Current_Query, filelocation_ErrorLog);
             if (myRequest.text != null)
+            {
                 LogData("The HTTP request text:\n" + myRequest.text, filelocation_ErrorLog);
+                #if UNITY_EDITOR
+                Debug.Log("The HTTP request text:\n" + myRequest.text);
+                #endif
+            }
             // If there was an error, then stop
             yield break;
         }
@@ -321,18 +294,8 @@ public class MonitorObject : MonoBehaviour {
         // Create a new data object using the type of JSON that it is
         dataObject = JsonUtility.FromJson<T>(myRequest.text);
 
-        if(typeof(T) == typeof(Packetbeat_Json_Data))
-        {
-            // Cast the object as necessary
-            Packetbeat_Json_Data myPacketbeat = dataObject as Packetbeat_Json_Data;
-            CheckData(myPacketbeat);
-        }
-        else if(typeof(T) == typeof(Json_Data))
-        {
-            // Cast the object as necessary
-            Json_Data myFilebeat = dataObject as Json_Data;
-            CheckData(myFilebeat);
-        }
+        // Call this method so that the more specifc child class can deal with it
+        CheckRequestData(dataObject);
 
         // Mark the state as finished, as long as we were not told to stop
         if(currentState != State.Stop)
@@ -340,126 +303,7 @@ public class MonitorObject : MonoBehaviour {
 
     }
 
-    private void CheckData(Packetbeat_Json_Data packetDataObj)
-    {
-        // ================= Check and make sure that our data is valid =====================
-        // Make sure that our data is not null
-        if (packetDataObj == null || packetDataObj.hits.hits == null || packetDataObj.hits.hits.Length == 0)
-        {
-            _UseLastSuccess = true;
-
-            // Tell this to use the last successful query
-            return;
-        }
-
-        // Make sure that this flow is not the same as the last one
-        if (last_unique_id == packetDataObj.hits.hits[0]._id)
-        {
-            _UseLastSuccess = false;
-            // If it is then break out and don't bother doing anything, this should
-            // Save on processing power, and prevent duplicate
-            return;
-        }
-
-        // Let this know that we no longer need to bank on the last success
-        if (_UseLastSuccess)
-        {
-            _UseLastSuccess = false;
-        }
-
-
-        // ============= Keep track of stuff to prevent duplicates =======================
-        // Keep track of our last successful query
-        //_last_successful_Query = _Packetbeat_Current_Query;
-
-        // It is new, so set the thing we use to check it to the current ID
-        last_unique_id = packetDataObj.hits.hits[packetDataObj.hits.hits.Length -1]._id;
-
-        // Set our latest packetbeat time to the most recent one
-        _latest_time = packetDataObj.hits.hits[packetDataObj.hits.hits.Length -1]._source.runtime_timestamp + "\"";
-
-        //Debug.Log(packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._source.runtime_timestamp + "\"");
-
-        //Debug.Log(packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._source.runtime_timestamp + "\"");
-
-
-        // ============== Actually loop through our hits data  =========================
-        for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
-        {
-            // Set the integer IP values of this object
-            SetIntegerValues(packetDataObj.hits.hits[i]._source);
-
-            // If either of these is 0 then break out of this loop
-            if(packetDataObj.hits.hits[i]._source.sourceIpInt == 0 || packetDataObj.hits.hits[i]._source.destIpInt == 0)
-            {
-                break;
-            }
-
-            // As long as what we got from those IP's is valid:
-            if (packetDataObj.hits.hits[i]._source.destIpInt != -1 && packetDataObj.hits.hits[i]._source.sourceIpInt != -1)
-            {
-                // Change the protocol to HTTP if we want to, this is optional because
-                // sometimes it is techincally incorrect
-                if(assumeHttp && packetDataObj.hits.hits[i]._source.dest.port == 80 || 
-                   packetDataObj.hits.hits[i]._source.dest.port == 8080)
-                {
-                    packetDataObj.hits.hits[i]._source.transport = "http";
-                }
-                // Send the data to the netflow controller
-                NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
-            }
-        }
-    }
-
-    /// <summary>
-    /// Check the data for a Json Object
-    /// </summary>
-    /// <param name="dataObject"></param>
-    private void CheckData(Json_Data dataObject)
-    {
-        // ================= Check and make sure that our data is valid =====================
-        // Make sure that our data is not null
-        if (dataObject == null || dataObject.hits.hits == null || dataObject.hits.hits.Length == 0)
-        {
-            _UseLastSuccess = true;
-
-            // Tell this to use the last successful query
-            return;
-        }
-
-        // Make sure that this flow is not the same as the last one
-        if (last_unique_id == dataObject.hits.hits[0]._id)
-        {
-            // If it is then break out and don't bother doing anything, this should
-            // Save on processing power, and prevent duplicate
-            _UseLastSuccess = false;
-            return;
-        }
-
-        // Let this know that we no longer need to bank on the last success
-        if (_UseLastSuccess)
-        {
-            _UseLastSuccess = false;
-        }
-
-        // ============= Keep track of stuff to prevent duplicates ===============
-        // It is new, so set the thing we use to check it to the current ID
-        last_unique_id = dataObject.hits.hits[0]._id;
-
-        // Set our latest packetbeat time to the most recent one
-        _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp + "\"";
-
-
-        // Send the data to the game controller for all of our hits
-        for (int i = 0; i < dataObject.hits.hits.Length; i++)
-        {
-            // Set the integer IP values if this source
-            SetIntegerValues(dataObject.hits.hits[i]._source);
-
-            // Send the bro data to the game controller, and add it to the network
-            DeviceManager.currentDeviceManager.CheckIp(dataObject.hits.hits[i]._source);
-        }
-    }
+    public virtual void CheckRequestData<T>(T data) { }
 
     #region String to integer conversion stuff
 

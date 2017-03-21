@@ -2,5 +2,7 @@
   "query": {
     "range": {
       "runtime_timestamp": {
-        "gt":
+                "gt": "2017-03-21T21:03:28.001Z",
+
+        "lt":
         

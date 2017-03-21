@@ -28,7 +28,6 @@ public class HitsData_Packet
     public string _id;
     public string _type;
 
-    //public string @timestamp;
     public Source_Packet _source;
 }
 
