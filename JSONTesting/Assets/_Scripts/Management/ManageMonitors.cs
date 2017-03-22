@@ -22,9 +22,6 @@ public class ManageMonitors : MonoBehaviour {
         }
         else if (currentMonitors != this)
             Destroy(gameObject);
-
-        // Dont destroy this object on load
-        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>

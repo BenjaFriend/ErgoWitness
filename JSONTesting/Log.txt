@@ -54256,3 +54256,225 @@ MonitorObject.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Script
 MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:328)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Exception
+IndexOutOfRangeException: Array index is out of range.
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:71)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+MissingReferenceException: The object of type 'IPGroup' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+IPGroup.MoveToGroupSpot (.Computer thingToMove) (at Assets/_Scripts/IPGrouping/IPGroup.cs:116)
+IPGroup.AddToGroup (Int32 IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:91)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:154)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:99)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:96)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+MissingReferenceException: The object of type 'IPGroup' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+IPGroup.MoveToGroupSpot (.Computer thingToMove) (at Assets/_Scripts/IPGrouping/IPGroup.cs:116)
+IPGroup.AddToGroup (Int32 IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:91)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:154)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:99)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:96)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+MissingReferenceException: The object of type 'GameObject' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+ObjectPooler.GetPooledObject () (at Assets/_Scripts/ObjectPooler.cs:47)
+NetflowController.SendFlow (Int32 sourceIP, Int32 destIP, System.String protocol) (at Assets/_Scripts/NetflowData/NetflowController.cs:124)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:105)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:96)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+MissingReferenceException: The object of type 'IPGroup' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+IPGroup.MoveToGroupSpot (.Computer thingToMove) (at Assets/_Scripts/IPGrouping/IPGroup.cs:116)
+IPGroup.AddToGroup (Int32 IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:91)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:154)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+BroMonitor.CheckData (.Json_Data dataObject) (at Assets/_Scripts/BroMonitor.cs:77)
+BroMonitor.CheckRequestData[Json_Data] (.Json_Data data) (at Assets/_Scripts/BroMonitor.cs:35)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:169)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:147)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:126)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/_Scripts/NetflowData/NetflowController.cs:159)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:103)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:96)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:169)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:147)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:126)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/_Scripts/NetflowData/NetflowController.cs:159)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:103)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:96)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:173)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:151)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:126)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/_Scripts/NetflowData/NetflowController.cs:159)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:103)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:96)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:176)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:155)
+Computer:AddConnectedPC(Computer) (at Assets/_Scripts/Computer/Computer.cs:126)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/_Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/_Scripts/NetflowData/NetflowController.cs:159)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:103)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:96)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Slider_TextValue.Start () (at Assets/_Scripts/UserQueries/Slider_TextValue.cs:18)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Slider_TextValue.SetTextValue () (at Assets/_Scripts/UserQueries/Slider_TextValue.cs:26)
+UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent`1[System.Single].Invoke (Single arg0) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_1.cs:53)
+UnityEngine.UI.Slider.Set (Single input, Boolean sendCallback) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:235)
+UnityEngine.UI.Slider.Set (Single input) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:220)
+UnityEngine.UI.Slider.set_value (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:60)
+UnityEngine.UI.Slider.set_normalizedValue (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:74)
+UnityEngine.UI.Slider.UpdateDrag (UnityEngine.EventSystems.PointerEventData eventData, UnityEngine.Camera cam) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:313)
+UnityEngine.UI.Slider.OnDrag (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:347)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IDragHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:73)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IDragHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Slider_TextValue.SetTextValue () (at Assets/_Scripts/UserQueries/Slider_TextValue.cs:26)
+UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent`1[System.Single].Invoke (Single arg0) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_1.cs:53)
+UnityEngine.UI.Slider.Set (Single input, Boolean sendCallback) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:235)
+UnityEngine.UI.Slider.Set (Single input) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:220)
+UnityEngine.UI.Slider.set_value (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:60)
+UnityEngine.UI.Slider.set_normalizedValue (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:74)
+UnityEngine.UI.Slider.UpdateDrag (UnityEngine.EventSystems.PointerEventData eventData, UnityEngine.Camera cam) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:313)
+UnityEngine.UI.Slider.OnDrag (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:347)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IDragHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:73)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IDragHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Slider_TextValue.SetTextValue () (at Assets/_Scripts/UserQueries/Slider_TextValue.cs:26)
+UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent`1[System.Single].Invoke (Single arg0) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_1.cs:53)
+UnityEngine.UI.Slider.Set (Single input, Boolean sendCallback) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:235)
+UnityEngine.UI.Slider.Set (Single input) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:220)
+UnityEngine.UI.Slider.set_value (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:60)
+UnityEngine.UI.Slider.set_normalizedValue (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:74)
+UnityEngine.UI.Slider.UpdateDrag (UnityEngine.EventSystems.PointerEventData eventData, UnityEngine.Camera cam) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:313)
+UnityEngine.UI.Slider.OnDrag (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:347)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IDragHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:73)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IDragHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Slider_TextValue.SetTextValue () (at Assets/_Scripts/UserQueries/Slider_TextValue.cs:26)
+UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent`1[System.Single].Invoke (Single arg0) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_1.cs:53)
+UnityEngine.UI.Slider.Set (Single input, Boolean sendCallback) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:235)
+UnityEngine.UI.Slider.Set (Single input) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:220)
+UnityEngine.UI.Slider.set_value (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:60)
+UnityEngine.UI.Slider.set_normalizedValue (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:74)
+UnityEngine.UI.Slider.UpdateDrag (UnityEngine.EventSystems.PointerEventData eventData, UnityEngine.Camera cam) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:313)
+UnityEngine.UI.Slider.OnPointerDown (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:339)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerDownHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:38)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerDownHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Slider_TextValue.SetTextValue () (at Assets/_Scripts/UserQueries/Slider_TextValue.cs:26)
+UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent`1[System.Single].Invoke (Single arg0) (at C:/buildslave/unity/build/Runtime/Export/UnityEvent_1.cs:53)
+UnityEngine.UI.Slider.Set (Single input, Boolean sendCallback) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:235)
+UnityEngine.UI.Slider.Set (Single input) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:220)
+UnityEngine.UI.Slider.set_value (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:60)
+UnityEngine.UI.Slider.set_normalizedValue (Single value) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:74)
+UnityEngine.UI.Slider.UpdateDrag (UnityEngine.EventSystems.PointerEventData eventData, UnityEngine.Camera cam) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:313)
+UnityEngine.UI.Slider.OnDrag (UnityEngine.EventSystems.PointerEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/UI/Core/Slider.cs:347)
+UnityEngine.EventSystems.ExecuteEvents.Execute (IDragHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:73)
+UnityEngine.EventSystems.ExecuteEvents.Execute[IDragHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
+UnityEngine.EventSystems.EventSystem:Update()
+

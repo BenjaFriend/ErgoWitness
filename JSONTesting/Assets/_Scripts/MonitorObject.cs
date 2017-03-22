@@ -40,9 +40,7 @@ public class MonitorObject : MonoBehaviour {
     public string fileLocation_latestTime;
     public string filelocation_LogFile;
 
-    private string filelocation_ErrorLog = "/ErrorLog.txt";
-
-    public string last_unique_id;
+    private string filelocation_ErrorLog = "/ErrorLog.txt";  // The location of the error log 
 
     // The query data that we will use to build our request
     private string _query_TOP;
@@ -57,7 +55,10 @@ public class MonitorObject : MonoBehaviour {
     private WaitForSeconds _waitTime;   // A wait object so that we only need to create it once
     
     private IEnumerator request_Coroutine;  // The coroutine that is running the web request
-    private Json_Data _filebeatJsonData;
+
+    private bool _UseRealTime; // If this is true, then the user will be picking a specific range of times that they want to see
+    private string _lessThenQuery;
+    private string _greaterThenQuery;
 
     #endregion
 
@@ -87,9 +88,9 @@ public class MonitorObject : MonoBehaviour {
 
         headers = new Dictionary<string, string>();
 
-        last_unique_id = "";
-
         _waitTime = new WaitForSeconds(1 - frequency);
+
+        _UseRealTime = true;
 
         SetUpURL(indexName);
 
@@ -104,7 +105,6 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     public virtual void SetUpURL(string indexName)
     {
-
         // Add the port and packet type
         url = serverIP  + indexName + "-";
 
@@ -237,7 +237,7 @@ public class MonitorObject : MonoBehaviour {
             yield break;
         }
 
-        // Clear the headers:
+        // Clear the headers, otherwise we will get the same data from the last one:
         headers.Clear();
 
         // Add in content type:
@@ -247,13 +247,19 @@ public class MonitorObject : MonoBehaviour {
         WWW myRequest;
 
         // If we do not want to use the alst successful query...
-        if (!_UseLastSuccess)
+        if (!_UseLastSuccess && _UseRealTime)
         {
             // Build the query
-            _Current_Query = _query_TOP + "\"" + _latest_time + _query_BOTTOM;
+            _Current_Query = _query_TOP + "\"gt\":" + "\"" + _latest_time + "\"" + _query_BOTTOM;
         }
+        else if (!_UseLastSuccess && !_UseRealTime)
+        {
+            // Use the query that is build on the timestamps provided by the user
+            _Current_Query = _query_TOP  + _greaterThenQuery + "\",\n"  + _lessThenQuery + "\""  + _query_BOTTOM;
+        }
+
         // If our query is empty then break out because it will fail
-        if(_Current_Query == null) yield  break;
+        if (_Current_Query == null) yield  break;
 
         // Get the post data that I will be using, since it will always be the same
         _PostData = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(_Current_Query);
@@ -270,14 +276,16 @@ public class MonitorObject : MonoBehaviour {
         // Check if we got an error in our request or not
         if (myRequest.error != null || myRequest.text == null)
         {
-            // Log all the error data if there was one
+            // Log all the error data if there was an error
             LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
             LogData("The Query that failed: \n" + _Current_Query, filelocation_ErrorLog);
             if (myRequest.text != null)
             {
                 LogData("The HTTP request text:\n" + myRequest.text, filelocation_ErrorLog);
+                // If we are in the editor then send this info the console
                 #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.text);
+                Debug.Log("The query was: " + _Current_Query);
                 #endif
             }
             // If there was an error, then stop
@@ -300,9 +308,14 @@ public class MonitorObject : MonoBehaviour {
         // Mark the state as finished, as long as we were not told to stop
         if(currentState != State.Stop)
             currentState = State.FinishedTheRequestAndParse;
-
     }
 
+    /// <summary>
+    /// This is a class that will be overridden by the child class
+    /// depending on what type of JSON data we want to look at
+    /// </summary>
+    /// <typeparam name="T">The JSON data type</typeparam>
+    /// <param name="data">The actual data object from the query</param>
     public virtual void CheckRequestData<T>(T data) { }
 
     #region String to integer conversion stuff
@@ -371,6 +384,44 @@ public class MonitorObject : MonoBehaviour {
     {
         // Write out the latest bro time
         System.IO.File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
+    }
+
+    /// <summary>
+    /// This method will append a filter query to 
+    /// </summary>
+    public virtual void AddFilter()
+    {
+        // Add in the filter
+
+        // Do this by appending a string to the query
+    }
+
+
+    /// <summary>
+    /// This will tell this object to use a differernt query,
+    /// so that the use does a query between two timestamps
+    /// that they add in 
+    /// </summary>
+    public void QueryBetweenTimes(string minTimestamp, string maxTimestamp)
+    {
+        // Set the less then query to the max timestamp
+        _lessThenQuery = "\"lt\":\"" + maxTimestamp;
+        // Set the greater then query to the min timestamp
+        _greaterThenQuery = "\"gt\": \"" + minTimestamp;
+
+        // Make sure that we are not using realtime
+        _UseRealTime = false;
+    }
+
+    /// <summary>
+    /// Tells us to use real time timestamps
+    /// </summary>
+    public void UseRealTime()
+    {
+        _UseRealTime = true;
+        // Restart the monitor
+        StopMonitor();
+        StartMonitor();
     }
 
 }

@@ -42,24 +42,20 @@ public class PacketbeatMonitor : MonitorObject {
         }
     }
 
+    /// <summary>
+    /// Loop through the data that we have and send it to the netflow
+    /// controller if we should
+    /// </summary>
+    /// <param name="packetDataObj"></param>
     private void CheckData(Packetbeat_Json_Data packetDataObj)
     {
         // ================= Check and make sure that our data is valid =====================
         // Make sure that our data is not null
-        if (packetDataObj == null || packetDataObj.hits.hits == null || packetDataObj.hits.hits.Length == 0)
+        if (packetDataObj.hits.hits.Length == 0)
         {
             _UseLastSuccess = true;
 
             // Tell this to use the last successful query
-            return;
-        }
-
-        // Make sure that this flow is not the same as the last one
-        if (last_unique_id == packetDataObj.hits.hits[0]._id)
-        {
-            _UseLastSuccess = false;
-            // If it is then break out and don't bother doing anything, this should
-            // Save on processing power, and prevent duplicate
             return;
         }
 
@@ -69,14 +65,10 @@ public class PacketbeatMonitor : MonitorObject {
             _UseLastSuccess = false;
         }
 
-
         // ============= Keep track of stuff to prevent duplicates =======================
 
-        // It is new, so set the thing we use to check it to the current ID
-        last_unique_id = packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._id;
-
         // Set our latest packetbeat time to the most recent one
-        _latest_time = packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._source.runtime_timestamp + "\"";
+        _latest_time = packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._source.runtime_timestamp;
 
         // ============== Actually loop through our hits data  =========================
         for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
@@ -85,10 +77,10 @@ public class PacketbeatMonitor : MonitorObject {
             SetIntegerValues(packetDataObj.hits.hits[i]._source);
 
             // If either of these is 0 then break out of this loop
-            if (packetDataObj.hits.hits[i]._source.sourceIpInt == 0 || packetDataObj.hits.hits[i]._source.destIpInt == 0)
+       /*     if (packetDataObj.hits.hits[i]._source.sourceIpInt == 0 || packetDataObj.hits.hits[i]._source.destIpInt == 0)
             {
                 break;
-            }
+            }*/
 
             // As long as what we got from those IP's is valid:
             if (packetDataObj.hits.hits[i]._source.destIpInt != -1 && packetDataObj.hits.hits[i]._source.sourceIpInt != -1)
@@ -109,9 +101,10 @@ public class PacketbeatMonitor : MonitorObject {
     /// <summary>
     /// This method will append a filter query to 
     /// </summary>
-    public void AddFilter()
+    public override void AddFilter()
     {
         // Add in the filter
+
         // Do this by appending a string to the query
     }
 

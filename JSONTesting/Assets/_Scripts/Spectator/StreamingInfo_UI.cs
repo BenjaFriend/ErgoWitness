@@ -64,6 +64,10 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source_Packet newInfoObject)
     {
+        if(newInfoObject.destIpInt == 0 || newInfoObject.sourceIpInt == 0)
+        {
+            return;
+        }
 
         if (!isShowing)
         {
@@ -99,6 +103,10 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source newFilebeatObj)
     {
+        if (newFilebeatObj.destIpInt == 0 || newFilebeatObj.sourceIpInt == 0)
+        {
+            return;
+        }
 
         if (!isShowing)
         {
@@ -145,7 +153,6 @@ public class StreamingInfo_UI : MonoBehaviour {
         {
             currentCheck = CheckTopHits(ipAddr, count);
             StartCoroutine(currentCheck);
-            //Debug.Log("Started!");
         }
     }
 
@@ -161,7 +168,7 @@ public class StreamingInfo_UI : MonoBehaviour {
         // to the updated count
 
         // If this count not greater then the last one we have, then discard it
-        if(_topThree.Count >= _leadboardDisplaySize && count < _topThree.Values.Last() )
+        if(_topThree.Count >= _leadboardDisplaySize && count < _topThree.Values.Last())
         {
             yield break;
         }

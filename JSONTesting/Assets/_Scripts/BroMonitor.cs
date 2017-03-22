@@ -48,20 +48,11 @@ public class BroMonitor : MonitorObject {
     {
         // ================= Check and make sure that our data is valid =====================
         // Make sure that our data is not null
-        if (dataObject == null || dataObject.hits.hits == null || dataObject.hits.hits.Length == 0)
+        if (dataObject.hits.hits.Length == 0)
         {
             _UseLastSuccess = true;
 
             // Tell this to use the last successful query
-            return;
-        }
-
-        // Make sure that this flow is not the same as the last one
-        if (last_unique_id == dataObject.hits.hits[0]._id)
-        {
-            // If it is then break out and don't bother doing anything, this should
-            // Save on processing power, and prevent duplicate
-            _UseLastSuccess = false;
             return;
         }
 
@@ -72,12 +63,9 @@ public class BroMonitor : MonitorObject {
         }
 
         // ============= Keep track of stuff to prevent duplicates ===============
-        // It is new, so set the thing we use to check it to the current ID
-        last_unique_id = dataObject.hits.hits[0]._id;
 
         // Set our latest packetbeat time to the most recent one
-        _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp + "\"";
-
+        _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp;
 
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)

@@ -4,13 +4,38 @@ The HTTP request text:
   "error" : {
     "root_cause" : [
       {
-        "type" : "json_parse_exception",
-        "reason" : "Illegal unquoted character ((CTRL-CHAR, code 13)): has to be escaped using backslash to be included in string value\n at [Source: org.elasticsearch.transport.netty4.ByteBufStreamInput@3326dc89; line: 6, column: 17]"
+        "type" : "parse_exception",
+        "reason" : "failed to parse date field [2017-03-22T18:0:00.000Z] with format [strict_date_optional_time||epoch_millis]"
       }
     ],
-    "type" : "json_parse_exception",
-    "reason" : "Illegal unquoted character ((CTRL-CHAR, code 13)): has to be escaped using backslash to be included in string value\n at [Source: org.elasticsearch.transport.netty4.ByteBufStreamInput@3326dc89; line: 6, column: 17]"
+    "type" : "search_phase_execution_exception",
+    "reason" : "all shards failed",
+    "phase" : "query",
+    "grouped" : true,
+    "failed_shards" : [
+      {
+        "shard" : 0,
+        "index" : "packetbeat-2017.03.22",
+        "node" : "kBqBOPo8TQGzoBsWnXLGXg",
+        "reason" : {
+          "type" : "parse_exception",
+          "reason" : "failed to parse date field [2017-03-22T18:0:00.000Z] with format [strict_date_optional_time||epoch_millis]",
+          "caused_by" : {
+            "type" : "illegal_argument_exception",
+            "reason" : "Unrecognized chars at the end of [2017-03-22T18:0:00.000Z]: [:0:00.000Z]"
+          }
+        }
+      }
+    ],
+    "caused_by" : {
+      "type" : "parse_exception",
+      "reason" : "failed to parse date field [2017-03-22T18:0:00.000Z] with format [strict_date_optional_time||epoch_millis]",
+      "caused_by" : {
+        "type" : "illegal_argument_exception",
+        "reason" : "Unrecognized chars at the end of [2017-03-22T18:0:00.000Z]: [:0:00.000Z]"
+      }
+    }
   },
-  "status" : 500
+  "status" : 400
 }
 

@@ -51,8 +51,6 @@ public class NetflowController : MonoBehaviour
         }
         else if (currentNetflowController != this)
             Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
