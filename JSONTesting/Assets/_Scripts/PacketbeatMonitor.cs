@@ -76,12 +76,6 @@ public class PacketbeatMonitor : MonitorObject {
             // Set the integer IP values of this object
             SetIntegerValues(packetDataObj.hits.hits[i]._source);
 
-            // If either of these is 0 then break out of this loop
-       /*     if (packetDataObj.hits.hits[i]._source.sourceIpInt == 0 || packetDataObj.hits.hits[i]._source.destIpInt == 0)
-            {
-                break;
-            }*/
-
             // As long as what we got from those IP's is valid:
             if (packetDataObj.hits.hits[i]._source.destIpInt != -1 && packetDataObj.hits.hits[i]._source.sourceIpInt != -1)
             {
@@ -92,6 +86,7 @@ public class PacketbeatMonitor : MonitorObject {
                 {
                     packetDataObj.hits.hits[i]._source.transport = "http";
                 }
+
                 // Send the data to the netflow controller
                 NetflowController.currentNetflowController.CheckPacketbeatData(packetDataObj.hits.hits[i]._source);
             }

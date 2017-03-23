@@ -27,12 +27,8 @@ public class IPGroupManager : MonoBehaviour {
     private GameObject temp;        // Temp reference to a gameObject
     private int attemptCount;
 
-    // Team fields
-    //private int currentBlueTeamColor = 0;
-    //private int currentRedTeamColor = 0;
-    //private int numberOfBlueTeams = 10;
+
     private int[] redTeamIpIntArray;
-    //private int blueTeamIpInt;
     private int[] blueTeamIntArray;
 
     private void Awake()
@@ -134,29 +130,9 @@ public class IPGroupManager : MonoBehaviour {
     /// Remove a computer from it's group
     /// </summary>
     /// <param name="compToRemove"></param>
-    public void RemoveIpFromGroup(Computer compToRemove)
+    public void RemoveGroup(int groupToRemove)
     {
-        // Get the first 3 numbers of this IP in an integer
-        int ipFirstThree = GetFirstThreeIpInt(compToRemove.sourceInfo.sourceIpInt);
-
-        // If the group dictionary has a group with the same first 3 numbers
-        if (groupsDictionary.ContainsKey(ipFirstThree))
-        {
-            // Remove this IP address from that group
-            if (groupsDictionary[ipFirstThree].RemoveIp(compToRemove))
-            {
-                // Set the onbject as inactive
-                groupsDictionary[ipFirstThree].gameObject.SetActive(false);
-                IPGroup temp = groupsDictionary[ipFirstThree];
-                // Remove it from the gorup dictionary
-                groupsDictionary.Remove(ipFirstThree);
-                Destroy(temp);
-            }
-                               
-            size -= increaseAmountPerGroup;
-            // We are done here, nothing else needed
-            return;
-        }
+        groupsDictionary.Remove(groupToRemove);
     }
 
 

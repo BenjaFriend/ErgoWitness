@@ -1,10 +1,11 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\IPGrouping\IPGroup.cs">
+﻿<Properties StartupItem="JSONTesting.CSharp.Plugins.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\NetflowData\NetflowController.cs">
     <Files>
       <File FileName="Assets\ShaderTesting\Shaders\Texture_Tint.shader" Line="1" Column="1" />
       <File FileName="Assets\ShaderTesting\Shaders\Specular.shader" Line="1" Column="1" />
       <File FileName="Assets\_Scripts\IPGrouping\IPGroup.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\NetflowData\NetflowController.cs" Line="25" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

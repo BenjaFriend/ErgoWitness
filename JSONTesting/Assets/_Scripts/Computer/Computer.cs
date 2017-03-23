@@ -10,24 +10,28 @@ using UnityEngine;
 public class Computer : MonoBehaviour
 {
     #region Fields
-    [SerializeField]
-    private float lifetime = 5f;       // How long until the computer will go off of the network
-    private float timeSinceDiscovery = 0f;
-
     public Source sourceInfo;            // The info that bro gives you
     public Material connectionColor;
+
+    private float lifetime = 5f;       // How long until the computer will go off of the network
+    private float timeSinceDiscovery = 0f;
+    [SerializeField]    
+    private float deathAnimTime = 0.5f; // The length of the death animation
+
     /// <summary>
     /// Use a list for this because it is better for insertion
     /// but the same for searching, there are only benefits to this
     /// </summary>
-    public List<Computer> connectedPcs;
+    private List<Computer> connectedPcs;
 
     [SerializeField]
     private bool isBlueTeam;
 
 	// This is to keep track of how many times we have seen this PC
 	private int hits = 0;
-    #endregion
+
+    private bool isDying = false;   // This will be used to make sure that we don't call the death function when we don't need to
+    #endregion  
 
     #region Mutators
 
@@ -61,22 +65,11 @@ public class Computer : MonoBehaviour
         {
             lifetime *= 3;
         }
+
+        // We are not dying anymore
+        isDying = false;
     }
 
-    /// <summary>
-    /// Disable this computer object because it has been inactive for long enough
-    /// </summary>
-    private void DisableMe()
-    {
-        // Check if the group is empty, if it is then disable the group
-        IPGroupManager.currentIpGroups.RemoveIpFromGroup(this);
-
-        // Remove myself from the dictoinary
-        DeviceManager.ComputersDict.Remove(sourceInfo.sourceIpInt);
-
-        // Set myself to inactive in the heigharchy, so that I be used again
-        gameObject.SetActive(false);
-    }
 
     /// <summary>
     /// Keep track of how active this node is, and if it has exceeded its lifetime
@@ -85,7 +78,7 @@ public class Computer : MonoBehaviour
     private void Update()
     {
         // If we havce exceeded our active lifetime, and we are not on blue team...
-        if(!isBlueTeam & timeSinceDiscovery >= lifetime)
+        if(!isBlueTeam & timeSinceDiscovery >= lifetime && !isDying)
         {
             // Remove it from the dictionary
             DisableMe();
@@ -105,7 +98,9 @@ public class Computer : MonoBehaviour
     /// <param name="connectedToMe">the PC that is connected to me</param>
     public void AddConnectedPC(Computer connectedToMe)
     {
+        // Make sure that we keep track of it being active
         timeSinceDiscovery = 0f;
+
         // If the object that we are given is null or it is this game object:
         if (connectedToMe == null || connectedToMe == gameObject)
         {
@@ -122,8 +117,52 @@ public class Computer : MonoBehaviour
 		// Tell the streaming information that we got another hit on this IP
 		hits++;
 
+        // If the streamign assests is showing, then send it the updated information
         if(StreamingInfo_UI.currentStreamInfo.IsShowing && sourceInfo.sourceIpInt != 0)
             StreamingInfo_UI.currentStreamInfo.CheckTop(sourceInfo.id_orig_h, hits);
+
+    }
+
+    /// <summary>
+    /// Disable this computer object because it has been inactive for long enough
+    /// </summary>
+    private void DisableMe()
+    {
+        // Get a reference to my group
+        IPGroup myGroup = GetComponentInParent<IPGroup>();
+
+        // As long as I am actually in a group...
+        if(myGroup != null)
+        {
+            // Remove myself from that group
+            myGroup.RemoveIp(sourceInfo.sourceIpInt);
+        }
+
+        // Remove myself from the dictoinary of computers that are active
+        DeviceManager.ComputersDict.Remove(sourceInfo.sourceIpInt);
+
+        // Call our death function if we are not already diein
+        if (!isDying)
+        {
+            StartCoroutine(Die());
+        }
+    }
+
+    /// <summary>
+    /// This will wait for 
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Die()
+    {
+        isDying = true;
+
+        // Play the animation 
+
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(deathAnimTime);
+
+        // Once that is done the animation, set ourselves as inactive
+        gameObject.SetActive(false);
 
     }
 
