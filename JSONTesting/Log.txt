@@ -54478,3 +54478,17 @@ UnityEngine.EventSystems.ExecuteEvents.Execute (IDragHandler handler, UnityEngin
 UnityEngine.EventSystems.ExecuteEvents.Execute[IDragHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
 UnityEngine.EventSystems.EventSystem:Update()
 
+Exception
+FormatException: An invalid IP address was specified.
+System.Net.IPAddress.Parse (System.String ipString)
+IPGroupManager.IpToInt (System.String ipAddr) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:371)
+IPGroupManager.ReadInBlueTeamIps () (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:98)
+IPGroupManager.Start () (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:67)
+
+Exception
+FormatException: An invalid IP address was specified.
+System.Net.IPAddress.Parse (System.String ipString)
+IPGroupManager.IpToInt (System.String ipAddr) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:370)
+IPGroupManager.ReadInBlueTeamIps () (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:98)
+IPGroupManager.Start () (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:67)
+

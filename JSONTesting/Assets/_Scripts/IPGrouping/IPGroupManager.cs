@@ -12,7 +12,7 @@ public class IPGroupManager : MonoBehaviour {
 
     public Material[] possibleColors;      // The possible colors that we want to assign the groups at random
     public Material[] blueTeamMats;
-    public Material redTeamMat;
+    public Material[] redTeamMat;
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
     public List<IPGroup> groups;    // A list of all the groups that we have
@@ -28,9 +28,10 @@ public class IPGroupManager : MonoBehaviour {
     private int attemptCount;
 
     // Team fields
-    private int currentBlueTeamColor = 0;
+    //private int currentBlueTeamColor = 0;
+    //private int currentRedTeamColor = 0;
     //private int numberOfBlueTeams = 10;
-    private int redTeamIpInt;
+    private int[] redTeamIpIntArray;
     //private int blueTeamIpInt;
     private int[] blueTeamIntArray;
 
@@ -54,19 +55,46 @@ public class IPGroupManager : MonoBehaviour {
         groups = new List<IPGroup>();
         attemptCount = 0;
 
-        // Get the red team string
-        string redTeamIpString = "";
-        using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt"))
-        {
-            redTeamIpString = reader.ReadLine() ?? "";
-        }
-
-        redTeamIpInt = IpToInt(redTeamIpString);
+        // Read in the red team IPs
+        ReadInRedTeamIps();
 
         // Read in all the blue team IP addresses
         ReadInBlueTeamIps();
     }
 
+    /// <summary>
+    /// This will read in the red team IP addresses
+    /// </summary>
+    private void ReadInRedTeamIps()
+    {
+        // A list of strings to keep track of the IP addresses
+        List<string> readTeamIpStrings = new List<string>();
+        string line;
+        int counter = 0;
+
+        // Read the file and display it line by line.  
+        System.IO.StreamReader file =
+            new System.IO.StreamReader(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt");
+
+        while ((line = file.ReadLine()) != null)
+        {
+            // Read in the line that has the IP address
+            readTeamIpStrings.Add(line);
+            counter++;
+        }
+
+        // Close te file reader
+        file.Close();
+
+        // Create a new red team array that is the right lenght
+        redTeamIpIntArray = new int[counter];
+
+        for (int i = 0; i < readTeamIpStrings.Count; i++)
+        {
+            // Set the integer array value to the string value
+            redTeamIpIntArray[i] = IpToInt(readTeamIpStrings[i]);
+        }
+    }
 
     /// <summary>
     /// This method will read in the blue team IP address,s
@@ -87,8 +115,11 @@ public class IPGroupManager : MonoBehaviour {
             blueTeamIpString.Add(line);
             counter++;
         }
+
         // Close te file reader
         file.Close();
+
+        // Create a new blue team array that is the right lenght
         blueTeamIntArray = new int[counter];
 
         for (int i = 0; i < blueTeamIpString.Count; i++)
@@ -99,6 +130,10 @@ public class IPGroupManager : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Remove a computer from it's group
+    /// </summary>
+    /// <param name="compToRemove"></param>
     public void RemoveIpFromGroup(Computer compToRemove)
     {
         // Get the first 3 numbers of this IP in an integer
@@ -117,17 +152,12 @@ public class IPGroupManager : MonoBehaviour {
                 groupsDictionary.Remove(ipFirstThree);
                 Destroy(temp);
             }
-            //groupsDictionary[ipFirstThree].groupedComputers.Remove(compToRemove);
-
-            
-                
-            
+                               
             size -= increaseAmountPerGroup;
             // We are done here, nothing else needed
             return;
         }
     }
-
 
 
     /// <summary>
@@ -240,27 +270,39 @@ public class IPGroupManager : MonoBehaviour {
 
         // See if we are looking at blue team address or not
         int whichBlueTeam = isBlueTeam(groupToColor.GroupAddress);
+        int whichRedTeam = IsRedTeam(groupToColor.GroupAddress);
 
         // Check if the IP is red team or blue
-        if (groupToColor.GroupAddress == redTeamIpInt)
+        if (whichRedTeam >= 0)
         {
             // Set the color to the red team specific color
-            groupToColor.GroupColor = redTeamMat;
+            if(whichRedTeam >= redTeamMat.Length)
+            {
+                // Pick a random red team color
+                groupToColor.GroupColor = redTeamMat[Random.Range(0, redTeamMat.Length)];
+            }
+            else
+            {
+                // Set it to a proper red team color
+                groupToColor.GroupColor = redTeamMat[whichRedTeam];
+            }
             return;
         }
+        // This is blue team
         else if(whichBlueTeam >= 0)
         {
             groupToColor.IsBlueTeam = true;
             // Set the color to the blue team specific color
-            groupToColor.GroupColor = blueTeamMats[whichBlueTeam];
-            // Increment how many blue teams we have seen
-            currentBlueTeamColor++;
-            // If this is greater then the number of materials we have set up then 
-            // make it not like that anymore!cd 
-            if(currentBlueTeamColor > blueTeamMats.Length)
+            if(whichBlueTeam >= blueTeamMats.Length)
             {
-                currentBlueTeamColor = blueTeamMats.Length;
+                groupToColor.GroupColor = blueTeamMats[Random.Range(0,blueTeamMats.Length)];
+
             }
+            else
+            {
+                groupToColor.GroupColor = blueTeamMats[whichBlueTeam];
+            }
+
             return;
         }
 
@@ -300,6 +342,19 @@ public class IPGroupManager : MonoBehaviour {
         for(int i = 0; i < blueTeamIntArray.Length; i++)
         {
             if(ipInt == blueTeamIntArray[i])
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    private int IsRedTeam(int ipInt)
+    {
+        for (int i = 0; i < redTeamIpIntArray.Length; i++)
+        {
+            if (ipInt == redTeamIpIntArray[i])
             {
                 return i;
             }
@@ -366,8 +421,16 @@ public class IPGroupManager : MonoBehaviour {
     {
         // Make sure that this address is valid
         if (ipAddr == null) return 0;
+        IPAddress ipAddress;
+        // See if this is a valid IP address first
+        bool result = IPAddress.TryParse(ipAddr, out ipAddress);
 
-        return System.BitConverter.ToInt32(IPAddress.Parse(ipAddr).GetAddressBytes(), 0);
+        if (result)
+        {
+            return System.BitConverter.ToInt32(IPAddress.Parse(ipAddr).GetAddressBytes(), 0);
+        }
+
+        return -1;
     }
 
 }
