@@ -70,14 +70,6 @@ public class NetflowObject : MoveFromSourceToTarget
     {
         // Get the pulsing particles
         headParticle = GetComponent<ParticleSystemRenderer>();
-    }
-
-    /// <summary>
-    /// Create a new material 
-    /// </summary>
-    void OnEnable()
-    {
-        // Create a reference to the line material
         lineMaterial = new Material(connectionColor);
     }
 

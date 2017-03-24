@@ -14,34 +14,40 @@ public class IPGroupManager : MonoBehaviour {
     #region Fields
 
     public Material[] possibleColors;      // The possible colors that we want to assign the groups at random
-    public Material[] blueTeamMats;
-    public Material[] redTeamMat;
+    public Material[] blueTeamMats;     // The possible colors for the blue team
+    public Material[] redTeamMat;       // The possible colors for the red team
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
-    public List<IPGroup> groups;    // A list of all the groups that we have
-    public Dictionary<int, IPGroup> groupsDictionary;
+
+    public Dictionary<int, IPGroup> groupsDictionary;  // A dictionary of all the groups that we currently have
     public GameObject groupPrefab;  // The prefab for the IP group
     public float minDistanceApart = 15f;
     public float size = 100f;
     public float increaseAmountPerGroup = 10f;  // This will be added to the size every time that a new group is added
                                                 // So that the radius gets bigger and bigger
     private int lastColorUsed;    // Keep track of the last color so that we don't assign it twice in a row
+
     private IPGroup newGroup;       // variable that I will use as a temp
     private GameObject temp;        // Temp reference to a gameObject
     private int attemptCount;
 
-
-    private int[] redTeamIpIntArray;
-    private int[] blueTeamIntArray;
+    private int[] redTeamIpIntArray;   // Integer array of the red team IP addresses
+    private int[] blueTeamIntArray;    // Integer array of the blue team IP 
 
     #endregion
 
+    /// <summary>
+    /// Make sure that we only ahve one of these managers in our scene
+    /// </summary>
     private void Awake()
-    {
+    {    
+        // If there are no other objects that have been assigned this static reference yet... 
         if (currentIpGroups == null)
         {
+            // Set the static reference
             currentIpGroups = this;
         }
+        // There is another object assigned already, so destroiy this
         else if (currentIpGroups != this)
             Destroy(gameObject);
     }
@@ -51,9 +57,10 @@ public class IPGroupManager : MonoBehaviour {
     /// </summary>
     void Start ()
     {
+        // Initalize the group dictiona
         groupsDictionary = new Dictionary<int, IPGroup>();
-        currentIpGroups = this;
-        groups = new List<IPGroup>();
+
+        // Set our attempt count to 0
         attemptCount = 0;
 
         // Read in the read team IP addresses
@@ -110,6 +117,7 @@ public class IPGroupManager : MonoBehaviour {
     /// <param name="compToRemove"></param>
     public void RemoveGroup(int groupToRemove)
     {
+        // Remove this object from the group
         groupsDictionary.Remove(groupToRemove);
     }
 

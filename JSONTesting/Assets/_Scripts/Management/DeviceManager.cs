@@ -16,9 +16,8 @@ public class DeviceManager : MonoBehaviour {
 
     public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
-    public ObjectPooler computerPooler; // The object pooler for the computer prefab
+    public SpecialObjectPool computerPooler; // The object pooler for the computer prefab
 
-    //private GameObject obj;             // Use this as a temp calculation variable for better memory
     private static Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
 
     public static Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
@@ -78,7 +77,8 @@ public class DeviceManager : MonoBehaviour {
         newDevice.SourceInfo = jsonSourceData;
 
         // Set this object as active in the hierachy so that you can actually see it
-        newDevice.gameObject.SetActive(true);
+        //newDevice.gameObject.SetActive(true);
+        newDevice.WasDiscovered();
 
         // Add the object to the dictionary
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);

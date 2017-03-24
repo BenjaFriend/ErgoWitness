@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114274990224201664}
   - component: {fileID: 198973495421571496}
   - component: {fileID: 199549123864442700}
+  - component: {fileID: 114108427265046792}
   m_Layer: 0
   m_Name: Netflow_WithParticleEffect
   m_TagString: Untagged
@@ -86,6 +87,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+--- !u!114 &114108427265046792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605077836295848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d1d477d10a10b4ea10244e8651045b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114274990224201664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,6 +112,7 @@ MonoBehaviour:
   smoothing: 2
   connectionColor: {fileID: 2100000, guid: b6ec70e49a7db7b40ab8c5308853a167, type: 2}
   trailPartical: {fileID: 198059126541695890}
+  lifetime: 5
 --- !u!198 &198059126541695890
 ParticleSystem:
   m_ObjectHideFlags: 1

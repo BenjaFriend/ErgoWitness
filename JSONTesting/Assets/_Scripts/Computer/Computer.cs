@@ -7,6 +7,7 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
+[RequireComponent(typeof(PooledObject))]
 public class Computer : MonoBehaviour
 {
     #region Fields
@@ -17,6 +18,7 @@ public class Computer : MonoBehaviour
     [SerializeField]    
     private float deathAnimTime = 0.5f; // The length of the death animation
     private Computer_AnimationController animationController;
+    private PooledObject pooledObject;
 
     /// <summary>
     /// Use a list for this because it is better for insertion
@@ -32,7 +34,8 @@ public class Computer : MonoBehaviour
     private bool isDying = false;   // This will be used to make sure that we don't call the death function when we don't need to
     private WaitForSeconds deathWait;
     private MeshRenderer meshRend;
-    #endregion  
+    private IPGroup myGroup;
+    #endregion
 
     #region Mutators
 
@@ -47,7 +50,7 @@ public class Computer : MonoBehaviour
             sourceInfo = value;
         }
     }
-    
+    public PooledObject PooledObject { get; set; }
     #endregion
 
     void Awake()
@@ -55,17 +58,35 @@ public class Computer : MonoBehaviour
         animationController = GetComponent<Computer_AnimationController>();
         deathWait = new WaitForSeconds(deathAnimTime);
         meshRend = GetComponentInChildren<MeshRenderer>();
+        pooledObject = GetComponent<PooledObject>();
+
+        // Initialize a new list object
+        connectedPcs = new List<Computer>();
     }
 
     /// <summary>
     /// Author: Ben Hoffman
     /// Set up the components that I need
     /// </summary>
-    void OnEnable()
+  /*  void OnEnable()
     {
-        // Initialize a new list object
-        connectedPcs = new List<Computer>();
         
+        // Make sure tha we know that the time since my discover is reset
+        timeSinceDiscovery = 0f;
+
+        if (isBlueTeam)
+        {
+            lifetime *= 3;
+        }
+
+        // We are not dying anymore
+        isDying = false;
+    }*/
+
+    public void WasDiscovered()
+    {
+        // TODO: Add a sound when this object becomes active
+
         // Make sure tha we know that the time since my discover is reset
         timeSinceDiscovery = 0f;
 
@@ -81,6 +102,7 @@ public class Computer : MonoBehaviour
     public void SetMaterial(Material newMat)
     {
         meshRend.material = newMat;
+        myGroup = GetComponentInParent<IPGroup>();
     }
 
     /// <summary>
@@ -89,16 +111,19 @@ public class Computer : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // If we havce exceeded our active lifetime, and we are not on blue team...
-        if(!isBlueTeam & timeSinceDiscovery >= lifetime && !isDying)
+        if (pooledObject._IsActive)
         {
-            // Remove it from the dictionary
-            DisableMe();
-        }
-        else
-        {
-            // Add how long it has been to the field
-            timeSinceDiscovery += Time.deltaTime;
+            // If we havce exceeded our active lifetime, and we are not on blue team...
+            if (!isBlueTeam & timeSinceDiscovery >= lifetime && !isDying)
+            {
+                // Remove it from the dictionary
+                DisableMe();
+            }
+            else
+            {
+                // Add how long it has been to the field
+                timeSinceDiscovery += Time.deltaTime;
+            }
         }
     }
 
@@ -140,15 +165,15 @@ public class Computer : MonoBehaviour
     /// </summary>
     private void DisableMe()
     {
-        // Get a reference to my group
-        IPGroup myGroup = GetComponentInParent<IPGroup>();
-
         // As long as I am actually in a group...
         if(myGroup != null)
         {
             // Remove myself from that group
             myGroup.RemoveIp(sourceInfo.sourceIpInt);
         }
+
+        // Clear my connected computers 
+        connectedPcs.Clear();
 
         // I do not want a parent anymore, so set it to null
         gameObject.transform.parent = null;
@@ -178,8 +203,10 @@ public class Computer : MonoBehaviour
         // Wait for the animation to finish
         yield return deathWait;
 
+        // Tell my little object pooler script to move us away
+        pooledObject.SetPooledInActive();
         // Once that is done the animation, set ourselves as inactive
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
 }

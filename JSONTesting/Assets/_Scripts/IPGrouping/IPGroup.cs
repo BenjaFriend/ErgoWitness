@@ -109,6 +109,7 @@ public class IPGroup : MonoBehaviour {
             }
             // Start scaling with a new number!
             currentScalingRoutine = ScaleLightRange(radius * 2f, smoothing);
+
             StartCoroutine(currentScalingRoutine);
         }
     }
@@ -197,8 +198,11 @@ public class IPGroup : MonoBehaviour {
         // We are dying now
         isDying = true;
 
+        // Remove us from the group manager
+        IPGroupManager.currentIpGroups.RemoveGroup(groupAddress);
+
         // If we are currently scaling, then stop
-        if(currentScalingRoutine != null)
+        if (currentScalingRoutine != null)
         {
             StopCoroutine(currentScalingRoutine);
         }
@@ -210,9 +214,6 @@ public class IPGroup : MonoBehaviour {
         StartCoroutine(currentScalingRoutine);
 
         yield return new WaitForSeconds(2f);
-
-        // Remove us from the group manager
-        IPGroupManager.currentIpGroups.RemoveGroup(groupAddress);
 
         // Destroy this object
         Destroy(gameObject);
