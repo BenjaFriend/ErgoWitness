@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4967724582390576}
   - component: {fileID: 114552209486109960}
   - component: {fileID: 135971264439090388}
-  - component: {fileID: 114521376469234094}
   - component: {fileID: 33872432246634730}
   - component: {fileID: 23176314179641296}
+  - component: {fileID: 95720174082910096}
+  - component: {fileID: 114018097819485772}
   m_Layer: 0
   m_Name: Computer_Prefab
   m_TagString: Comp
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 34.77}
+  m_LocalPosition: {x: 9.26, y: 0, z: 14.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4009685451895686}
@@ -113,21 +114,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114521376469234094
+--- !u!95 &95720174082910096
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259338230392002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5554de88092aa7b469aa2aec5ce42d3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114018097819485772
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cfdb358d09f5f544939e8b93a174aec, type: 3}
+  m_Script: {fileID: 11500000, guid: c8608dadeab20194d9e7fcf48018d9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 198406206917125672}
-  minHits: 0
-  maxHits: 100
-  degradeRate: 5
 --- !u!114 &114552209486109960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa562669e9003734eb1c92384ad7cf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 60
   sourceInfo:
     runtime_timestamp: 
     id_orig_p: 0
@@ -152,8 +165,7 @@ MonoBehaviour:
     sourceIpInt: 0
     destIpInt: 0
   connectionColor: {fileID: 2100000, guid: b6ec70e49a7db7b40ab8c5308853a167, type: 2}
-  connectedPcs: []
-  isBlueTeam: 0
+  deathAnimTime: 0.1
 --- !u!135 &135971264439090388
 SphereCollider:
   m_ObjectHideFlags: 1

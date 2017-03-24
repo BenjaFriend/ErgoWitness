@@ -11,21 +11,19 @@ using UnityEngine;
 [RequireComponent(typeof(Light))]
 public class IPGroup : MonoBehaviour {
 
-    [SerializeField]
+    #region Fields
     private bool isBlueTeam; // True if this IP is a blue team
-    [SerializeField]
-    private float increasePerComputer = 0.5f;
-    [SerializeField]
-    
+    private float increasePerComputer = 0.1f;
+
+    [SerializeField]  
     private float radius = 5f;
     private float startRadius;
     [SerializeField]
     private float minDistanceApart = 1f;
     [SerializeField]
-    private float lightRangeScaler = 5f;
-    [SerializeField]
-    private float smoothing = 5f;
-
+    private float lightRangeScaler = 5f;    // How much larger is the light range then the 
+    private float smoothing = 10f;      // How fast the light will transition
+            
     private List<Computer> groupedComputers;
 
     private Material groupColor;        // The color of the group
@@ -41,10 +39,18 @@ public class IPGroup : MonoBehaviour {
     private IEnumerator currentScalingRoutine;
     private Vector3 positionWithRadius;
     private bool isDying = false;
+    
+    #endregion
+
+
+    #region Mutators
 
     public int GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
     public Material GroupColor { get { return groupColor; } set { groupColor = value; } }
     public bool IsBlueTeam { get { return isBlueTeam; } set { isBlueTeam = value; } }
+    public bool IsDying { get { return isDying; } }
+
+    #endregion
 
     /// <summary>
     /// Instantiate the list of grouped computers, 
@@ -103,7 +109,7 @@ public class IPGroup : MonoBehaviour {
                 StopCoroutine(currentScalingRoutine);
             }
             // Start scaling with a new number!
-            currentScalingRoutine = ScaleLightRange(radius * 2f);
+            currentScalingRoutine = ScaleLightRange(radius * 2f, smoothing);
             StartCoroutine(currentScalingRoutine);
         }
     }
@@ -160,17 +166,22 @@ public class IPGroup : MonoBehaviour {
     /// </summary>
     /// <param name="newRange">The desired radius of this</param>
     /// <returns></returns>
-    private IEnumerator ScaleLightRange(float newRange)
+    private IEnumerator ScaleLightRange(float newRange, float smoothingAmount)
     {
         // While I am smaller then what I want to be
         while (myPointLight.range < newRange)
         {
-            myPointLight.range = Mathf.Lerp(myPointLight.range, newRange, smoothing * Time.deltaTime);
+            myPointLight.range = Mathf.Lerp(myPointLight.range, newRange, smoothingAmount * Time.deltaTime);
 
             yield return null;
         }
     }
 
+    /// <summary>
+    /// Remove a specific IP address from this group.
+    /// If this group then has nothing in it, then destroy it.
+    /// </summary>
+    /// <param name="removeMe">The IP integer of the object that we want to remove</param>
     public void RemoveIp(int removeMe)
     {
         // Remove this computer object from this group
@@ -182,7 +193,7 @@ public class IPGroup : MonoBehaviour {
             radius = startRadius;
 
             // Start scaling with a new number!
-            currentScalingRoutine = ScaleLightRange(radius * 2f);
+            currentScalingRoutine = ScaleLightRange(radius * 2f, smoothing);
             StartCoroutine(currentScalingRoutine);
         }
       
@@ -202,22 +213,28 @@ public class IPGroup : MonoBehaviour {
     /// <returns></returns>
     private IEnumerator Die()
     {
+        // We are dying now
         isDying = true;
 
-        // Wait for out light to hit 0
-        currentScalingRoutine = ScaleLightRange(0f);
+        // If we are currently scaling, then stop
+        if(currentScalingRoutine != null)
+        {
+            StopCoroutine(currentScalingRoutine);
+        }
 
-        // Wait until our light shrinks down
-        
+        // Wait for out light to hit 0
+        currentScalingRoutine = ScaleLightRange(0f, smoothing * 3f);
+
+        // Wait until our light shrinks down       
         StartCoroutine(currentScalingRoutine);
-        yield return currentScalingRoutine;
+
+        yield return new WaitForSeconds(2f);
 
         // Remove us from the group manager
         IPGroupManager.currentIpGroups.RemoveGroup(groupAddress);
 
         // Destroy this object
-        gameObject.SetActive(false);
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
 }

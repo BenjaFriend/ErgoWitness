@@ -18,7 +18,7 @@ public class StreamingInfo_UI : MonoBehaviour {
     public LeaderboardItem[] leaderboardItems;
 
     [SerializeField]
-    private int _leadboardDisplaySize = 5;
+    private int _leadboardDisplaySize = 3;
 
     [SerializeField] private float topYCoord = -20;
     [SerializeField] private float bottomYCoord = -80;
@@ -35,22 +35,30 @@ public class StreamingInfo_UI : MonoBehaviour {
     public bool IsShowing { get { return isShowing; } set { isShowing = value; } }
     #endregion
 
-    // Use this for initialization
+    /// <summary>
+    /// Set the static reference to this object and make sure that there is only one in 
+    /// the current scene. Get all the rect transforms what we may need.
+   ///  Initalize the  
+    /// </summary>
     void Start ()
     {
-		// Set the static reference
-		currentStreamInfo = this;
-        // Set all of the texts to ""
-        // Set the rect transform array, so that I don't need to
-        // Get the component all the time
+        // Make sure tha thtis is the only one of these objects in the scene
+        if (currentStreamInfo == null)
+        {
+            // Set the currenent referece
+            currentStreamInfo = this;
+        }
+        else if (currentStreamInfo != this)
+            Destroy(gameObject);
+
+        // Get the UI components all the time
         rectTransforms = new RectTransform[infoObjects.Length];
 
-        // Loop through and set hte rect transform array
-        for(int i = 0; i < rectTransforms.Length; i++)
+        // Loop through and set hte rect transform array, and get the components that I need
+        for (int i = 0; i < rectTransforms.Length; i++)
         {
             // Set this array to the rect transform component of the info objects
             rectTransforms[i] = infoObjects[i].GetComponent<RectTransform>();
-            infoObjects[i].ClearText();
         }
 
         // Initalize the dictionary
@@ -64,15 +72,17 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source_Packet newInfoObject)
     {
-        if(newInfoObject.destIpInt == 0 || newInfoObject.sourceIpInt == 0)
-        {
-            return;
-        }
-
+        // Return if we are not showing
         if (!isShowing)
         {
             return;
         }
+
+        if (newInfoObject.destIpInt == 0 || newInfoObject.sourceIpInt == 0)
+        {
+            return;
+        }
+
             // I need to move all of the objects down by a certain amount
         for (int i = 0; i < rectTransforms.Length; i++)
         {
@@ -103,15 +113,17 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source newFilebeatObj)
     {
+        // If we are not showing the UI then don't bother
+        if (!isShowing)
+        {
+            return;
+        }
+        // Make sure that this object is valid to show, and has the proper information
         if (newFilebeatObj.destIpInt == 0 || newFilebeatObj.sourceIpInt == 0)
         {
             return;
         }
 
-        if (!isShowing)
-        {
-            return;
-        }
 
         // I need to move all of the objects down by a certain amount
         for (int i = 0; i < rectTransforms.Length; i++)
@@ -140,7 +152,12 @@ public class StreamingInfo_UI : MonoBehaviour {
         }
     }
 
-
+    /// <summary>
+    /// This will check the top hits of the program only if we are 
+    /// not currently checking, and if we are showing the UI
+    /// </summary>
+    /// <param name="ipAddr"></param>
+    /// <param name="count"></param>
     public void CheckTop(string ipAddr, int count)
     {
         // If I am not currently checking, then yea check

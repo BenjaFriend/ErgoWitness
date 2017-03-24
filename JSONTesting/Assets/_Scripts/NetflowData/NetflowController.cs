@@ -66,14 +66,8 @@ public class NetflowController : MonoBehaviour
         }
 
         // If the source and destination IP's are known:
-        if (DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.sourceIpInt) &&
-            DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.destIpInt))
-        {
-            // Increase the emmision of the computer here, because we
-            // obviously see some activity with it if we are checking
-            DeviceManager.ComputersDict[packetbeatSource.sourceIpInt].GetComponent<IncreaseEmission>().AddHit();
-        }
-        else
+        if (!DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.sourceIpInt) ||
+            !DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.destIpInt))
         {
             Source newSource = new Source();
 
@@ -89,14 +83,13 @@ public class NetflowController : MonoBehaviour
 
             // Set the protocol so that the game controller can read it
             newSource.proto = packetbeatSource.transport;
-            
+
             //Set the integer values for this object
             ManageMonitors.currentMonitors.SetIntegerValues(newSource);
 
             // Add them to the network, and wait for that to finish:
             DeviceManager.currentDeviceManager.CheckIp(newSource);
         }
-
 
 
         // Then we can continue on and send out flow data out      

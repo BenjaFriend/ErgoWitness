@@ -4,11 +4,14 @@ using UnityEngine;
 using System.Linq;
 using System.Net;
 using System.IO;
+using System.Text;
 /// <summary>
 /// This is will manage all of my groups, so if an IP 
 /// does not fit into a group then I will make a new one
 /// </summary>
 public class IPGroupManager : MonoBehaviour {
+
+    #region Fields
 
     public Material[] possibleColors;      // The possible colors that we want to assign the groups at random
     public Material[] blueTeamMats;
@@ -31,6 +34,8 @@ public class IPGroupManager : MonoBehaviour {
     private int[] redTeamIpIntArray;
     private int[] blueTeamIntArray;
 
+    #endregion
+
     private void Awake()
     {
         if (currentIpGroups == null)
@@ -51,79 +56,52 @@ public class IPGroupManager : MonoBehaviour {
         groups = new List<IPGroup>();
         attemptCount = 0;
 
-        // Read in the red team IPs
-        ReadInRedTeamIps();
+        // Read in the read team IP addresses
+        redTeamIpIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt");
 
-        // Read in all the blue team IP addresses
-        ReadInBlueTeamIps();
+        // Read in all the blue team IP addresses, and store them in an array of integers
+        blueTeamIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/blueTeamIPs.txt");
     }
 
     /// <summary>
-    /// This will read in the red team IP addresses
+    /// Take in a file location, read that file using the StreamReader class,
+    /// and return an integer array of bit shifted IP addresses
     /// </summary>
-    private void ReadInRedTeamIps()
+    /// <param name="fileLocation">Which file we are reading from</param>
+    /// <returns>An integer array of bit-shifted IP addresses that were in the file</returns>
+    private int[] ReadInIps(string fileLocation)
     {
         // A list of strings to keep track of the IP addresses
-        List<string> readTeamIpStrings = new List<string>();
+        List<string> ipStringsList = new List<string>();
+        
         string line;
         int counter = 0;
 
         // Read the file and display it line by line.  
         System.IO.StreamReader file =
-            new System.IO.StreamReader(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt");
+            new System.IO.StreamReader(fileLocation);
 
         while ((line = file.ReadLine()) != null)
         {
             // Read in the line that has the IP address
-            readTeamIpStrings.Add(line);
+            ipStringsList.Add(line);
             counter++;
         }
 
         // Close te file reader
         file.Close();
 
-        // Create a new red team array that is the right lenght
-        redTeamIpIntArray = new int[counter];
+        // Create a new integer array the size of however many objects that we have
+        int[] ipIntArray = new int[counter];    
 
-        for (int i = 0; i < readTeamIpStrings.Count; i++)
+        for (int i = 0; i < ipStringsList.Count; i++)
         {
             // Set the integer array value to the string value
-            redTeamIpIntArray[i] = IpToInt(readTeamIpStrings[i]);
-        }
-    }
-
-    /// <summary>
-    /// This method will read in the blue team IP address,s
-    /// </summary>
-    private void ReadInBlueTeamIps()
-    {       
-        // A list of strings to keep track of the IP addresses
-        List<string> blueTeamIpString = new List<string>();
-        string line;
-        int counter = 0;
-
-        // Read the file and display it line by line.  
-        System.IO.StreamReader file =
-            new System.IO.StreamReader(Application.streamingAssetsPath + "/TeamIPs/blueTeamIPs.txt");
-        while ((line = file.ReadLine()) != null)
-        {
-            // Read in the line that has the IP address
-            blueTeamIpString.Add(line);
-            counter++;
+            ipIntArray[i] = IpToInt(ipStringsList[i]);
         }
 
-        // Close te file reader
-        file.Close();
-
-        // Create a new blue team array that is the right lenght
-        blueTeamIntArray = new int[counter];
-
-        for (int i = 0; i < blueTeamIpString.Count; i++)
-        {
-            // Set the integer array value to the string value
-            blueTeamIntArray[i] = IpToInt(blueTeamIpString[i]);
-        }
-
+        // Return the result
+        return ipIntArray;
     }
 
     /// <summary>
@@ -134,7 +112,6 @@ public class IPGroupManager : MonoBehaviour {
     {
         groupsDictionary.Remove(groupToRemove);
     }
-
 
     /// <summary>
     /// Loops through and checks if this IP fits into any of these groups
@@ -150,8 +127,8 @@ public class IPGroupManager : MonoBehaviour {
         // Get the first 3 numbers of this IP in an integer
         int ipFirstThree = GetFirstThreeIpInt(ipToCheck);
 
-        // If the group dictionary has a group with the same first 3 numbers
-        if (groupsDictionary.ContainsKey(ipFirstThree))
+        // If the group dictionary has a group with the same first 3 numbers, and that group is not dying right now
+        if (groupsDictionary.ContainsKey(ipFirstThree) && !groupsDictionary[ipFirstThree].IsDying)
         {
             // Add to that group
             groupsDictionary[ipFirstThree].AddToGroup(ipToCheck);

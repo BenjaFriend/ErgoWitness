@@ -17,6 +17,7 @@ public class Computer : MonoBehaviour
     private float timeSinceDiscovery = 0f;
     [SerializeField]    
     private float deathAnimTime = 0.5f; // The length of the death animation
+    private Computer_AnimationController animationController;
 
     /// <summary>
     /// Use a list for this because it is better for insertion
@@ -24,13 +25,13 @@ public class Computer : MonoBehaviour
     /// </summary>
     private List<Computer> connectedPcs;
 
-    [SerializeField]
     private bool isBlueTeam;
 
 	// This is to keep track of how many times we have seen this PC
 	private int hits = 0;
 
     private bool isDying = false;   // This will be used to make sure that we don't call the death function when we don't need to
+    private WaitForSeconds deathWait;
     #endregion  
 
     #region Mutators
@@ -48,6 +49,12 @@ public class Computer : MonoBehaviour
     }
     
     #endregion
+
+    void Start()
+    {
+        animationController = GetComponent<Computer_AnimationController>();
+        deathWait = new WaitForSeconds(deathAnimTime);
+    }
 
     /// <summary>
     /// Author: Ben Hoffman
@@ -138,6 +145,9 @@ public class Computer : MonoBehaviour
             myGroup.RemoveIp(sourceInfo.sourceIpInt);
         }
 
+        // I do not want a parent anymore, so set it to null
+        gameObject.transform.parent = null;
+
         // Remove myself from the dictoinary of computers that are active
         DeviceManager.ComputersDict.Remove(sourceInfo.sourceIpInt);
 
@@ -154,16 +164,17 @@ public class Computer : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Die()
     {
+        // We are currently dying, so make sure that we know that
         isDying = true;
 
-        // Play the animation 
+        // Play the animation
+        animationController.PlaySleepAnim();
 
         // Wait for the animation to finish
-        yield return new WaitForSeconds(deathAnimTime);
+        yield return deathWait;
 
         // Once that is done the animation, set ourselves as inactive
         gameObject.SetActive(false);
-
     }
 
 }

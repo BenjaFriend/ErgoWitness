@@ -55608,3 +55608,894 @@ PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data 
 MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+StreamingInfo_UI.AddInfo (.Source newFilebeatObj) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:125)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:96)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+StreamingInfo_UI.AddInfo (.Source newFilebeatObj) (at Assets/_Scripts/Spectator/StreamingInfo_UI.cs:125)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:96)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer_AnimationController.OnEnable () (at Assets/_Scripts/Computer/Computer_AnimationController.cs:32)
+UnityEngine.GameObject:SetActive(Boolean)
+DeviceManager:NewComputer(Source) (at Assets/_Scripts/Management/DeviceManager.cs:81)
+DeviceManager:CheckConnections(Source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager:CheckIp(Source) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+MissingReferenceException: The object of type 'GameObject' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+ObjectPooler.GetPooledObject () (at Assets/_Scripts/ObjectPooler.cs:47)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:75)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+MissingReferenceException: The object of type 'GameObject' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+ObjectPooler.GetPooledObject () (at Assets/_Scripts/ObjectPooler.cs:47)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:75)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+MissingReferenceException: The object of type 'GameObject' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+ObjectPooler.GetPooledObject () (at Assets/_Scripts/ObjectPooler.cs:47)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:75)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.Int32,IPGroup].Add (Int32 key, .IPGroup value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:165)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:140)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:91)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: ipString
+System.Net.IPAddress.TryParse (System.String ipString, System.Net.IPAddress& address)
+System.Net.IPAddress.Parse (System.String ipString)
+MonitorObject.IpToInt (System.String ipAddr) (at Assets/_Scripts/MonitorObject.cs:331)
+MonitorObject.SetIntegerValues (.Source_Packet PacketbeatSource) (at Assets/_Scripts/MonitorObject.cs:357)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:77)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: ipString
+System.Net.IPAddress.TryParse (System.String ipString, System.Net.IPAddress& address)
+System.Net.IPAddress.Parse (System.String ipString)
+MonitorObject.IpToInt (System.String ipAddr) (at Assets/_Scripts/MonitorObject.cs:331)
+MonitorObject.SetIntegerValues (.Source_Packet PacketbeatSource) (at Assets/_Scripts/MonitorObject.cs:357)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:77)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: ipString
+System.Net.IPAddress.TryParse (System.String ipString, System.Net.IPAddress& address)
+System.Net.IPAddress.Parse (System.String ipString)
+MonitorObject.IpToInt (System.String ipAddr) (at Assets/_Scripts/MonitorObject.cs:331)
+MonitorObject.SetIntegerValues (.Source_Packet PacketbeatSource) (at Assets/_Scripts/MonitorObject.cs:357)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:77)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:37)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.Int32,IPGroup].Add (Int32 key, .IPGroup value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:166)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:101)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:38)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.Int32,IPGroup].Add (Int32 key, .IPGroup value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:166)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:92)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:38)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.Int32,IPGroup].Add (Int32 key, .IPGroup value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:166)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+BroMonitor.CheckData (.Json_Data dataObject) (at Assets/_Scripts/BroMonitor.cs:77)
+BroMonitor.CheckRequestData[Json_Data] (.Json_Data data) (at Assets/_Scripts/BroMonitor.cs:35)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.Int32,IPGroup].Add (Int32 key, .IPGroup value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:166)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:92)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:38)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
