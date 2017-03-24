@@ -11,7 +11,6 @@ public class Computer : MonoBehaviour
 {
     #region Fields
     public Source sourceInfo;            // The info that bro gives you
-    public Material connectionColor;
 
     private float lifetime = 5f;       // How long until the computer will go off of the network
     private float timeSinceDiscovery = 0f;
@@ -32,6 +31,7 @@ public class Computer : MonoBehaviour
 
     private bool isDying = false;   // This will be used to make sure that we don't call the death function when we don't need to
     private WaitForSeconds deathWait;
+    private MeshRenderer meshRend;
     #endregion  
 
     #region Mutators
@@ -50,10 +50,11 @@ public class Computer : MonoBehaviour
     
     #endregion
 
-    void Start()
+    void Awake()
     {
         animationController = GetComponent<Computer_AnimationController>();
         deathWait = new WaitForSeconds(deathAnimTime);
+        meshRend = GetComponentInChildren<MeshRenderer>();
     }
 
     /// <summary>
@@ -77,6 +78,10 @@ public class Computer : MonoBehaviour
         isDying = false;
     }
 
+    public void SetMaterial(Material newMat)
+    {
+        meshRend.material = newMat;
+    }
 
     /// <summary>
     /// Keep track of how active this node is, and if it has exceeded its lifetime

@@ -99,12 +99,11 @@ public class IPGroup : MonoBehaviour {
             // Move the object to our spot
             MoveToGroupSpot(tempObj);
 
-            // Assign the the group color to this object
-            SetColor(tempObj);
+            tempObj.SetMaterial(groupColor);
 
             // Increase the size of my light
             // if we are currently scalling the light, then stop
-            if(currentScalingRoutine != null)
+            if (currentScalingRoutine != null)
             {
                 StopCoroutine(currentScalingRoutine);
             }
@@ -141,24 +140,6 @@ public class IPGroup : MonoBehaviour {
             // Actually move the object to the position
             thingToMove.transform.position = temp;
         }
-    }
-
-    /// <summary>
-    /// Assign the particle system of this computer
-    /// to a color
-    /// </summary>
-    /// <param name="thingToChange"></param>
-    private void SetColor(Computer thingToChange)
-    {
-        // Get the component that has the method to change the color for the particle system
-        MeshRenderer temp = thingToChange.GetComponent<MeshRenderer>();
-
-        // if this is null, then return
-        if (temp == null)
-            return;
-
-        // Set the material to the group materials
-        temp.material = groupColor;
     }
 
     /// <summary>

@@ -56499,3 +56499,79 @@ PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data 
 MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:307)
 UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
+Exception
+ArgumentException: An element with the same key already exists in the dictionary.
+System.Collections.Generic.Dictionary`2[System.Int32,IPGroup].Add (Int32 key, .IPGroup value) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:404)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:166)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:92)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:38)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer.SetMaterial (UnityEngine.Material newMat) (at Assets/_Scripts/Computer/Computer.cs:84)
+IPGroup.AddToGroup (Int32 IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:102)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:169)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:92)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:38)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer.SetMaterial (UnityEngine.Material newMat) (at Assets/_Scripts/Computer/Computer.cs:84)
+IPGroup.AddToGroup (Int32 IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:102)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:169)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:57)
+BroMonitor.CheckData (.Json_Data dataObject) (at Assets/_Scripts/BroMonitor.cs:77)
+BroMonitor.CheckRequestData[Json_Data] (.Json_Data data) (at Assets/_Scripts/BroMonitor.cs:35)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer.SetMaterial (UnityEngine.Material newMat) (at Assets/_Scripts/Computer/Computer.cs:84)
+IPGroup.AddToGroup (Int32 IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:102)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:169)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/_Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/_Scripts/PacketbeatMonitor.cs:92)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/_Scripts/PacketbeatMonitor.cs:38)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer.SetMaterial (UnityEngine.Material newMat) (at Assets/_Scripts/Computer/Computer.cs:84)
+IPGroup.AddToGroup (Int32 IpAddress) (at Assets/_Scripts/IPGrouping/IPGroup.cs:102)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:169)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/_Scripts/IPGrouping/IPGroupManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:90)
+DeviceManager.CheckConnections (.Source source) (at Assets/_Scripts/Management/DeviceManager.cs:132)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:87)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/_Scripts/Management/DeviceManager.cs:62)
+BroMonitor.CheckData (.Json_Data dataObject) (at Assets/_Scripts/BroMonitor.cs:77)
+BroMonitor.CheckRequestData[Json_Data] (.Json_Data data) (at Assets/_Scripts/BroMonitor.cs:35)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Json_Data].MoveNext () (at Assets/_Scripts/MonitorObject.cs:306)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

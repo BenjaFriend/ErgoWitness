@@ -21,7 +21,7 @@ public class Computer_AnimationController : MonoBehaviour {
 	void Awake ()
     {
         // Get the animator component on this object
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
 	}
 	
     /// <summary>
