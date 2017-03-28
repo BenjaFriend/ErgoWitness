@@ -177,18 +177,21 @@ public class NetflowController : MonoBehaviour
                 objToSet.HeadParticleMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
                 objToSet.LineDrawColor = tcpColor;
+                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Tcp);
                 break;
 
             case ("udp"):
                 objToSet.HeadParticleMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
                 objToSet.LineDrawColor = udpColor;
+                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Udp);
                 break;
 
             case ("http"):
                 objToSet.HeadParticleMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
                 objToSet.LineDrawColor = httpColor;
+                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Http);
                 break;
 
             default:
@@ -197,6 +200,7 @@ public class NetflowController : MonoBehaviour
                 // Set the Trail particles color
                 objToSet.SetColor(defaultTrailColor);
                 objToSet.LineDrawColor = defaultColor;
+                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Default);
                 break;
         }
     }

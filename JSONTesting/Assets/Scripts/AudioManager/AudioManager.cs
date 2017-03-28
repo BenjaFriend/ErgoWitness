@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour {
     public AudioSource tcpSource;
     public AudioSource udpSource;
     public AudioSource httpSource;
+
     /// <summary>
     /// Get the reference to the audio source
     /// </summary>
@@ -59,7 +60,8 @@ public class AudioManager : MonoBehaviour {
             case (_MyAudioTypes.NewComputer):
                 newComputerSource.PlayOneShot(newComputerSource.clip);
                 break;
-
+            default:
+                break;
 
         }
     }

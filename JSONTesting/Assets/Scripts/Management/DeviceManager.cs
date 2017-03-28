@@ -94,6 +94,8 @@ public class DeviceManager : MonoBehaviour {
 
         // Send it to the streaming UI thing
         streamingInfo.AddInfo(jsonSourceData);
+        // Play the new computer sound
+        AudioManager.audioManager.PlayAudio(_MyAudioTypes.NewComputer);
     }
 
 

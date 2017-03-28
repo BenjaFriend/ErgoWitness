@@ -2,4 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum _MyAudioTypes { Tcp, Udp, Http, Ssh, NewComputer }
+public enum _MyAudioTypes { Tcp, Udp, Http, Ssh, NewComputer, Default }
