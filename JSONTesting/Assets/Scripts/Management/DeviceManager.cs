@@ -78,7 +78,6 @@ public class DeviceManager : MonoBehaviour {
 
         // Set this object as active in the hierachy so that you can actually see it
         newDevice.gameObject.SetActive(true);
-        //newDevice.WasDiscovered();
 
         // Add the object to the dictionary
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
@@ -145,6 +144,7 @@ public class DeviceManager : MonoBehaviour {
         // If we contrain this IP address, then return the transform
         if(computersDict.ContainsKey(IP))
             return computersDict[IP].transform;
+
         // Otherwise return null
         return null;
     }

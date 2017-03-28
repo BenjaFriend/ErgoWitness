@@ -8,9 +8,9 @@ using UnityEngine;
 /// </summary>
 public class PacketbeatMonitor : MonitorObject {
 
-    private Packetbeat_Json_Data _packetbeatJsonData;
-    public bool assumeHttp = false;
-
+    private Packetbeat_Json_Data _packetbeatJsonData;  
+    public bool assumeHttp = false;             // If this is true then all traffic on ports 80 and 8080 will be considered HTTP traffic
+            
     /// <summary>
     /// Instantiate the packetbeat data on 
     /// awake to avoid all null reference errors

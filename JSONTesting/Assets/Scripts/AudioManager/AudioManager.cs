@@ -35,7 +35,9 @@ public class AudioManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// This will play one of the netflow clips
+    /// Play the specified type of audio from the appropriate source.
+    /// Use AudioSource.PlayOneShot() so that if there was something
+    /// playing before, then it will stop
     /// </summary>
     public void PlayAudio(_MyAudioTypes whichtype)
     {
@@ -51,7 +53,6 @@ public class AudioManager : MonoBehaviour {
                 udpSource.PlayOneShot(udpSource.clip);
                 break;
             case (_MyAudioTypes.Http):
-                //httpSource.Play();
                 httpSource.PlayOneShot(httpSource.clip);
                 break;
             case (_MyAudioTypes.Ssh):
@@ -62,7 +63,6 @@ public class AudioManager : MonoBehaviour {
                 break;
             default:
                 break;
-
         }
     }
 
