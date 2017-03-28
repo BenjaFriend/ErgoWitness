@@ -1,3 +1,32 @@
 
-The HTTP request text:
+The Query that failed: 
+{
+  "query": {
+    "range": {
+      "runtime_timestamp": {
+        
+        "gt":"2017-03-28T16:16:47.001Z"} } },
+   "_source": {
+    "includes": [
+      "_type",
+      "runtime_timestamp",
+      "transport",
+      "dest",
+      "dest.port",
+      "dest.ip",
+      "packet_source",
+      "packet_source.port",
+      "packet_source.ip",
+      "packet_source.mac",
+      "service",
+      "proto",
+      "tags"
+    ]
+}, "sort": [
+  {
+    "@timestamp": {
+      "order": "desc"
+    }
+  }
+] }
 

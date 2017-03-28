@@ -16,15 +16,12 @@ public class MonitorObject : MonoBehaviour {
     private enum State
     {
         CurrentlyRunning,
-        FinishedTheRequestAndParse,
+        Finished,
         Stop
     }
 
     #region Fields
     private State currentState;    // The current state of this web request
-
-    // Have this bool so that the user can use a toggle box in the menu
-    private bool keepGoing = true;
 
     [Range(0f, 1f)]
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
@@ -67,7 +64,7 @@ public class MonitorObject : MonoBehaviour {
     /// user timestamp to make a query
     /// </summary>
     private bool _UseRealTime;      
-
+    // Strings that will be used for custom queries if we need them
     private string _lessThenQuery;
     private string _greaterThenQuery;
 
@@ -97,6 +94,7 @@ public class MonitorObject : MonoBehaviour {
         // Read in the server IP
         using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + fileLocation_serverIP))
         {
+            // Read in the server IP as long as it is not null or empty
             serverIP = reader.ReadLine() ?? "";
         }
 
@@ -112,8 +110,8 @@ public class MonitorObject : MonoBehaviour {
         // Set up the Url of this object with it's specified index
         url = SetUpURL(indexName);
 
-        // Set the current state
-        currentState = State.FinishedTheRequestAndParse;
+        // Set the current state to stopped
+        currentState = State.Stop;
     }
 
     /// <summary>
@@ -155,96 +153,51 @@ public class MonitorObject : MonoBehaviour {
     }
 
     /// <summary>
-    /// Start the HTTP request coroutine, and store the instane in the 
-    /// request_Courinte field
+    /// Set the current state of the monitor so that the FSM will create a new 
+    /// request
     /// </summary>
     public virtual void StartMonitor()
     {
-        keepGoing = true;
         // Set the current state to restart
-        currentState = State.FinishedTheRequestAndParse;
+        currentState = State.Finished;
     }
 
     /// <summary>
-    /// Stop the request coroutine
+    /// Stop the request coroutine if there is one, and set the current state of the FSM to stop
     /// </summary>
     public void StopMonitor()
     {
-        // If there is a request coroutine
+        // If we are currently requesting something then stop
         if(request_Coroutine != null)
-        // Stop the current request coroutine
-        StopCoroutine(request_Coroutine);
+            StopCoroutine(request_Coroutine);
 
         // Set the current state to stop, so the FSM will stop
         currentState = State.Stop;
-
-        keepGoing = false;
-    }
-
-    /// <summary>
-    /// This is so that we can toggle the monitoring with a UI checkbox
-    /// </summary>
-    public void ToggleMonitor()
-    {
-        // If we are running, then call the stop method...
-        if (keepGoing || currentState != State.Stop)
-        {
-            // Stop teh monitor
-            StopMonitor();
-        }
-        else
-        {
-           // Start the monitor
-            StartMonitor();
-        }
     }
 
     /// <summary>
     /// While the current state is not to stop, either wait for the current request to finish, 
-    /// 
     /// </summary>
     /// <typeparam name="T">The type of JSON data we want to use</typeparam>
     /// <param name="dataObject">The json data object</param>
     /// <returns>Will return null until the request is finished, in which case it makes a new request</returns>
     public IEnumerator FSM<T>(T dataObject)
     {
-        // We always want to be looping and check what state we are in
-        while(currentState != State.Stop)
+        // While we have not told this method to stop...
+        while (currentState != State.Stop)
         {
-            // If our current state is to stop...
-         /*   if(currentState == State.Stop)
+            // If the current request is finished...
+            if(currentState == State.Finished)
             {
-                // Stpo the current request coroutine
-                StopCoroutine(request_Coroutine);
-                // Set the keep going variable to false
-                keepGoing = false;
-                break;
-            }*/
+                // Create a new request with teh given data type
+                request_Coroutine = MakePostRequest(dataObject);
 
-            switch (currentState)
-            {
-                case (State.Stop):
-                    // If we have told it to stop, then break out of this coroutine
-                    StopCoroutine(request_Coroutine);
-                    keepGoing = false;
-                    break;
-                    // We are finished a request, and we want to make another one
-                case (State.FinishedTheRequestAndParse):
-                        // Wait for how long we want to...
-                        yield return _waitTime;
-
-                        // Create a new request with teh given data type
-                        request_Coroutine = MakePostRequest(dataObject);
-
-                        // Actually start that coroutine
-                        StartCoroutine(request_Coroutine);
-                    break;
-
-                default:
-                    // If we are currently running, default to doing nothing
-                    yield return null;
-                    break;
+                // Actually start that coroutine
+                StartCoroutine(request_Coroutine);
             }
+
+            // Return null because we are in a loop
+            yield return null;
         }
     }
 
@@ -258,7 +211,7 @@ public class MonitorObject : MonoBehaviour {
     /// <returns>A finished WWW request to the given server</returns>
     private IEnumerator MakePostRequest<T>(T dataObject) 
     {
-        // Set the state to currently running
+        // Set the state to currently running so that we know we are running
         currentState = State.CurrentlyRunning;
 
         // Clear the headers, otherwise we will get the same data from the last one:
@@ -270,12 +223,13 @@ public class MonitorObject : MonoBehaviour {
         // Create a web request
         WWW myRequest;
 
-        // If we do not want to use the alst successful query...
+        // If we are using real time and the previous query was not a failure...
         if (!_UseLastSuccess && _UseRealTime)
         {
-            // Build the query
+            // Build the query using the latest timestamp
             _Current_Query = _query_TOP + "\"gt\":" + "\"" + _latest_time + "\"" + _query_BOTTOM;
         }
+        // If we want to use a custom query and we had a previous success...
         else if (!_UseLastSuccess && !_UseRealTime)
         {
             // Use the query that is build on the timestamps provided by the user
@@ -291,20 +245,20 @@ public class MonitorObject : MonoBehaviour {
         // Initalize the WWW request to have our query and proper URL/headers
         myRequest = new WWW(url, _PostData, headers);
 
-        // Set the priority to high and see what happens?
+        // Set the priority to high, so that we get the info as soon as possible
         myRequest.threadPriority = ThreadPriority.High;
 
         // Yield until the request is done
         yield return myRequest;
 
-        // Check if we got an error in our request or not
-        if (myRequest.error != null || myRequest.text == null)
+        // If there was an error...
+        if (myRequest.error != null)
         {
             // Log all the error data if there was an error
             LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
             LogData("The Query that failed: \n" + _Current_Query, filelocation_ErrorLog);
 
-                // If we are in the editor then send this info the console
+            // If we are in the editor, then print the error to the console
             #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.text);
                 Debug.Log("The query was: " + _Current_Query);
@@ -320,9 +274,11 @@ public class MonitorObject : MonoBehaviour {
         // Call this method so that the more specifc child class can deal with it
         CheckRequestData(dataObject);
 
-        // Mark the state as finished, as long as we were not told to stop
-        if(currentState != State.Stop)
-            currentState = State.FinishedTheRequestAndParse;
+        // Wait however long we want to, so that we don't make a crazy amount of requests
+        yield return _waitTime;
+
+        // Change the current state to finished, so that the FSM knows to create another request
+        currentState = State.Finished;
     }
 
     /// <summary>
@@ -332,6 +288,9 @@ public class MonitorObject : MonoBehaviour {
     /// <typeparam name="T">The JSON data type</typeparam>
     /// <param name="data">The actual data object from the query</param>
     public virtual void CheckRequestData<T>(T data) { }
+
+
+    #region Custom queries
 
     /// <summary>
     /// Set up the greater then and less then timestamp queries to use.
@@ -366,14 +325,16 @@ public class MonitorObject : MonoBehaviour {
         StartMonitor();
     }
 
+    #endregion
+
 
     #region System utilities
 
     /// <summary>
     /// Use Bit conversion to send the IP address to an integer
     /// </summary>
-    /// <param name="ipAddr"></param>
-    /// <returns></returns>
+    /// <param name="ipAddr">The string IP address that we want the integer version of</param>
+    /// <returns>A bit conversion of the IP address string in integer format</returns>
     public int IpToInt(string ipAddr)
     {
         // If this IP is null, then return 0
@@ -404,7 +365,7 @@ public class MonitorObject : MonoBehaviour {
     void OnApplicationQuit()
     {
         // Write out the latest time stamp
-        System.IO.File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
+        File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
     }
 
     #endregion

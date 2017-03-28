@@ -119,12 +119,12 @@
     <None Include="Assets\Art Assets\Shaders\OutlineShader.shader" />
     <None Include="Assets\Art Assets\Shaders\PulsingDissolve.shader" />
     <None Include="Assets\Art Assets\Shaders\RotateTexture.shader" />
+    <None Include="Assets\Art Assets\Shaders\ShaderTesting\Shaders\Diffuse.shader" />
+    <None Include="Assets\Art Assets\Shaders\ShaderTesting\Shaders\Specular.shader" />
+    <None Include="Assets\Art Assets\Shaders\ShaderTesting\Shaders\Texture_Tint.shader" />
     <None Include="Assets\Art Assets\Shaders\Surface_Texture.shader" />
     <None Include="Assets\Art Assets\Shaders\Texture_Tint.shader" />
     <None Include="Assets\Art Assets\Shaders\boxBlur.shader" />
-    <None Include="Assets\ShaderTesting\Shaders\Diffuse.shader" />
-    <None Include="Assets\ShaderTesting\Shaders\Specular.shader" />
-    <None Include="Assets\ShaderTesting\Shaders\Texture_Tint.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
@@ -197,8 +197,8 @@
     <None Include="Assets\StreamingAssets\ErrorLog.txt" />
     <None Include="Assets\StreamingAssets\LogFile.txt" />
     <None Include="Assets\StreamingAssets\Packetbeat\latest_packetbeat_time.txt" />
-    <None Include="Assets\StreamingAssets\TeamIPs\blueTeam.txt" />
     <None Include="Assets\StreamingAssets\TeamIPs\blueTeamIPs.txt" />
+    <None Include="Assets\StreamingAssets\TeamIPs\blueTeamIPs_EXAMPLE.txt" />
     <None Include="Assets\StreamingAssets\TeamIPs\redTeam.txt" />
     <None Include="Assets\StreamingAssets\serverIP.txt" />
     <None Include="Assets\StreamingAssets\serverIP_EXAMPLE.txt" />

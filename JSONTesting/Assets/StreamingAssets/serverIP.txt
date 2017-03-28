@@ -1,4 +1,4 @@
-http://129.21.38.150:9200/
+http://192.168.137.129:9200/
 
 
 ## Don't forget the "/" at the end of the port!! 

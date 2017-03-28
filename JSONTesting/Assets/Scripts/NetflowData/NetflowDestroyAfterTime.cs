@@ -7,16 +7,9 @@ using UnityEngine;
 /// field of lifetime. On destroy set as in-active.
 /// OnDisable, cancel any invokes on this object
 /// </summary>
-[RequireComponent(typeof(PooledObject))]
 public class NetflowDestroyAfterTime : MonoBehaviour {
 
     public float lifetime = 5f; // How long this object will stay active
-    PooledObject pooledObject;
-
-    void Awake()
-    {
-        pooledObject = GetComponent<PooledObject>();
-    }
 
     /// <summary>
     /// Invoke the Destroy method after the specified lifetime
@@ -33,9 +26,8 @@ public class NetflowDestroyAfterTime : MonoBehaviour {
     /// </summary>
     public void Destroy()
     {
-        pooledObject.SetPooledInActive();
         // Set this object to in-active
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     /// <summary>

@@ -7,7 +7,6 @@ using UnityEngine;
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// </summary>
-[RequireComponent(typeof(PooledObject))]
 public class Computer : MonoBehaviour
 {
     #region Fields
@@ -68,7 +67,7 @@ public class Computer : MonoBehaviour
     }
 
 
-    public void WasDiscovered()
+    private void OnEnable()
     {
         // TODO: Add a sound when this object becomes active
 
@@ -105,20 +104,17 @@ public class Computer : MonoBehaviour
     /// </summary>
     private void Update()
     {
-     //   if (pooledObject._IsActive)
-      //  {
-            // If we havce exceeded our active lifetime, and we are not on blue team...
-            if (!isSpecialTeam & timeSinceDiscovery >= lifetime && !isDying)
-            {
-                // Remove it from the dictionary
-                DisableMe();
-            }
-            else
-            {
-                // Add how long it has been to the field
-                timeSinceDiscovery += Time.deltaTime;
-            }
-      //  }
+        // If we havce exceeded our active lifetime, and we are not on blue team...
+        if (!isSpecialTeam & timeSinceDiscovery >= lifetime && !isDying)
+        {
+            // Remove it from the dictionary
+            DisableMe();
+        }
+        else
+        {
+            // Add how long it has been to the field
+            timeSinceDiscovery += Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -202,7 +198,7 @@ public class Computer : MonoBehaviour
         yield return deathWait;
 
         // Tell my little object pooler script to move us away
-        //pooledObject.SetPooledInActive();
+
         // Once that is done the animation, set ourselves as inactive
         gameObject.SetActive(false);
     }

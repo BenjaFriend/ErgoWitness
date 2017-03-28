@@ -737,7 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 1259338230392002, guid: 9bb513620fab58047beadbb35b0edc6e,
     type: 2}
-  pooledAmount: 400
+  pooledAmount: 10
   willGrow: 1
 --- !u!4 &131638475
 Transform:
@@ -2341,18 +2341,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1626523225}
-        m_MethodName: SubmitSliderSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &435834417
@@ -4560,7 +4549,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monitors:
   - {fileID: 1935440672}
-  - {fileID: 949298121}
 --- !u!4 &878581713
 Transform:
   m_ObjectHideFlags: 0
@@ -5785,7 +5773,7 @@ MonoBehaviour:
   httpColor: {r: 0.03346852, g: 0.9705882, b: 0, a: 0.534}
   defaultColor: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 0.734}
   AttackingBlueTeam_Color: {r: 0.9170385, g: 0, b: 0.9705882, a: 0.859}
-  netflowObjectPooler: {fileID: 0}
+  netflowObjectPooler: {fileID: 2032036278}
 --- !u!1 &1028790013
 GameObject:
   m_ObjectHideFlags: 0

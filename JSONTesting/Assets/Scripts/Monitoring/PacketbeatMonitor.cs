@@ -22,7 +22,7 @@ public class PacketbeatMonitor : MonitorObject {
     }
 
     /// <summary>
-    /// Start the necessary finite state machine with the 
+    /// Start the necessary finite state machine with the
     /// specific data for this object
     /// </summary>
     public override void StartMonitor()

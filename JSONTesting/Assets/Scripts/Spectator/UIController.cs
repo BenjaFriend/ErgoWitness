@@ -179,8 +179,6 @@ public class UIController : MonoBehaviour {
         // If we are monitoring, then stop
         if (isMonitoring)
         {
-            //Time.timeScale = 0f;
-
             // Make sure that we know that we are not monitoring anymore
             isMonitoring = false;
 

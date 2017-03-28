@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114552209486109960}
   - component: {fileID: 135971264439090388}
   - component: {fileID: 114018097819485772}
-  - component: {fileID: 114080270623548418}
   - component: {fileID: 82420927488867898}
   m_Layer: 0
   m_Name: Computer_Prefab
@@ -151,7 +150,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cec4559264e2ddf43a92d3d680cc35eb, type: 3}
@@ -251,17 +250,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8608dadeab20194d9e7fcf48018d9d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114080270623548418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d1d477d10a10b4ea10244e8651045b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114552209486109960

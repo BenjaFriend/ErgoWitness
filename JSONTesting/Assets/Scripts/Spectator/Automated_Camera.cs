@@ -12,7 +12,7 @@ public class Automated_Camera : MonoBehaviour {
     public static Automated_Camera currentAutoCam;
 	public float zoomSpeed = 1f;
     [SerializeField]
-    private float speed = 0.5f;       // How fast do we want to shoot this thing
+    public float speed = 0.5f;       // How fast do we want to shoot this thing
     public MoveFromSourceToTarget targetpos;
 
     private GameObject centerOfWorld;
@@ -61,6 +61,11 @@ public class Automated_Camera : MonoBehaviour {
         // Look at the target position
         transform.LookAt(targetpos.transform.position);
 
+        if(slider.value != speed)
+        {
+            speed = slider.value;
+        }
+
     }
 
     /// <summary>
@@ -76,4 +81,5 @@ public class Automated_Camera : MonoBehaviour {
         transform.LookAt(targetpos.transform.position);
         
     }
+
 }

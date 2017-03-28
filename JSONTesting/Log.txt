@@ -62949,3 +62949,194 @@ UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, Un
 UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
 UnityEngine.EventSystems.EventSystem:Update()
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+NetflowController.SendFlow (Int32 sourceIP, Int32 destIP, System.String protocol) (at Assets/Scripts/NetflowData/NetflowController.cs:115)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:319)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:153)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:319)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:153)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:319)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:153)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:319)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:149)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:319)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:149)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:319)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:149)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:317)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:149)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:308)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:149)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:313)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:149)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:276)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Spectator/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:149)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:179)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:152)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:96)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:276)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+

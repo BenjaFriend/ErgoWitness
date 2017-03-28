@@ -77,8 +77,8 @@ public class DeviceManager : MonoBehaviour {
         newDevice.SourceInfo = jsonSourceData;
 
         // Set this object as active in the hierachy so that you can actually see it
-        //newDevice.gameObject.SetActive(true);
-        newDevice.WasDiscovered();
+        newDevice.gameObject.SetActive(true);
+        //newDevice.WasDiscovered();
 
         // Add the object to the dictionary
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
