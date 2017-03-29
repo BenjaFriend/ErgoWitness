@@ -36,6 +36,9 @@ public class ManageMonitors : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Stop the monitors that are running
+    /// </summary>
     public void StopMonitor()
     {
         // Loop through and start all the moniotrs
