@@ -35,6 +35,8 @@ public class NetflowController : MonoBehaviour
 
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
 
+    public bool playAudio = true;
+
     private GameObject obj; // This is better for memory
     private NetflowObject tempNet; // Temp object for when we alter stuff
 
@@ -159,7 +161,7 @@ public class NetflowController : MonoBehaviour
     private void SetColor(NetflowObject objToSet, bool destIsBlue)
     {
         // If this is attacking a blue team object, then set it to all the proper stuff
-        if (destIsBlue)
+      /*  if (destIsBlue)
         {
             // Set the head particle
             objToSet.HeadParticleMaterial = AttackingBlueTeam_Material;
@@ -168,7 +170,7 @@ public class NetflowController : MonoBehaviour
             // Set the line that will be drawn and faded out color
             objToSet.LineDrawColor = AttackingBlueTeam_Color;
             return;
-        }
+        }*/
                  
         // Change to the proper material
         switch (objToSet.Protocol)
@@ -177,21 +179,24 @@ public class NetflowController : MonoBehaviour
                 objToSet.HeadParticleMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
                 objToSet.LineDrawColor = tcpColor;
-                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Tcp);
+                if(playAudio)
+                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Tcp);
                 break;
 
             case ("udp"):
                 objToSet.HeadParticleMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
                 objToSet.LineDrawColor = udpColor;
-                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Udp);
+                if (playAudio)
+                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Udp);
                 break;
 
             case ("http"):
                 objToSet.HeadParticleMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
                 objToSet.LineDrawColor = httpColor;
-                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Http);
+                if (playAudio)
+                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Http);
                 break;
 
             default:
@@ -200,7 +205,8 @@ public class NetflowController : MonoBehaviour
                 // Set the Trail particles color
                 objToSet.SetColor(defaultTrailColor);
                 objToSet.LineDrawColor = defaultColor;
-                AudioManager.audioManager.PlayAudio(_MyAudioTypes.Default);
+                if (playAudio)
+                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Default);
                 break;
         }
     }

@@ -51,7 +51,8 @@ public class Movement : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        if (Input.GetButtonDown("CamToggle"))
+        // If we press the camera toggle input, then toggle the use of the controller
+        if (Input.GetButtonDown("ControllerToggle"))
         {
             ToggleControllerUse();
         }

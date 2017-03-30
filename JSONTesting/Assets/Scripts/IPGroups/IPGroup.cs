@@ -98,6 +98,7 @@ public class IPGroup : MonoBehaviour {
 
             // Move the object to our spot
             MoveToGroupSpot(tempObj);
+
             // Set the object's material to the group color, and give it a reference to this as it's group
             tempObj.SetUpGroup(groupColor, this);
 

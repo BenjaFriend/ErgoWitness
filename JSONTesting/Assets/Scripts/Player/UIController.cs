@@ -14,13 +14,16 @@ public class UIController : MonoBehaviour {
     #region Fields
     public static UIController thisUIController;
 
+    public Camera playerControlledCamera;
+    public Camera autoCamera;
+
     public Movement playerMovement;     // The player movement so we can stop it on pause
     public Automated_Camera autoCam;
     public Animator MenuAnim;      // The animator of the menu
 
-    public Sprite playSprite;
-    public Sprite pauseSprite;
-    public Button pausePlayButton;
+    public Sprite playSprite;     // The sprite for if we want to play or not
+    public Sprite pauseSprite;    // The sprite for if we want to pause
+    public Button pausePlayButton;// The button for toggling on and off with moniotring
 
     public Text ControlButton_Text;
 
@@ -47,6 +50,11 @@ public class UIController : MonoBehaviour {
 
         // Get the main canvas element so that we can toggle it on and off
         mainCanvas = GetComponentInChildren<Canvas>();
+
+        // Start by turning off the player controlled camera
+        playerControlledCamera.enabled = false;
+        // Turn on the automatic camera
+        autoCamera.enabled = true;
     }
 
     /// <summary>
@@ -147,12 +155,45 @@ public class UIController : MonoBehaviour {
             // Change the UI button to 'Auto'
             ControlButton_Text.text = "Auto";
         }
+
+        ToggleCameras();
     }
 
-	/// <summary>
-	/// Toggles the main panels of the UI.
-	/// </summary>
-	public void ToggleMainPanels()
+    /// <summary>
+    /// Switch between the player controlled camera and the automatic camera
+    /// </summary>
+    public void ToggleCameras()
+    {
+        // If we are using the player controlled camera...
+        if (playerControlledCamera.isActiveAndEnabled)
+        {
+            // Set it to false and use the automatic camera 
+            playerControlledCamera.enabled = false;
+
+            // Enable the automatic camera
+            autoCamera.enabled = true;
+        }
+        else
+        {
+            // Set the position of the player controlled camera to the auto cam
+            playerControlledCamera.transform.position = autoCamera.transform.position;
+            playerControlledCamera.transform.rotation = autoCamera.transform.rotation;
+
+            // Disable the automatic camera
+            autoCamera.enabled = false;
+
+            // Enable the player controlled camera
+            playerControlledCamera.enabled = true;
+
+
+        }
+
+    }
+
+    /// <summary>
+    /// Toggles the main panels of the UI.
+    /// </summary>
+    public void ToggleMainPanels()
 	{
 		// If we ARE showing the menu...
 		if(MenuAnim.GetBool("showMain"))

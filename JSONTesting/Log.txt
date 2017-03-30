@@ -63310,3 +63310,27 @@ PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Moni
 <MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:275)
 UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:97)
+DeviceManager.CheckConnections (.Source source) (at Assets/Scripts/Management/DeviceManager.cs:133)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:86)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:61)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:274)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:97)
+DeviceManager.CheckConnections (.Source source) (at Assets/Scripts/Management/DeviceManager.cs:133)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:86)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:61)
+NetflowController.CheckPacketbeatData (.Source_Packet packetbeatSource) (at Assets/Scripts/NetflowData/NetflowController.cs:91)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+MonitorObject+<MakePostRequest>c__Iterator1`1[Packetbeat_Json_Data].MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:274)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+

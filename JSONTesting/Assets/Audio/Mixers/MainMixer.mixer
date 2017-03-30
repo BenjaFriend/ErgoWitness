@@ -14,7 +14,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: fdf3b52ed223651419256058f5077f5b
+    name: AmbientVolume
+  - guid: 1adeac30cbcbf654380ecf07c36e1d19
+    name: MasterVolume
+  - guid: 3c309575086b1bc4988773dc2934987c
+    name: NetflowVolume
   m_AudioMixerGroupViews:
   - guids:
     - 0ad99af9c33e4154da1ff3d35bd7f013
@@ -70,6 +76,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 5597b0b0d1d0bd642ab4342a65cdb8c9
   m_FloatValues:
+    1adeac30cbcbf654380ecf07c36e1d19: -0.02577656
     1022e4d0a48728d4189b541d9ed6730e: 2.09
     73b1d2e0d74a95147a1522435f90911f: 15.1
     bfa2dff0d82230547a508632f629e4c9: -60
@@ -252,7 +259,6 @@ AudioMixerGroupController:
   m_Pitch: a0921603977d2e74aad0ae4b61eb8fe7
   m_Effects:
   - {fileID: 244419607965823706}
-  - {fileID: 244245292040923434}
   - {fileID: 244424738924473442}
   m_UserColorIndex: 0
   m_Mute: 0
@@ -365,27 +371,6 @@ AudioMixerEffectController:
     m_GUID: bd04fe7b4d0d9554d9fd36abfed6492f
   - m_ParameterName: Wetmix
     m_GUID: 1b434aa7a137db54a9b541b820edd4d0
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
---- !u!244 &244245292040923434
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_EffectID: 37b0e3a85385ca142a1a640be8c5d017
-  m_EffectName: Pitch Shifter
-  m_MixLevel: 7622079b488a24b4683e068e4fc6bba5
-  m_Parameters:
-  - m_ParameterName: Pitch
-    m_GUID: 9bd43643995a96d48b4bbab2a9f9d394
-  - m_ParameterName: FFT size
-    m_GUID: 713a42c7fbce6a949be4e1bce4a4eaf8
-  - m_ParameterName: Overlap
-    m_GUID: ef05c6dd7d79a754eafb7a95ce13f996
-  - m_ParameterName: Max channels
-    m_GUID: 195c8d0c8308f934f84398a757e0ccdd
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

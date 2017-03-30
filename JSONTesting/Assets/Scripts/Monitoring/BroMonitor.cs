@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is the monitor class that I will use in order to have Bro data coming
+/// in from the ELK server. 
+/// </summary>
 public class BroMonitor : MonitorObject {
 
-
+    // The JSON class of data for the bro data
     private Json_Data _broData;
 
-
+    /// <summary>
+    /// This will start the FSM with our specific stype of data
+    /// </summary>
     public override void StartMonitor()
     {
         // Make sure that the FSM knows we are starting again
@@ -78,7 +84,6 @@ public class BroMonitor : MonitorObject {
         }
     }
 
-
     /// <summary>
     /// Take in a source object, and set it's integer values
     /// </summary>
@@ -93,6 +98,5 @@ public class BroMonitor : MonitorObject {
         FilebeatSource.destIpInt =
             IpToInt(FilebeatSource.id_resp_h);
     }
-
 
 }

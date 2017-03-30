@@ -12,13 +12,13 @@ public class Computer : MonoBehaviour
     #region Fields
     public Source sourceInfo;            // The info that bro gives you
 
-    private float lifetime = 5f;       // How long until the computer will go off of the network
+    private float lifetime = 5f;            // How long until the computer will go off of the network
     private float timeSinceDiscovery = 0f;  // How long it has been since we were discovered
 
     [SerializeField]    
-    private float deathAnimTime = 0.5f; // The length of the death animation
+    private float deathAnimTime = 0.5f;                        // The length of the death animation
     private Computer_AnimationController animationController;  // A reference to the animations for the computer object
-    //private PooledObject pooledObject;
+    private AudioSource audioSource;
 
     /// <summary>
     /// Use a list for this because it is better for insertion
@@ -31,10 +31,10 @@ public class Computer : MonoBehaviour
 	// This is to keep track of how many times we have seen this PC
 	private int hits = 0;
 
-    private bool isDying = false;   // This will be used to make sure that we don't call the death function when we don't need to
-    private WaitForSeconds deathWait;
-    private MeshRenderer meshRend;
-    private IPGroup myGroup;
+    private bool isDying = false;      // This will be used to make sure that we don't call the death function when we don't need to
+    private WaitForSeconds deathWait;  // How long we wait for our animation to play when we go inactive
+    private MeshRenderer meshRend;     // The mesh renderer component of this object so taht we can 
+    private IPGroup myGroup;           // A reference to the IP group that I am in
     #endregion
 
     #region Mutators
@@ -51,7 +51,6 @@ public class Computer : MonoBehaviour
             sourceInfo = value;
         }
     }
-    public PooledObject PooledObject { get; set; }
     #endregion
 
     void Awake()
@@ -64,6 +63,9 @@ public class Computer : MonoBehaviour
 
         // Initialize a new list object
         connectedPcs = new List<Computer>();
+        // Get the audio source compoenent
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -94,8 +96,12 @@ public class Computer : MonoBehaviour
     {
         // Set the 
         meshRend.material = groupMat;
+
         // Get the reference to a group
         myGroup = myNewGroup;
+
+        // Play my audio now that I am moved to my group
+        audioSource.Play();
     }
 
     /// <summary>

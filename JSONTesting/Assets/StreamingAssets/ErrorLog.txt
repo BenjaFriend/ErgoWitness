@@ -5,7 +5,7 @@ The Query that failed:
     "range": {
       "runtime_timestamp": {
          
-        "gt":"2017-03-27T13:34:04.883Z"} } },
+        "gt":"2017-03-29T21:10:55.638Z"} } },
   "_source": {
     "includes": [
       "runtime_timestamp",

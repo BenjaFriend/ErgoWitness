@@ -6,22 +6,12 @@ using System.IO;
 /// <summary>
 /// This object will send HTTP queries to the specified server,
 /// and then set up that data to be sent to the device manager
-/// class
+/// class.
 /// </summary>
 public class MonitorObject : MonoBehaviour {
 
-    /// <summary>
-    /// The possible states of this monitoring object
-    /// </summary>
-    private enum State
-    {
-        CurrentlyRunning,
-        Finished,
-        Stop
-    }
-
     #region Fields
-    private State currentState;    // The current state of this web request
+    private MonitorState currentState;    // The current state of this web request
 
     [Range(0f, 1f)]
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
@@ -68,8 +58,12 @@ public class MonitorObject : MonoBehaviour {
     private string _lessThenQuery;
     private string _greaterThenQuery;
 
+
+    public MonitorState CurrentState { get { return currentState; } }
     #endregion
 
+
+    #region Methods
     /// <summary>
     /// Read in all of the query information, the server IP, and initalize the headers
     /// for use in the query. Set up the URL as necessary. Create a wait time object
@@ -111,7 +105,7 @@ public class MonitorObject : MonoBehaviour {
         url = SetUpURL(indexName);
 
         // Set the current state to stopped
-        currentState = State.Stop;
+        currentState = MonitorState.Stop;
     }
 
     /// <summary>
@@ -159,7 +153,7 @@ public class MonitorObject : MonoBehaviour {
     public virtual void StartMonitor()
     {
         // Set the current state to restart
-        currentState = State.Finished;
+        currentState = MonitorState.Finished;
     }
 
     /// <summary>
@@ -172,8 +166,13 @@ public class MonitorObject : MonoBehaviour {
             StopCoroutine(request_Coroutine);
 
         // Set the current state to stop, so the FSM will stop
-        currentState = State.Stop;
+        currentState = MonitorState.Stop;
     }
+
+    #endregion
+
+
+    #region Coroutines
 
     /// <summary>
     /// While the current state is not to stop, either wait for the current request to finish, 
@@ -184,10 +183,10 @@ public class MonitorObject : MonoBehaviour {
     public IEnumerator FSM<T>(T dataObject)
     {
         // While we have not told this method to stop...
-        while (currentState != State.Stop)
+        while (currentState != MonitorState.Stop)
         {
             // If the current request is finished...
-            if(currentState == State.Finished)
+            if(currentState == MonitorState.Finished)
             {
                 // Create a new request with teh given data type
                 request_Coroutine = MakePostRequest(dataObject);
@@ -212,7 +211,7 @@ public class MonitorObject : MonoBehaviour {
     private IEnumerator MakePostRequest<T>(T dataObject) 
     {
         // Set the state to currently running so that we know we are running
-        currentState = State.CurrentlyRunning;
+        currentState = MonitorState.CurrentlyRunning;
 
         // Clear the headers, otherwise we will get the same data from the last one:
         headers.Clear();
@@ -278,7 +277,7 @@ public class MonitorObject : MonoBehaviour {
         yield return _waitTime;
 
         // Change the current state to finished, so that the FSM knows to create another request
-        currentState = State.Finished;
+        currentState = MonitorState.Finished;
     }
 
     /// <summary>
@@ -288,6 +287,8 @@ public class MonitorObject : MonoBehaviour {
     /// <typeparam name="T">The JSON data type</typeparam>
     /// <param name="data">The actual data object from the query</param>
     public virtual void CheckRequestData<T>(T data) { }
+
+    #endregion
 
 
     #region Custom queries
@@ -362,10 +363,31 @@ public class MonitorObject : MonoBehaviour {
     /// Write out the most recent timestamp at
     /// the end of the application.
     /// </summary>
-    void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         // Write out the latest time stamp
         File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
+    }
+
+    /// <summary>
+    /// This method will toggle this monitor on or off with a call from 
+    /// a Toggle UI element
+    /// </summary>
+    public void ToggleMonitor()
+    {
+        // If we are not stopped...
+        if (currentState != MonitorState.Stop)
+        {
+            // Then stop
+            StopMonitor();
+        }
+        // Otherwise we are stopped...
+        else
+        {
+            // So start again
+            StartMonitor();
+        }
+
     }
 
     #endregion

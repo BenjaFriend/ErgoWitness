@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting.Plugins", "JSONTesting.Plugins.csproj", "{14AE8519-C79C-7BBD-79C4-22DD9021372B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting.CSharp.Plugins", "JSONTesting.CSharp.Plugins.csproj", "{2B250F7C-6FF1-1F27-B309-6423F178244C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting", "JSONTesting.csproj", "{BA64B734-0296-CECA-4E97-C574B1E1B6F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting.CSharp", "JSONTesting.CSharp.csproj", "{E3444DAD-BBEC-0BE3-24A0-548A73DC58A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting.Editor.Plugins", "JSONTesting.Editor.Plugins.csproj", "{F3B42049-22FE-4491-D23D-C25113CC6439}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTesting.CSharp.Editor.Plugins", "JSONTesting.CSharp.Editor.Plugins.csproj", "{2B3575BA-6C83-58E9-8471-24400FEFCF0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,18 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14AE8519-C79C-7BBD-79C4-22DD9021372B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA64B734-0296-CECA-4E97-C574B1E1B6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA64B734-0296-CECA-4E97-C574B1E1B6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA64B734-0296-CECA-4E97-C574B1E1B6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA64B734-0296-CECA-4E97-C574B1E1B6F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3B42049-22FE-4491-D23D-C25113CC6439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3B42049-22FE-4491-D23D-C25113CC6439}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3B42049-22FE-4491-D23D-C25113CC6439}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3B42049-22FE-4491-D23D-C25113CC6439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B250F7C-6FF1-1F27-B309-6423F178244C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B250F7C-6FF1-1F27-B309-6423F178244C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B250F7C-6FF1-1F27-B309-6423F178244C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B250F7C-6FF1-1F27-B309-6423F178244C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3444DAD-BBEC-0BE3-24A0-548A73DC58A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3444DAD-BBEC-0BE3-24A0-548A73DC58A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3444DAD-BBEC-0BE3-24A0-548A73DC58A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3444DAD-BBEC-0BE3-24A0-548A73DC58A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B3575BA-6C83-58E9-8471-24400FEFCF0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B3575BA-6C83-58E9-8471-24400FEFCF0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B3575BA-6C83-58E9-8471-24400FEFCF0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B3575BA-6C83-58E9-8471-24400FEFCF0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

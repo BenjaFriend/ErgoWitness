@@ -14,6 +14,8 @@ public class DeviceManager : MonoBehaviour {
     #region Fields
     public static DeviceManager currentDeviceManager;
 
+    public bool playAudio = true;
+
     public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
@@ -93,8 +95,12 @@ public class DeviceManager : MonoBehaviour {
 
         // Send it to the streaming UI thing
         streamingInfo.AddInfo(jsonSourceData);
-        // Play the new computer sound
-        AudioManager.audioManager.PlayAudio(_MyAudioTypes.NewComputer);
+
+        if (playAudio)
+        {
+            // Play the new computer sound
+            AudioManager.audioManager.PlayAudio(_MyAudioTypes.NewComputer);
+        }
     }
 
 
