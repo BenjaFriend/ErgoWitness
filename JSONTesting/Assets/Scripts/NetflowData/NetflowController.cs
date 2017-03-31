@@ -141,7 +141,7 @@ public class NetflowController : MonoBehaviour
         tempNet.Protocol = protocol;
 
         // Set the color of the temp net object
-        SetColor(tempNet, DeviceManager.currentDeviceManager.isBlueTeam(destIP));
+        SetColor(tempNet);
 
         // Set the destination of the netflow obj, which also start the movement 
         tempNet.DestinationPos = DeviceManager.currentDeviceManager.GetTransform(destIP);
@@ -158,19 +158,8 @@ public class NetflowController : MonoBehaviour
     /// Set the trail material for the given object
     /// </summary>
     /// <param name="objToSet"></param>
-    private void SetColor(NetflowObject objToSet, bool destIsBlue)
+    private void SetColor(NetflowObject objToSet)
     {
-        // If this is attacking a blue team object, then set it to all the proper stuff
-      /*  if (destIsBlue)
-        {
-            // Set the head particle
-            objToSet.HeadParticleMaterial = AttackingBlueTeam_Material;
-            // Set the START COLOR of the trail particle system
-            objToSet.SetColor(AttackingBlueTeam_Gradient);
-            // Set the line that will be drawn and faded out color
-            objToSet.LineDrawColor = AttackingBlueTeam_Color;
-            return;
-        }*/
                  
         // Change to the proper material
         switch (objToSet.Protocol)

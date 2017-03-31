@@ -61,4 +61,15 @@ public class LeaderboardItem : MonoBehaviour {
         }
         catch { }
     }
+
+    /// <summary>
+    /// Allow me to clear the text fields of this objectt
+    /// </summary>
+    public void ClearText()
+    {
+        // Set the text components
+        ipText.text = "";
+        countText.text = "";
+    }
+
 }

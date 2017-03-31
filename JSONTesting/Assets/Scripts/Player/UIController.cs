@@ -156,6 +156,7 @@ public class UIController : MonoBehaviour {
             ControlButton_Text.text = "Auto";
         }
 
+        // Toggle the cameras on and off
         ToggleCameras();
     }
 

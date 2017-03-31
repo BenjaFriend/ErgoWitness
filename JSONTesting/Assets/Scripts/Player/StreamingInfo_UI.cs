@@ -223,4 +223,39 @@ public class StreamingInfo_UI : MonoBehaviour {
 
         isRunning = false;
     }
+
+
+    /// <summary>
+    /// This will allow be an option in the menu that will determine if we are showing the data or not
+    /// </summary>
+    public void ToggleRecieveData()
+    {
+        // If we are showing the data
+        if (isShowing)
+        {
+            // Then stop
+            isShowing = false;
+
+            // Clear all of our text
+            for(int i = 0; i < infoObjects.Length; i++)
+            {
+                infoObjects[i].ClearText();
+            }
+            // Clear all of our leaderboard item text
+            for (int j = 0; j < leaderboardItems.Length; j++)
+            {
+                // Clear it's text
+                leaderboardItems[j].ClearText();
+            }
+
+        }
+        // We are not showing the data...
+        else
+        {
+            // So show it
+            isShowing = true;
+        }
+
+    }
+
 }
