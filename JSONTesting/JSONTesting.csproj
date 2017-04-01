@@ -83,13 +83,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioManager\AudioManager.cs" />
     <Compile Include="Assets\Scripts\AudioManager\AudioTypes.cs" />
+    <Compile Include="Assets\Scripts\AudioManager\MixLevels.cs" />
     <Compile Include="Assets\Scripts\AudioManager\TestAudioWithInput.cs" />
     <Compile Include="Assets\Scripts\Computer\Computer.cs" />
     <Compile Include="Assets\Scripts\Computer\ComputerUI.cs" />
     <Compile Include="Assets\Scripts\Computer\Computer_AnimationController.cs" />
-    <Compile Include="Assets\Scripts\CustomTimestamps\MinMaxSliders.cs" />
-    <Compile Include="Assets\Scripts\CustomTimestamps\SendInfoToMonitor.cs" />
-    <Compile Include="Assets\Scripts\CustomTimestamps\Slider_TextValue.cs" />
     <Compile Include="Assets\Scripts\DeviceUIControlls.cs" />
     <Compile Include="Assets\Scripts\IPGroups\IPGroup.cs" />
     <Compile Include="Assets\Scripts\IPGroups\IPGroupManager.cs" />
@@ -98,23 +96,25 @@
     <Compile Include="Assets\Scripts\Management\DeviceManager.cs" />
     <Compile Include="Assets\Scripts\Management\ExceptionLogger.cs" />
     <Compile Include="Assets\Scripts\Management\ManageMonitors.cs" />
+    <Compile Include="Assets\Scripts\Management\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\Monitoring\BroMonitor.cs" />
+    <Compile Include="Assets\Scripts\Monitoring\CustomTimestamps\MinMaxSliders.cs" />
+    <Compile Include="Assets\Scripts\Monitoring\CustomTimestamps\SendInfoToMonitor.cs" />
+    <Compile Include="Assets\Scripts\Monitoring\CustomTimestamps\Slider_TextValue.cs" />
     <Compile Include="Assets\Scripts\Monitoring\MonitorObject.cs" />
+    <Compile Include="Assets\Scripts\Monitoring\MonitorState.cs" />
     <Compile Include="Assets\Scripts\Monitoring\PacketbeatMonitor.cs" />
     <Compile Include="Assets\Scripts\NetflowData\MoveFromSourceToTarget.cs" />
     <Compile Include="Assets\Scripts\NetflowData\NetflowController.cs" />
     <Compile Include="Assets\Scripts\NetflowData\NetflowDestroyAfterTime.cs" />
     <Compile Include="Assets\Scripts\NetflowData\NetflowObject.cs" />
-    <Compile Include="Assets\Scripts\ObjectPooler.cs" />
-    <Compile Include="Assets\Scripts\PooledObject.cs" />
-    <Compile Include="Assets\Scripts\SpecialObjectPool.cs" />
-    <Compile Include="Assets\Scripts\Spectator\Automated_Camera.cs" />
-    <Compile Include="Assets\Scripts\Spectator\LeaderboardItem.cs" />
-    <Compile Include="Assets\Scripts\Spectator\Movement.cs" />
-    <Compile Include="Assets\Scripts\Spectator\Raycast_ExtraInfo.cs" />
-    <Compile Include="Assets\Scripts\Spectator\SetInfo.cs" />
-    <Compile Include="Assets\Scripts\Spectator\StreamingInfo_UI.cs" />
-    <Compile Include="Assets\Scripts\Spectator\UIController.cs" />
+    <Compile Include="Assets\Scripts\Player\Automated_Camera.cs" />
+    <Compile Include="Assets\Scripts\Player\LeaderboardItem.cs" />
+    <Compile Include="Assets\Scripts\Player\Movement.cs" />
+    <Compile Include="Assets\Scripts\Player\Raycast_ExtraInfo.cs" />
+    <Compile Include="Assets\Scripts\Player\SetInfo.cs" />
+    <Compile Include="Assets\Scripts\Player\StreamingInfo_UI.cs" />
+    <Compile Include="Assets\Scripts\Player\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art Assets\Fonts\Lato\OFL.txt" />
