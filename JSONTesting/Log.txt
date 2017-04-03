@@ -63473,3 +63473,35 @@ PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Moni
 <MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:274)
 UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
 
+Exception
+ArgumentNullException: Argument cannot be null.
+Parameter name: key
+System.Collections.Generic.Dictionary`2[System.String,System.Int32].ContainsKey (System.String key) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/Dictionary.cs:458)
+StreamingInfo_UI+<CheckTopHits>c__Iterator0.MoveNext () (at Assets/Scripts/Player/StreamingInfo_UI.cs:193)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+StreamingInfo_UI:CheckTop(String, Int32) (at Assets/Scripts/Player/StreamingInfo_UI.cs:172)
+Computer:AddConnectedPC(Computer) (at Assets/Scripts/Computer/Computer.cs:155)
+DeviceManager:ConnectComputers(Int32, Int32) (at Assets/Scripts/Management/DeviceManager.cs:187)
+NetflowController:SendFlow(Int32, Int32, String) (at Assets/Scripts/NetflowData/NetflowController.cs:154)
+NetflowController:CheckPacketbeatData(Source_Packet) (at Assets/Scripts/NetflowData/NetflowController.cs:98)
+PacketbeatMonitor:CheckData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:104)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:50)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:274)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+PlayerClickAction.Update () (at Assets/Scripts/Player/PlayerClickAction.cs:33)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+PlayerClickAction.Update () (at Assets/Scripts/Player/PlayerClickAction.cs:33)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+PlayerClickAction.Update () (at Assets/Scripts/Player/PlayerClickAction.cs:33)
+
+Error
+Coroutine continue failure
+

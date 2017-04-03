@@ -14,7 +14,7 @@ public class DeviceManager : MonoBehaviour {
     #region Fields
     public static DeviceManager currentDeviceManager;
 
-    public bool playAudio = true;
+    public bool playAudio = true;       // Bool determining if we want to play audio or not
 
     public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?

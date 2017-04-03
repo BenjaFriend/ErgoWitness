@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This is the packetbeat moniotr 
+/// This is the packetbeat monitor 
+/// Author: Ben Hoffman
 /// </summary>
 public class PacketbeatMonitor : MonitorObject {
 
-    private Packetbeat_Json_Data _packetbeatJsonData;  
+    private Packetbeat_Json_Data _packetbeatJsonData;  // The JSON data that we are gonna keep track of
     public bool assumeHttp = false;             // If this is true then all traffic on ports 80 and 8080 will be considered HTTP traffic
             
     /// <summary>
@@ -90,13 +91,14 @@ public class PacketbeatMonitor : MonitorObject {
             SetIntegerValues(packetDataObj.hits.hits[i]._source);
 
             // As long as what we got from those IP's is valid:
-            if (packetDataObj.hits.hits[i]._source.destIpInt != -1 && packetDataObj.hits.hits[i]._source.sourceIpInt != -1)
+            if (packetDataObj.hits.hits[i]._source.destIpInt != 0 && packetDataObj.hits.hits[i]._source.sourceIpInt != 0)
             {
                 // Change the protocol to HTTP if we want to, this is optional because
                 // sometimes it is techincally incorrect
                 if (assumeHttp && packetDataObj.hits.hits[i]._source.dest.port == 80 ||
                    packetDataObj.hits.hits[i]._source.dest.port == 8080)
                 {
+                    // This traffic is HTTP
                     packetDataObj.hits.hits[i]._source.transport = "http";
                 }
 

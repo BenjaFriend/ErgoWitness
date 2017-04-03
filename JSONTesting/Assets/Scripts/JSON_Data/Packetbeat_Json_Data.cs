@@ -25,10 +25,8 @@ public class HitsParent_Packet
 [System.Serializable]
 public class HitsData_Packet
 {
-    public string _id;
-    public string _type;
-
-    public Source_Packet _source;
+    public string _id;      // The unique id of this object in our database
+    public Source_Packet _source;   
 }
 
 // This is really the information that I care about right now
@@ -36,30 +34,25 @@ public class HitsData_Packet
 public class Source_Packet
 {
     // Packetbeat stuff
-    public string runtime_timestamp;
-    public string transport;
-    public DestinationData_Packetbeat dest;
+    public string runtime_timestamp;    // The timestamp of this object
+    public string transport;    // This is where udp/tcp is specified
+    public DestinationData_Packetbeat dest; 
     public SourceData_Packetbeat packet_source;
 
-    public string service;
-    public string proto;
-
-    public int sourceIpInt;
-    public int destIpInt;
+    public int sourceIpInt; // A bit-conversion of the source ip string
+    public int destIpInt;   // A bit conversion of the dest ip string
 }
 
 [System.Serializable]
 public class SourceData_Packetbeat
 {
-    public int port;
-    public string ip;
-    public string mac;
+    public int port;        // Source port
+    public string ip;       // Source IP
 }
 
 [System.Serializable]
 public class DestinationData_Packetbeat
 {
-    public int port;
-    public string ip;
-    public string mac;
+    public int port;        // Destination port
+    public string ip;       // Destination IP
 }

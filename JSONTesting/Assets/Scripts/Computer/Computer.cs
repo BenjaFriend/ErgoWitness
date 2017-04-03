@@ -55,24 +55,25 @@ public class Computer : MonoBehaviour
 
     void Awake()
     {
-        
+        // Get the animation componenet
         animationController = GetComponent<Computer_AnimationController>();
+
+        // Create a wait fro seconds object so taht we can avoid creating one every time
         deathWait = new WaitForSeconds(deathAnimTime);
+
+        // Get the mesh rend componenet
         meshRend = GetComponentInChildren<MeshRenderer>();
-        //pooledObject = GetComponent<PooledObject>();
 
         // Initialize a new list object
         connectedPcs = new List<Computer>();
-        // Get the audio source compoenent
 
+        // Get the audio source compoenent
         audioSource = GetComponent<AudioSource>();
     }
 
 
     private void OnEnable()
     {
-        // TODO: Add a sound when this object becomes active
-
         // Make sure tha we know that the time since my discover is reset
         timeSinceDiscovery = 0f;
 
@@ -147,6 +148,7 @@ public class Computer : MonoBehaviour
             // Add the connection to my linked list
             connectedPcs.Add(connectedToMe);
         }
+
 		// Tell the streaming information that we got another hit on this IP
 		hits++;
 
@@ -189,7 +191,7 @@ public class Computer : MonoBehaviour
     }
 
     /// <summary>
-    /// This will wait for 
+    /// This will wait for the death animation to finish before actually killing it
     /// </summary>
     /// <returns></returns>
     private IEnumerator Die()
@@ -201,12 +203,9 @@ public class Computer : MonoBehaviour
         animationController.PlaySleepAnim();
 
         // Wait for the animation to finish
-        yield return deathWait;
-
-        // Tell my little object pooler script to move us away
+        yield return deathWait;       
 
         // Once that is done the animation, set ourselves as inactive
         gameObject.SetActive(false);
     }
-
 }

@@ -12,21 +12,21 @@ public class NetflowController : MonoBehaviour
     public static NetflowController currentNetflowController;
     public StreamingInfo_UI streamingUI;
 
-    // The different colors for the protocols
+    // Particle head materials =========
     public Material tcpMat;
     public Material udpMat;
     public Material httpMat;
     public Material defaultMat;
     public Material AttackingBlueTeam_Material;
 
-
+    // Particle system colors ============
     public Gradient tcpTrailColor;
     public Gradient udpTrailColor;
     public Gradient httpTrailColor;
     public Gradient defaultTrailColor;
     public Gradient AttackingBlueTeam_Gradient;
 
-
+    // Line colors ======================
     public Color tcpColor;
     public Color udpColor;
     public Color httpColor;
@@ -35,7 +35,7 @@ public class NetflowController : MonoBehaviour
 
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
 
-    public bool playAudio = true;
+    public bool playAudio = true;       // Bool of if we want to play audio or not
 
     private GameObject obj; // This is better for memory
     private NetflowObject tempNet; // Temp object for when we alter stuff
@@ -47,12 +47,18 @@ public class NetflowController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        // If there is not another controller in the scene...
         if (currentNetflowController == null)
         {
+            // Set the static reference to this
             currentNetflowController = this;
         }
+        // If there is another controller in scene...
         else if (currentNetflowController != this)
+        {
+            // Destroy this 
             Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -122,17 +128,6 @@ public class NetflowController : MonoBehaviour
 
         // Get the netflow component of that
         tempNet = obj.GetComponent<NetflowObject>();
-
-        // Return if we are null
-        if(tempNet == null)
-            return;
-
-        if(DeviceManager.currentDeviceManager.GetTransform(sourceIP) == null ||
-           DeviceManager.currentDeviceManager.GetTransform(destIP) == null)
-        {
-            return;
-        }
-
 
         // Set the source of the netflow 
         tempNet.SourcePos = DeviceManager.currentDeviceManager.GetTransform(sourceIP);

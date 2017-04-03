@@ -25,7 +25,7 @@ public class HitsParent
 [System.Serializable]
 public class HitsData
 {
-    public string _id;
+    public string _id;      // unique ID of the ojbect in our data base
     public Source _source; 
 }
 
@@ -33,15 +33,16 @@ public class HitsData
 [System.Serializable]
 public class Source
 {
-    public string runtime_timestamp;
-    public int id_orig_p;
-    public string id_orig_h;
-    public string conn_state;
-    public string id_resp_h;
-    public int id_resp_p;
-    public string service;
-    public string proto;
-    public int sourceIpInt;
-    public int destIpInt;
+    public string runtime_timestamp;    // the timestamp of the object
+    public int id_orig_p;               // source port
+    public string id_orig_h;            // source ip
+    public string id_resp_h;            // dest ip
+    public int id_resp_p;               // dest port
+
+    public string service;      // dns, dhcp, etc.
+    public string proto;        // udp, tcp, so on
+
+    public int sourceIpInt;     // Bit converted integer for the source IP
+    public int destIpInt;       // Bit converted integer for the dest IP
 }
 

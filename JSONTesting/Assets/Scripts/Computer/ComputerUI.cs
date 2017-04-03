@@ -13,7 +13,6 @@ public class ComputerUI : MonoBehaviour {
     public Text destPortText;
     public Text serviceText;
     public Text transportText;
-    public Text connTypeText;
     #endregion
 
 
@@ -49,15 +48,6 @@ public class ComputerUI : MonoBehaviour {
         else
         {
             transportText.text = "Protocol: " + data.proto.ToString();
-        }
-
-        if(data.conn_state == null)
-        {
-            connTypeText.text = "Conn. State: Null";
-        }
-        else
-        {
-            connTypeText.text = "Conn. State: " + data.conn_state.ToString();
         }
 
     }

@@ -233,8 +233,8 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5554de88092aa7b469aa2aec5ce42d3c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
+  m_CullingMode: 2
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -266,14 +266,13 @@ MonoBehaviour:
     runtime_timestamp: 
     id_orig_p: 0
     id_orig_h: 
-    conn_state: 
     id_resp_h: 
     id_resp_p: 0
     service: 
     proto: 
     sourceIpInt: 0
     destIpInt: 0
-  deathAnimTime: 0.1
+  deathAnimTime: 0.667
 --- !u!135 &135971264439090388
 SphereCollider:
   m_ObjectHideFlags: 1
