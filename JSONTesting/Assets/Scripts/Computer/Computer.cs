@@ -10,10 +10,10 @@ using UnityEngine;
 public class Computer : MonoBehaviour
 {
     #region Fields
-    public Source sourceInfo;            // The info that bro gives you
-
-    private float lifetime = 5f;            // How long until the computer will go off of the network
-    private float timeSinceDiscovery = 0f;  // How long it has been since we were discovered
+    public Source sourceInfo;                // The info that bro gives you
+    [SerializeField]
+    private float lifetime = 30f;            // How long until the computer will go off of the network
+    private float timeSinceDiscovery = 0f;   // How long it has been since we were discovered
 
     [SerializeField]    
     private float deathAnimTime = 0.5f;                        // The length of the death animation
@@ -24,9 +24,9 @@ public class Computer : MonoBehaviour
     /// Use a list for this because it is better for insertion
     /// but the same for searching, there are only benefits to this
     /// </summary>
-    private List<Computer> connectedPcs;
+    private LinkedList<Computer> connectedPcs;
 
-    private bool isSpecialTeam;
+    private bool isSpecialTeam;     // This is true if this object is of special interest to the user
 
 	// This is to keep track of how many times we have seen this PC
 	private int hits = 0;
@@ -65,7 +65,7 @@ public class Computer : MonoBehaviour
         meshRend = GetComponentInChildren<MeshRenderer>();
 
         // Initialize a new list object
-        connectedPcs = new List<Computer>();
+        connectedPcs = new LinkedList<Computer>();
 
         // Get the audio source compoenent
         audioSource = GetComponent<AudioSource>();
@@ -135,6 +135,8 @@ public class Computer : MonoBehaviour
         // Make sure that we keep track of it being active
         timeSinceDiscovery = 0f;
 
+
+        // TODO: Find out if I actually really need this, i think not.
         // If the object that we are given is null or it is this game object:
         if (connectedToMe == null || connectedToMe == gameObject)
         {
@@ -146,7 +148,7 @@ public class Computer : MonoBehaviour
         if (!connectedPcs.Contains(connectedToMe))
         {
             // Add the connection to my linked list
-            connectedPcs.Add(connectedToMe);
+            connectedPcs.AddLast(connectedToMe);
         }
 
 		// Tell the streaming information that we got another hit on this IP

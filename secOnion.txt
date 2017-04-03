@@ -1,3 +1,0 @@
-Sec Onion VM Login:
-	ben
-	OnionPass123

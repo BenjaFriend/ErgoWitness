@@ -77,9 +77,6 @@ public class IPGroup : MonoBehaviour {
     /// <param name="IpAddress"></param>
     public void AddToGroup(int IpAddress)
     {
-        // Exit if the ip address is 0
-        if (IpAddress == 0) return;
-
         // If our dictionary contains this...
         if (DeviceManager.currentDeviceManager.CheckDictionary(IpAddress))
         {
@@ -108,6 +105,7 @@ public class IPGroup : MonoBehaviour {
             {
                 StopCoroutine(currentScalingRoutine);
             }
+
             // Start scaling with a new number! use Radis * 2 becuase it is a radius, and we want to create a sphere
             currentScalingRoutine = ScaleLightRange(radius * 2f, smoothing);
 
@@ -180,7 +178,7 @@ public class IPGroup : MonoBehaviour {
             radius = startRadius;
 
             // Start scaling with a new number!
-            currentScalingRoutine = ScaleLightRange(radius * 2f, smoothing);
+            currentScalingRoutine = ScaleLightRange(radius * 2f, Time.fixedDeltaTime);
             // Start the coroutine to scale the light range
             StartCoroutine(currentScalingRoutine);
         }
@@ -214,14 +212,14 @@ public class IPGroup : MonoBehaviour {
         }
 
         // Wait for out light to hit 0
-        currentScalingRoutine = ScaleLightRange(0f, smoothing);
+        currentScalingRoutine = ScaleLightRange(0f, smoothing * 5f);
 
         // Wait until our light shrinks down       
         StartCoroutine(currentScalingRoutine);
 
         // Wait for the light to go away
-        yield return new WaitForSeconds(2f);
-
+        yield return new WaitForSeconds(10f);
+    
         // Destroy this object
         Destroy(gameObject);
     }

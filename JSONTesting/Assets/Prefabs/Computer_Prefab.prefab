@@ -272,6 +272,7 @@ MonoBehaviour:
     proto: 
     sourceIpInt: 0
     destIpInt: 0
+  lifetime: 30
   deathAnimTime: 0.667
 --- !u!135 &135971264439090388
 SphereCollider:

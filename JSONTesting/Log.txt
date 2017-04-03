@@ -63505,3 +63505,61 @@ PlayerClickAction.Update () (at Assets/Scripts/Player/PlayerClickAction.cs:33)
 Error
 Coroutine continue failure
 
+Error
+Coroutine continue failure
+
+Exception
+UnauthorizedAccessException: Access to the path 'D:/Users/bah8892/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets' is denied.
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:259)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.File.OpenRead (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:363)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamReader.cs:167)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:587)
+System.IO.File.ReadAllText (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:582)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:80)
+
+Exception
+UnauthorizedAccessException: Access to the path 'D:/Users/bah8892/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets' is denied.
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:259)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:385)
+
+Exception
+UnauthorizedAccessException: Access to the path 'D:/Users/bah8892/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets' is denied.
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:259)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:385)
+
+Exception
+UnauthorizedAccessException: Access to the path 'D:/Users/bah8892/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets' is denied.
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:259)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:382)
+
+Error
+Coroutine continue failure
+
+Error
+Coroutine continue failure
+

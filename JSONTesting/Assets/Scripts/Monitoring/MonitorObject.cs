@@ -18,15 +18,15 @@ public class MonitorObject : MonoBehaviour {
 
     private string serverIP;    // The IP address of the server running our database
     public string indexName;    // Either packetbeat or filebeat
-    private string url;        // The filebeat index
+    private string url;         // The filebeat index
 
     private Dictionary<string, string> headers;  // The dictionary with all the headers in it
-    private string _Current_Query;               // The current query for us to use
+    private string _current_Query;               // The current query for us to use
 
     // File locations of the queries that we need to use
     public string fileLocation_queryTop;        // Location of the top part of the query
     public string fileLocation_queryBottom;     // Location of the bottom part fl the query, with what fields we want
-    public string fileLocation_serverIP;        // The locatio of the serverIP file
+    public string fileLocation_serverIP;        // The location of the serverIP file
     public string fileLocation_latestTime;      // Location of the latest time file
     public string filelocation_LogFile;         // Location of the error log file we want to use if we want to record the data we get
 
@@ -54,12 +54,23 @@ public class MonitorObject : MonoBehaviour {
     /// user timestamp to make a query
     /// </summary>
     private bool _UseRealTime;      
+
     // Strings that will be used for custom queries if we need them
     private string _lessThenQuery;
     private string _greaterThenQuery;
 
-
+    /// <summary>
+    /// The current state of this request
+    /// </summary>
     public MonitorState CurrentState { get { return currentState; } }
+    /// <summary>
+    /// The top query so that child classes can view it if they need to, for custom quereis
+    /// </summary>
+    public string Query_Top { get { return _query_TOP; } }
+    /// <summary>
+    /// The bottom query so that child classes can view it if they need to, for custom queries
+    /// </summary>
+    public string Query_Bottom { get { return _query_BOTTOM; } }
     #endregion
 
 
@@ -222,24 +233,14 @@ public class MonitorObject : MonoBehaviour {
         // Create a web request
         WWW myRequest;
 
-        // If we are using real time and the previous query was not a failure...
-        if (!_UseLastSuccess && _UseRealTime)
+        // Build the query again if the alst one was a success
+        if (!_UseLastSuccess)
         {
-            // Build the query using the latest timestamp
-            _Current_Query = _query_TOP + "\"gt\":" + "\"" + _latest_time + "\"" + _query_BOTTOM;
+            _current_Query = BuildQuery();
         }
-        // If we want to use a custom query and we had a previous success...
-        else if (!_UseLastSuccess && !_UseRealTime)
-        {
-            // Use the query that is build on the timestamps provided by the user
-            _Current_Query = _query_TOP  + _greaterThenQuery + "\",\n"  + _lessThenQuery + "\""  + _query_BOTTOM;
-        }
-
-        // If our query is empty then break out because it will fail
-        if (_Current_Query == null) yield  break;
 
         // Get the post data that I will be using, since it will always be the same
-        _PostData = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(_Current_Query);
+        _PostData = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(_current_Query);
 
         // Initalize the WWW request to have our query and proper URL/headers
         myRequest = new WWW(url, _PostData, headers);
@@ -255,12 +256,12 @@ public class MonitorObject : MonoBehaviour {
         {
             // Log all the error data if there was an error
             LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
-            LogData("The Query that failed: \n" + _Current_Query, filelocation_ErrorLog);
+            LogData("The Query that failed: \n" + _current_Query, filelocation_ErrorLog);
 
             // If we are in the editor, then print the error to the console
             #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.text);
-                Debug.Log("The query was: " + _Current_Query);
+                Debug.Log("The query was: " + _current_Query);
             #endif
             
             // If there was an error, then stop
@@ -279,6 +280,33 @@ public class MonitorObject : MonoBehaviour {
         // Change the current state to finished, so that the FSM knows to create another request
         currentState = MonitorState.Finished;
     }
+
+    /// <summary>
+    /// This will build up a query by default using the data that was read
+    /// in by the specified query files.
+    /// </summary>
+    /// <param name="optionalData">In case we have some kind of data that changes at runtime that we want to query</param>
+    /// <returns></returns>
+    public virtual string BuildQuery()
+    {
+        string query = "";
+
+        // If we are using real time and the previous query was not a failure...
+        if ( _UseRealTime)
+        {
+            // Build the query using the latest timestamp
+            query = _query_TOP + "\"gt\":" + "\"" + _latest_time + "\"" + _query_BOTTOM;
+        }
+        // If we want to use a custom query and we had a previous success...
+        else if (!_UseRealTime)
+        {
+            // Use the query that is build on the timestamps provided by the user
+            query = _query_TOP + _greaterThenQuery + "\",\n" + _lessThenQuery + "\"" + _query_BOTTOM;
+        }
+
+        return query;
+    }
+
 
     /// <summary>
     /// This is a class that will be overridden by the child class

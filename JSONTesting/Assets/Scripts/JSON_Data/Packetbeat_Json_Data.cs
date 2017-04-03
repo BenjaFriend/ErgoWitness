@@ -25,6 +25,7 @@ public class HitsParent_Packet
 [System.Serializable]
 public class HitsData_Packet
 {
+    public string _type;    // The type of data that this is (i.e. "flow", "log", etc.)
     public string _id;      // The unique id of this object in our database
     public Source_Packet _source;   
 }

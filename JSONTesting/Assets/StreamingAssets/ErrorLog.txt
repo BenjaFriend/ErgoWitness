@@ -2,30 +2,15 @@
 The Query that failed: 
 {
   "query": {
-    "range": {
-      "runtime_timestamp": {
-         
-        "gt":"2017-03-29T21:10:55.638Z"} } },
-  "_source": {
-    "includes": [
-      "runtime_timestamp",
-      "id_orig_p",
-      "id_orig_p",
-      "id_orig_h",
-      "conn_state",
-      "id_resp_h",
-      "id_resp_p",
-      "service",
-      "proto",
-      "tags"
-    ]
-  },
-  "sort": [
-    {
-      "@timestamp": {
-        "order": "desc"
-      }
+    "term": {
+      "id_orig_h" : 
+"91.189.91.157"} }, "size": 5,
+  
+  , "sort": [
+  {
+    "@timestamp": {
+      "order": "desc"
     }
-  ]
-}
+  }
+]}
 

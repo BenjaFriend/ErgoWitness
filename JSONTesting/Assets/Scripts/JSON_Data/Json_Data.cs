@@ -25,6 +25,7 @@ public class HitsParent
 [System.Serializable]
 public class HitsData
 {
+    public string _type;    // The type of data that this is
     public string _id;      // unique ID of the ojbect in our data base
     public Source _source; 
 }
