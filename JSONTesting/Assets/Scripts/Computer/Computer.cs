@@ -135,7 +135,6 @@ public class Computer : MonoBehaviour
         // Make sure that we keep track of it being active
         timeSinceDiscovery = 0f;
 
-
         // TODO: Find out if I actually really need this, i think not.
         // If the object that we are given is null or it is this game object:
         if (connectedToMe == null || connectedToMe == gameObject)

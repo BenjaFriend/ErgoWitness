@@ -2,15 +2,31 @@
 The Query that failed: 
 {
   "query": {
-    "term": {
-      "id_orig_h" : 
-"91.189.91.157"} }, "size": 5,
-  
-  , "sort": [
+    "range": {
+      "runtime_timestamp": {
+        
+        "gt":"2017-04-03T21:14:33.001Z"} } },
+   "_source": {
+    "includes": [
+      "_type",
+      "runtime_timestamp",
+      "transport",
+      "dest",
+      "dest.port",
+      "dest.ip",
+      "packet_source",
+      "packet_source.port",
+      "packet_source.ip",
+      "packet_source.mac",
+      "service",
+      "proto",
+      "tags"
+    ]
+}, "sort": [
   {
     "@timestamp": {
       "order": "desc"
     }
   }
-]}
+] }
 
