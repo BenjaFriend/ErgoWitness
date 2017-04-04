@@ -1,8 +1,0 @@
-filebeat.prospectors:
-- input_type: log
-  paths:
-    - /var/log/snort/snort.alert
-  fields:
-    sensorID: $result
-    sensorType: networksensor
-document_type: snort

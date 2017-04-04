@@ -173,8 +173,8 @@ public class MonitorObject : MonoBehaviour {
     public void StopMonitor()
     {
         // If we are currently requesting something then stop
-        if(request_Coroutine != null)
-            StopCoroutine(request_Coroutine);
+        //if(request_Coroutine != null)
+       //     StopCoroutine(request_Coroutine);
 
         // Set the current state to stop, so the FSM will stop
         currentState = MonitorState.Stop;

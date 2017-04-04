@@ -1,8 +1,0 @@
-filebeat.prospectors:
-- input_type: log
-  paths:
-    - /usr/local/bro/logs/current/*.log
-  fields:
-    sensorID: 
-    sensorType: networksensor
-  document_type: bro

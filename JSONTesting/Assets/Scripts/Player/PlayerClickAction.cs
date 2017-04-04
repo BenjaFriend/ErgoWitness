@@ -18,8 +18,6 @@ public class PlayerClickAction : MonitorObject {
 
     private string comp_ip;   // The ID of the computer we want to get info about
 
-    private MeshRenderer computerMeshRend;
-
     #endregion
 
     /// <summary>
@@ -42,20 +40,11 @@ public class PlayerClickAction : MonitorObject {
 
                 // Start the monitor
                 StartMonitor();
-
             }
         }
     }
 
-    /// <summary>
-    /// This will change what query we use for this
-    /// </summary>
-    /// <returns>A custom query that </returns>
-    public override string BuildQuery()
-    {
-        // Build the query with the Top + ip of interest + the bottom
-        return Query_Top + "\"" + comp_ip + "\"" + Query_Bottom;
-    }
+
 
     public override void StartMonitor()
     {
@@ -70,12 +59,23 @@ public class PlayerClickAction : MonitorObject {
     }
 
     /// <summary>
+    /// This will change what query we use for this
+    /// </summary>
+    /// <returns>A custom query that </returns>
+    public override string BuildQuery()
+    {
+        // Build the query with the Top + ip of interest + the bottom
+        return Query_Top + "\"" + comp_ip + "\"" + Query_Bottom;
+    }
+
+    /// <summary>
     /// Cast the data how it needs to be for me to check it
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="data"></param>
+    /// <typeparam name="T">The type of JSON data that we want to look at</typeparam>
+    /// <param name="data">The serialized JSON data</param>
     public override void CheckRequestData<T>(T data)
     {
+        // If the type of this data is of the type that we are interested in...
         if (typeof(T) == typeof(Json_Data))
         {
             // Cast the object as necessary
@@ -83,8 +83,12 @@ public class PlayerClickAction : MonitorObject {
             // Check the data that we want to
             CheckData(dataObj);
         }
+        // If this data is not the type that we care about...
         else
         {
+            // Stop the monitor
+            StopMonitor();
+            // Return out of this method
             return;
         }
     }
@@ -95,14 +99,12 @@ public class PlayerClickAction : MonitorObject {
     /// <param name="dataObject"></param>
     private void CheckData(Json_Data dataObject)
     {
-        // Make sure that our data is not null
+        // If the datat hat we got has nothing in it...
         if (dataObject.hits.hits.Length == 0)
         {
+            // Return out of this
             return;
         }
-
-
-        // ============= Keep track of stuff to prevent duplicates ===============
 
         // Set our latest packetbeat time to the most recent one
         _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp;
@@ -111,7 +113,7 @@ public class PlayerClickAction : MonitorObject {
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
             // Display the data
-            Debug.Log(dataObject.hits.hits[i]._id);
+            Debug.Log(dataObject.hits.hits[i]._source.id_orig_h);
         }
         
         // Stop the monitor, because we only want 1 query
