@@ -9,6 +9,8 @@ using UnityEngine;
 /// </summary>
 public class LoadAssets : MonoBehaviour {
 
+
+
 	void Awake ()
     {
         // Load in the main scene
