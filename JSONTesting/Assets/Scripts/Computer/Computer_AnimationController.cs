@@ -14,8 +14,6 @@ public class Computer_AnimationController : MonoBehaviour {
     private string awakeAnimationTriggerName = "WakeUp";    // The name of the wake up trigger
     private string sleepAnimationTriggerName = "Sleep";     // The name of the sleep trigger
 
-    private Transform startTransform;
-
 	/// <summary>
     /// Get the animator component for this object
     /// </summary>
@@ -23,7 +21,6 @@ public class Computer_AnimationController : MonoBehaviour {
     {
         // Get the animator component on this object
         anim = GetComponentInChildren<Animator>();
-        startTransform = transform;
     }
 	
     /// <summary>
@@ -42,15 +39,6 @@ public class Computer_AnimationController : MonoBehaviour {
     {
         // Set the trigger for the animation to play
         anim.SetTrigger(sleepAnimationTriggerName);
-    }
-
-    /// <summary>
-    /// Reset the the scale of this gameobject when it is disabled
-    /// so that the animations work properly
-    /// </summary>
-    private void OnDisable()
-    {
-        transform.localScale = new Vector3(1,1,1);
     }
 
 }

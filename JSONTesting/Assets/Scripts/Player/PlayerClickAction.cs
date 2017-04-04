@@ -11,12 +11,18 @@ using UnityEngine.UI;
 public class PlayerClickAction : MonitorObject {
 
     #region Fields
+    public Text ip;
+    public Text port;
+    public Text dest;
+    public Text proto;
+
+
     private Json_Data dataObj;  // The type of data that we will query 
 
     private RaycastHit hitInfo; // The hit info of the raycast
     private Ray ray;            // The raycast object
 
-    private string comp_ip;   // The ID of the computer we want to get info about
+    private string comp_ip;     // The ID of the computer we want to get info about
 
     #endregion
 
@@ -38,13 +44,14 @@ public class PlayerClickAction : MonitorObject {
                 // Get the computer's source IP, and generate a term query based on that
                 comp_ip = hitInfo.collider.gameObject.GetComponent<Computer>().SourceInfo.id_orig_h;
 
+                // Set the text to tell the user which IP this is
+                ip.text = comp_ip;
+
                 // Start the monitor
                 StartMonitor();
             }
         }
     }
-
-
 
     public override void StartMonitor()
     {
@@ -56,6 +63,8 @@ public class PlayerClickAction : MonitorObject {
 
         // Start the finite satate machine for the web request
         StartCoroutine(FSM(dataObj));
+
+        // Start the loading animation
     }
 
     /// <summary>
@@ -102,9 +111,12 @@ public class PlayerClickAction : MonitorObject {
         // If the datat hat we got has nothing in it...
         if (dataObject.hits.hits.Length == 0)
         {
+            // Dispaly error text
             // Return out of this
             return;
         }
+
+        // Stop the spinning thing
 
         // Set our latest packetbeat time to the most recent one
         _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp;
@@ -113,7 +125,9 @@ public class PlayerClickAction : MonitorObject {
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
             // Display the data
-            Debug.Log(dataObject.hits.hits[i]._source.id_orig_h);
+            proto.text = dataObject.hits.hits[i]._source.proto;
+            port.text = dataObject.hits.hits[i]._source.id_orig_p.ToString();
+            dest.text = dataObject.hits.hits[i]._source.id_resp_h;
         }
         
         // Stop the monitor, because we only want 1 query

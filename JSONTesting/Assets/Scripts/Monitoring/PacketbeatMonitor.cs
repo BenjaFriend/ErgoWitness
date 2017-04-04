@@ -112,15 +112,15 @@ public class PacketbeatMonitor : MonitorObject {
     /// Take in a source object, and set it's integer values
     /// </summary>
     /// <param name="FilebeatSource"></param>
-    private void SetIntegerValues(Source_Packet PacketbeatSource)
+    private void SetIntegerValues(Source_Packet packetbeatSource)
     {
         // Calculate the INTEGER version of the SOURCE IP address
-        PacketbeatSource.sourceIpInt =
-            IpToInt(PacketbeatSource.packet_source.ip);
+        packetbeatSource.sourceIpInt =
+            IpToInt(packetbeatSource.packet_source.ip);
 
         // Calculate the INTEGER version of the DESTINATION IP address
-        PacketbeatSource.destIpInt =
-            IpToInt(PacketbeatSource.dest.ip);
+        packetbeatSource.destIpInt =
+            IpToInt(packetbeatSource.dest.ip);
     }
 
 

@@ -79,6 +79,12 @@ public class BroMonitor : MonitorObject {
             // Set the integer IP values if this source
             SetIntegerValues(dataObject.hits.hits[i]._source);
 
+            // If the source or dest ip's are 0 then break
+            if(dataObject.hits.hits[i]._source.sourceIpInt == 0 || dataObject.hits.hits[i]._source.destIpInt == 0)
+            {
+                return;
+            }
+
             // Send the bro data to the game controller, and add it to the network
             DeviceManager.currentDeviceManager.CheckIp(dataObject.hits.hits[i]._source);
         }
@@ -88,15 +94,15 @@ public class BroMonitor : MonitorObject {
     /// Take in a source object, and set it's integer values
     /// </summary>
     /// <param name="FilebeatSource"></param>
-    private void SetIntegerValues(Source FilebeatSource)
+    private void SetIntegerValues(Source filebeatSource)
     {
         // Calculate the INTEGER version of the SOURCE IP address
-        FilebeatSource.sourceIpInt =
-            IpToInt(FilebeatSource.id_orig_h);
+        filebeatSource.sourceIpInt =
+            IpToInt(filebeatSource.id_orig_h);
 
         // Calculate the INTEGER version of the DESTINATION IP address
-        FilebeatSource.destIpInt =
-            IpToInt(FilebeatSource.id_resp_h);
+        filebeatSource.destIpInt =
+            IpToInt(filebeatSource.id_resp_h);
     }
 
 }

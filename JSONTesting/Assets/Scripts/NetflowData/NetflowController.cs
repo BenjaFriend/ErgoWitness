@@ -16,6 +16,7 @@ public class NetflowController : MonoBehaviour
     public Material tcpMat;
     public Material udpMat;
     public Material httpMat;
+    public Material dnsMat;
     public Material defaultMat;
     public Material AttackingBlueTeam_Material;
 
@@ -24,12 +25,14 @@ public class NetflowController : MonoBehaviour
     public Gradient udpTrailColor;
     public Gradient httpTrailColor;
     public Gradient defaultTrailColor;
+    public Gradient dnsTrailColor;
     public Gradient AttackingBlueTeam_Gradient;
 
     // Line colors ======================
     public Color tcpColor;
     public Color udpColor;
     public Color httpColor;
+    public Color dnsColor;
     public Color defaultColor;
     public Color AttackingBlueTeam_Color;
 
@@ -111,6 +114,46 @@ public class NetflowController : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// This method will just take in the source and IP integers of something,
+    /// and the transport. This will Make it so that you don't need packetbeat
+    /// data to send connections. Since packetbeat in only netflow data(can't tell if
+    /// something if DNS, HTTP, or SSH), this will allow you to send netflow like data
+    /// with a bro log or snort. 
+    /// </summary>
+    /// <param name="sourceIP">The source IP int</param>
+    /// <param name="destIP">the DEST IP int</param>
+    /// <param name="transport">The type of transport (tcp, udp, http, ssh)</param>
+    public void CheckPacketbeatData(int sourceIP, int destIP, string transport)
+    {
+        // If the source and destination IP's are known:
+        if (!DeviceManager.currentDeviceManager.CheckDictionary(sourceIP) ||
+            !DeviceManager.currentDeviceManager.CheckDictionary(destIP))
+        {
+            Source newSource = new Source();
+
+            // Set up the source data to properlly represent a computer that we don't yet have
+            newSource.sourceIpInt = sourceIP;
+
+            // Set the destination data so that the game controller can read it
+            newSource.destIpInt = destIP;
+
+            // Set the protocol so that the game controller can read it
+            newSource.proto = transport;
+
+            //Set the integer values for this object
+            ManageMonitors.currentMonitors.SetIntegerValues(newSource);
+
+            // Add them to the network, and wait for that to finish:
+            DeviceManager.currentDeviceManager.CheckIp(newSource);
+        }
+    
+        // Actually send the flow
+        SendFlow(sourceIP, destIP, transport);
+
+    }
+
     /// <summary>
     /// Do the setup for the netflow object
     /// </summary>
@@ -154,8 +197,7 @@ public class NetflowController : MonoBehaviour
     /// </summary>
     /// <param name="objToSet"></param>
     private void SetColor(NetflowObject objToSet)
-    {
-                 
+    {               
         // Change to the proper material
         switch (objToSet.Protocol)
         {
@@ -163,24 +205,24 @@ public class NetflowController : MonoBehaviour
                 objToSet.HeadParticleMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
                 objToSet.LineDrawColor = tcpColor;
-                if(playAudio)
-                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Tcp);
                 break;
 
             case ("udp"):
                 objToSet.HeadParticleMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
                 objToSet.LineDrawColor = udpColor;
-                if (playAudio)
-                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Udp);
                 break;
 
             case ("http"):
                 objToSet.HeadParticleMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
                 objToSet.LineDrawColor = httpColor;
-                if (playAudio)
-                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Http);
+                break;
+
+            case ("dns"):
+                objToSet.HeadParticleMaterial = dnsMat;
+                objToSet.SetColor(dnsTrailColor);
+                objToSet.LineDrawColor = dnsColor;
                 break;
 
             default:
@@ -189,8 +231,6 @@ public class NetflowController : MonoBehaviour
                 // Set the Trail particles color
                 objToSet.SetColor(defaultTrailColor);
                 objToSet.LineDrawColor = defaultColor;
-                if (playAudio)
-                    AudioManager.audioManager.PlayAudio(_MyAudioTypes.Default);
                 break;
         }
     }

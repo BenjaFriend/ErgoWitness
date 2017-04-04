@@ -1,19 +1,11 @@
 } } },
    "_source": {
     "includes": [
-      "_type",
       "runtime_timestamp",
       "transport",
-      "dest",
-      "dest.port",
       "dest.ip",
-      "packet_source",
-      "packet_source.port",
       "packet_source.ip",
-      "packet_source.mac",
-      "service",
-      "proto",
-      "tags"
+      "proto"
     ]
 }, "sort": [
   {

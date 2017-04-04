@@ -14,8 +14,6 @@ public class DeviceManager : MonoBehaviour {
     #region Fields
     public static DeviceManager currentDeviceManager;
 
-    public bool playAudio = true;       // Bool determining if we want to play audio or not
-
     public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
@@ -96,10 +94,10 @@ public class DeviceManager : MonoBehaviour {
         // Send it to the streaming UI thing
         streamingInfo.AddInfo(jsonSourceData);
 
-        if (playAudio)
+        // If there is a service runnign on this, then send it to the netflow controller to visualize it
+        if (jsonSourceData.service != null)
         {
-            // Play the new computer sound
-            AudioManager.audioManager.PlayAudio(_MyAudioTypes.NewComputer);
+            NetflowController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
         }
     }
 
@@ -129,6 +127,7 @@ public class DeviceManager : MonoBehaviour {
 
             // Set the NEW source's original IP to the response IP of the other one
             newSource.id_orig_h = source.id_resp_h;
+
             // Set the NEW source's orig. Port to the response port of the other one
             newSource.id_orig_p = source.id_resp_p;
 
