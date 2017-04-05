@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// All this script will do is load level 1.
@@ -9,12 +10,13 @@ using UnityEngine;
 /// </summary>
 public class LoadAssets : MonoBehaviour {
 
-
-
+    /// <summary>
+    /// Load the first scene on awake
+    /// </summary>
 	void Awake ()
     {
         // Load in the main scene
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
     }
 	
 

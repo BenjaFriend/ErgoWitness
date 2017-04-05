@@ -75,6 +75,7 @@ public class MonitorObject : MonoBehaviour {
 
 
     #region Methods
+    
     /// <summary>
     /// Read in all of the query information, the server IP, and initalize the headers
     /// for use in the query. Set up the URL as necessary. Create a wait time object
@@ -176,7 +177,7 @@ public class MonitorObject : MonoBehaviour {
         currentState = MonitorState.Stop;
     }
 
-    #endregion
+#endregion
 
 
     #region Coroutines
@@ -255,10 +256,10 @@ public class MonitorObject : MonoBehaviour {
             LogData("The Query that failed: \n" + _current_Query, filelocation_ErrorLog);
 
             // If we are in the editor, then print the error to the console
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.text);
                 Debug.Log("The query was: " + _current_Query);
-            #endif
+#endif
             
             // If there was an error, then stop
             yield break;

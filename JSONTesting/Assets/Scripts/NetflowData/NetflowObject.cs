@@ -17,7 +17,7 @@ public class NetflowObject : MoveFromSourceToTarget
     public Material connectionColor;        
     public ParticleSystem trailPartical;   // The emission module of this particle system
 
-    private string protocol;            // Our protocol that we represent
+    private string protocol;               // Our protocol that we represent
     private ParticleSystemRenderer headParticle; //The Particle system on this object
 
     private Material lineMaterial;
