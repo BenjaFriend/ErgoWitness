@@ -12,6 +12,7 @@ using UnityEngine;
 public class IPGroup : MonoBehaviour {
 
     #region Fields
+    private float lifeTime = 5f;
     private bool isSpecialTeam; // True if this IP is a blue team
     private float increasePerComputer = 0.1f;
 
@@ -218,7 +219,7 @@ public class IPGroup : MonoBehaviour {
         StartCoroutine(currentScalingRoutine);
 
         // Wait for the light to go away
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(lifeTime);
     
         // Destroy this object
         Destroy(gameObject);

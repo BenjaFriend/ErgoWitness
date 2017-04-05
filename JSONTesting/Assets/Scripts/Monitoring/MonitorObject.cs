@@ -172,10 +172,6 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     public void StopMonitor()
     {
-        // If we are currently requesting something then stop
-        //if(request_Coroutine != null)
-       //     StopCoroutine(request_Coroutine);
-
         // Set the current state to stop, so the FSM will stop
         currentState = MonitorState.Stop;
     }
@@ -246,7 +242,7 @@ public class MonitorObject : MonoBehaviour {
         myRequest = new WWW(url, _PostData, headers);
 
         // Set the priority to high, so that we get the info as soon as possible
-        myRequest.threadPriority = ThreadPriority.High;
+        //myRequest.threadPriority = ThreadPriority.High;
 
         // Yield until the request is done
         yield return myRequest;

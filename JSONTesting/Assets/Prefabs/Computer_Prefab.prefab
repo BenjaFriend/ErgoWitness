@@ -262,16 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa562669e9003734eb1c92384ad7cf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceInfo:
-    runtime_timestamp: 
-    id_orig_p: 0
-    id_orig_h: 
-    id_resp_h: 
-    id_resp_p: 0
-    service: 
-    proto: 
-    sourceIpInt: 0
-    destIpInt: 0
+  sourceInt: 0
+  destInt: 0
   lifetime: 60
   deathAnimTime: 0.667
 --- !u!135 &135971264439090388

@@ -23,6 +23,9 @@ public class DeviceManager : MonoBehaviour {
     public static Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
     #endregion
 
+    /// <summary>
+    /// Make sure that this is the only object of this type in the scene
+    /// </summary>
     void Awake ()
     {
         // Make sure tha thtis is the only one of these objects in the scene
@@ -54,6 +57,8 @@ public class DeviceManager : MonoBehaviour {
         {
             // I want to check if there is a connection that I should add
             CheckConnections(jsonSourceData);
+            // Add more life to the computer that we saw
+            computersDict[jsonSourceData.sourceIpInt].AddHit();
         }
         else
         {
@@ -61,7 +66,6 @@ public class DeviceManager : MonoBehaviour {
             NewComputer(jsonSourceData);
         }
     }
-
 
     /// <summary>
     /// We have NOT seen this IP before, and we want to make
@@ -74,7 +78,9 @@ public class DeviceManager : MonoBehaviour {
         Computer newDevice = computerPooler.GetPooledObject().GetComponent<Computer>();
 
         // Set the DATA on this gameobject to the data from the JSON data
-        newDevice.SourceInfo = jsonSourceData;
+        //newDevice.SourceInfo = jsonSourceData;
+        newDevice.SourceInt = jsonSourceData.sourceIpInt;
+        newDevice.DestInt = jsonSourceData.destIpInt;
 
         // Set this object as active in the hierachy so that you can actually see it
         newDevice.gameObject.SetActive(true);
@@ -101,7 +107,6 @@ public class DeviceManager : MonoBehaviour {
         }
     }
 
-
     /// <summary>
     /// Check if the destination IP of this source data is in our dictionary.
     /// If it is, then add the connection to each computer's list.
@@ -118,8 +123,8 @@ public class DeviceManager : MonoBehaviour {
             return;
         }
 
-        // If we fail to connect them, then create a new computer using the destination
-        if (!ConnectComputers(source.sourceIpInt, source.destIpInt))
+        // If we do NOT know of the destination computer, then add that
+        if (!CheckDictionary(source.destIpInt))
         {
             // We DO NOT have the responding IP on our network, so add it.
             // Make a new source object
@@ -127,16 +132,15 @@ public class DeviceManager : MonoBehaviour {
 
             // Set the NEW source's original IP to the response IP of the other one
             newSource.id_orig_h = source.id_resp_h;
+            newSource.sourceIpInt = source.destIpInt;
 
             // Set the NEW source's orig. Port to the response port of the other one
-            newSource.id_orig_p = source.id_resp_p;
-
-            // Set the integer data
-            ManageMonitors.currentMonitors.SetIntegerValues(newSource);
+            newSource.destIpInt = 0;
 
             // Add this new computer to the network
             NewComputer(newSource);
         }
+
     }
 
     /// <summary>
@@ -172,26 +176,4 @@ public class DeviceManager : MonoBehaviour {
         return computersDict.ContainsKey(IpInt);
     }
 
-    /// <summary>
-    /// Add each computer to one another's connection if they exist in our
-    /// dictionary
-    /// </summary>
-    /// <param name="ipA">The first IP address</param>
-    /// <param name="ipB">The second IP address</param>
-    public bool ConnectComputers(int ipA, int ipB)
-    {
-        if(CheckDictionary(ipA) && CheckDictionary(ipB))
-        {
-            // Add a connection from source to destination
-            computersDict[ipA].GetComponent<Computer>().AddConnectedPC(computersDict[ipB]);
-            // Add a connection from destination to source
-            computersDict[ipB].GetComponent<Computer>().AddConnectedPC(computersDict[ipA]);
-            // We did it successfuly, so return true
-            return true;
-        }
-
-        // The computer's do not exist, so return false
-        return false;
-
-    }
 }

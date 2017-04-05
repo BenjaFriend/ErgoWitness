@@ -13,7 +13,7 @@ public class NetflowController : MonoBehaviour
     public StreamingInfo_UI streamingUI;
 
     // Particle head materials =========
-    public Material tcpMat;
+    public Material tcpMat;  // Just take in one material and use the colors to generate them
     public Material udpMat;
     public Material httpMat;
     public Material dnsMat;
@@ -37,8 +37,6 @@ public class NetflowController : MonoBehaviour
     public Color AttackingBlueTeam_Color;
 
     public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
-
-    public bool playAudio = true;       // Bool of if we want to play audio or not
 
     private GameObject obj; // This is better for memory
     private NetflowObject tempNet; // Temp object for when we alter stuff
@@ -143,7 +141,7 @@ public class NetflowController : MonoBehaviour
             newSource.proto = transport;
 
             //Set the integer values for this object
-            ManageMonitors.currentMonitors.SetIntegerValues(newSource);
+            //ManageMonitors.currentMonitors.SetIntegerValues(newSource);
 
             // Add them to the network, and wait for that to finish:
             DeviceManager.currentDeviceManager.CheckIp(newSource);
@@ -151,6 +149,13 @@ public class NetflowController : MonoBehaviour
     
         // Actually send the flow
         SendFlow(sourceIP, destIP, transport);
+
+        // If we are showing the streaming UI, then send this data to it. If not then we do not care
+        /*if (streamingUI.IsShowing)
+        {
+            // Tell the streaming UI about this
+            streamingUI.AddInfo(packetbeatSource);
+        }*/
 
     }
 
@@ -189,7 +194,7 @@ public class NetflowController : MonoBehaviour
         obj.SetActive(true);
 
         // Connect the computers, because now they have talked to each other
-        DeviceManager.currentDeviceManager.ConnectComputers(sourceIP, destIP);
+        //DeviceManager.currentDeviceManager.ConnectComputers(sourceIP, destIP);
     }
 
     /// <summary>

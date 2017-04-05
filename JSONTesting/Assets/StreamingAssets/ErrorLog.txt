@@ -4,29 +4,24 @@ The Query that failed:
   "query": {
     "range": {
       "runtime_timestamp": {
-        
-        "gt":"2017-04-03T21:14:33.001Z"} } },
-   "_source": {
+         
+        "gt":"2017-04-04T19:42:07.291Z"} } },
+  "_source": {
     "includes": [
-      "_type",
       "runtime_timestamp",
-      "transport",
-      "dest",
-      "dest.port",
-      "dest.ip",
-      "packet_source",
-      "packet_source.port",
-      "packet_source.ip",
-      "packet_source.mac",
-      "service",
-      "proto",
-      "tags"
+      "id_orig_p",
+      "id_orig_h",
+      "id_resp_h",
+      "id_resp_p",
+      "proto"
     ]
-}, "sort": [
-  {
-    "@timestamp": {
-      "order": "desc"
+  },
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
     }
-  }
-] }
+  ]
+}
 

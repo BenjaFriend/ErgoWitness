@@ -100,6 +100,7 @@ public class IPGroupManager : MonoBehaviour {
         // Create a new integer array the size of however many objects that we have
         int[] ipIntArray = new int[counter];    
 
+
         for (int i = 0; i < ipStringsList.Count; i++)
         {
             // Set the integer array value to the string value

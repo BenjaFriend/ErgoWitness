@@ -4,8 +4,7 @@
       "runtime_timestamp",
       "transport",
       "dest.ip",
-      "packet_source.ip",
-      "proto"
+      "packet_source.ip"
     ]
 }, "sort": [
   {

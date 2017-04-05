@@ -2,10 +2,8 @@
   "_source": {
     "includes": [
       "runtime_timestamp",
-      "id_orig_p",
       "id_orig_h",
       "id_resp_h",
-      "id_resp_p",
       "proto"
     ]
   },

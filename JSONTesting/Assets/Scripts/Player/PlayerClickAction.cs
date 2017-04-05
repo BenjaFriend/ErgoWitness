@@ -11,11 +11,11 @@ using UnityEngine.UI;
 public class PlayerClickAction : MonitorObject {
 
     #region Fields
+
     public Text ip;
     public Text port;
     public Text dest;
     public Text proto;
-
 
     private Json_Data dataObj;  // The type of data that we will query 
 
@@ -32,7 +32,7 @@ public class PlayerClickAction : MonitorObject {
     /// </summary>
     void Update()
     {
-        // If the user left clicks...
+        // If the user left clicks ...
         if (Input.GetMouseButtonDown(0))
         {
             // Make a ray going out towards where the mouse is  
@@ -41,9 +41,8 @@ public class PlayerClickAction : MonitorObject {
             // If we hit something witht that ray AND it was a computer...
             if (Physics.Raycast(ray, out hitInfo) && hitInfo.collider.CompareTag("Comp"))
             {
-                // Get the computer's source IP, and generate a term query based on that
-                comp_ip = hitInfo.collider.gameObject.GetComponent<Computer>().SourceInfo.id_orig_h;
-
+                // Get the string conversion of that IP
+                comp_ip = IpIntToString(hitInfo.collider.gameObject.GetComponent<Computer>().SourceInt); 
                 // Set the text to tell the user which IP this is
                 ip.text = comp_ip;
 
@@ -64,7 +63,7 @@ public class PlayerClickAction : MonitorObject {
         // Start the finite satate machine for the web request
         StartCoroutine(FSM(dataObj));
 
-        // Start the loading animation
+        // TODO: Start the loading animation
     }
 
     /// <summary>
@@ -132,6 +131,21 @@ public class PlayerClickAction : MonitorObject {
         
         // Stop the monitor, because we only want 1 query
         StopMonitor();
+    }
+
+
+    /// <summary>
+    /// Take an integer in, and return it as an IP address
+    /// in string format.
+    /// </summary>
+    /// <param name="ipAddrInt">The integer version of the IP we want</param>
+    /// <returns></returns>
+    private string IpIntToString(int ipAddrInt)
+    {
+        // Make sure that this ip is valid
+        if (ipAddrInt == 0) return null;
+        // Return the bit converted string
+        return new System.Net.IPAddress(System.BitConverter.GetBytes(ipAddrInt)).ToString();
     }
 
 }

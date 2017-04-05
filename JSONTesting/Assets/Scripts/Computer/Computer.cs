@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,10 @@ using UnityEngine;
 public class Computer : MonoBehaviour
 {
     #region Fields
-    public Source sourceInfo;                // The info that bro gives you
+    private int sourceInt;
+    private int destInt;
+
+    //public Source sourceInfo;                // The info that bro gives you
     [SerializeField]
     private float lifetime = 30f;            // How long until the computer will go off of the network
     private float timeSinceDiscovery = 0f;   // How long it has been since we were discovered
@@ -19,12 +23,6 @@ public class Computer : MonoBehaviour
     private float deathAnimTime = 0.5f;                        // The length of the death animation
     private Computer_AnimationController animationController;  // A reference to the animations for the computer object
     private AudioSource audioSource;
-
-    /// <summary>
-    /// Use a list for this because it is better for insertion
-    /// but the same for searching, there are only benefits to this
-    /// </summary>
-    private LinkedList<Computer> connectedPcs;
 
     private bool isSpecialTeam;     // This is true if this object is of special interest to the user
 
@@ -43,14 +41,13 @@ public class Computer : MonoBehaviour
     { get { return isSpecialTeam;  }
         set { isSpecialTeam = value; } }
 
-    public Source SourceInfo {
-        get { return sourceInfo; }
-
-        set
-        {
-            sourceInfo = value;
-        }
+    public int SourceInt
+    {
+        get { return sourceInt; }
+        set { sourceInt = value; }
     }
+    public int DestInt { get { return destInt; }
+        set { destInt = value; } }
     #endregion
 
     void Awake()
@@ -63,9 +60,6 @@ public class Computer : MonoBehaviour
 
         // Get the mesh rend componenet
         meshRend = GetComponentInChildren<MeshRenderer>();
-
-        // Initialize a new list object
-        connectedPcs = new LinkedList<Computer>();
 
         // Get the audio source compoenent
         audioSource = GetComponent<AudioSource>();
@@ -88,22 +82,6 @@ public class Computer : MonoBehaviour
         isDying = false;
     }
 
-    /// <summary>
-    /// Set the current mesh renderer's material to this new material.
-    /// Also set the group reference on this object to the 
-    /// </summary>
-    /// <param name="groupMat">The group material</param>
-    public void SetUpGroup(Material groupMat, IPGroup myNewGroup)
-    {
-        // Set the 
-        meshRend.material = groupMat;
-
-        // Get the reference to a group
-        myGroup = myNewGroup;
-
-        // Play my audio now that I am moved to my group
-        audioSource.Play();
-    }
 
     /// <summary>
     /// Keep track of how active this node is, and if it has exceeded its lifetime
@@ -124,39 +102,32 @@ public class Computer : MonoBehaviour
         }
     }
 
+
     /// <summary>
-    /// Author: Ben Hoffman
-    /// Purpose of method: To add the given computer to my
-    /// list of connected PC's
+    /// Set the current mesh renderer's material to this new material.
+    /// Also set the group reference on this object to the 
     /// </summary>
-    /// <param name="connectedToMe">the PC that is connected to me</param>
-    public void AddConnectedPC(Computer connectedToMe)
+    /// <param name="groupMat">The group material</param>
+    public void SetUpGroup(Material groupMat, IPGroup myNewGroup)
     {
-        // Make sure that we keep track of it being active
+        // Set the 
+        meshRend.material = groupMat;
+
+        // Get the reference to a group
+        myGroup = myNewGroup;
+
+        // Play my audio now that I am moved to my group
+        audioSource.Play();
+    }
+
+    /// <summary>
+    /// This will reset the lifetime of this computer because it was
+    /// seen again, and we want to mark is as active
+    /// </summary>
+    public void AddHit()
+    {
+        // Reset the lifetime of this computer
         timeSinceDiscovery = 0f;
-
-        // TODO: Find out if I actually really need this, i think not.
-        // If the object that we are given is null or it is this game object:
-        if (connectedToMe == null || connectedToMe == gameObject)
-        {
-            // Return out of this method
-            return;
-        }
-
-        // If this device is NOT in my list already:
-        if (!connectedPcs.Contains(connectedToMe))
-        {
-            // Add the connection to my linked list
-            connectedPcs.AddLast(connectedToMe);
-        }
-
-		// Tell the streaming information that we got another hit on this IP
-		hits++;
-
-        // If the streamign assests is showing, then send it the updated information
-        if(StreamingInfo_UI.currentStreamInfo.IsShowing)
-            StreamingInfo_UI.currentStreamInfo.CheckTop(sourceInfo.id_orig_h, hits);
-
     }
 
     /// <summary>
@@ -168,20 +139,16 @@ public class Computer : MonoBehaviour
         if(myGroup != null)
         {
             // Remove myself from that group
-            myGroup.RemoveIp(sourceInfo.sourceIpInt);
-
+            myGroup.RemoveIp(sourceInt);
             // Remove the reference to my group
             myGroup = null;
         }
-
-        // Clear my connected computers 
-        connectedPcs.Clear();
 
         // I do not want a parent anymore, so set it to null
         gameObject.transform.parent = null;
 
         // Remove myself from the dictoinary of computers that are active
-        DeviceManager.ComputersDict.Remove(sourceInfo.sourceIpInt);
+        DeviceManager.ComputersDict.Remove(sourceInt);
 
         // Call our death function if we are not already diein
         if (!isDying)
@@ -190,6 +157,7 @@ public class Computer : MonoBehaviour
             StartCoroutine(Die());
         }
     }
+
 
     /// <summary>
     /// This will wait for the death animation to finish before actually killing it
@@ -209,4 +177,5 @@ public class Computer : MonoBehaviour
         // Once that is done the animation, set ourselves as inactive
         gameObject.SetActive(false);
     }
+
 }
