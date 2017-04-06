@@ -6,8 +6,8 @@ public class ExceptionLogger : MonoBehaviour
 {
     public string saveFile = @"Log.txt";
     private StringWriter logWriter;
-    public UnityEngine.UI.Text logText;
 
+    public UnityEngine.UI.Text logText;
     void OnEnable()
     {
         Application.RegisterLogCallback(ExceptionWriter);
@@ -27,9 +27,7 @@ public class ExceptionLogger : MonoBehaviour
         {
             case LogType.Exception:
             case LogType.Error:
-
                 logText.text += logString;
-
                 using (StreamWriter writer = new StreamWriter(new FileStream(saveFile, FileMode.Append)))
                 {
                     writer.WriteLine(type);

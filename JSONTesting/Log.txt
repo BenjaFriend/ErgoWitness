@@ -64538,3 +64538,458 @@ IPGroup.RemoveIp (Int32 removeMe) (at Assets/Scripts/IPGroups/IPGroup.cs:171)
 Computer.DisableMe () (at Assets/Scripts/Computer/Computer.cs:136)
 Computer.Update () (at Assets/Scripts/Computer/Computer.cs:116)
 
+Error
+Unable to determine the audio type from the URL (file:///D:/Users/bah8892/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets/serverIP.txt) . Please specify the type.
+UnityEngine.WWW:get_audioClip()
+<LoadAssets>c__Iterator0:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:199)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\file:\D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssets\QueryByIP\query_by_ip_TOP.json".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.File.OpenRead (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:363)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamReader.cs:167)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:587)
+System.IO.File.ReadAllText (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:582)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:99)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\file:\D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssets\Bro\bro_Headers_TOP.json".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.File.OpenRead (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:363)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamReader.cs:167)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:587)
+System.IO.File.ReadAllText (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:582)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:99)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\file:\D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssets\Packetbeat\packetbeat_Headers_TOP.json".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.File.OpenRead (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:363)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamReader.cs:167)
+System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamReader:.ctor (string,System.Text.Encoding)
+System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:587)
+System.IO.File.ReadAllText (System.String path) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:582)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:99)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:136)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroupManager.isBlueTeam (Int32 ipInt) (at Assets/Scripts/IPGroups/IPGroupManager.cs:307)
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/Scripts/IPGroups/IPGroupManager.cs:233)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/Scripts/IPGroups/IPGroupManager.cs:171)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/Scripts/IPGroups/IPGroupManager.cs:149)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:95)
+DeviceManager.CheckConnections (.Source source) (at Assets/Scripts/Management/DeviceManager.cs:141)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:92)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:66)
+NetflowController.CheckPacketbeatData (Int32 sourceIP, Int32 destIP, System.String transport) (at Assets/Scripts/NetflowData/NetflowController.cs:147)
+PacketbeatMonitor.CheckData (.Packetbeat_Json_Data packetDataObj) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:106)
+PacketbeatMonitor.CheckRequestData[Packetbeat_Json_Data] (.Packetbeat_Json_Data data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:51)
+MonitorObject+<MakePostRequest>c__Iterator2`1[Packetbeat_Json_Data].MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:345)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroupManager.isBlueTeam (Int32 ipInt) (at Assets/Scripts/IPGroups/IPGroupManager.cs:307)
+IPGroupManager.SetGroupColor (.IPGroup groupToColor) (at Assets/Scripts/IPGroups/IPGroupManager.cs:233)
+IPGroupManager.MakeNewGroup (Int32 ipToCheck, Int32 groupIPFirstThree) (at Assets/Scripts/IPGroups/IPGroupManager.cs:171)
+IPGroupManager.CheckGroups (Int32 ipToCheck) (at Assets/Scripts/IPGroups/IPGroupManager.cs:149)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:95)
+DeviceManager.CheckConnections (.Source source) (at Assets/Scripts/Management/DeviceManager.cs:141)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:59)
+BroMonitor.CheckData (.Json_Data dataObject) (at Assets/Scripts/Monitoring/BroMonitor.cs:89)
+BroMonitor.CheckRequestData[Json_Data] (.Json_Data data) (at Assets/Scripts/Monitoring/BroMonitor.cs:41)
+MonitorObject+<MakePostRequest>c__Iterator2`1[Json_Data].MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:345)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+UnityException: WWW is not ready downloading yet
+UnityEngine.WWW.get_text () (at C:/buildslave/unity/build/artifacts/generated/common/runtime/UtilsBindings.gen.cs:217)
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:133)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+BroMonitor:StartMonitor() (at Assets/Scripts/Monitoring/BroMonitor.cs:26)
+ManageMonitors:StartMonitoringObjects() (at Assets/Scripts/Management/ManageMonitors.cs:35)
+UIController:StartMonitoring() (at Assets/Scripts/Player/UI/UIController.cs:119)
+UIController:ToggleMonitoring() (at Assets/Scripts/Player/UI/UIController.cs:248)
+UnityEngine.EventSystems.EventSystem:Update()
+
+Exception
+UnityException: WWW is not ready downloading yet
+UnityEngine.WWW.get_text () (at C:/buildslave/unity/build/artifacts/generated/common/runtime/UtilsBindings.gen.cs:217)
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:162)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Error
+Unable to determine the audio type from the URL (file:///D:/Users/bah8892/GitHub/NetworkViz/JSONTesting/Assets/StreamingAssets/QueryByIP/query_by_ip_TOP.json) . Please specify the type.
+UnityEngine.WWW:get_audioClip()
+<LoadAssets>c__Iterator0:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:193)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+MonitorObject:Start() (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:135)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:136)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:136)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:137)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:137)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:137)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:110)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:110)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:110)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:137)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject+<LoadAssets>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/MonitorObject.cs:137)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:200)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:200)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:200)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:200)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:200)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:111)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:111)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:111)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:111)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:201)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:203)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:109)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:479)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:475)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:478)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:478)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:478)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:478)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:479)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:205)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:110)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:480)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+MonitorObject.LoadResources () (at Assets/Scripts/Monitoring/MonitorObject.cs:205)
+MonitorObject.Start () (at Assets/Scripts/Monitoring/MonitorObject.cs:110)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:480)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsPacketbeat\latest_packetbeat_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:480)
+
+Exception
+DirectoryNotFoundException: Could not find a part of the path "D:\Users\bah8892\GitHub\NetworkViz\JSONTesting\Assets\StreamingAssetsBro\latest_bro_time".
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/FileStream.cs:292)
+System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share)
+(wrapper remoting-invoke-with-check) System.IO.FileStream:.ctor (string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding, Int32 bufferSize) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/StreamWriter.cs:124)
+System.IO.StreamWriter..ctor (System.String path, Boolean append, System.Text.Encoding encoding)
+(wrapper remoting-invoke-with-check) System.IO.StreamWriter:.ctor (string,bool,System.Text.Encoding)
+System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:626)
+System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
+MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:480)
+

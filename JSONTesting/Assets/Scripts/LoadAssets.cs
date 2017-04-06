@@ -8,7 +8,10 @@ using UnityEngine.SceneManagement;
 /// This will create pre-loading of assets so that the main scene doesn't
 /// have to do that on load.
 /// </summary>
-public class LoadAssets : MonoBehaviour {
+public class LoadAssets : MonoBehaviour
+{
+
+
 
     /// <summary>
     /// Load the first scene on awake
@@ -18,6 +21,7 @@ public class LoadAssets : MonoBehaviour {
         // Load in the main scene
         SceneManager.LoadScene(1);
     }
+
 	
 
 }

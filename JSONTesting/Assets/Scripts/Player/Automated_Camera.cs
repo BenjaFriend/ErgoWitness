@@ -19,6 +19,7 @@ public class Automated_Camera : MonoBehaviour {
     private Vector3 newPos;
     public UnityEngine.UI.Slider slider;
 
+    private bool isMobile;
 
     /// <summary>
     /// Set up the target position and look at it
@@ -35,6 +36,12 @@ public class Automated_Camera : MonoBehaviour {
         centerOfWorld = new GameObject("centerOfWorld");
         centerOfWorld.transform.position = Vector3.zero;
         centerOfWorld.transform.rotation = Quaternion.identity;
+
+        // If we are on a mobile platform
+        if (Application.isMobilePlatform)
+        {
+            isMobile = true;
+        }
     }
 
     /// <summary>
@@ -44,8 +51,35 @@ public class Automated_Camera : MonoBehaviour {
     {
         // Rotate around the target position
         transform.RotateAround(targetpos.transform.position, new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime * speed);
+        float scrollWheel = 0f;
 
-        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        if (isMobile)
+        {
+            // If there are two touches on the device...
+            if (Input.touchCount == 2)
+            {
+                // Store both touches.
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
+
+                // Find the position in the previous frame of each touch.
+                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                // Find the magnitude of the vector (the distance) between the touches in each frame.
+                float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+                // Find the difference in the distances between each frame.
+                scrollWheel = prevTouchDeltaMag - touchDeltaMag;
+            }
+        }
+        else
+        {
+            scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        }
+
+
         if (scrollWheel > 0f)
         {
             // Scroll in

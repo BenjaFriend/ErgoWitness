@@ -41,6 +41,9 @@ public class PlayerClickAction : MonitorObject {
             // If we hit something witht that ray AND it was a computer...
             if (Physics.Raycast(ray, out hitInfo) && hitInfo.collider.CompareTag("Comp"))
             {
+                // Clear the text of the UI elements
+                ClearText();
+
                 // Get the string conversion of that IP
                 comp_ip = IpIntToString(hitInfo.collider.gameObject.GetComponent<Computer>().SourceInt); 
                 // Set the text to tell the user which IP this is
@@ -133,6 +136,15 @@ public class PlayerClickAction : MonitorObject {
         StopMonitor();
     }
 
+    /// <summary>
+    /// Clears the text elements
+    /// </summary>
+    private void ClearText()
+    {
+        proto.text = "";
+        port.text = "";
+        dest.text = "";
+    }
 
     /// <summary>
     /// Take an integer in, and return it as an IP address
