@@ -71,6 +71,9 @@ public class MonitorObject : MonoBehaviour {
     /// The bottom query so that child classes can view it if they need to, for custom queries
     /// </summary>
     public string Query_Bottom { get { return _query_BOTTOM; } }
+
+    public UnityEngine.UI.Text logUI;
+    private string assetPath = "";
     #endregion
 
 
@@ -83,22 +86,39 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        // We are on android
+        if(Application.platform == RuntimePlatform.Android)
+        {
+            assetPath = "jar:file://" + Application.dataPath + "!/assets";
+        }
+        // We are on iPhone
+        else if(Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            assetPath = Application.dataPath + "/Raw";
+        }
+        // We are on mac or windows
+        else
+        {
+            assetPath = Application.dataPath + "/StreamingAssets";
+        }
+
+
         // Set the location of the log files to the streaming assets
-        filelocation_LogFile = Application.streamingAssetsPath + filelocation_LogFile;
-        filelocation_ErrorLog = Application.streamingAssetsPath + filelocation_ErrorLog;
+        filelocation_LogFile = assetPath + filelocation_LogFile;
+        filelocation_ErrorLog = assetPath + filelocation_ErrorLog;
 
         // Load in the query from the file locations
-        _query_TOP = File.ReadAllText(Application.streamingAssetsPath + fileLocation_queryTop);
-        _query_BOTTOM = File.ReadAllText(Application.streamingAssetsPath + fileLocation_queryBottom);
+        _query_TOP = File.ReadAllText(assetPath + fileLocation_queryTop);
+        _query_BOTTOM = File.ReadAllText(assetPath + fileLocation_queryBottom);
 
         // Set the latest time to the last one that we recorded
-        _latest_time = File.ReadAllText(Application.streamingAssetsPath + fileLocation_latestTime);
+        _latest_time = File.ReadAllText(assetPath + fileLocation_latestTime);
 
         // Read in the server IP from the path that is specifed
-        serverIP = File.ReadAllText(Application.streamingAssetsPath + fileLocation_serverIP);
+        serverIP = File.ReadAllText(assetPath + fileLocation_serverIP);
 
         // Read in the server IP
-        using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + fileLocation_serverIP))
+        using (StreamReader reader = new StreamReader(assetPath + fileLocation_serverIP))
         {
             // Read in the server IP as long as it is not null or empty
             serverIP = reader.ReadLine() ?? "";
@@ -242,9 +262,6 @@ public class MonitorObject : MonoBehaviour {
         // Initalize the WWW request to have our query and proper URL/headers
         myRequest = new WWW(url, _PostData, headers);
 
-        // Set the priority to high, so that we get the info as soon as possible
-        //myRequest.threadPriority = ThreadPriority.High;
-
         // Yield until the request is done
         yield return myRequest;
 
@@ -255,6 +272,7 @@ public class MonitorObject : MonoBehaviour {
             LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
             LogData("The Query that failed: \n" + _current_Query, filelocation_ErrorLog);
 
+            logUI.text += "The HTTP request text:\n" + myRequest.text + "\nThe query was: " + _current_Query;
             // If we are in the editor, then print the error to the console
 #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.text);
