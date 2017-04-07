@@ -1,7 +1,7 @@
 # Ergo Witness
-3D Net is a Network Visualisation tool that shows network data in a creative way in 3D spaces. On the backend, the data is gathered by running tools like Bro, Packetbeat, and Snort, and pushing their logs in JSON format to the ELK stack (Elasticsearch). 
+3D Net is a Network Visualisation tool that shows network data in a creative way in 3D spaces. On the backend, the data is gathered by running tools like [Bro](https://www.bro.org/), [Packetbeat](https://www.elastic.co/products/beats/packetbeat), and [Snort](https://www.snort.org/), and pushing their logs in JSON format to the ELK stack (Elasticsearch). 
 
-The ‘front end’ as I call it, is developed in the Unity game engine, pulling the information it needs down from the server with HTTP requests. By using a game engine like Unity to represent network data, there are not only possibilities of fun, interactive data analysis, but also the beginning of what could possibly be a very powerful Virtual Reality toolkit for network  professionals. 
+The ‘front end’ as I call it, is developed in the Unity game engine, pulling the information it needs down from the server with HTTP requests. By using a game engine like [Unity](https://unity3d.com/) to represent network data, there are not only possibilities of fun, interactive data analysis, but also the beginning of what could possibly be a very powerful Virtual Reality toolkit for network  professionals. 
 
 
 ## Prerequisites
@@ -11,14 +11,14 @@ A CentOS 7 **  that is running Logstash and Elasticsearch, that you have configu
 For installation steps see the Appendix
 A Windows 10 PC to run the visualisation
 
-Recommended Specs
+#### Recommended Specs
 * 16 GB RAM
 * Intel Core i7
 * 2 GB graphics memory
 * 250 GB SSD
 * Internet access (ethernet cable prefered) 
 
-Min specs:
+##### Min specs:
 * 8 GB RAM
 * Intel Core i3
 * 1 GB graphics memory
@@ -37,3 +37,4 @@ Recommended Specs:
 ** It should be noted that this machine can be on either CentOS 7, or Ubuntu. CentOS 7 is recommended because of it’s level of stability, and wider support for server software. All the commands for this guide will be in CentOS 7.
 
 
+<img src="pictures/rit_logo_transparent.gif" alt="RIT tiger"/>
