@@ -252,8 +252,8 @@ public class MonitorObject : MonoBehaviour {
         if (myRequest.error != null)
         {
             // Log all the error data if there was an error
-            //LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
-            //LogData("The Query that failed: \n" + _current_Query, filelocation_ErrorLog);
+            LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
+            LogData("The Query that failed: \n" + _current_Query, filelocation_ErrorLog);
             // If we are in the editor, then print the error to the console
 #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.error);
@@ -373,7 +373,7 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     /// <param name="log">The information we want to log</param>
     /// <param name="filelocation">The file location to which we want to log</param>
-    private void LogData(string log, string filelocation)
+    public virtual void LogData(string log, string filelocation)
     {
         // Use a streamwriter to log the given string to the given loccation
         using (StreamWriter writer = new StreamWriter(filelocation))
@@ -387,13 +387,13 @@ public class MonitorObject : MonoBehaviour {
     /// Write out the most recent timestamp at
     /// the end of the application.
     /// </summary>
-  /*  private void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         // If the timestamp is not empty, then write it out
         if(_latest_time != "")
             // Write out the latest time stamp
             File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
-    }*/
+    }
 
     /// <summary>
     /// This method will toggle this monitor on or off with a call from 
