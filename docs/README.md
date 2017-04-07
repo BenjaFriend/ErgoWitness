@@ -37,4 +37,10 @@ Recommended Specs:
 ** It should be noted that this machine can be on either CentOS 7, or Ubuntu. CentOS 7 is recommended because of it’s level of stability, and wider support for server software. All the commands for this guide will be in CentOS 7.
 
 
-<img src="pictures/rit_logo_transparent.gif" alt="RIT tiger"/>
+## How to Install and Configure Logstash
+
+Directions on how to install Logstash to get it to work with Ergo Witness are [here](install_logstash.md).
+
+## How to Configure a Capture Server
+
+Without a way to actually capture network data, this is pretty useless! [Here is a guide to set up a simple capture machine](captureServer.md). 
