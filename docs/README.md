@@ -9,3 +9,10 @@ The ‘front end’ as I call it, is developed in the Unity game engine, pulling
 ## [Prerequisites](prereqs.md)
 ## [How to Install and Configure Logstash](install_logstash.md)
 ## [How to Configure a Capture Server](captureServer.md)
+
+## [Useful ELK and CentOS Commands](usefulELK.md)
+## [Useful Guides](guides.md)
+
+
+
+<img src="pictures/rit_logo_transparent.gif" alt="RIT tiger"/>
