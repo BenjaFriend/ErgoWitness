@@ -71,10 +71,14 @@ public class MonitorObject : MonoBehaviour {
     /// The bottom query so that child classes can view it if they need to, for custom queries
     /// </summary>
     public string Query_Bottom { get { return _query_BOTTOM; } }
+
+    private string assetPath = "";
+    private bool isLoaded = false;
     #endregion
 
 
     #region Methods
+
     /// <summary>
     /// Read in all of the query information, the server IP, and initalize the headers
     /// for use in the query. Set up the URL as necessary. Create a wait time object
@@ -82,27 +86,13 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        assetPath = Application.streamingAssetsPath;
+
         // Set the location of the log files to the streaming assets
-        filelocation_LogFile = Application.streamingAssetsPath + filelocation_LogFile;
-        filelocation_ErrorLog = Application.streamingAssetsPath + filelocation_ErrorLog;
+        filelocation_LogFile = assetPath + filelocation_LogFile;
+        filelocation_ErrorLog = assetPath + filelocation_ErrorLog;
 
-        // Load in the query from the file locations
-        _query_TOP = File.ReadAllText(Application.streamingAssetsPath + fileLocation_queryTop);
-        _query_BOTTOM = File.ReadAllText(Application.streamingAssetsPath + fileLocation_queryBottom);
-
-        // Set the latest time to the last one that we recorded
-        _latest_time = File.ReadAllText(Application.streamingAssetsPath + fileLocation_latestTime);
-
-        // Read in the server IP from the path that is specifed
-        serverIP = File.ReadAllText(Application.streamingAssetsPath + fileLocation_serverIP);
-
-        // Read in the server IP
-        using (StreamReader reader = new StreamReader(Application.streamingAssetsPath + fileLocation_serverIP))
-        {
-            // Read in the server IP as long as it is not null or empty
-            serverIP = reader.ReadLine() ?? "";
-        }
-
+        // Start loading the assets
         // Create new headers
         headers = new Dictionary<string, string>();
 
@@ -112,11 +102,25 @@ public class MonitorObject : MonoBehaviour {
         // Set real time to true in the beginning
         _UseRealTime = true;
 
-        // Set up the Url of this object with it's specified index
-        url = SetUpURL(indexName);
-
         // Set the current state to stopped
         currentState = MonitorState.Stop;
+
+        // Load in resources from the resource folder
+        LoadResources();
+
+        // Set up the URL
+        url = SetUpURL(indexName);
+
+    }
+
+
+    private void LoadResources()
+    {
+        serverIP = Resources.Load(fileLocation_serverIP).ToString();
+        _query_TOP = Resources.Load(fileLocation_queryTop).ToString();
+        _query_BOTTOM= Resources.Load(fileLocation_queryBottom).ToString();
+        _latest_time = Resources.Load(fileLocation_latestTime).ToString();
+        Resources.UnloadUnusedAssets();
     }
 
     /// <summary>
@@ -241,9 +245,6 @@ public class MonitorObject : MonoBehaviour {
         // Initalize the WWW request to have our query and proper URL/headers
         myRequest = new WWW(url, _PostData, headers);
 
-        // Set the priority to high, so that we get the info as soon as possible
-        //myRequest.threadPriority = ThreadPriority.High;
-
         // Yield until the request is done
         yield return myRequest;
 
@@ -253,12 +254,11 @@ public class MonitorObject : MonoBehaviour {
             // Log all the error data if there was an error
             LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
             LogData("The Query that failed: \n" + _current_Query, filelocation_ErrorLog);
-
             // If we are in the editor, then print the error to the console
-            #if UNITY_EDITOR
-                Debug.Log("The HTTP request text:\n" + myRequest.text);
+#if UNITY_EDITOR
+                Debug.Log("The HTTP request text:\n" + myRequest.error);
                 Debug.Log("The query was: " + _current_Query);
-            #endif
+#endif
             
             // If there was an error, then stop
             yield break;
@@ -373,7 +373,7 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     /// <param name="log">The information we want to log</param>
     /// <param name="filelocation">The file location to which we want to log</param>
-    private void LogData(string log, string filelocation)
+    public virtual void LogData(string log, string filelocation)
     {
         // Use a streamwriter to log the given string to the given loccation
         using (StreamWriter writer = new StreamWriter(filelocation))
@@ -389,8 +389,10 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     private void OnApplicationQuit()
     {
-        // Write out the latest time stamp
-        File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
+        // If the timestamp is not empty, then write it out
+        if(_latest_time != "")
+            // Write out the latest time stamp
+            File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
     }
 
     /// <summary>

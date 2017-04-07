@@ -63,10 +63,11 @@ public class IPGroupManager : MonoBehaviour {
         attemptCount = 0;
 
         // Read in the read team IP addresses
-        redTeamIpIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt");
-
-        // Read in all the blue team IP addresses, and store them in an array of integers
-        blueTeamIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/blueTeamIPs.txt");
+        //redTeamIpIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt");
+        redTeamIpIntArray = new int[0];
+        // Read in all the blue team 0IP addresses, and store them in an array of integers
+        //blueTeamIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/blueTeamIPs.txt");
+        blueTeamIntArray = new int[0];
     }
 
     /// <summary>

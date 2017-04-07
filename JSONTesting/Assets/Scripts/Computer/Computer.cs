@@ -22,12 +22,8 @@ public class Computer : MonoBehaviour
     [SerializeField]    
     private float deathAnimTime = 0.5f;                        // The length of the death animation
     private Computer_AnimationController animationController;  // A reference to the animations for the computer object
-    private AudioSource audioSource;
 
     private bool isSpecialTeam;     // This is true if this object is of special interest to the user
-
-	// This is to keep track of how many times we have seen this PC
-	private int hits = 0;
 
     private bool isDying = false;      // This will be used to make sure that we don't call the death function when we don't need to
     private WaitForSeconds deathWait;  // How long we wait for our animation to play when we go inactive
@@ -60,9 +56,6 @@ public class Computer : MonoBehaviour
 
         // Get the mesh rend componenet
         meshRend = GetComponentInChildren<MeshRenderer>();
-
-        // Get the audio source compoenent
-        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -115,9 +108,6 @@ public class Computer : MonoBehaviour
 
         // Get the reference to a group
         myGroup = myNewGroup;
-
-        // Play my audio now that I am moved to my group
-        audioSource.Play();
     }
 
     /// <summary>

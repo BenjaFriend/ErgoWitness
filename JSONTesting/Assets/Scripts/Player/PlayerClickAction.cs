@@ -15,7 +15,7 @@ public class PlayerClickAction : MonitorObject {
     public Text ip;
     public Text port;
     public Text dest;
-    public Text proto;
+    public Text proto;   
 
     private Json_Data dataObj;  // The type of data that we will query 
 
@@ -41,6 +41,9 @@ public class PlayerClickAction : MonitorObject {
             // If we hit something witht that ray AND it was a computer...
             if (Physics.Raycast(ray, out hitInfo) && hitInfo.collider.CompareTag("Comp"))
             {
+                // Clear the text of the UI elements
+                ClearText();
+
                 // Get the string conversion of that IP
                 comp_ip = IpIntToString(hitInfo.collider.gameObject.GetComponent<Computer>().SourceInt); 
                 // Set the text to tell the user which IP this is
@@ -111,11 +114,14 @@ public class PlayerClickAction : MonitorObject {
         if (dataObject.hits.hits.Length == 0)
         {
             // Dispaly error text
+            proto.text = "Not Found";
+            port.text = "Not Found";
+            dest.text = "Not Found";
             // Return out of this
             return;
         }
 
-        // Stop the spinning thing
+        // Stop the Loading animation if we need one
 
         // Set our latest packetbeat time to the most recent one
         _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp;
@@ -133,6 +139,31 @@ public class PlayerClickAction : MonitorObject {
         StopMonitor();
     }
 
+    /// <summary>
+    /// Ovverride of the normal log data method in order to tell the
+    /// user that the specific IP was not found in our bro database
+    /// </summary>
+    /// <param name="log">The that we got from something</param>
+    /// <param name="filelocation">The file locatoin of where we want to log that data</param>
+    public override void LogData(string log, string filelocation)
+    {
+        base.LogData(log, filelocation);
+
+        // Dispaly error text
+        proto.text = "Not Found";
+        port.text = "Not Found";
+        dest.text = "Not Found";
+    }
+
+    /// <summary>
+    /// Clears the text elements
+    /// </summary>
+    private void ClearText()
+    {
+        proto.text = "";
+        port.text = "";
+        dest.text = "";
+    }
 
     /// <summary>
     /// Take an integer in, and return it as an IP address
