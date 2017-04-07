@@ -9,12 +9,3 @@ The ‘front end’ as I call it, is developed in the Unity game engine, pulling
 ## [Prerequisites](prereqs.md)
 ## [How to Install and Configure Logstash](install_logstash.md)
 ## [How to Configure a Capture Server](captureServer.md)
-
-
-## How to Install and Configure Logstash
-
-Directions on how to install Logstash to get it to work with Ergo Witness are [here](install_logstash.md).
-
-## How to Configure a Capture Server
-
-Without a way to actually capture network data, this is pretty useless! [Here is a guide to set up a simple capture machine](captureServer.md). 
