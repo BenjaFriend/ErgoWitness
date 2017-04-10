@@ -1,7 +1,0 @@
-http://192.168.124.123:9200/
-
-
-## Don't forget the "/" at the end of the port!! 
-## Also the http:// in the begining
-
-## This is an example server IP config in this directory

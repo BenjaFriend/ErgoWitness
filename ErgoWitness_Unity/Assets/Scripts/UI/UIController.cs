@@ -64,7 +64,7 @@ public class UIController : MonoBehaviour {
     {
         // If the user presses the P button then hide all of the 
         // UI elements
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && Input.GetKeyDown(KeyCode.O))
         {
             // Toggle is we are hiding all the UI or not
             HideAllUI();

@@ -110,7 +110,7 @@ public class IPGroupManager : MonoBehaviour {
         return ipIntArray;
     }
 
-    public int[] SetIpsViaOptions(string[] ipAddress)
+    public void SetIpsViaOptions(string[] ipAddress, int groupNum)
     {
         int[] ipIntArray = new int[ipAddress.Length];
 
@@ -120,8 +120,22 @@ public class IPGroupManager : MonoBehaviour {
             // Convert string to integer
             ipIntArray[i] = IpToInt(ipAddress[i]);
         }
-        // Return the result
-        return ipIntArray;
+
+        // Assign either red or blue team the address
+        switch (groupNum)
+        {
+            case 0:
+                blueTeamIntArray = ipIntArray;
+                break;
+            case 1:
+                redTeamIpIntArray = ipIntArray;
+                break;
+            default:
+                Debug.Log("There is no array of that index! Group manager");
+                break;
+        }
+         
+
     }
 
     /// <summary>

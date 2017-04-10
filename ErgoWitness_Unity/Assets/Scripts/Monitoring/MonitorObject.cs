@@ -27,11 +27,6 @@ public class MonitorObject : MonoBehaviour {
     public string fileLocation_queryTop;        // Location of the top part of the query
     public string fileLocation_queryBottom;     // Location of the bottom part fl the query, with what fields we want
     public string fileLocation_serverIP;        // The location of the serverIP file
-    public string fileLocation_latestTime;      // Location of the latest time file
-    public string filelocation_LogFile;         // Location of the error log file we want to use if we want to record the data we get
-
-
-    private string filelocation_ErrorLog = "/ErrorLog.txt";  // The location of the error log 
 
     // The query data that we will use to build our request
     private string _query_TOP;
@@ -71,9 +66,6 @@ public class MonitorObject : MonoBehaviour {
     /// The bottom query so that child classes can view it if they need to, for custom queries
     /// </summary>
     public string Query_Bottom { get { return _query_BOTTOM; } }
-
-    private string assetPath = "";
-    private bool isLoaded = false;
     #endregion
 
 
@@ -86,11 +78,6 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        assetPath = Application.streamingAssetsPath;
-
-        // Set the location of the log files to the streaming assets
-        filelocation_LogFile = assetPath + filelocation_LogFile;
-        filelocation_ErrorLog = assetPath + filelocation_ErrorLog;
 
         // Start loading the assets
         // Create new headers
@@ -109,17 +96,20 @@ public class MonitorObject : MonoBehaviour {
         LoadResources();
 
         // Set up the URL
-        url = SetUpURL(indexName);
-
+        url = SetUpURL(indexName, serverIP);
     }
 
-
+    /// <summary>
+    /// Load in the resources from the Resources folder. These consist of the fields for the 
+    /// queries that we want to use
+    /// </summary>
     private void LoadResources()
     {
         serverIP = Resources.Load(fileLocation_serverIP).ToString();
         _query_TOP = Resources.Load(fileLocation_queryTop).ToString();
         _query_BOTTOM= Resources.Load(fileLocation_queryBottom).ToString();
-        _latest_time = Resources.Load(fileLocation_latestTime).ToString();
+
+        // unload the assets because we don't need them anymore
         Resources.UnloadUnusedAssets();
     }
 
@@ -128,10 +118,10 @@ public class MonitorObject : MonoBehaviour {
     /// on whether we are to use Filebeat or 
     /// packetbeat, and the current date
     /// </summary>
-    private string SetUpURL(string indexName)
+    private string SetUpURL(string indexName, string serverAddr)
     {
         // Add the port and packet type
-        string newURL = serverIP  + indexName + "-";
+        string newURL = serverAddr + indexName + "-";
 
         // Set up the year
         string dateUrl = System.DateTime.Today.Year.ToString() + ".";
@@ -157,8 +147,34 @@ public class MonitorObject : MonoBehaviour {
 
         // Add the date to each of the URL's
         newURL += dateUrl;
+
+        // Set the latest timestamp to the current time
+        _latest_time = GenerateTimestampNow();
+
         // Return the URL for us to use
         return newURL;
+    }
+    
+    /// <summary>
+    /// Set the URL of this monitor to the given new 
+    /// server address
+    /// </summary>
+    /// <param name="newServer">The new server address</param>
+    public void UpdateServerIP(string newServer)
+    {
+        url = SetUpURL(indexName, newServer);
+    }
+
+    /// <summary>
+    /// Make a timestamp
+    /// </summary>
+    /// <returns>A timestamp based on the current time</returns>
+    private string GenerateTimestampNow()
+    {
+        return ManageMonitors.currentMonitors.GenerateTimeStamp(
+            System.DateTime.Now.Hour,
+            System.DateTime.Now.Minute,
+            System.DateTime.Now.Second);
     }
 
     /// <summary>
@@ -251,9 +267,6 @@ public class MonitorObject : MonoBehaviour {
         // If there was an error...
         if (myRequest.error != null)
         {
-            // Log all the error data if there was an error
-            LogData("THERE WAS A REQUEST ERROR: " + myRequest.error, filelocation_ErrorLog);
-            LogData("The Query that failed: \n" + _current_Query, filelocation_ErrorLog);
             // If we are in the editor, then print the error to the console
 #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.error);
@@ -381,18 +394,6 @@ public class MonitorObject : MonoBehaviour {
             // Write that data with a new line at the beginng and end of it
             writer.Write("\n" + log + "\n");
         }
-    }
-
-    /// <summary>
-    /// Write out the most recent timestamp at
-    /// the end of the application.
-    /// </summary>
-    private void OnApplicationQuit()
-    {
-        // If the timestamp is not empty, then write it out
-        if(_latest_time != "")
-            // Write out the latest time stamp
-            File.WriteAllText(Application.streamingAssetsPath + fileLocation_latestTime, _latest_time);
     }
 
     /// <summary>
