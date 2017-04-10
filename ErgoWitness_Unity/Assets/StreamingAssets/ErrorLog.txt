@@ -1,0 +1,23 @@
+
+The Query that failed: 
+{
+  "query": {
+    "range": {
+      "runtime_timestamp": {
+        
+        "gt":"2017-04-06T17:47:53.001Z"} } },
+   "_source": {
+    "includes": [
+      "runtime_timestamp",
+      "transport",
+      "dest.ip",
+      "packet_source.ip"
+    ]
+}, "sort": [
+  {
+    "@timestamp": {
+      "order": "desc"
+    }
+  }
+] }
+
