@@ -12,9 +12,9 @@ public class IPGroupManager : MonoBehaviour {
 
     #region Fields
 
-    public Material[] possibleColors;      // The possible colors that we want to assign the groups at random
-    public Material[] blueTeamMats;     // The possible colors for the blue team
-    public Material[] redTeamMat;       // The possible colors for the red team
+    public Material[] possibleColors;    // The possible colors that we want to assign the groups at random
+    public Material[] blueTeamMats;      // The possible colors for the blue team
+    public Material[] redTeamMat;        // The possible colors for the red team
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
 
@@ -63,10 +63,8 @@ public class IPGroupManager : MonoBehaviour {
         attemptCount = 0;
 
         // Read in the read team IP addresses
-        //redTeamIpIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/redTeam.txt");
         redTeamIpIntArray = new int[0];
-        // Read in all the blue team 0IP addresses, and store them in an array of integers
-        //blueTeamIntArray = ReadInIps(Application.streamingAssetsPath + "/TeamIPs/blueTeamIPs.txt");
+        // Read in all the blue team IP addresses, and store them in an array of integers
         blueTeamIntArray = new int[0];
     }
 
@@ -108,6 +106,20 @@ public class IPGroupManager : MonoBehaviour {
             ipIntArray[i] = IpToInt(ipStringsList[i]);
         }
 
+        // Return the result
+        return ipIntArray;
+    }
+
+    public int[] SetIpsViaOptions(string[] ipAddress)
+    {
+        int[] ipIntArray = new int[ipAddress.Length];
+
+        // Loop through the amount of strings that we need
+        for (int i = 0; i < ipAddress.Length; i++)
+        {
+            // Convert string to integer
+            ipIntArray[i] = IpToInt(ipAddress[i]);
+        }
         // Return the result
         return ipIntArray;
     }
