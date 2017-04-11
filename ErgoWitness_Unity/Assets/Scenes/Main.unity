@@ -6138,6 +6138,7 @@ MonoBehaviour:
   monitors:
   - {fileID: 1935440672}
   - {fileID: 949298121}
+  - {fileID: 1202633552}
 --- !u!4 &878581713
 Transform:
   m_ObjectHideFlags: 0
@@ -6459,7 +6460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25, y: 0}
+  m_AnchoredPosition: {x: 25, y: 213.20282}
   m_SizeDelta: {x: 750, y: 713}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &913790810
@@ -9152,6 +9153,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202218237}
+--- !u!114 &1202633552 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114881909327383270, guid: 67f93bcb722d84a49ab8aa6cac737a63,
+    type: 2}
+  m_PrefabInternal: {fileID: 1258550879}
+  m_Script: {fileID: 11500000, guid: f3af2ee4bf9f8ae4784fb7ae3b055ae6, type: 3}
 --- !u!1 &1213121799
 GameObject:
   m_ObjectHideFlags: 0
@@ -10100,8 +10107,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 227230813}
   m_HandleRect: {fileID: 227230812}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.63120013
+  m_Value: 0
+  m_Size: 0.7009778
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
