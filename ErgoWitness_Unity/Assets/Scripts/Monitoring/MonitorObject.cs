@@ -13,6 +13,8 @@ public class MonitorObject : MonoBehaviour {
     #region Fields
     private MonitorState currentState;    // The current state of this web request
 
+    public UnityEngine.UI.Text errorText;
+
     [Range(0f, 1f)]
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
 
@@ -26,7 +28,6 @@ public class MonitorObject : MonoBehaviour {
     // File locations of the queries that we need to use
     public string fileLocation_queryTop;        // Location of the top part of the query
     public string fileLocation_queryBottom;     // Location of the bottom part fl the query, with what fields we want
-    public string fileLocation_serverIP;        // The location of the serverIP file
 
     // The query data that we will use to build our request
     private string _query_TOP;
@@ -78,6 +79,8 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     void Start()
     {
+        // Clear the error text
+        errorText.text = "";
 
         // Start loading the assets
         // Create new headers
@@ -105,7 +108,6 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     private void LoadResources()
     {
-        serverIP = Resources.Load(fileLocation_serverIP).ToString();
         _query_TOP = Resources.Load(fileLocation_queryTop).ToString();
         _query_BOTTOM= Resources.Load(fileLocation_queryBottom).ToString();
 
@@ -267,6 +269,7 @@ public class MonitorObject : MonoBehaviour {
         // If there was an error...
         if (myRequest.error != null)
         {
+            errorText.text = "There was a HTTP request error! Check your Server IP in the options tab!";
             // If we are in the editor, then print the error to the console
 #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.error);
@@ -282,6 +285,13 @@ public class MonitorObject : MonoBehaviour {
 
         // Call this method so that the more specifc child class can deal with it
         CheckRequestData(dataObject);
+
+        // If our error text is displaying an error when it shoulnd't be...
+        if(!string.IsNullOrEmpty(errorText.text))
+        {
+            // Clear the text to be empty
+            errorText.text = "";
+        }
 
         // Wait however long we want to, so that we don't make a crazy amount of requests
         yield return _waitTime;

@@ -119,6 +119,7 @@ public class IPGroupManager : MonoBehaviour {
         {
             // Convert string to integer
             ipIntArray[i] = IpToInt(ipAddress[i]);
+            Debug.Log(ipAddress[i]);
         }
 
         // Assign either red or blue team the address

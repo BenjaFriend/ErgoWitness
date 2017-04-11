@@ -58,6 +58,14 @@ public class UIController : MonoBehaviour {
     }
 
     /// <summary>
+    /// Have the options menu pop up on start
+    /// </summary>
+    private void Start()
+    {
+        ToggleOptionsMenu();
+    }
+
+    /// <summary>
     /// Check if we want to toggle the menu or not so that we can hide it
     /// </summary>
     void Update()
