@@ -57,12 +57,6 @@ public class ControllerInput : MonoBehaviour
             }
         }
 
-        // When we release the touch pad button, we want to teleport...
-        if (Controller.GetPressUp(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad))
-        {
-            // We want to allow the user to pick a location to teleport to
-            Teleport();
-        }
     }
 
 
@@ -104,6 +98,7 @@ public class ControllerInput : MonoBehaviour
         {
             return;
         }
+
         // Otherwise, we want to set our colliding object reference to this.
         collidingObject = c.gameObject;
     }
@@ -130,7 +125,7 @@ public class ControllerInput : MonoBehaviour
     /// <summary>
     /// Add a fixed joint to our rigidbody
     /// </summary>
-    /// <returns></returns>
+    /// <returns>A joint that we want to connect to our controller</returns>
     private FixedJoint AddFixedJoint()
     {
         FixedJoint fx = gameObject.AddComponent<FixedJoint>();
@@ -140,7 +135,7 @@ public class ControllerInput : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Destroy the fixed joint that is connecting our objects
     /// </summary>
     private void ReleaseObject()
     {
@@ -160,20 +155,5 @@ public class ControllerInput : MonoBehaviour
         // We no longer have something in our hand, so set it to null
         objectInHand = null; 
     }
-
-    /// <summary>
-    /// Use a raycast to point where this device is looking right now
-    /// Display a marker area to show where the plaeyr will be goin
-    /// 
-    /// 
-    /// Author: Ben Hoffman
-    /// </summary>
-    /// <param name="location"></param>
-    private void Teleport()
-    {
-        Debug.Log(gameObject.name + " Trackpad Press");
-
-    }
-
 
 }
