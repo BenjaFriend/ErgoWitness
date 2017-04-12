@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour {
 
-    public GameObject laserPrefab;
-    private GameObject _laser;
-    private Transform _laserTransform;
+    private LineRenderer _laser;
     private Vector3 _hitPoint;
 
     
@@ -22,7 +20,7 @@ public class Teleport : MonoBehaviour {
             
     public Vector3 teleportReticleOffset;       // Any offset that we need for the teleporter
     
-    public LayerMask teleportMask;              //                
+    public LayerMask teleportMask;              // The layer that we want to teleport on  
                         
     private bool shouldTeleport;                // Should we teleport or not
 
@@ -42,10 +40,9 @@ public class Teleport : MonoBehaviour {
 
     private void Start()
     {
-        // Instantiate the laser object
-        _laser = Instantiate(laserPrefab);
-        // Set the transform of the laser
-        _laserTransform = _laser.transform;
+        // Get the line renderer component
+        _laser = GetComponent<LineRenderer>();
+        _laser.enabled = false;
 
         // Instantiate a reticle object
         reticle = Instantiate(teleportReticlePrefab);
@@ -77,10 +74,9 @@ public class Teleport : MonoBehaviour {
             else
             {
                 // Disable the laster because we don't want to show it
-                laserPrefab.SetActive(false);
+                //laserPrefab.SetActive(false);
                 // Set the reticle as inactive as well
                 reticle.SetActive(false);
-
             }
         }
 
@@ -94,11 +90,12 @@ public class Teleport : MonoBehaviour {
 
     private void ShowLaser(RaycastHit hit)
     {
-        _laser.SetActive(true);
+        // Enable the line renderer componenet
+        _laser.enabled = true;
+        // Set the start position to  the 
+        _laser.SetPosition(0, transform.position);
+        _laser.SetPosition(1, _hitPoint);
 
-        _laserTransform.position = Vector3.Lerp(trackedObj.transform.position, _hitPoint, .5f);
-        _laserTransform.LookAt(_hitPoint);
-        _laserTransform.localScale = new Vector3(_laserTransform.localScale.x, _laserTransform.localScale.y, hit.distance);
     }
 
     private void TeleportPlayer()
@@ -113,5 +110,9 @@ public class Teleport : MonoBehaviour {
         difference.y = 0;
         // Move The player's head(the camera) as well
         cameraRigTransform.position = _hitPoint + difference;
+        // Disable the laser on this controller
+        _laser.enabled = false;
+
+        Controller.TriggerHapticPulse(500);
     }
 }

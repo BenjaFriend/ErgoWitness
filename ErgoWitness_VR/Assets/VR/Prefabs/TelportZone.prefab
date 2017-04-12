@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 64444655463678550}
   - component: {fileID: 23027042103799920}
   m_Layer: 0
-  m_Name: TelportZine
+  m_Name: TelportZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,18 +14,11 @@ public class UIController : MonoBehaviour {
     #region Fields
     public static UIController thisUIController;
 
-    public Camera playerControlledCamera;
-    public Camera autoCamera;
-
-    public Movement playerMovement;     // The player movement so we can stop it on pause
-    public Automated_Camera autoCam;
-    public Animator MenuAnim;      // The animator of the menu
+    //public Animator MenuAnim;      // The animator of the menu
 
     public Sprite playSprite;     // The sprite for if we want to play or not
     public Sprite pauseSprite;    // The sprite for if we want to pause
     public Button pausePlayButton;// The button for toggling on and off with moniotring
-
-    public Text ControlButton_Text;
 
     private bool isMonitoring;              // Are we monitoring?
     private int whichMethod;
@@ -44,26 +37,8 @@ public class UIController : MonoBehaviour {
         // Get te animator for the menu
         Time.timeScale = 1f;
 
-        // Make sure that the player can move to start
-        playerMovement.enabled = false;
-        autoCam.enabled = true;
-
-        // Get the main canvas element so that we can toggle it on and off
-        mainCanvas = GetComponentInChildren<Canvas>();
-
-        // Start by turning off the player controlled camera
-        playerControlledCamera.enabled = false;
-        // Turn on the automatic camera
-        autoCamera.enabled = true;
     }
 
-    /// <summary>
-    /// Have the options menu pop up on start
-    /// </summary>
-    private void Start()
-    {
-        ToggleOptionsMenu();
-    }
 
     /// <summary>
     /// Check if we want to toggle the menu or not so that we can hide it
@@ -76,6 +51,11 @@ public class UIController : MonoBehaviour {
         {
             // Toggle is we are hiding all the UI or not
             HideAllUI();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ToggleMonitoring();
         }
 
         // If the user presses start or ESC, then pause monitoring
@@ -126,78 +106,8 @@ public class UIController : MonoBehaviour {
         // Start monitoring
         ManageMonitors.currentMonitors.StartMonitoringObjects();
     }  
+
     #region Toggles
-
-    /// <summary>
-    /// This method will toggle between the player being in control,
-    /// and the camera automatically rotating
-    /// </summary>
-    public void TogglePlayerControl()
-    {
-        // If the player is in controll, then make then not in controll
-        if (playerMovement.enabled)
-        {
-            // Disable player movement
-            playerMovement.enabled = false;
-
-            // Sleep the player rigidbody
-            playerMovement.Rb.Sleep();
-
-            //Enable camera movement
-            autoCam.enabled = true;
-
-            // Change the UI button to 'Control'
-            ControlButton_Text.text = "Control";
-        }
-        else
-        {
-            // Disable camera movement
-            autoCam.enabled = false;
-
-            // Enable player movement
-            playerMovement.enabled = true;
-
-            // Wake up the player rigidbody
-            playerMovement.Rb.WakeUp();
-
-            // Change the UI button to 'Auto'
-            ControlButton_Text.text = "Auto";
-        }
-
-        // Toggle the cameras on and off
-        ToggleCameras();
-    }
-
-    /// <summary>
-    /// Switch between the player controlled camera and the automatic camera
-    /// </summary>
-    public void ToggleCameras()
-    {
-        // If we are using the player controlled camera...
-        if (playerControlledCamera.isActiveAndEnabled)
-        {
-            // Set it to false and use the automatic camera 
-            playerControlledCamera.enabled = false;
-
-            // Enable the automatic camera
-            autoCamera.enabled = true;
-        }
-        else
-        {
-            // Set the position of the player controlled camera to the auto cam
-            playerControlledCamera.transform.position = autoCamera.transform.position;
-            playerControlledCamera.transform.rotation = autoCamera.transform.rotation;
-
-            // Disable the automatic camera
-            autoCamera.enabled = false;
-
-            // Enable the player controlled camera
-            playerControlledCamera.enabled = true;
-
-
-        }
-
-    }
 
     /// <summary>
     /// Toggles the main panels of the UI.
@@ -205,7 +115,7 @@ public class UIController : MonoBehaviour {
     public void ToggleMainPanels()
 	{
 		// If we ARE showing the menu...
-		if(MenuAnim.GetBool("showMain"))
+	/*	if(MenuAnim.GetBool("showMain"))
 		{
 			// Hide it
 			MenuAnim.SetBool("showMain", false);
@@ -218,7 +128,7 @@ public class UIController : MonoBehaviour {
             // Show the menu
             StreamingInfo_UI.currentStreamInfo.IsShowing = true;
             MenuAnim.SetBool("showMain", true);
-		}
+		}*/
 	}
 
     /// <summary>
@@ -287,47 +197,7 @@ public class UIController : MonoBehaviour {
         
     }
 
-    /// <summary>
-    /// Display the help menu, or hide the help menu
-    /// </summary>
-    public void ToggleHelpMenu()
-    {
-        // Use the animator to do this
-        // If we are not showing the menu and we are in idle state....
-        //if (!MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        if (!MenuAnim.GetBool("showHelp"))
-        {
-            // Show the menu
-            MenuAnim.SetBool(("showHelp"), true);
-        }
-        // If we are showing the menu and we are in that state too
-        //else if (MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("ShowHelpMenu"))
-        else if (MenuAnim.GetBool("showHelp"))
-        {
-            // Hide the menu
-            MenuAnim.SetBool(("showHelp"), false);
-        }
-    }
 
-    /// <summary>
-    /// Toggles if we are looking at the options menu or not
-    /// </summary>
-    public void ToggleOptionsMenu()
-    {
-        // Use the animator to do this
-        // If we are not showing the menu and we are in idle state....
-        if (!MenuAnim.GetBool("showOptions") )
-        {
-            // Show the menu
-            MenuAnim.SetBool(("showOptions"), true);
-        }
-        // If we are showing the menu and we are in that state too
-        else if (MenuAnim.GetBool("showOptions") )
-        {
-            // Hide the menu
-            MenuAnim.SetBool(("showOptions"), false);
-        }
-    }
     #endregion
 
     #region Asking the player if they are sure
@@ -340,7 +210,7 @@ public class UIController : MonoBehaviour {
     {
         whichMethod = newWhichMethod;
 
-        MenuAnim.SetBool("showIsSure", true);
+        //MenuAnim.SetBool("showIsSure", true);
 
     }
 
@@ -351,7 +221,7 @@ public class UIController : MonoBehaviour {
     {
         whichMethod = -1;
 
-        MenuAnim.SetBool("showIsSure", false);
+        //MenuAnim.SetBool("showIsSure", false);
     }
 
     /// <summary>
@@ -374,7 +244,7 @@ public class UIController : MonoBehaviour {
         // Hide ths is sure menu
         whichMethod = -1;
 
-        MenuAnim.SetBool("showIsSure", false);
+        //MenuAnim.SetBool("showIsSure", false);
     }
 
     #endregion

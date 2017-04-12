@@ -5,7 +5,8 @@ using UnityEngine;
 /// <summary>
 /// Use this class to handle the input given to me from the 
 /// VR controller. Put this script on the left/right controlelr 
-/// on the Camera Rig.
+/// on the Camera Rig. This will allwo me to grab stuff with the grip
+/// buttons
 /// 
 /// Used this guide for some help on my first Vive project:
 /// https://www.raywenderlich.com/149239/htc-vive-tutorial-unity
@@ -37,8 +38,8 @@ public class ControllerInput : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // If we are pulling the trigger on this controller...
-        if (Controller.GetHairTriggerDown())
+        // if we are pressing the grip button...
+        if (Controller.GetPressDown(Valve.VR.EVRButtonId.k_EButton_Grip))
         {
             // Handle the player pulling the trigger
             if (collidingObject)
@@ -47,8 +48,8 @@ public class ControllerInput : MonoBehaviour
             }
         }
 
-        // IF we release the trigger and we have something in our hand...
-        if(Controller.GetHairTriggerUp() && !objectInHand)
+        // IF we release the grip button and we have something in our hand...
+        if (Controller.GetPressUp(Valve.VR.EVRButtonId.k_EButton_Grip))
         {
             // Release the object in our hand
             if (objectInHand)

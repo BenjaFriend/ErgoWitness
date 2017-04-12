@@ -86,6 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02ec2191fc3d634290517ca47a54db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
-  minDistanceApart: 0.1
+  radius: 1
+  minDistanceApart: 0.01
   lightRangeScaler: 2.3

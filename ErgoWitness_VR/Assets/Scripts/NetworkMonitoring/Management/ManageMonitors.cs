@@ -24,6 +24,7 @@ public class ManageMonitors : MonoBehaviour {
             Destroy(gameObject);
     }
 
+
     /// <summary>
     /// Set the server IP address's of all the monitors
     /// </summary>

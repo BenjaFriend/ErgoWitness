@@ -98,6 +98,9 @@ public class MonitorObject : MonoBehaviour {
         // Load in resources from the resource folder
         LoadResources();
 
+        // For testing purposes
+        serverIP = "http://129.21.38.54:9200/";
+
         // Set up the URL
         url = SetUpURL(indexName, serverIP);
     }
@@ -241,6 +244,10 @@ public class MonitorObject : MonoBehaviour {
     {
         // Set the state to currently running so that we know we are running
         currentState = MonitorState.CurrentlyRunning;
+        if(headers == null)
+        {
+            headers = new Dictionary<string, string>();
+        }
 
         // Clear the headers, otherwise we will get the same data from the last one:
         headers.Clear();
