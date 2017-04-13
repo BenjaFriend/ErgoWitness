@@ -190,6 +190,7 @@
      <Compile Include="Assets\VR\Scripts\RendererScale.cs" />
      <Compile Include="Assets\VR\Scripts\VR Controllers\ControllerInput.cs" />
      <Compile Include="Assets\VR\Scripts\VR Controllers\InputWithUI.cs" />
+     <Compile Include="Assets\VR\Scripts\VR Controllers\ScaleObject.cs" />
      <Compile Include="Assets\VR\Scripts\VR Controllers\Teleport.cs" />
      <Compile Include="Assets\VR\Scripts\VR Controllers\TouchPadRotation.cs" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />

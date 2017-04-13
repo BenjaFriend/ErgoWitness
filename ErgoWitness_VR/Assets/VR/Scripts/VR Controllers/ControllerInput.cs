@@ -147,10 +147,15 @@ public class ControllerInput : MonoBehaviour
             GetComponent<FixedJoint>().connectedBody = null;
             // Destroy the fixed joint component
             Destroy(GetComponent<FixedJoint>());
-            // Set our object in our hands velocity to the controllers, so that we can throw it
-            objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity;
-            // Do the same thing with the angular velocity, so it does the right way
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
+
+            // As long as what we are holding is not a computer object, throw it
+            if (!objectInHand.CompareTag("Comp"))
+            {
+                // Set our object in our hands velocity to the controllers, so that we can throw it
+                objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity;
+                // Do the same thing with the angular velocity, so it does the right way
+                objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
+            }
         }
 
         // We no longer have something in our hand, so set it to null
