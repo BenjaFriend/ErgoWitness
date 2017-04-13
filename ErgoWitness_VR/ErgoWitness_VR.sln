@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR.Plugins", "ErgoWitness_VR.Plugins.csproj", "{5FB19DC6-97C3-5838-902F-BC97F86420B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR", "ErgoWitness_VR.csproj", "{1C568D73-96DB-000D-00B9-111175FAF48B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR.Editor.Plugins", "ErgoWitness_VR.Editor.Plugins.csproj", "{B2FBD6B9-AADC-CB9F-9F29-C97472951013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR.Editor", "ErgoWitness_VR.Editor.csproj", "{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C568D73-96DB-000D-00B9-111175FAF48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C568D73-96DB-000D-00B9-111175FAF48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C568D73-96DB-000D-00B9-111175FAF48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C568D73-96DB-000D-00B9-111175FAF48B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
