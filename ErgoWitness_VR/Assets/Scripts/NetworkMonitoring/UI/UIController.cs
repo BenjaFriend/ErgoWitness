@@ -109,27 +109,6 @@ public class UIController : MonoBehaviour {
 
     #region Toggles
 
-    /// <summary>
-    /// Toggles the main panels of the UI.
-    /// </summary>
-    public void ToggleMainPanels()
-	{
-		// If we ARE showing the menu...
-	/*	if(MenuAnim.GetBool("showMain"))
-		{
-			// Hide it
-			MenuAnim.SetBool("showMain", false);
-            StreamingInfo_UI.currentStreamInfo.IsShowing = false;
-
-        }
-        // if we are NOT showing the menu...
-        else
-		{
-            // Show the menu
-            StreamingInfo_UI.currentStreamInfo.IsShowing = true;
-            MenuAnim.SetBool("showMain", true);
-		}*/
-	}
 
     /// <summary>
     /// Stop the monitoring and enable player movement
@@ -171,81 +150,6 @@ public class UIController : MonoBehaviour {
 
     }
 
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// If the given menu is active, then make it not active.
-    /// If the given menu is inactive, then make it active.
-    /// </summary>
-    /// <param name="menu"></param>
-    public void ToggleMenu(Canvas menu)
-    {
-        // If this menu is active in the hierachy...
-        if (!menu.gameObject.activeInHierarchy)
-        {
-            // Show the game menu
-            menu.gameObject.SetActive(true);
-
-            // Select the first button if there is one, this will allow me to traverse the 
-            // menu with a controller          
-           if (menu.GetComponentInChildren<Button>() != null)
-                menu.GetComponentInChildren<Button>().Select();
-        }
-        else
-        {
-            menu.gameObject.SetActive(false);
-        }
-        
-    }
-
-
-    #endregion
-
-    #region Asking the player if they are sure
-
-    /// <summary>
-    /// Show the 'are you sure?' prompt
-    /// </summary>
-    /// <param name="newWhichMethod">Which method do we want to use?</param>
-    public void ShowIsSure(int newWhichMethod)
-    {
-        whichMethod = newWhichMethod;
-
-        //MenuAnim.SetBool("showIsSure", true);
-
-    }
-
-    /// <summary>
-    /// Transition the is sure stuff out
-    /// </summary>
-    public void HideIsSure()
-    {
-        whichMethod = -1;
-
-        //MenuAnim.SetBool("showIsSure", false);
-    }
-
-    /// <summary>
-    /// This will be called when the 'Yes' option is sure
-    /// </summary>
-    /// <returns>True if the player hits the 'yes' button</returns>
-    public void IsSure()
-    {
-        if (whichMethod == 0)
-        {
-            // Call quit
-            Quit();
-        }
-        else if (whichMethod == 1)
-        {
-            // Call reset
-            Reset();
-        }
-
-        // Hide ths is sure menu
-        whichMethod = -1;
-
-        //MenuAnim.SetBool("showIsSure", false);
-    }
 
     #endregion
 
