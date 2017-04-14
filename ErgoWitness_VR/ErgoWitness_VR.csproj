@@ -225,6 +225,7 @@
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
     <Compile Include="Assets\VR\Scripts\Buttons\IVirtualButton.cs" />
     <Compile Include="Assets\VR\Scripts\Buttons\StartMonitoringButton.cs" />
+    <Compile Include="Assets\VR\Scripts\MonitorControlls.cs" />
     <Compile Include="Assets\VR\Scripts\RendererScale.cs" />
     <Compile Include="Assets\VR\Scripts\VR Controllers\ControllerInput.cs" />
     <Compile Include="Assets\VR\Scripts\VR Controllers\InputWithUI.cs" />
