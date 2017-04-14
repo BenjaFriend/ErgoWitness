@@ -135,19 +135,12 @@ public class UIController : MonoBehaviour {
             // Stop all coroutines first becore we start monitoring
             ManageMonitors.currentMonitors.StopMonitor();
 
-            // Make sure that our timescale is up
-            //Time.timeScale = 1f;
-
             // Make sure that we know that we are monitoring now
             isMonitoring = true;
 
             // Start monitoring
             StartMonitoring();
-
-            // Disable player movement
-            //playerMovement.enabled = false;
         }
-
     }
 
 

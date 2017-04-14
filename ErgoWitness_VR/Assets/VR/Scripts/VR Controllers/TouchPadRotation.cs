@@ -19,7 +19,7 @@ public class TouchPadRotation : MonoBehaviour {
     [SerializeField]    
     private float speed = 3f;           // How fast we want to rotate
 
-    private SteamVR_TrackedObject trackedObj;       // The tracked object that is the controller
+	private SteamVR_TrackedObject trackedObj;       // The tracked object that is the controller
 
     private SteamVR_Controller.Device Controller    // The device property that is the controller, so that we can tell what index we are on
     {

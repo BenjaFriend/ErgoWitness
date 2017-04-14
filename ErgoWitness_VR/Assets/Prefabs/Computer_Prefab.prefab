@@ -23,8 +23,10 @@ GameObject:
   - component: {fileID: 135971264439090388}
   - component: {fileID: 114018097819485772}
   - component: {fileID: 82197484681978072}
-  - component: {fileID: 54946416204571312}
-  - component: {fileID: 135181072825457564}
+  - component: {fileID: 114862831779346524}
+  - component: {fileID: 114842146270150010}
+  - component: {fileID: 54632432744381146}
+  - component: {fileID: 114360392486334860}
   m_Layer: 0
   m_Name: Computer_Prefab
   m_TagString: Comp
@@ -99,8 +101,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8676, y: 0.76385725, z: -0.84390986}
-  m_LocalScale: {x: 0.15381628, y: 0.15381628, z: 0.15381628}
+  m_LocalPosition: {x: 0.21283948, y: 0.974, z: 2.0088828}
+  m_LocalScale: {x: 0.117956, y: 0.117956, z: 0.117956}
   m_Children:
   - {fileID: 4649083162140422}
   m_Father: {fileID: 0}
@@ -144,14 +146,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763440407307558}
   m_Mesh: {fileID: 4300002, guid: be659d8cd22f1644a97c9e9b1345e177, type: 3}
---- !u!54 &54946416204571312
+--- !u!54 &54632432744381146
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
   serializedVersion: 2
-  m_Mass: 3
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -268,6 +270,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8608dadeab20194d9e7fcf48018d9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114360392486334860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259338230392002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachmentFlags: 12
+  attachmentPoint: 
+  catchSpeedThreshold: 0
+  restoreOriginalParent: 0
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  snapAttachEaseInTime: 0.15
+  attachEaseInAttachmentNames: []
+  onPickUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onDetachFromHand:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  snapAttachEaseInCompleted: 0
+  throwOnRelease: 0
 --- !u!114 &114552209486109960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,18 +331,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 60
   deathAnimTime: 0.667
---- !u!135 &135181072825457564
-SphereCollider:
+--- !u!114 &114842146270150010
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259338230392002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityAverageFrames: 5
+  angularVelocityAverageFrames: 11
+  estimateOnAwake: 0
+--- !u!114 &114862831779346524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259338230392002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135971264439090388
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -303,5 +366,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.31
+  m_Radius: 0.5219777
   m_Center: {x: 0, y: 0, z: 0}

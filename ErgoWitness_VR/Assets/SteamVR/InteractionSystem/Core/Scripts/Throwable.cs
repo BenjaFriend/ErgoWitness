@@ -45,6 +45,7 @@ namespace Valve.VR.InteractionSystem
 		public UnityEvent onDetachFromHand;
 
 		public bool snapAttachEaseInCompleted = false;
+		public bool throwOnRelease = true;
 
 
 		//-------------------------------------------------
@@ -183,18 +184,24 @@ namespace Valve.VR.InteractionSystem
 				position = hand.transform.position;
 			}
 
-			Vector3 r = transform.TransformPoint( rb.centerOfMass ) - position;
-			rb.velocity = velocity + Vector3.Cross( angularVelocity, r );
-			rb.angularVelocity = angularVelocity;
 
-			// Make the object travel at the release velocity for the amount
-			// of time it will take until the next fixed update, at which
-			// point Unity physics will take over
-			float timeUntilFixedUpdate = ( Time.fixedDeltaTime + Time.fixedTime ) - Time.time;
-			transform.position += timeUntilFixedUpdate * velocity;
-			float angle = Mathf.Rad2Deg * angularVelocity.magnitude;
-			Vector3 axis = angularVelocity.normalized;
-			transform.rotation *= Quaternion.AngleAxis( angle * timeUntilFixedUpdate, axis );
+			if (throwOnRelease)
+			{
+				Vector3 r = transform.TransformPoint( rb.centerOfMass ) - position;
+				rb.velocity = velocity + Vector3.Cross( angularVelocity, r );
+				rb.angularVelocity = angularVelocity;
+
+				// Make the object travel at the release velocity for the amount
+				// of time it will take until the next fixed update, at which
+				// point Unity physics will take over
+				float timeUntilFixedUpdate = ( Time.fixedDeltaTime + Time.fixedTime ) - Time.time;
+				transform.position += timeUntilFixedUpdate * velocity;
+				float angle = Mathf.Rad2Deg * angularVelocity.magnitude;
+				Vector3 axis = angularVelocity.normalized;
+				transform.rotation *= Quaternion.AngleAxis( angle * timeUntilFixedUpdate, axis );
+
+			}
+
 		}
 
 
