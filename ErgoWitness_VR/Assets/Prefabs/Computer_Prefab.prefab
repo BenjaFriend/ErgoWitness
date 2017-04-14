@@ -23,11 +23,8 @@ GameObject:
   - component: {fileID: 135971264439090388}
   - component: {fileID: 114018097819485772}
   - component: {fileID: 82197484681978072}
-  - component: {fileID: 114862831779346524}
-  - component: {fileID: 114842146270150010}
   - component: {fileID: 54632432744381146}
-  - component: {fileID: 114360392486334860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Computer_Prefab
   m_TagString: Comp
   m_Icon: {fileID: 0}
@@ -43,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4649083162140422}
   - component: {fileID: 95375538917816332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +57,7 @@ GameObject:
   - component: {fileID: 4321900143819368}
   - component: {fileID: 33615569207686818}
   - component: {fileID: 23512314220753136}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: new_low_poly_sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,54 +267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8608dadeab20194d9e7fcf48018d9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114360392486334860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachmentFlags: 12
-  attachmentPoint: 
-  catchSpeedThreshold: 0
-  restoreOriginalParent: 0
-  attachEaseIn: 0
-  snapAttachEaseInCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  snapAttachEaseInTime: 0.15
-  attachEaseInAttachmentNames: []
-  onPickUp:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  onDetachFromHand:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  snapAttachEaseInCompleted: 0
-  throwOnRelease: 0
 --- !u!114 &114552209486109960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,31 +280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 60
   deathAnimTime: 0.667
---- !u!114 &114842146270150010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
---- !u!114 &114862831779346524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1259338230392002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &135971264439090388
 SphereCollider:
   m_ObjectHideFlags: 1

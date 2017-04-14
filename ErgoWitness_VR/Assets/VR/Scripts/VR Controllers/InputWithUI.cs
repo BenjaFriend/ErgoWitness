@@ -7,7 +7,7 @@ public class InputWithUI : MonoBehaviour {
     
     public bool shouldClick;            // If this is true then we should be able to click on a button
             
-    private IVirtualButton _button;     // Keep track of this object
+    private InteractiveButton _button;     // Keep track of this object
 
     private SteamVR_TrackedController _controller;  // The controller device that we can use to listen for the delegate methods
 
@@ -42,7 +42,6 @@ public class InputWithUI : MonoBehaviour {
         _controller.TriggerClicked -= TriggerPressed;
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Button"))
@@ -50,9 +49,9 @@ public class InputWithUI : MonoBehaviour {
             // We should be able to click, becuse we are touching a button
             shouldClick = true;
             // Get the button interface of this object
-            _button = other.GetComponent<IVirtualButton>();
-            // Show the hover on this button
-            _button.ShowHover();
+            _button = other.GetComponent<InteractiveButton>();
+            // Highlight the button when we enter it
+            _button.Highlight();
         }
     }
 
@@ -60,8 +59,8 @@ public class InputWithUI : MonoBehaviour {
     {
         // We should not click anymore
         shouldClick = false;
-        // Hide the hover of the button object
-        _button.HideHover();
+        // Remove the highlight on this object
+        _button.UnHighlight();
         // Setthe object as null so that we know that we don't have a button anymore
         _button = null;
     }
@@ -69,13 +68,13 @@ public class InputWithUI : MonoBehaviour {
     /// <summary>
     /// Show the line renderer at the start point, and where ever we are hitting
     /// 
-    /// Author: Ben hoffman
+    /// Author: Ben hoffman     
     /// </summary>
     private void TriggerPressed(object sender, ClickedEventArgs e)
     {
         Debug.Log("Trigger pressed!");
 
-        // Play some kind of animation tot tlel the user that they clicked
+        // TODO: Click sound?
 
         // If we have a UI object that we can interact with, then
         if (shouldClick)

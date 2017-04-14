@@ -210,7 +210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1691791750912898
 GameObject:
   m_ObjectHideFlags: 1
@@ -221,9 +221,7 @@ GameObject:
   - component: {fileID: 224365656862663268}
   - component: {fileID: 222917054666552260}
   - component: {fileID: 114298213687736646}
-  - component: {fileID: 114022555959970154}
-  - component: {fileID: 114751343916407920}
-  - component: {fileID: 114487363339862868}
+  - component: {fileID: 114342388712685168}
   m_Layer: 5
   m_Name: Play/Pause Button
   m_TagString: Untagged
@@ -661,72 +659,19 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122663767480950}
   m_Enabled: 1
---- !u!114 &114022555959970154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1691791750912898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 114298213687736646}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114077621858436936
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1088625515065620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57c90ccf9195804408e007282e5bef1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxScale: 5
   minScale: 0.5
-  scalingObject: {fileID: 0}
   speed: 3
 --- !u!114 &114111791234785602
 MonoBehaviour:
@@ -813,6 +758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5641cf8cee3c504187a37f105af1dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DontThrowLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114246219746135582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -844,7 +792,7 @@ MonoBehaviour:
   triggerPressed: 0
   steamPressed: 0
   menuPressed: 0
-  padPressed: 0
+  padPressed: 1
   padTouched: 0
   gripped: 0
 --- !u!114 &114291955086508374
@@ -924,6 +872,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatingObject: {fileID: 224039352922061270}
   speed: 3
+--- !u!114 &114342388712685168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1691791750912898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb5b84caee5084082850a9fef8e0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomEvents:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  buttonImage: {fileID: 114298213687736646}
 --- !u!114 &114345054531261850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,17 +972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5641cf8cee3c504187a37f105af1dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114487363339862868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1691791750912898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  DontThrowLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114488434372610038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1181,33 +1138,6 @@ MonoBehaviour:
   index: -1
   origin: {fileID: 0}
   isValid: 0
---- !u!114 &114751343916407920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1691791750912898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cd2ef2dd3d5d64e96af4420220d1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHandClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1691791750912898}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Valve.VR.InteractionSystem.CustomEvents+UnityEventHand, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114790929440744932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1250,7 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playSprite: {fileID: 21300000, guid: 4c177235f3b24104f89f8279b3a6c17d, type: 3}
   pauseSprite: {fileID: 21300000, guid: 21e21fa3aee9aca4c94ba87640aa5e63, type: 3}
-  pausePlayButton: {fileID: 114022555959970154}
+  pausePlayButton: {fileID: 0}
 --- !u!114 &114951599906086900
 MonoBehaviour:
   m_ObjectHideFlags: 1

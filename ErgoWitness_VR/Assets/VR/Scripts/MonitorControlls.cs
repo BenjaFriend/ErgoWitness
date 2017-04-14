@@ -10,7 +10,7 @@ namespace Valve.VR.InteractionSystem
     {
 		public Sprite playSprite;     // The sprite for if we want to play or not
 		public Sprite pauseSprite;    // The sprite for if we want to pause
-		public Button pausePlayButton;// The button for toggling on and off with moniotring
+		public Image pausePlayButton;// The button for toggling on and off with moniotring
 
 		private bool isMonitoring;
 
@@ -32,12 +32,12 @@ namespace Valve.VR.InteractionSystem
 				ManageMonitors.currentMonitors.StopMonitor();
 
 				// Set the play button as active
-				pausePlayButton.image.sprite = playSprite;
+				pausePlayButton.sprite = playSprite;
 			}
 			// Start monitoring again
 			else
 			{
-				pausePlayButton.image.sprite = pauseSprite;
+				pausePlayButton.sprite = pauseSprite;
 
 				// Stop all coroutines first becore we start monitoring
 				ManageMonitors.currentMonitors.StopMonitor();

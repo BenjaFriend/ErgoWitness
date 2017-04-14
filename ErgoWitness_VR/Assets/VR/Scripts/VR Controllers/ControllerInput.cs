@@ -15,6 +15,9 @@ using UnityEngine;
 /// </summary>
 public class ControllerInput : MonoBehaviour
 {
+    [Tooltip("The layer that you do not want to be thrown.")]
+    public LayerMask DontThrowLayer;
+
     private GameObject objectInHand;                // Use this to keep track of an object that we want to pick up
     private GameObject collidingObject;             // The object that is in our collider
     private SteamVR_TrackedObject trackedObj;       // The tracked object that is the controller
@@ -149,7 +152,7 @@ public class ControllerInput : MonoBehaviour
             Destroy(GetComponent<FixedJoint>());
 
             // As long as what we are holding is not a computer object, throw it
-            if (!objectInHand.CompareTag("Comp"))
+            if (objectInHand.layer != DontThrowLayer)
             {
                 // Set our object in our hands velocity to the controllers, so that we can throw it
                 objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity;
