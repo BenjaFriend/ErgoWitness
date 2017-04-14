@@ -115,7 +115,6 @@
     <None Include="Assets\Resources\Bro\bro_Headers_BOTTOM.txt" />
     <None Include="Assets\Resources\Bro\bro_Headers_TOP.txt" />
     <None Include="Assets\Resources\Bro\latest_bro_time.txt" />
-    <None Include="Assets\Resources\BroLogFile.txt" />
     <None Include="Assets\Resources\ErrorLog.txt" />
     <None Include="Assets\Resources\LogFile.txt" />
     <None Include="Assets\Resources\Packetbeat\latest_packetbeat_time.txt" />

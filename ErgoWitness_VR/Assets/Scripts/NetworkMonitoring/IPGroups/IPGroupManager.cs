@@ -185,7 +185,7 @@ public class IPGroupManager : MonoBehaviour {
         // Instatiate a new instance of a group, and set it equal to temp so we can access it
         temp = (GameObject)Instantiate(groupPrefab, transform.position, Quaternion.identity);
 
-        // Parentt he object
+        // Parent the object to the manager, so that we can scale it
         temp.transform.parent = this.transform;
 
         // If it doesnt fit then we have to make a new group object

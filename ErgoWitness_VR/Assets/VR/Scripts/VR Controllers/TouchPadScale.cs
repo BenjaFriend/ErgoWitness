@@ -13,12 +13,16 @@ using UnityEngine;
 /// 
 /// Author: Ben Hoffman
 /// </summary>
-public class TouchPadRotation : MonoBehaviour {
+public class TouchPadScale : MonoBehaviour {
 
-    public Transform rotatingObject;    // the object that we want to rotate
+    public float maxScale = 5f;
+    public float minScale = 0.5f;
+
+    public Transform scalingObject;    // the object that we want to rotate
     [SerializeField]    
-    private float speed = 3f;           // How fast we want to rotate
+    private float speed = 3f;          // How fast we want to rotate
 
+    private Vector3 newScale;
     private SteamVR_TrackedObject trackedObj;       // The tracked object that is the controller
 
     private SteamVR_Controller.Device Controller    // The device property that is the controller, so that we can tell what index we are on
@@ -26,14 +30,13 @@ public class TouchPadRotation : MonoBehaviour {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
 
-    private Vector2 touchPadInput;              // The actual input from the touch pad
+    private Vector2 touchPadInput;                  // The actual input from the touch pad
 
     private void Awake()
     {
         // Get the tracked object componenet 
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
-	
 	
     /// <summary>
     /// Get input from the touch pad        
@@ -58,9 +61,20 @@ public class TouchPadRotation : MonoBehaviour {
         if (touchPadInput.x != 0f)
         {
             // ============ Do whaterver you want here =================== //
+            newScale = scalingObject.localScale * touchPadInput.y * speed;
 
-            // For example, rotate an object around:
-            rotatingObject.Rotate(touchPadInput.x * speed, 0f,0f);
+            // Clamp to the max scale
+            Vector3.ClampMagnitude(newScale, maxScale);
+
+            // Clamp the min scale
+            if(newScale.magnitude < minScale)
+            {
+                newScale.Normalize();
+                newScale *= minScale;
+            }
+
+            // Scale the object 
+            scalingObject.localScale = newScale;
         }
     }
 }

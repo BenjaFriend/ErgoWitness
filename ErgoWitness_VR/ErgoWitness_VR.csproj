@@ -121,9 +121,6 @@
     <Compile Include="Assets\Scripts\NetworkMonitoring\UI\Settings\ServerIP.cs" />
     <Compile Include="Assets\Scripts\NetworkMonitoring\UI\StreamingInfo_UI.cs" />
     <Compile Include="Assets\Scripts\NetworkMonitoring\UI\UIController.cs" />
-    <Compile Include="Assets\Scripts\VR\Scripts\RendererScale.cs" />
-    <Compile Include="Assets\Scripts\VR\Scripts\VR Controllers\ControllerInput.cs" />
-    <Compile Include="Assets\Scripts\VR\Scripts\VR Controllers\Teleport.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -226,6 +223,15 @@
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+    <Compile Include="Assets\VR\Scripts\Buttons\IVirtualButton.cs" />
+    <Compile Include="Assets\VR\Scripts\Buttons\StartMonitoringButton.cs" />
+    <Compile Include="Assets\VR\Scripts\RendererScale.cs" />
+    <Compile Include="Assets\VR\Scripts\VR Controllers\ControllerInput.cs" />
+    <Compile Include="Assets\VR\Scripts\VR Controllers\InputWithUI.cs" />
+    <Compile Include="Assets\VR\Scripts\VR Controllers\ScaleObject.cs" />
+    <Compile Include="Assets\VR\Scripts\VR Controllers\Teleport.cs" />
+    <Compile Include="Assets\VR\Scripts\VR Controllers\TouchPadRotation.cs" />
+    <Compile Include="Assets\VR\Scripts\VR Controllers\TouchPadScale.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art Assets\Fonts\Lato\OFL.txt" />
@@ -241,7 +247,6 @@
     <None Include="Assets\Resources\Bro\bro_Headers_BOTTOM.txt" />
     <None Include="Assets\Resources\Bro\bro_Headers_TOP.txt" />
     <None Include="Assets\Resources\Bro\latest_bro_time.txt" />
-    <None Include="Assets\Resources\BroLogFile.txt" />
     <None Include="Assets\Resources\ErrorLog.txt" />
     <None Include="Assets\Resources\LogFile.txt" />
     <None Include="Assets\Resources\Packetbeat\latest_packetbeat_time.txt" />
