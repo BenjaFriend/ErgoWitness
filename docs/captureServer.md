@@ -1,6 +1,6 @@
 # Create a Capture Server
 
-In order to actually send data to Logstash, we need a device that can grab the information that we want. For this project, I used Bro, Filebeat, and Packetbeat. Again,, these commands are for an RPM distribution of Linux. 
+In order to actually send data to Logstash, we need a device that can grab the information that we want. For this project, I used Bro, Filebeat, and Packetbeat. Again,, these commands are for an RPM distribution of Linux.
 
 
 ### Install Packetbeat
@@ -11,9 +11,9 @@ curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.
 sudo rpm -vi packetbeat-5.2.2-x86_64.rpm
 ```
 
-That's really it, from here you need to change the configuration to your liking. Something that you will definitely need to do is change the interface that your are listening on, and the output to Logstash. If you want a more real time visualization, also change the packetbeat flow reporting period to something small, like 1 second. 
+That's really it, from here you need to change the configuration to your liking. Something that you will definitely need to do is change the interface that your are listening on, and the output to Logstash. If you want a more real time visualization, also change the packetbeat flow reporting period to something small, like 1 second.
 
-If you need to know what interfaces you have available, you can use this command: 
+If you need to know what interfaces you have available, you can use this command:
 
 ```
 ip a
@@ -59,7 +59,7 @@ Enable Bro JSON logging
 sed -i 's#const use_json = F#const use_json = T#g' /usr/local/bro/share/bro/base/frameworks/logging/writers/ascii.bro
 ```
 
-In order for the bro logs to work with the visualization, we need to change the default delimiter of a “.” to a “_”, this makes them C# friendly. We can do this in file below: 
+In order for the bro logs to work with the visualization, we need to change the default delimiter of a “.” to a “_”, this makes them C# friendly. We can do this in file below:
 
 ```
 /usr/local/bro/share/bro/base/frameworks/logging/main.bro
@@ -111,7 +111,7 @@ output.logstash:
 EOF
 ```
 
-After you make that basic configuration, go in and change the “hosts” line to whatever logstash host you are using. You can use multiple hosts if you want to, but I do not. 
+After you make that basic configuration, go in and change the “hosts” line to whatever logstash host you are using. You can use multiple hosts if you want to, but I do not.
 
 Now we have to tell Filebeat what logs we want to forward. So just add this configuration file to the conf.d directory.
 
@@ -144,4 +144,11 @@ That will gather all the important bro logs for the visualization, and keep some
 ```
 
 This will forward ALL .log files that bro generates to Logstash. 
->>>>>>> pages-updates
+
+
+## [Prerequisites](prereqs.md)
+## [How to Install and Configure Logstash](install_logstash.md)
+## [How to Configure a Capture Server](captureServer.md)
+
+## [Useful ELK and CentOS Commands](usefulELK.md)
+## [Useful Guides](guides.md)

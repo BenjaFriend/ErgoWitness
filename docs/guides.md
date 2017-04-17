@@ -1,10 +1,10 @@
 # Things that I found helpful
 
-First off, huge shoutout to my friend Ben Bornholm and his [blog](https://holdmybeer.xyz/) with a guide to the ELK stack. [This post](https://holdmybeer.xyz/2017/01/24/intro-to-the-elk-stack-on-centos-7/) in particular was very helpful. 
+First off, huge shoutout to my friend Ben Bornholm and his [blog](https://holdmybeer.xyz/) with a guide to the ELK stack. [This post](https://holdmybeer.xyz/2017/01/24/intro-to-the-elk-stack-on-centos-7/) in particular was very helpful.
 
 ## Guides
 
-Here is a list of guides that really helped me get a good understanding of the ELK stack and CentOS in general. 
+Here is a list of guides that really helped me get a good understanding of the ELK stack and CentOS in general.
 
 * [Explanation of Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/5.1/_basic_concepts.html)
 * [Installing the ELK stack on CentOS 7 - Digital Ocean ](https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-7)
@@ -39,3 +39,11 @@ This is a list of links to all of the official documentation for tools that I us
 * [Snort](https://www.snort.org/)
 * [Nginx](https://nginx.org/en/docs/)
 * [OpenSSL](https://www.openssl.org/docs/)
+
+
+## [Prerequisites](prereqs.md)
+## [How to Install and Configure Logstash](install_logstash.md)
+## [How to Configure a Capture Server](captureServer.md)
+
+## [Useful ELK and CentOS Commands](usefulELK.md)
+## [Useful Guides](guides.md)

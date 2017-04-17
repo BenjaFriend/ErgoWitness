@@ -20,7 +20,7 @@ netstat -tnlp
 
 Reload the firewalld
 ```
-sudo firewall-cmd --reload	
+sudo firewall-cmd --reload
 ```
 
 Allow a http traffic through your firewall, permanently
@@ -45,7 +45,7 @@ systemctl reset-failed <service>
 
 Use TCP Replay to replay a PCAP file on infinite loop, at 1 GB/s, on a specific interface
 ```
-tcpreplay --loop=0 --mbps=100.0 --intf1=ens33 <Location of PCap> 
+tcpreplay --loop=0 --mbps=100.0 --intf1=ens33 <Location of PCap>
 ```
 
 Start bro
@@ -55,8 +55,8 @@ Start bro
 
 # Fixes to Common Problems with ELK
 
-* Filebeat service is failing, this happens sometimes when you do not do a proper shutdown of either the filebeat service itself, or the CentOS machine. 
-	* Remove the registry file 
+* Filebeat service is failing, this happens sometimes when you do not do a proper shutdown of either the filebeat service itself, or the CentOS machine.
+	* Remove the registry file
 	`rm -rf /var/lib/filebeat/registry`
 	* Reset the failed service
 	`systemctl reset-failed filebeat`
@@ -66,3 +66,11 @@ Start bro
 * Packetbeat seemingly being slow, after a large amount of traffic
 	* Restart the service
 	`systemctl restart packetbeat`
+
+
+	## [Prerequisites](prereqs.md)
+	## [How to Install and Configure Logstash](install_logstash.md)
+	## [How to Configure a Capture Server](captureServer.md)
+
+	## [Useful ELK and CentOS Commands](usefulELK.md)
+	## [Useful Guides](guides.md)

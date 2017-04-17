@@ -1,14 +1,14 @@
 ## Install Logstash
 
-This section will be all about how to configure your ELK server to be compatible with the Ergo Witness front end. All of these commands are for RPM, but DEB guides can be found with a quick Google search if needed. I have a sh script that will do a basic installation of the ELK stack for you here. Take note that it is important to understand how ELK works in order to troubleshoot some things. 
+This section will be all about how to configure your ELK server to be compatible with the Ergo Witness front end. All of these commands are for RPM, but DEB guides can be found with a quick Google search if needed. I have a sh script that will do a basic installation of the ELK stack for you here. Take note that it is important to understand how ELK works in order to troubleshoot some things.
 
 ### Install Java
 
 ```
 yum install wget -y
 
-cd /opt	
-				
+cd /opt
+
 wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jre-8u102-linux-x64.rpm"
 
 rpm -Uvh jre-8u102-linux-x64.rpm
@@ -101,9 +101,9 @@ systemctl enable logstash
 
 ### Configure Logstash
 
-In order for Packetbeat and Filebeat to actually send information to Logstash, we need some configuration files for Logstash. 
+In order for Packetbeat and Filebeat to actually send information to Logstash, we need some configuration files for Logstash.
 
-Make a configuration directory for logstash if you do not already have one: 
+Make a configuration directory for logstash if you do not already have one:
 
 ```
 mkdir /etc/logstash/conf.d
@@ -117,3 +117,12 @@ Restart logstash
 ```
 systemctl restart logstash
 ```
+
+
+
+## [Prerequisites](prereqs.md)
+## [How to Install and Configure Logstash](install_logstash.md)
+## [How to Configure a Capture Server](captureServer.md)
+
+## [Useful ELK and CentOS Commands](usefulELK.md)
+## [Useful Guides](guides.md)
