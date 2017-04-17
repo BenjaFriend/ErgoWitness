@@ -1,0 +1,20 @@
+
+<meta charset="utf-8">
+<title>Footer SHTML</title>
+
+<footer>
+  <ul>
+    <li><h2><a href="index.html">Home</a></h2></li>
+    <h2><a href="pages/">Prerequisites</a></h2></li>
+    <li><h2><a href="pages/">Install and Configure Logstash</a></h2></li>
+    <li><h2><a href="pages/">Configure a Capture Server</a></h2></li>
+    <li><h2><a href="pages/">Useful ELK and CentOS Commands</a></h2></li>
+    <li><h2><a href="pages/">Useful Guides</a></h2></li>
+  </ul>
+
+<img src="images/RIT_GCCIS2.eps"/>
+<img src="images/unity-logo-white-rgb.png"/>
+
+<p>Copyright Ben Hoffman</p>
+
+</footer>

@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Ergo Witness</title>
+  <meta name="Ben Hoffman">
+
+  <link rel="stylesheet" href="style/style.css">
+
+</head>
+
+<body>
+  {% include navbar.html %}
+
+  <p>Ergo Witness is a network visualisation tool that shows network data in a
+    creative way in 3D spaces. On the backend, the data is gathered by running
+    tools like <a href="https://www.bro.org/" target="_blank">Bro</a>,
+    <a href="https://www.elastic.co/products/beats/packetbeat" target="_blank">Packetbeat</a>,
+    and <a href="https://www.snort.org/" target="_blank">Snort</a>, and pushing their
+    logs in JSON format to the ELK stack (Elasticsearch).
+  </p>
+
+  <p>The ‘front end’ as I call it, is developed in the Unity game engine, pulling
+  the information it needs down from the server with HTTP requests. By using a
+   game engine like <a href="https://unity3d.com/">Unity</a> to represent network data, there
+    are not only possibilities of fun, interactive data analysis, but also the
+    beginning of what could possibly be a very powerful Virtual Reality toolkit
+    for network  professionals. </p>
+
+<iframe width="933" height="534" src="https://www.youtube.com/embed/ylK-_RUaKJw" frameborder="0" allowfullscreen></iframe>
+
+{% include footer.html %}
+
+
+</body>
+
+</html>
