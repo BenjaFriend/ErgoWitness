@@ -2,7 +2,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
-* {font-family: 'Roboto', sans-serif, Arial, Calibri, monospace; }
+* {
+  padding-left: 50px;
+  font-family: 'Roboto', sans-serif, Arial, Calibri, monospace;
+ }
+
+ body{
+   width: 70%;
+ }
 
 h1 {
   font-family: 'Roboto Black', sans-serif;
