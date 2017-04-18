@@ -15,7 +15,6 @@ public class StreamingInfo_UI : MonoBehaviour {
 	public static StreamingInfo_UI currentStreamInfo;
 
     public SetInfo[] infoObjects;
-    public LeaderboardItem[] leaderboardItems;
 
     [SerializeField]
     private int _leadboardDisplaySize = 3;
@@ -26,9 +25,6 @@ public class StreamingInfo_UI : MonoBehaviour {
 
     private Vector2 newPos;
     private RectTransform[] rectTransforms;
-    private Dictionary<string, int> _topThree;
-    private IEnumerator currentCheck;
-    private bool isRunning;
 
     private bool isShowing = false;
 
@@ -38,7 +34,7 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <summary>
     /// Set the static reference to this object and make sure that there is only one in 
     /// the current scene. Get all the rect transforms what we may need.
-   ///  Initalize the  
+    ///  Initalize the  
     /// </summary>
     void Start ()
     {
@@ -60,9 +56,6 @@ public class StreamingInfo_UI : MonoBehaviour {
             // Set this array to the rect transform component of the info objects
             rectTransforms[i] = infoObjects[i].GetComponent<RectTransform>();
         }
-
-        // Initalize the dictionary
-        _topThree = new Dictionary<string, int>();
     }
 
     /// <summary>
@@ -151,111 +144,6 @@ public class StreamingInfo_UI : MonoBehaviour {
             rectTransforms[i].anchoredPosition = newPos;
         }
     }
-
-    /// <summary>
-    /// This will check the top hits of the program only if we are 
-    /// not currently checking, and if we are showing the UI
-    /// </summary>
-    /// <param name="ipAddr"></param>
-    /// <param name="count"></param>
-    public void CheckTop(string ipAddr, int count)
-    {
-        // If I am not currently checking, then yea check
-        if(isRunning)
-        {
-            // Do nothing
-            return;
-        }
-        else
-        {
-            currentCheck = CheckTopHits(ipAddr, count);
-            StartCoroutine(currentCheck);
-        }
-    }
-
-    /// <summary>
-    /// Checks the top hits for this
-    /// </summary>
-    /// <param name="ipAddr"></param>
-    /// <param name="count"></param>
-    public IEnumerator CheckTopHits(string ipAddr, int count)
-    {
-        isRunning = true;
-        // If I already have this IP, then I want to change the value at this spot, 
-        // to the updated count
-
-        // If this count not greater then the last one we have, then discard it
-        if(_topThree.Count >= _leadboardDisplaySize && count < _topThree.Values.Last())
-        {
-            yield break;
-        }
-
-        if (_topThree.ContainsKey(ipAddr))
-        {
-            _topThree[ipAddr] = count;
-        }
-        else
-        {
-            _topThree.Add(ipAddr, count);           
-        }
-
-        // Sort the dictionary and put it back on itself, with the integer value being on top
-        _topThree = _topThree.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-        // Print out the top 3 items
-        if (_topThree.Keys.Count >= leaderboardItems.Length)
-        {
-            for (int i = 0; i < leaderboardItems.Length; i++)
-            {
-                leaderboardItems[i].SetText(
-                    _topThree.Keys.ElementAt(_topThree.Keys.Count - i - 1),
-                    _topThree.Values.ElementAt(_topThree.Values.Count - i - 1));
-                // Wait till the next frame
-                yield return null;
-            }
-        }          
-
-        if(_topThree.Count > _leadboardDisplaySize + 5)
-        {
-            // Remove the last item
-            _topThree.Remove(_topThree.Keys.Last());
-        }
-
-        isRunning = false;
-    }
-
-
-    /// <summary>
-    /// This will allow be an option in the menu that will determine if we are showing the data or not
-    /// </summary>
-    public void ToggleRecieveData()
-    {
-        // If we are showing the data
-        if (isShowing)
-        {
-            // Then stop
-            isShowing = false;
-
-            // Clear all of our text
-            for(int i = 0; i < infoObjects.Length; i++)
-            {
-                infoObjects[i].ClearText();
-            }
-            // Clear all of our leaderboard item text
-            for (int j = 0; j < leaderboardItems.Length; j++)
-            {
-                // Clear it's text
-                leaderboardItems[j].ClearText();
-            }
-
-        }
-        // We are not showing the data...
-        else
-        {
-            // So show it
-            isShowing = true;
-        }
-
-    }
+    
 
 }

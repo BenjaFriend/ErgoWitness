@@ -98,7 +98,6 @@
     <Compile Include="Assets\Scripts\Management\ExceptionLogger.cs" />
     <Compile Include="Assets\Scripts\Management\ManageMonitors.cs" />
     <Compile Include="Assets\Scripts\Management\ObjectPooler.cs" />
-    <Compile Include="Assets\Scripts\Management\OptionsSaving.cs" />
     <Compile Include="Assets\Scripts\Monitoring\BroMonitor.cs" />
     <Compile Include="Assets\Scripts\Monitoring\CustomTimestamps\MinMaxSliders.cs" />
     <Compile Include="Assets\Scripts\Monitoring\CustomTimestamps\SendInfoToMonitor.cs" />
