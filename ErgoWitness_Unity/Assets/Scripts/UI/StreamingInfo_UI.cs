@@ -30,7 +30,7 @@ public class StreamingInfo_UI : MonoBehaviour {
     private IEnumerator currentCheck;
     private bool isRunning;
 
-    private bool isShowing = true;
+    private bool isShowing = false;
 
     public bool IsShowing { get { return isShowing; } set { isShowing = value; } }
     #endregion
