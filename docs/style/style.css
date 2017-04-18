@@ -1,0 +1,79 @@
+/* =============== Font Imports ================  */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+* {
+  font-family: 'Roboto Light', sans-serif, Arial, Calibri, monospace;
+ }
+
+body {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+h1 {
+  font-family: 'Roboto Black', sans-serif;
+  color:#2e83c3;
+}
+
+h2 h3 {
+  font-family: 'Roboto Medium', sans-serif;
+  color:#2e83c3;
+}
+
+p {
+  font-family: 'Roboto Light', sans-serif;
+  color: black;
+}
+
+code {
+  background-color: #D3D3D3;
+  outline-width: 1px;
+  outline-color: black;
+  font-family: monospace;
+}
+
+/* ==================== Nav Bar ==================== */
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2e83c3;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 16px;
+
+}
+
+.navbar li a:hover {
+    color: #77d3f1;
+}
+
+/* ======================== Link hovers and actions ================   */
+a {
+  color: #2e83c3;
+}
+
+a:hover {
+  color: #00FF7F;
+}
+
+a:visited {
+  color: #64caed;
+}
+
+/* ============== Footer ======================= */
+footer {
+  padding-top: 10%;
+  text-align: center;
+}

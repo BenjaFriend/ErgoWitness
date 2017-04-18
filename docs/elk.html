@@ -1,0 +1,160 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Configure ELK</title>
+  <meta name="Ben Hoffman">
+
+  <link rel="stylesheet" href="style/style.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+  $(function(){
+    $("#header").load("navbar.html");
+    $("#footer").load("footer.html");
+  });
+  </script>
+</head>
+
+<body>
+  <!-- Head include here -->
+  <div id="header"></div>
+<h1>Install and Configuration of ELK</h1>
+<p>
+This section will be all about how to configure your ELK server to be compatible
+ with the Ergo Witness front end. All of these commands are for RPM, but DEB
+ guides can be found with a quick Google search if needed. I have a sh script
+ that will do a basic installation of the ELK stack for you here. Take note that
+  it is important to understand how ELK works in order to troubleshoot some things.
+</p>
+
+<h2>Install ELK</h2>
+<p>Follow the steps below to install Logstash!</p>
+
+<h3>Install Java</h3>
+<code>
+  yum install wget -y
+
+  cd /opt
+
+  wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jre-8u102-linux-x64.rpm"
+
+  rpm -Uvh jre-8u102-linux-x64.rpm
+  rm -rf jre-8u102-linux-x64.rpm
+  yum install java-devel -y
+</code>
+
+<h3>Install Elasticsearch</h3>
+<code>
+  sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+echo '[elasticsearch-5.x]
+name=Elasticsearch repository for 5.x packages
+baseurl=https://artifacts.elastic.co/packages/5.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+' | sudo tee /etc/yum.repos.d/elasticsearch.repo
+sudo yum -y install elasticsearch
+
+</code>
+
+<p>Change the network host to localhost</p>
+
+<code>
+sed -i 's/#network.host: 192.168.0.1/network.host: localhost/g' /etc/elasticsearch/elasticsearch.yml
+</code>
+
+<p>Enable Elasticsearch to start when the machine boots, and then start Elasticsearch</p>
+
+<code>
+  systemctl enable elasticsearch
+  systemctl start elasticsearch
+</code>
+
+<h3>Install Kibana</h3>
+
+<p>Now we will install Kibana, so that we can see our data</p>
+
+<code>
+  echo '[kibana-4.4]
+  name=Kibana repository for 4.4.x packages
+  baseurl=http://packages.elastic.co/kibana/4.4/centos
+  gpgcheck=1
+  gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch
+  enabled=1
+  ' | sudo tee /etc/yum.repos.d/kibana.repo
+
+  sudo yum -y install kibana
+
+  sudo vi /opt/kibana/config/kibana.yml
+
+</code>
+
+<p>In the kibana config file(/etc/kibana/kibana.yml), find the line that specifies server.host and replace the ip with "localhost", so that it looks like this:
+</p>
+
+<code>
+  ## server.host: "localhost"
+</code>
+
+<p>Now start kibana:</p>
+
+<code>
+  sudo systemctl start kibana
+  sudo chkconfig kibana on
+</code>
+
+<h3>Install Logstash</h3>
+
+<code>
+
+  echo '[logstash-5.x]
+name=Elastic repository for 5.x packages
+baseurl=https://artifacts.elastic.co/packages/5.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+' | sudo tee /etc/yum.repos.d/logstash.repo
+
+sudo yum -y install logstash
+
+systemctl restart logstash
+systemctl enable logstash
+</code>
+
+<h3>Configure Logstash</h3>
+
+<p>In order for Packetbeat and Filebeat to actually send information to Logstash, we need some configuration files for Logstash.
+
+Make a configuration directory for logstash if you do not already have one:
+</p>
+
+<code>
+  mkdir /etc/logstash/conf.d
+</code>
+
+<p>Copy my configuration folder from my GitHub into that new directory.
+  Get those files
+  <a href="https://github.com/bah8892/NetworkMonitorVisConfig/tree/master/Configuration/logstash/conf.d">here</a>
+</p>
+
+<p>Restart logstash</p>
+<code>
+  systemctl restart logstash
+</code>
+
+<p>Completed!</p>
+
+  <!-- Footer include here -->
+  <div id="footer"></div>
+
+
+</body>
+
+</html>

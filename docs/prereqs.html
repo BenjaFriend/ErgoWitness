@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Ergo Witness</title>
+  <meta name="Ben Hoffman">
+
+  <link rel="stylesheet" href="style/style.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+  $(function(){
+    $("#header").load("navbar.html");
+    $("#footer").load("footer.html");
+  });
+  </script>
+</head>
+
+<body>
+  <!-- Head include here -->
+  <div id="header"></div>
+
+
+  <h1>Prerequisites</h1>
+  <h3> Machines</h3>
+  <p>There are a couple things that you need in order for this visualisation to run</p>
+
+  <ul>
+    <li>A CentOS 7 **  that is running Logstash and Elasticsearch, that you have configured and have access to.</li>
+    <li>For installation steps see the Appendix</li>
+    <li>A Windows 10 PC to run the visualisation</li>
+  </ul>
+
+  <h3>Visualization Machine Recommended Specs</h3>
+
+  <ul>
+    <li>16 GB RAM</li>
+    <li>Intel Core i7</li>
+    <li>2 GB graphics memory</li>
+    <li>250 GB SSD</li>
+    <li>Internet access (ethernet cable prefered)</li>
+  </ul>
+
+  <h3>Capture Machine Minimum Specs</h3>
+  <ul>
+    <li>8 GB RAM</li>
+    <li>Intel Core i3</li>
+    <li>2 GB of free space on hard drive</li>
+    <li>Internet access (ethernet cable prefered)</li>
+  </ul>
+
+<h3>Capture Server Recommended Specs</h3>
+<ul>
+  <li>32 GB RAM</li>
+  <li>Intel Core i7 / Intel Xeon</li>
+  <li>2 GB graphics memory</li>
+  <li>1 TB SSD</li>
+  <li>Dual port gigabit NIC</li>
+</ul>
+<p>Need instructions on how to install and configure the ELK stack? See the
+  <a href="elk.html">Install and Configure ELK</a> page. </p>
+
+
+
+  <!-- Footer include here -->
+  <div id="footer"></div>
+
+
+</body>
+
+</html>
