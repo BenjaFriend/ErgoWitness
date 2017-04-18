@@ -18,6 +18,9 @@ public class TouchPadScale : MonoBehaviour {
     public float maxScale = 5f;
     public float minScale = 0.5f;
 
+    public Transform scalingObject;
+    public bool doScaling;
+
     //public Transform scalingObject;    // the object that we want to rotate
     [SerializeField]    
     private float speed = 3f;          // How fast we want to rotate
@@ -45,8 +48,11 @@ public class TouchPadScale : MonoBehaviour {
     /// </summary>
 	void Update ()
     {
-        // Gather the input from the touch pad
-        touchPadInput = Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+        if (doScaling)
+        {
+            // Gather the input from the touch pad
+            touchPadInput = Controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+        }
 	}
 
     /// <summary>
@@ -58,12 +64,10 @@ public class TouchPadScale : MonoBehaviour {
     void LateUpdate()
     {
         // If we have some kind of input...
-        if (touchPadInput.x != 0f)
+        if (doScaling && touchPadInput.x != 0f)
         {
-			Debug.Log ("Touchhhh");
-
             // ============ Do whaterver you want here =================== //
-          /*  newScale = scalingObject.localScale * touchPadInput.y * speed;
+            newScale = scalingObject.localScale * touchPadInput.y * speed;
 
             // Clamp to the max scale
             Vector3.ClampMagnitude(newScale, maxScale);
@@ -76,7 +80,7 @@ public class TouchPadScale : MonoBehaviour {
             }
 
             // Scale the object 
-            scalingObject.localScale = newScale;*/
+            scalingObject.localScale = newScale;
         }
     }
 }

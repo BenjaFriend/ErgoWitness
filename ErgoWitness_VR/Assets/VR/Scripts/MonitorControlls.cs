@@ -11,6 +11,7 @@ namespace Valve.VR.InteractionSystem
 		public Sprite playSprite;     // The sprite for if we want to play or not
 		public Sprite pauseSprite;    // The sprite for if we want to pause
 		public Image pausePlayButton;// The button for toggling on and off with moniotring
+        public TouchPadScale touchPadScaling;   // The scaling that we want to turn on and off 
 
 		private bool isMonitoring;
 
@@ -51,6 +52,16 @@ namespace Valve.VR.InteractionSystem
 			}
 		}
 
+        /// <summary>
+        /// This will enable the user to use the touch pad to scale an object
+        /// 
+        /// Author: Ben Hoffman
+        /// </summary>
+        public void ToggleScaling()
+        {
+            // Toggle the scaling of the touch pad input
+            touchPadScaling.doScaling = !touchPadScaling.doScaling;
+        }
 
 		#region Application settings
 		/// <summary>

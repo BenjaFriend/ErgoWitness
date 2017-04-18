@@ -10,12 +10,14 @@ using UnityEngine.UI;
 /// 
 /// Author: Ben Hoffman
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class InteractiveButton : MonoBehaviour {
 
     public UnityEvent CustomEvents;
 
     [Tooltip("Tint the sprite when the controller is 'hovering' on it")]
-    public Color highlightColor; 
+    public Color highlightColor;
+    private AudioSource audioSource;
 
     private Image buttonImage;
     private bool isHighlighted;
@@ -25,6 +27,9 @@ public class InteractiveButton : MonoBehaviour {
     {
         // Get the image componenet on this object
         buttonImage = GetComponent<Image>();
+
+        // Get teh audio component
+        audioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -37,7 +42,11 @@ public class InteractiveButton : MonoBehaviour {
     /// </summary>
 	public void ButtonAction()
     {
+        // Invoke the events that we want
         CustomEvents.Invoke();
+
+        // Play the button click sound
+        audioSource.PlayOneShot(audioSource.clip);
     }
 
     /// <summary>
