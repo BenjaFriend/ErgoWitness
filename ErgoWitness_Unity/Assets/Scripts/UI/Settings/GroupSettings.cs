@@ -57,7 +57,8 @@ public class GroupSettings : MonoBehaviour {
                 inputFields[i].text = PlayerPrefs.GetString(groupPlayerPrefName + i.ToString());
             }
         }
-        // Apply the info
+
+        // Apply the info that we have loaded
         ApplyInfo();
     }
 	
@@ -67,10 +68,13 @@ public class GroupSettings : MonoBehaviour {
     /// </summary>
     public void ApplyInfo()
     {
-        // Send the information to the the group manager
-        IPGroupManager.currentIpGroups.SetIpsViaOptions(GetCurrentGroups(), groupNum);
+        string[] groups = GetCurrentGroups();
 
-        
+        // Send the information to the the group manager
+        IPGroupManager.currentIpGroups.SetIpsViaOptions(groups, groupNum);
+
+        // Save the group prefs
+        Save(groups);
     }
 
     /// <summary>
