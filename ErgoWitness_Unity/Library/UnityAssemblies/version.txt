@@ -8,8 +8,6 @@ C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/UnityAnalytics/Uni
 C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
 C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll
 C:/Program Files/Unity5.5.1/Editor/Data/Managed/UnityEditor.dll
-C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll
-C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll
 C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll
 C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll
 C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll
@@ -22,7 +20,6 @@ C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Edit
 C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
 C:/Program Files/Unity5.5.1/Editor/Data/Managed/UnityEditor.Graphs.dll
 C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
 C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
