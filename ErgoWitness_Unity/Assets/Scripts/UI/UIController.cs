@@ -126,6 +126,7 @@ public class UIController : MonoBehaviour {
         // Start monitoring
         ManageMonitors.currentMonitors.StartMonitoringObjects();
     }  
+
     #region Toggles
 
     /// <summary>

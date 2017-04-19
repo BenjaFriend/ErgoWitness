@@ -1,3 +1,0 @@
-
-The Query that failed: 
-"gt":""

@@ -11,11 +11,13 @@ public class ServerIP : MonoBehaviour {
 
     public InputField serverInput;
 
-    private void Start()
+    void OnEnable()
     {
         if (PlayerPrefs.HasKey("serverIP"))
         {
             serverInput.text = PlayerPrefs.GetString("serverIP");
+            // Actually set the server IP
+            SetServerIP();
         }
     }
 
