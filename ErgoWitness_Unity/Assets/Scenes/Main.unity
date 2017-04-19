@@ -899,7 +899,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -121.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -7001,7 +7001,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -238.59999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -9628,7 +9628,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 227230812}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.63120013
+  m_Size: 0.6312597
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

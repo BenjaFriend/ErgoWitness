@@ -19,6 +19,7 @@ public class GroupSettings : MonoBehaviour {
 
     private void Start()
     {
+        // Make a gruop name to use with the player prefs
         groupPlayerPrefName = "GROUP" + groupNum.ToString();
 
         // Get the input fields for us to use for ip address's
@@ -52,7 +53,7 @@ public class GroupSettings : MonoBehaviour {
         for(int i = 0; i < inputFields.Length; i++)
         {
             // If a key exists for this group at this index, then load it
-            if(PlayerPrefs.HasKey("GROUP" + i.ToString()))
+            if(PlayerPrefs.HasKey(groupPlayerPrefName + i.ToString()))
             {
                 inputFields[i].text = PlayerPrefs.GetString(groupPlayerPrefName + i.ToString());
             }

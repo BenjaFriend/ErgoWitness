@@ -73,6 +73,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ErgoWitness_Unity.Plugins.csproj">
@@ -140,11 +146,6 @@
     <None Include="Assets\Resources\Packetbeat\packetbeat_Headers_BOTTOM.txt" />
     <None Include="Assets\Resources\Packetbeat\packetbeat_Headers_TOP.txt" />
     <None Include="Assets\Resources\QueryByIP\query_by_ip_latest_time.txt" />
-    <None Include="Assets\Resources\TeamIPs\blueTeamIPs.txt" />
-    <None Include="Assets\Resources\TeamIPs\blueTeamIPs_EXAMPLE.txt" />
-    <None Include="Assets\Resources\TeamIPs\redTeam.txt" />
-    <None Include="Assets\Resources\serverIP.txt" />
-    <None Include="Assets\Resources\serverIP_EXAMPLE.txt" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
