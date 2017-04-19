@@ -17,10 +17,12 @@ public class ControllerInput : MonoBehaviour
 {
     [Tooltip("The layer that you do not want to be thrown.")]
     public LayerMask DontThrowLayer;
+    public PlayerClickAction clickAction;
 
     private GameObject objectInHand;                // Use this to keep track of an object that we want to pick up
     private GameObject collidingObject;             // The object that is in our collider
     private SteamVR_TrackedObject trackedObj;       // The tracked object that is the controller
+    private Computer compInHand;
 
     private SteamVR_Controller.Device Controller    // The device property that is the controller, so that we can tell what index we are on
     {
@@ -124,7 +126,15 @@ public class ControllerInput : MonoBehaviour
         var joint = AddFixedJoint();
         // Connect our object in our hand to that fixed joint
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+        compInHand = objectInHand.GetComponent<Computer>();
+
+        if (compInHand != null)
+        {
+            clickAction.SelectedComputer(compInHand);              
+        }
     }
+
+
 
     /// <summary>
     /// Add a fixed joint to our rigidbody
@@ -162,7 +172,9 @@ public class ControllerInput : MonoBehaviour
         }
 
         // We no longer have something in our hand, so set it to null
-        objectInHand = null; 
+        objectInHand = null;
+        // Set the computer in our hand to null
+        compInHand = null;
     }
 
 }

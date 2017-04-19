@@ -19,40 +19,28 @@ public class PlayerClickAction : MonitorObject {
 
     private Json_Data dataObj;  // The type of data that we will query 
 
-    private RaycastHit hitInfo; // The hit info of the raycast
-    private Ray ray;            // The raycast object
-
     private string comp_ip;     // The ID of the computer we want to get info about
 
     #endregion
 
     /// <summary>
-    /// Check if the user has clicked, if they have then raycast out from that position
-    /// and see if they are clicking on a computer object
+    /// Setup the UI info, and start the query to the data base
+    /// 
+    /// Author: Ben Hoffman
     /// </summary>
-    void Update()
+    /// <param name="compInfo"></param>
+    public void SelectedComputer(Computer compInfo)
     {
-        // If the user left clicks ...
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Make a ray going out towards where the mouse is  
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // Clear the text of the UI elements
+        ClearText();
 
-            // If we hit something witht that ray AND it was a computer...
-            if (Physics.Raycast(ray, out hitInfo) && hitInfo.collider.CompareTag("Comp"))
-            {
-                // Clear the text of the UI elements
-                ClearText();
+        // Get the string conversion of that IP
+        comp_ip = IpIntToString(compInfo.SourceInt);
+        // Set the text to tell the user which IP this is
+        ip.text = comp_ip;
 
-                // Get the string conversion of that IP
-                comp_ip = IpIntToString(hitInfo.collider.gameObject.GetComponent<Computer>().SourceInt); 
-                // Set the text to tell the user which IP this is
-                ip.text = comp_ip;
-
-                // Start the monitor
-                StartMonitor();
-            }
-        }
+        // Start the monitor
+        StartMonitor();
     }
 
     public override void StartMonitor()
