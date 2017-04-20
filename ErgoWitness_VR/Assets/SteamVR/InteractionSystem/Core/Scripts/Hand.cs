@@ -150,7 +150,6 @@ namespace Valve.VR.InteractionSystem
 			}
 		}
 
-
 		//-------------------------------------------------
 		public Transform GetAttachmentTransform( string attachmentPoint = "" )
 		{
