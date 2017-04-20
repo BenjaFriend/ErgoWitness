@@ -14,7 +14,6 @@ public class DeviceManager : MonoBehaviour {
     #region Fields
     public static DeviceManager currentDeviceManager;
 
-    public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
@@ -96,9 +95,6 @@ public class DeviceManager : MonoBehaviour {
 
         // Update the UI that tells us how many devices there are
         deviceCountText.text = computersDict.Count.ToString();
-
-        // Send it to the streaming UI thing
-        streamingInfo.AddInfo(jsonSourceData);
 
         // If there is a service runnign on this, then send it to the netflow controller to visualize it
         if (jsonSourceData.service != null)

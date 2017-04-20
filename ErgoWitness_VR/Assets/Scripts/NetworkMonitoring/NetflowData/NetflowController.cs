@@ -10,7 +10,6 @@ public class NetflowController : MonoBehaviour
 {
     #region Fields
     public static NetflowController currentNetflowController;
-    public StreamingInfo_UI streamingUI;
 
     // Particle head materials =========
     public Material tcpMat;  // Just take in one material and use the colors to generate them
@@ -102,14 +101,7 @@ public class NetflowController : MonoBehaviour
 
 
         // Then we can continue on and send out flow data out      
-        SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
-
-        // If we are showing the streaming UI, then send this data to it. If not then we do not care
-        if (streamingUI.IsShowing)
-        {
-            // Tell the streaming UI about this
-            streamingUI.AddInfo(packetbeatSource);
-        }
+		SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
     }
 
 
@@ -149,13 +141,6 @@ public class NetflowController : MonoBehaviour
     
         // Actually send the flow
         SendFlow(sourceIP, destIP, transport);
-
-        // If we are showing the streaming UI, then send this data to it. If not then we do not care
-        /*if (streamingUI.IsShowing)
-        {
-            // Tell the streaming UI about this
-            streamingUI.AddInfo(packetbeatSource);
-        }*/
 
     }
 

@@ -60,7 +60,7 @@ public class InteractiveButton : MonoBehaviour {
         if (!isHighlighted)
         {
             // Change the color of the button image
-            buttonImage.color += highlightColor;
+			buttonImage.color += highlightColor;
             // Keep track that we are highlighted
             isHighlighted = true;
         }

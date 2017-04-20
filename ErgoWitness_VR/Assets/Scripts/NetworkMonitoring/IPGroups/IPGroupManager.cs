@@ -215,20 +215,18 @@ public class IPGroupManager : MonoBehaviour {
     {
         attemptCount++;
 
-        // Increase the size of the groups
-        size += increaseAmountPerGroup;
-
         // I need to put it in a random spot...
         Vector3 temp = new Vector3(
             Random.Range(-size, size),
             Random.Range(-size, size),
             Random.Range(-size, size));
 
+
         // Check if I am colliding with any other groups
         Collider[] neighbors = Physics.OverlapSphere(temp, minDistanceApart);
 
         // There is something colliding with us, recursively call this function
-        if (neighbors.Length > 0 && attemptCount <= 10)
+        if (neighbors.Length > 0 && attemptCount <= 4)
         {        
             // Try again   
             SetGroupPosition(moveMe);
@@ -236,14 +234,15 @@ public class IPGroupManager : MonoBehaviour {
         else
         {
             // Set the transform to this random location
-            moveMe.transform.position = temp;
+			moveMe.transform.localPosition = temp;
+
             // Reset the attempt count
             attemptCount = 0;
 
-            // Have the camera look at my final position
-            //Automated_Camera.currentAutoCam.ChangeTarget(moveMe.transform);
-        }
-    }
+			// Increase the size of the groups
+			size += increaseAmountPerGroup;
+	    }
+	}
 
     /// <summary>
     /// This method will set the group color field to one 

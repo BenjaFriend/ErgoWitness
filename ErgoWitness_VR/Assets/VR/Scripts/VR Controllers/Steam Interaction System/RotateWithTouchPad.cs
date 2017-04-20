@@ -22,12 +22,14 @@ public class RotateWithTouchPad : MonoBehaviour {
 
     private Hand _hand;                     // The hand object that needs to be on this gameobject as well
     private Vector2 touchPadInput;          // The actual input from the touch pad
+	private SteamVR_Controller.Device controller;
 
 
     void Start ()
     {
         // Get the hand componenet
         _hand = GetComponent<Hand>();
+		//controller = Valve.VR.InteractionSystem.Player.instance.leftController;
     }
 	
     /// <summary>
@@ -37,7 +39,12 @@ public class RotateWithTouchPad : MonoBehaviour {
     /// </summary>	
     void Update ()
     {
-        touchPadInput = _hand.controller.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+		if ( _hand.controller.GetHairTrigger())
+		{
+			Debug.Log ("HHHHHH");
+			_hand.controller.TriggerHapticPulse (800);
+		}
+
     }
 
     /// <summary>

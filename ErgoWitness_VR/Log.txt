@@ -64993,3 +64993,153 @@ System.IO.File.WriteAllText (System.String path, System.String contents, System.
 System.IO.File.WriteAllText (System.String path, System.String contents) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.IO/File.cs:621)
 MonitorObject.OnApplicationQuit () (at Assets/Scripts/Monitoring/MonitorObject.cs:480)
 
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'IPGroupManager' is not valid. Input localScale is { Infinity, Infinity, Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+
+Error
+transform.localScale assign attempt for 'Cube' is not valid. Input localScale is { -Infinity, -Infinity, -Infinity }.
+UnityEngine.Transform:set_localScale(Vector3)
+TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
+

@@ -15,15 +15,11 @@ using UnityEngine;
 /// </summary>
 public class TouchPadScale : MonoBehaviour {
 
-    public float maxScale = 5f;
+    public float maxScale = 2f;
     public float minScale = 0.5f;
 
     public Transform scalingObject;
     public bool doScaling;
-
-    //public Transform scalingObject;    // the object that we want to rotate
-    [SerializeField]    
-    private float speed = 3f;          // How fast we want to rotate
 
     private Vector3 newScale;
     private SteamVR_TrackedObject trackedObj;       // The tracked object that is the controller
@@ -48,6 +44,7 @@ public class TouchPadScale : MonoBehaviour {
     /// </summary>
 	void Update ()
     {
+		// If we care about scaling...
         if (doScaling)
         {
             // Gather the input from the touch pad
@@ -63,21 +60,25 @@ public class TouchPadScale : MonoBehaviour {
     /// </summary>
     void LateUpdate()
     {
-        // If we have some kind of input...
-        if (doScaling && touchPadInput.x != 0f)
+        // If we have some kind of input in the y direction...
+        if (doScaling && touchPadInput.y != 0f)
         {
-            // ============ Do whaterver you want here =================== //
-            newScale = scalingObject.localScale * touchPadInput.y * speed;
+			// Set the new scale equal to the current scale of the object
+			newScale = scalingObject.localScale;
+
+			// Add to it as necessary
+			newScale += Vector3.one * touchPadInput.y * Time.deltaTime;
 
             // Clamp to the max scale
             Vector3.ClampMagnitude(newScale, maxScale);
 
             // Clamp the min scale
-            if(newScale.magnitude < minScale)
-            {
-                newScale.Normalize();
-                newScale *= minScale;
-            }
+			if (newScale.magnitude < minScale) {        
+				return;
+			} 
+			else if (newScale.magnitude > maxScale) {
+				return;
+			}
 
             // Scale the object 
             scalingObject.localScale = newScale;

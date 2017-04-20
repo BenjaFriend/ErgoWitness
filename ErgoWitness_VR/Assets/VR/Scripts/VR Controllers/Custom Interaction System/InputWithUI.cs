@@ -42,14 +42,15 @@ public class InputWithUI : MonoBehaviour {
         _controller.TriggerClicked -= TriggerPressed;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Button"))
+		if (other.CompareTag("Button") && _button == null)
         {
             // We should be able to click, becuse we are touching a button
             shouldClick = true;
             // Get the button interface of this object
-            _button = other.GetComponent<InteractiveButton>();
+            _button = other.GetComponentInParent<InteractiveButton>();
             // Highlight the button when we enter it
             _button.Highlight();
         }
@@ -57,6 +58,10 @@ public class InputWithUI : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
+		if (_button == null) 
+		{
+			return;
+		}
         // We should not click anymore
         shouldClick = false;
         // Remove the highlight on this object
@@ -72,10 +77,6 @@ public class InputWithUI : MonoBehaviour {
     /// </summary>
     private void TriggerPressed(object sender, ClickedEventArgs e)
     {
-        Debug.Log("Trigger pressed!");
-
-        // TODO: Click sound?
-
         // If we have a UI object that we can interact with, then
         if (shouldClick)
         {

@@ -17,7 +17,8 @@ public class ControllerInput : MonoBehaviour
 {
     [Tooltip("The layer that you do not want to be thrown.")]
     public LayerMask DontThrowLayer;
-    public PlayerClickAction clickAction;
+	[Tooltip("This will query the database if we pick up a computer object")]
+	public PlayerClickAction clickAction;
 
     private GameObject objectInHand;                // Use this to keep track of an object that we want to pick up
     private GameObject collidingObject;             // The object that is in our collider
@@ -126,10 +127,13 @@ public class ControllerInput : MonoBehaviour
         var joint = AddFixedJoint();
         // Connect our object in our hand to that fixed joint
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+
+		// When I grab the object, check if it is a computer...
         compInHand = objectInHand.GetComponent<Computer>();
 
         if (compInHand != null)
         {
+			// It is a computer, so call the action of getting it's data
             clickAction.SelectedComputer(compInHand);              
         }
     }
@@ -162,13 +166,17 @@ public class ControllerInput : MonoBehaviour
             Destroy(GetComponent<FixedJoint>());
 
             // As long as what we are holding is not a computer object, throw it
-            if (objectInHand.layer != DontThrowLayer)
-            {
-                // Set our object in our hands velocity to the controllers, so that we can throw it
-                objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity;
-                // Do the same thing with the angular velocity, so it does the right way
-                objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
-            }
+			if (objectInHand.layer != DontThrowLayer) {
+				// Set our object in our hands velocity to the controllers, so that we can throw it
+				objectInHand.GetComponent<Rigidbody> ().velocity = Controller.velocity;
+				// Do the same thing with the angular velocity, so it does the right way
+				objectInHand.GetComponent<Rigidbody> ().angularVelocity = Controller.angularVelocity;
+			}
+			else 
+			{
+				objectInHand.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+				objectInHand.GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
+			}
         }
 
         // We no longer have something in our hand, so set it to null
