@@ -52,7 +52,7 @@ public class BroMonitor : MonitorObject {
     /// <param name="dataObject"></param>
     private void CheckData(Json_Data dataObject)
     {
-        // ================= Check and make sure that our data is valid =====================
+        // ================= Check and make sure that our data is valid ===================== //
         // Make sure that our data is not null
         if (dataObject.hits.hits.Length == 0)
         {

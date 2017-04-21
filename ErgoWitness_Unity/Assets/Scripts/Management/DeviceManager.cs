@@ -56,7 +56,8 @@ public class DeviceManager : MonoBehaviour {
         if (CheckDictionary(jsonSourceData.sourceIpInt))
         {
             // I want to check if there is a connection that I should add
-            CheckConnections(jsonSourceData);
+            CheckConnection(jsonSourceData);
+
             // Add more life to the computer that we saw
             computersDict[jsonSourceData.sourceIpInt].AddHit();
         }
@@ -89,7 +90,7 @@ public class DeviceManager : MonoBehaviour {
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
 
         // Check the connections to this, if there are connections then add them to it's list
-        CheckConnections(jsonSourceData);
+        CheckConnection(jsonSourceData);
 
         // Check if we can add it to a group
         IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.sourceIpInt);
@@ -115,7 +116,7 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="source">This source data has a SOURCE IP that we know
     /// of already, and we want to check the destination to see if we know
     /// of that or not.</param>
-    private void CheckConnections(Source source)
+    private void CheckConnection(Source source)
     {
         // If this source is 0, then we want to get rid of it
         if(source.sourceIpInt == 0 || source.destIpInt == 0)
@@ -156,13 +157,6 @@ public class DeviceManager : MonoBehaviour {
 
         // Otherwise return null
         return null;
-    }
-
-    /// Returns true if this computer is on blue team
-    public bool isBlueTeam(int ipInt)
-    {
-        // return if this is blue team
-        return computersDict[ipInt].IsSpecialTeam;
     }
 
     /// <summary>

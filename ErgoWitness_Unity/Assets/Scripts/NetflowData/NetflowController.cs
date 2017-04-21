@@ -9,7 +9,9 @@ using UnityEngine;
 public class NetflowController : MonoBehaviour
 {
     #region Fields
+
     public static NetflowController currentNetflowController;
+        
     public StreamingInfo_UI streamingUI;
 
     // Particle head materials =========
@@ -139,10 +141,7 @@ public class NetflowController : MonoBehaviour
 
             // Set the protocol so that the game controller can read it
             newSource.proto = transport;
-
-            //Set the integer values for this object
-            //ManageMonitors.currentMonitors.SetIntegerValues(newSource);
-
+            
             // Add them to the network, and wait for that to finish:
             DeviceManager.currentDeviceManager.CheckIp(newSource);
         }

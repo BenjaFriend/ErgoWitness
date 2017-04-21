@@ -10,6 +10,7 @@ using System.Net;
 /// </summary>
 public class IPGroupManager : MonoBehaviour {
 
+
     #region Fields
 
     public Material[] possibleColors;    // The possible colors that we want to assign the groups at random
@@ -19,12 +20,12 @@ public class IPGroupManager : MonoBehaviour {
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
 
     public Dictionary<int, IPGroup> groupsDictionary;  // A dictionary of all the groups that we currently have
-    public GameObject groupPrefab;  // The prefab for the IP group
+    public GameObject groupPrefab;              // The prefab for the IP group
     public float minDistanceApart = 15f;
     public float size = 100f;
     public float increaseAmountPerGroup = 10f;  // This will be added to the size every time that a new group is added
                                                 // So that the radius gets bigger and bigger
-    private int lastColorUsed;    // Keep track of the last color so that we don't assign it twice in a row
+    private int lastColorUsed;      // Keep track of the last color so that we don't assign it twice in a row
 
     private IPGroup newGroup;       // variable that I will use as a temp
     private GameObject temp;        // Temp reference to a gameObject
@@ -34,6 +35,7 @@ public class IPGroupManager : MonoBehaviour {
     private int[] blueTeamIntArray;    // Integer array of the blue team IP 
 
     #endregion
+
 
     /// <summary>
     /// Make sure that we only ahve one of these managers in our scene
@@ -68,48 +70,6 @@ public class IPGroupManager : MonoBehaviour {
         blueTeamIntArray = new int[0];
     }
 
-    /// <summary>
-    /// Take in a file location, read that file using the StreamReader class,
-    /// and return an integer array of bit shifted IP addresses
-    /// </summary>
-    /// <param name="fileLocation">Which file we are reading from</param>
-    /// <returns>An integer array of bit-shifted IP addresses that were in the file</returns>
-    private int[] ReadInIps(string fileLocation)
-    {
-        // A list of strings to keep track of the IP addresses
-        List<string> ipStringsList = new List<string>();
-        
-        string line;
-        int counter = 0;
-
-        // Read the file and display it line by line.  
-        System.IO.StreamReader file =
-            new System.IO.StreamReader(fileLocation);
-
-        while ((line = file.ReadLine()) != null)
-        {
-            // Read in the line that has the IP address
-            ipStringsList.Add(line);
-            counter++;
-        }
-
-        // Close te file reader
-        file.Close();
-
-        // Create a new integer array the size of however many objects that we have
-        int[] ipIntArray = new int[counter];    
-
-
-        for (int i = 0; i < ipStringsList.Count; i++)
-        {
-            // Set the integer array value to the string value
-            ipIntArray[i] = IpToInt(ipStringsList[i]);
-        }
-
-        // Return the result
-        return ipIntArray;
-    }
-
     public void SetIpsViaOptions(string[] ipAddress, int groupNum)
     {
         int[] ipIntArray = new int[ipAddress.Length];
@@ -133,8 +93,7 @@ public class IPGroupManager : MonoBehaviour {
             default:
                 Debug.Log("There is no array of that index! Group manager");
                 break;
-        }
-         
+        }       
 
     }
 
@@ -212,33 +171,32 @@ public class IPGroupManager : MonoBehaviour {
     {
         attemptCount++;
 
-        // Increase the size of the groups
-        size += increaseAmountPerGroup;
-
         // I need to put it in a random spot...
         Vector3 temp = new Vector3(
             Random.Range(-size, size),
             Random.Range(-size, size),
             Random.Range(-size, size));
 
+
         // Check if I am colliding with any other groups
         Collider[] neighbors = Physics.OverlapSphere(temp, minDistanceApart);
 
         // There is something colliding with us, recursively call this function
-        if (neighbors.Length > 0 && attemptCount <= 10)
-        {        
+        if (neighbors.Length > 0 && attemptCount <= 4)
+        {
             // Try again   
             SetGroupPosition(moveMe);
         }
         else
         {
             // Set the transform to this random location
-            moveMe.transform.position = temp;
+            moveMe.transform.localPosition = temp;
+
             // Reset the attempt count
             attemptCount = 0;
 
-            // Have the camera look at my final position
-            //Automated_Camera.currentAutoCam.ChangeTarget(moveMe.transform);
+            // Increase the size of the groups
+            size += increaseAmountPerGroup;
         }
     }
 
@@ -249,7 +207,7 @@ public class IPGroupManager : MonoBehaviour {
     /// <param name="groupToColor"></param>
     private void SetGroupColor(IPGroup groupToColor)
     {
-        // Check and make sure taht we actually have some colors
+        // Check and make sure that we actually have some colors
         if (possibleColors == null || possibleColors.Length == 0)
         {
             // Return if we dont

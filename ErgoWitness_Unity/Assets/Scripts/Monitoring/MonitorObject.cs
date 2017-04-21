@@ -406,26 +406,5 @@ public class MonitorObject : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// This method will toggle this monitor on or off with a call from 
-    /// a Toggle UI element
-    /// </summary>
-    public void ToggleMonitor()
-    {
-        // If we are not stopped...
-        if (currentState != MonitorState.Stop)
-        {
-            // Then stop
-            StopMonitor();
-        }
-        // Otherwise we are stopped...
-        else
-        {
-            // So start again
-            StartMonitor();
-        }
-
-    }
-
     #endregion
 }
