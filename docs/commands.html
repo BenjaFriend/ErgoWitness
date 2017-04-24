@@ -28,12 +28,14 @@
 <h3>Useful ELK stack commands</h3>
 <p>List all current indexes:</p>
 <code>
-	curl -X GET “http:// &lt IP addr of ES &gt :9200/_cat/indices?v”
+curl -X GET “http:// &lt IP addr of ES &gt :9200/_cat/indices?v”
+
 </code>
 
 <p>Delete and index:</p>
 <code>
 curl -XDELETE 'localhost:9200/.kibana?pretty'
+
 </code>
 
 <h2>Useful CentOS 7 commands</h2>
@@ -41,42 +43,69 @@ curl -XDELETE 'localhost:9200/.kibana?pretty'
 <p>List what services are running on what ports:</p>
 <code>
 netstat -tnlp
+
 </code>
 
 <p>Reload the firewalld</p>
 <code>
 sudo firewall-cmd --reload
+
 </code>
 
 <p>Allow a http traffic through your firewall, permanently</p>
 <code>
 sudo firewall-cmd --zone=public --add-service=http --permanent
+
 </code>
 
 <p>Start a service</p>
 <code>
 systemctl start <service>
+
 </code>
 
 <p>Restart a service</p>
 <code>
 systemctl restart <service>
+
 </code>
 
 <p>Reset a failed service</p>
 <code>
 systemctl reset-failed <service>
+
 </code>
 
 <p>Use TCP Replay to replay a PCAP file on infinite loop, at 1 GB/s, on a specific interface</p>
 <code>
 tcpreplay --loop=0 --mbps=100.0 --intf1=ens33 <Location of PCap>
+
 </code>
 
 <p>Start bro</p>
 <code>
 /usr/local/bro/bin/broctl start
+
 </code>
+
+<p>How to do a basic query via curl</p>
+
+<code>
+curl localhost:9200/packetbeat-2017.01.26/_search?pretty=true -d '
+{
+"query": {
+    "match_all": {}
+},
+"size": 1,
+"sort": [{
+    "_timestamp": {
+        "order": "desc"
+    }
+}]
+}
+
+</code>
+
 
  <h3>Fixes to Common Problems with ELK</h3>
 

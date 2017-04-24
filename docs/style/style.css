@@ -27,10 +27,11 @@ p {
 }
 
 code {
+  padding: 1em;
   background-color: #D3D3D3;
-  outline-width: 1px;
-  outline-color: black;
   font-family: monospace;
+  display: block;
+  white-space: pre-wrap;
 }
 
 /* ==================== Nav Bar ==================== */
