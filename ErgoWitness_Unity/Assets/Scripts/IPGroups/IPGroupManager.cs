@@ -8,24 +8,24 @@ using System.Net;
 /// This is will manage all of my groups, so if an IP 
 /// does not fit into a group then I will make a new one
 /// </summary>
-public class IPGroupManager : MonoBehaviour {
-
+public class IPGroupManager : MonoBehaviour
+{
 
     #region Fields
-    public static IPGroupManager currentIpGroups;   // A static reference to this manager
 
     public Material[] possibleColors;    // The possible colors that we want to assign the groups at random
     public Material[] blueTeamMats;      // The possible colors for the blue team
     public Material[] redTeamMat;        // The possible colors for the red team
 
-    public GameObject groupPrefab;              // The prefab for the IP group
+    public static IPGroupManager currentIpGroups;   // A static reference to this manager
 
-    private Dictionary<int, IPGroup> groupsDictionary;  // A dictionary of all the groups that we currently have
+    public Dictionary<int, IPGroup> groupsDictionary;  // A dictionary of all the groups that we currently have
+    public GameObject groupPrefab;  // The prefab for the IP group
     public float minDistanceApart = 15f;
     public float size = 100f;
     public float increaseAmountPerGroup = 10f;  // This will be added to the size every time that a new group is added
                                                 // So that the radius gets bigger and bigger
-    private int lastColorUsed;      // Keep track of the last color so that we don't assign it twice in a row
+    private int lastColorUsed;    // Keep track of the last color so that we don't assign it twice in a row
 
     private IPGroup newGroup;       // variable that I will use as a temp
     private GameObject temp;        // Temp reference to a gameObject
@@ -36,12 +36,11 @@ public class IPGroupManager : MonoBehaviour {
 
     #endregion
 
-
     /// <summary>
     /// Make sure that we only ahve one of these managers in our scene
     /// </summary>
     private void Awake()
-    {    
+    {
         // If there are no other objects that have been assigned this static reference yet... 
         if (currentIpGroups == null)
         {
@@ -56,7 +55,7 @@ public class IPGroupManager : MonoBehaviour {
     /// <summary>
     /// Set the static referce, initialize the list of groups
     /// </summary>
-    void Start ()
+    void Start()
     {
         // Initalize the group dictiona
         groupsDictionary = new Dictionary<int, IPGroup>();
@@ -68,6 +67,48 @@ public class IPGroupManager : MonoBehaviour {
         redTeamIpIntArray = new int[0];
         // Read in all the blue team IP addresses, and store them in an array of integers
         blueTeamIntArray = new int[0];
+    }
+
+    /// <summary>
+    /// Take in a file location, read that file using the StreamReader class,
+    /// and return an integer array of bit shifted IP addresses
+    /// </summary>
+    /// <param name="fileLocation">Which file we are reading from</param>
+    /// <returns>An integer array of bit-shifted IP addresses that were in the file</returns>
+    private int[] ReadInIps(string fileLocation)
+    {
+        // A list of strings to keep track of the IP addresses
+        List<string> ipStringsList = new List<string>();
+
+        string line;
+        int counter = 0;
+
+        // Read the file and display it line by line.  
+        System.IO.StreamReader file =
+            new System.IO.StreamReader(fileLocation);
+
+        while ((line = file.ReadLine()) != null)
+        {
+            // Read in the line that has the IP address
+            ipStringsList.Add(line);
+            counter++;
+        }
+
+        // Close te file reader
+        file.Close();
+
+        // Create a new integer array the size of however many objects that we have
+        int[] ipIntArray = new int[counter];
+
+
+        for (int i = 0; i < ipStringsList.Count; i++)
+        {
+            // Set the integer array value to the string value
+            ipIntArray[i] = IpToInt(ipStringsList[i]);
+        }
+
+        // Return the result
+        return ipIntArray;
     }
 
     public void SetIpsViaOptions(string[] ipAddress, int groupNum)
@@ -93,7 +134,8 @@ public class IPGroupManager : MonoBehaviour {
             default:
                 Debug.Log("There is no array of that index! Group manager");
                 break;
-        }       
+        }
+
 
     }
 
@@ -143,7 +185,10 @@ public class IPGroupManager : MonoBehaviour {
     {
         // Instatiate a new instance of a group, and set it equal to temp so we can access it
         temp = (GameObject)Instantiate(groupPrefab, transform.position, Quaternion.identity);
-    
+
+        // Parent the object to the manager, so that we can scale it
+        temp.transform.parent = this.transform;
+
         // If it doesnt fit then we have to make a new group object
         newGroup = temp.GetComponent<IPGroup>();
 
@@ -207,7 +252,7 @@ public class IPGroupManager : MonoBehaviour {
     /// <param name="groupToColor"></param>
     private void SetGroupColor(IPGroup groupToColor)
     {
-        // Check and make sure that we actually have some colors
+        // Check and make sure taht we actually have some colors
         if (possibleColors == null || possibleColors.Length == 0)
         {
             // Return if we dont
@@ -238,13 +283,13 @@ public class IPGroupManager : MonoBehaviour {
             return;
         }
         // This is blue team
-        else if(whichBlueTeam >= 0)
+        else if (whichBlueTeam >= 0)
         {
             // tell us that this is a special team that we care about
             groupToColor.IsSpecialTeam = true;
 
             // Set the color to the blue team specific color
-            if(whichBlueTeam >= blueTeamMats.Length)
+            if (whichBlueTeam >= blueTeamMats.Length)
             {
                 groupToColor.GroupColor = blueTeamMats[Random.Range(0, blueTeamMats.Length)];
             }
@@ -257,7 +302,7 @@ public class IPGroupManager : MonoBehaviour {
         }
 
         // If we only have one color
-        else if(possibleColors.Length == 1)
+        else if (possibleColors.Length == 1)
         {
             // Set that color to the only one that we have
             groupToColor.GroupColor = possibleColors[0];
@@ -269,7 +314,7 @@ public class IPGroupManager : MonoBehaviour {
         int x = Random.Range(0, possibleColors.Length);
 
         // If this is the same as the last color used
-        while(x == lastColorUsed)
+        while (x == lastColorUsed)
         {
             // This is so that we never get the same color that we used last time
             x = Random.Range(0, possibleColors.Length);
@@ -289,9 +334,9 @@ public class IPGroupManager : MonoBehaviour {
     /// <returns></returns>
     private int isBlueTeam(int ipInt)
     {
-        for(int i = 0; i < blueTeamIntArray.Length; i++)
+        for (int i = 0; i < blueTeamIntArray.Length; i++)
         {
-            if(ipInt == blueTeamIntArray[i])
+            if (ipInt == blueTeamIntArray[i])
             {
                 return i;
             }
@@ -344,7 +389,7 @@ public class IPGroupManager : MonoBehaviour {
 
         // Build up a new string with a string builder
         System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        for(int i = 0; i < stringValues.Length; i++)
+        for (int i = 0; i < stringValues.Length; i++)
         {
             builder.Append(stringValues[i]);
             builder.Append('.');

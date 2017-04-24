@@ -5,13 +5,15 @@ using UnityEngine;
 /// <summary>
 /// This will manage the netflow data objects that we have
 /// and handle the comparisons and what not that we have
+/// 
+/// Author: Ben Hoffman
 /// </summary>
 [RequireComponent(typeof(ObjectPooler))]
-public class NetflowController : MonoBehaviour
+public class ConnectionController : MonoBehaviour
 {
     #region Fields
 
-    public static NetflowController currentNetflowController;
+    public static ConnectionController currentNetflowController;
         
     public StreamingInfo_UI streamingUI;
 

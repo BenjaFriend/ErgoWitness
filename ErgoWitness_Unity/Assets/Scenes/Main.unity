@@ -7358,6 +7358,10 @@ Prefab:
       propertyPath: streamingUI
       value: 
       objectReference: {fileID: 117142595}
+    - target: {fileID: 1902740300976756, guid: f9a21a1850817f74fbd4b790aab57efc, type: 2}
+      propertyPath: m_Name
+      value: ConnectionController
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9a21a1850817f74fbd4b790aab57efc, type: 2}
   m_IsPrefabParent: 0

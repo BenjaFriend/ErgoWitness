@@ -111,7 +111,7 @@ public class DeviceManager : MonoBehaviour {
         // If there is a service runnign on this, then send it to the netflow controller to visualize it
         if (jsonSourceData.service != null)
         {
-            NetflowController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
+            ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
         }
     }
 

@@ -110,7 +110,7 @@ public class PacketbeatMonitor : MonitorObject {
                 }
 
                 // Send the data to the netflow controller
-                NetflowController.currentNetflowController.CheckPacketbeatData(
+                ConnectionController.currentNetflowController.CheckPacketbeatData(
                     packetDataObj.hits.hits[i]._source.sourceIpInt,
                     packetDataObj.hits.hits[i]._source.destIpInt,
                     packetDataObj.hits.hits[i]._source.transport);
