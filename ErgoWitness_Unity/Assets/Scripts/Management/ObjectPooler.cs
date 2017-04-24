@@ -16,7 +16,7 @@ public class ObjectPooler : MonoBehaviour {
     /// <summary>
     /// Instantiate the pool list, and create all of the prefabs into that list
     /// </summary>
-    void Awake ()
+    void Start ()
     {
         // Instantiate the pool list
         pooledObjects = new List<GameObject>();

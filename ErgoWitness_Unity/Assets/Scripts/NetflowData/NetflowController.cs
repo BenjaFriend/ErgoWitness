@@ -6,6 +6,7 @@ using UnityEngine;
 /// This will manage the netflow data objects that we have
 /// and handle the comparisons and what not that we have
 /// </summary>
+[RequireComponent(typeof(ObjectPooler))]
 public class NetflowController : MonoBehaviour
 {
     #region Fields
@@ -31,7 +32,7 @@ public class NetflowController : MonoBehaviour
     public Gradient dnsTrailColor;
     public Gradient AttackingBlueTeam_Gradient;
 
-    public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
+    private ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
 
     private GameObject obj; // This is better for memory
     private NetflowObject tempNet; // Temp object for when we alter stuff
@@ -57,6 +58,11 @@ public class NetflowController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // Get the object pooler componenet
+        netflowObjectPooler = GetComponent<ObjectPooler>();
+    }
 
     /// <summary>
     /// This method will just take in the source and IP integers of something,
@@ -115,10 +121,10 @@ public class NetflowController : MonoBehaviour
         tempNet.SourcePos = DeviceManager.currentDeviceManager.GetTransform(sourceIP);
 
         // Set the protocol of the netflow 
-        tempNet.Protocol = protocol;
+        //tempNet.Protocol = protocol;
 
         // Set the color of the temp net object
-        SetColor(tempNet);
+        SetColor(tempNet, protocol);
 
         // Set the destination of the netflow obj, which also start the movement 
         tempNet.DestinationPos = DeviceManager.currentDeviceManager.GetTransform(destIP);
@@ -130,43 +136,46 @@ public class NetflowController : MonoBehaviour
 
     /// <summary>
     /// Set the trail material for the given object
+    /// 
+    /// Author: Ben Hoffman
     /// </summary>
     /// <param name="objToSet"></param>
-    private void SetColor(NetflowObject objToSet)
+    private void SetColor(NetflowObject objToSet, string protocol)
     {               
         // Change to the proper material
-        switch (objToSet.Protocol)
+        switch (protocol)
         {
             case ("tcp"):
                 objToSet.HeadParticleMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
-                objToSet.LineDrawColor = tcpMat.GetColor("_TintColor");
+                objToSet.TrailColor = tcpTrailColor;
                 break;
 
             case ("udp"):
                 objToSet.HeadParticleMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
-                objToSet.LineDrawColor = udpMat.GetColor("_TintColor");
+                objToSet.TrailColor = udpTrailColor;
                 break;
 
             case ("http"):
                 objToSet.HeadParticleMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
-                objToSet.LineDrawColor = httpMat.GetColor("_TintColor");
+                objToSet.TrailColor = httpTrailColor;
                 break;
 
             case ("dns"):
                 objToSet.HeadParticleMaterial = dnsMat;
                 objToSet.SetColor(dnsTrailColor);
-                objToSet.LineDrawColor = dnsMat.GetColor("_TintColor");
+                objToSet.TrailColor = dnsTrailColor;
                 break;
 
             default:
                 // Set the material of the single node/head of the particle system
                 objToSet.HeadParticleMaterial = defaultMat;
-                // Set the Trail particles color
+                // Set the head particle color
                 objToSet.SetColor(defaultTrailColor);
-                objToSet.LineDrawColor = defaultMat.GetColor("_TintColor");
+                // Set the trail rend color
+                objToSet.TrailColor = defaultTrailColor;
                 break;
         }
     }

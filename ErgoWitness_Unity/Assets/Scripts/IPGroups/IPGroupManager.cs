@@ -12,15 +12,15 @@ public class IPGroupManager : MonoBehaviour {
 
 
     #region Fields
+    public static IPGroupManager currentIpGroups;   // A static reference to this manager
 
     public Material[] possibleColors;    // The possible colors that we want to assign the groups at random
     public Material[] blueTeamMats;      // The possible colors for the blue team
     public Material[] redTeamMat;        // The possible colors for the red team
 
-    public static IPGroupManager currentIpGroups;   // A static reference to this manager
-
-    public Dictionary<int, IPGroup> groupsDictionary;  // A dictionary of all the groups that we currently have
     public GameObject groupPrefab;              // The prefab for the IP group
+
+    private Dictionary<int, IPGroup> groupsDictionary;  // A dictionary of all the groups that we currently have
     public float minDistanceApart = 15f;
     public float size = 100f;
     public float increaseAmountPerGroup = 10f;  // This will be added to the size every time that a new group is added

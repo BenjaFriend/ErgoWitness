@@ -103,6 +103,7 @@ public class MoveFromSourceToTarget : MonoBehaviour {
 
             yield return null;
         }
+
         hasArrived = true;
     }
 }

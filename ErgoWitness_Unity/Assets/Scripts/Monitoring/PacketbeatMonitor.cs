@@ -11,16 +11,9 @@ public class PacketbeatMonitor : MonitorObject {
 
     private Packetbeat_Json_Data _packetbeatJsonData;  // The JSON data that we are gonna keep track of
     public bool assumeHttp = false;                    // If this is true then all traffic on ports 80 and 8080 will be considered HTTP traffic
+
+    private Coroutine _CheckDataRoutine;
             
-    /// <summary>
-    /// Instantiate the packetbeat data on 
-    /// awake to avoid all null reference errors
-    /// </summary>
-    private void Awake()
-    {
-        // Instantiate the packetbeat data
-        _packetbeatJsonData = new Packetbeat_Json_Data();
-    }
 
     /// <summary>
     /// Start the necessary finite state machine with the
@@ -30,6 +23,9 @@ public class PacketbeatMonitor : MonitorObject {
     {
         // Make sure that the FSM knows we are starting again
         base.StartMonitor();
+
+        // Instantiate the data for our request
+        _packetbeatJsonData = new Packetbeat_Json_Data();
 
         // Start the finite satate machine for the web request
         StartCoroutine(FSM(_packetbeatJsonData));
@@ -43,12 +39,22 @@ public class PacketbeatMonitor : MonitorObject {
     /// <param name="data"></param>
     public override void CheckRequestData<T>(T data)
     {
+        // Attempt to cast the data to the type that we want it to be
         if (typeof(T) == typeof(Packetbeat_Json_Data))
         {
             // Cast the object as necessary
             _packetbeatJsonData = data as Packetbeat_Json_Data;
-            // Process the data how we want to
-            CheckData(_packetbeatJsonData);
+
+            // If we are currently running a coroutine then quit that
+            if (_CheckDataRoutine != null)
+            {
+                // Stop the current cortoutine after it finishes
+                StopCoroutine(_CheckDataRoutine);
+            }
+
+            // Start a new coroutine
+            _CheckDataRoutine = StartCoroutine(CheckData(_packetbeatJsonData));
+
         }
         else
         {
@@ -61,8 +67,9 @@ public class PacketbeatMonitor : MonitorObject {
     /// controller if we should
     /// </summary>
     /// <param name="packetDataObj"></param>
-    private void CheckData(Packetbeat_Json_Data packetDataObj)
+    private IEnumerator CheckData(Packetbeat_Json_Data packetDataObj)
     {
+
         // ================= Check and make sure that our data is valid =====================
         // Make sure that our data is not null
         if (packetDataObj.hits.hits.Length == 0)
@@ -70,7 +77,7 @@ public class PacketbeatMonitor : MonitorObject {
             _UseLastSuccess = true;
 
             // Tell this to use the last successful query
-            return;
+            yield break;//return;
         }
 
         // Let this know that we no longer need to bank on the last success
@@ -108,8 +115,13 @@ public class PacketbeatMonitor : MonitorObject {
                     packetDataObj.hits.hits[i]._source.destIpInt,
                     packetDataObj.hits.hits[i]._source.transport);
             }
+
+            // Get them frames
+            yield return null;
         }
+
     }
+
 
     /// <summary>
     /// Take in a source object, and set it's integer values
@@ -125,7 +137,4 @@ public class PacketbeatMonitor : MonitorObject {
         packetbeatSource.destIpInt =
             IpToInt(packetbeatSource.dest.ip);
     }
-
-
-
 }

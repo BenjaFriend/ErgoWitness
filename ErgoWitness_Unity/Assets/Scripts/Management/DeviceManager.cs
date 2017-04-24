@@ -9,6 +9,7 @@ using UnityEngine.UI;
 /// It will have a way to STORE all my current 'computers' on the network
 /// It will have a method to check if a
 /// </summary>
+[RequireComponent(typeof(ObjectPooler))]
 public class DeviceManager : MonoBehaviour {
 
     #region Fields
@@ -36,12 +37,18 @@ public class DeviceManager : MonoBehaviour {
         }
         else if (currentDeviceManager != this)
             Destroy(gameObject);
+    }
 
+    private void Start()
+    {
         // Initialize the dictionary
         computersDict = new Dictionary<int, Computer>();
 
         // Set the text
         deviceCountText.text = "0";
+
+        // Get the object pooler
+        computerPooler = GetComponent<ObjectPooler>();
     }
 
     /// <summary>

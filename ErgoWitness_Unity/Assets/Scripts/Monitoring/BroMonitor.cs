@@ -11,6 +11,8 @@ public class BroMonitor : MonitorObject {
     // The JSON class of data for the bro data
     private Json_Data _broData;
 
+    private Coroutine _checkDataRoutine;
+
     /// <summary>
     /// This will start the FSM with our specific stype of data
     /// </summary>
@@ -38,7 +40,16 @@ public class BroMonitor : MonitorObject {
         {
             // Cast the object as necessary
             _broData = data as Json_Data;
-            CheckData(_broData);
+
+            // Make sure that we are not already running a coroutine
+            if(_checkDataRoutine != null)
+            {
+                // If we are then stop it
+                StopCoroutine(_checkDataRoutine);
+            }
+
+            // Otherwise, start a new coroutine
+            _checkDataRoutine = StartCoroutine(CheckData(_broData));
         }
         else
         {
@@ -50,7 +61,7 @@ public class BroMonitor : MonitorObject {
     /// Check the data for a Json Object
     /// </summary>
     /// <param name="dataObject"></param>
-    private void CheckData(Json_Data dataObject)
+    private IEnumerator CheckData(Json_Data dataObject)
     {
         // ================= Check and make sure that our data is valid ===================== //
         // Make sure that our data is not null
@@ -59,7 +70,7 @@ public class BroMonitor : MonitorObject {
             _UseLastSuccess = true;
 
             // Tell this to use the last successful query
-            return;
+            yield break; //return;
         }
 
         // Let this know that we no longer need to bank on the last success
@@ -82,11 +93,14 @@ public class BroMonitor : MonitorObject {
             // If the source or dest ip's are 0 then break
             if(dataObject.hits.hits[i]._source.sourceIpInt == 0 || dataObject.hits.hits[i]._source.destIpInt == 0)
             {
-                return;
+                yield break;//  return;
             }
 
             // Send the bro data to the game controller, and add it to the network
             DeviceManager.currentDeviceManager.CheckIp(dataObject.hits.hits[i]._source);
+
+            // Make sure we get them smooth frames
+            yield return null;
         }
     }
 
