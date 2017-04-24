@@ -18,7 +18,7 @@ public class MonitorObject : MonoBehaviour {
     [Range(0f, 1f)]
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
 
-    private string serverIP;    // The IP address of the server running our database
+    private string serverIP = "";    // The IP address of the server running our database
     public string indexName;    // Either packetbeat or filebeat
     private string url;         // The filebeat index
 

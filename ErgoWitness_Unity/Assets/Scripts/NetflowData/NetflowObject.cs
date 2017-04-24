@@ -96,6 +96,7 @@ public class NetflowObject : MoveFromSourceToTarget
     {
         // Get a reference to the main
         ParticleSystem.MainModule main = trailPartical.main;
+
         // Change the color
         main.startColor = changeTo;
     }
@@ -108,12 +109,13 @@ public class NetflowObject : MoveFromSourceToTarget
     {
         // Get a reference to the main
         ParticleSystem.MainModule main = trailPartical.main;
+
         // Change the color to the gradient
         main.startColor = changeTo;
     }
 
     /// <summary>
-    /// I will use this to draw lines for right now
+    /// drawan open GL line from the source to the destination
     /// </summary>
     private void OnRenderObject()
     {

@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Move from the source position to the destination
+/// 
+/// Author: Ben Hoffman
+/// </summary>
 public class MoveFromSourceToTarget : MonoBehaviour {
+
+    #region Fields
 
     public float smoothing = 10f;       // How fast do we want to shoot this thing
 
@@ -11,6 +18,10 @@ public class MoveFromSourceToTarget : MonoBehaviour {
 
     private IEnumerator movingRoutine;
     private bool hasArrived;
+
+    #endregion
+
+
     #region Mutators
 
     /// <summary>
@@ -60,10 +71,13 @@ public class MoveFromSourceToTarget : MonoBehaviour {
     public bool HasArrived { get { return hasArrived; } }
     #endregion
 
+
     /// <summary>
     /// Co ourtine that is started when the 'Destination' 
     /// property is set. This lerps between the current position
     /// and the destination position. 
+    /// 
+    /// Author: Ben Hoffman
     /// </summary>
     /// <returns>Movement of this object towards the destiantion</returns>
     public IEnumerator MoveToDestination()

@@ -7,7 +7,7 @@ using UnityEngine;
 /// field of lifetime. On destroy set as in-active.
 /// OnDisable, cancel any invokes on this object
 /// </summary>
-public class NetflowDestroyAfterTime : MonoBehaviour {
+public class DestroyAfterTime : MonoBehaviour {
 
     public float lifetime = 5f; // How long this object will stay active
 
