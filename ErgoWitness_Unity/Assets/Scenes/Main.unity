@@ -8487,6 +8487,16 @@ Prefab:
     - target: {fileID: 114865128993012910, guid: 67f93bcb722d84a49ab8aa6cac737a63,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20989179666345544, guid: 67f93bcb722d84a49ab8aa6cac737a63,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20595829282896866, guid: 67f93bcb722d84a49ab8aa6cac737a63,
+        type: 2}
+      propertyPath: m_HDR
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
