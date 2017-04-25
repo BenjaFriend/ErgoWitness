@@ -4770,7 +4770,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -121.2
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -6808,7 +6808,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -238.59999
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -9091,7 +9091,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 227230812}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6313839
+  m_Size: 0.6313837
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11341,6 +11341,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+        type: 2}
+      propertyPath: monitors.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4980261786873640, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 516.93713
@@ -11377,7 +11382,7 @@ Prefab:
         type: 2}
       propertyPath: monitors.Array.data[2]
       value: 
-      objectReference: {fileID: 1202633552}
+      objectReference: {fileID: 1935440672}
     - target: {fileID: 114187130576590288, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
         type: 2}
       propertyPath: hours
@@ -11403,6 +11408,25 @@ Prefab:
       propertyPath: errorText
       value: 
       objectReference: {fileID: 694759202}
+    - target: {fileID: 1775203398950752, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+        type: 2}
+      propertyPath: monitors.Array.data[0]
+      value: 
+      objectReference: {fileID: 1202633552}
+    - target: {fileID: 114377164771766786, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+        type: 2}
+      propertyPath: frequency
+      value: 0.095
+      objectReference: {fileID: 0}
+    - target: {fileID: 114543548410284238, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+        type: 2}
+      propertyPath: frequency
+      value: 0.234
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
   m_IsPrefabParent: 0

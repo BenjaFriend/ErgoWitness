@@ -8,12 +8,17 @@ using UnityEngine.UI;
 /// This class will do a lot of important things. 
 /// It will have a way to STORE all my current 'computers' on the network
 /// It will have a method to check if a
+/// 
+/// Author: Ben Hoffman
 /// </summary>
-public class DeviceManager : MonoBehaviour {
+[RequireComponent(typeof(ObjectPooler))]
+public class DeviceManager : MonoBehaviour
+{
 
     #region Fields
     public static DeviceManager currentDeviceManager;
 
+    public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
@@ -25,7 +30,7 @@ public class DeviceManager : MonoBehaviour {
     /// <summary>
     /// Make sure that this is the only object of this type in the scene
     /// </summary>
-    void Awake ()
+    void Awake()
     {
         // Make sure tha thtis is the only one of these objects in the scene
         if (currentDeviceManager == null)
@@ -35,12 +40,18 @@ public class DeviceManager : MonoBehaviour {
         }
         else if (currentDeviceManager != this)
             Destroy(gameObject);
+    }
 
+    private void Start()
+    {
         // Initialize the dictionary
         computersDict = new Dictionary<int, Computer>();
 
         // Set the text
         deviceCountText.text = "0";
+
+        // Get the object pooler
+        computerPooler = GetComponent<ObjectPooler>();
     }
 
     /// <summary>
@@ -55,7 +66,8 @@ public class DeviceManager : MonoBehaviour {
         if (CheckDictionary(jsonSourceData.sourceIpInt))
         {
             // I want to check if there is a connection that I should add
-            CheckConnections(jsonSourceData);
+            CheckConnection(jsonSourceData);
+
             // Add more life to the computer that we saw
             computersDict[jsonSourceData.sourceIpInt].AddHit();
         }
@@ -88,7 +100,7 @@ public class DeviceManager : MonoBehaviour {
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
 
         // Check the connections to this, if there are connections then add them to it's list
-        CheckConnections(jsonSourceData);
+        CheckConnection(jsonSourceData);
 
         // Check if we can add it to a group
         IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.sourceIpInt);
@@ -96,11 +108,23 @@ public class DeviceManager : MonoBehaviour {
         // Update the UI that tells us how many devices there are
         deviceCountText.text = computersDict.Count.ToString();
 
+        // Send it to the streaming UI thing
+        streamingInfo.AddInfo(jsonSourceData);
+
+        // ============== Sending the necessary info to draw lines between objects ======================= //
+
         // If there is a service runnign on this, then send it to the netflow controller to visualize it
         if (jsonSourceData.service != null)
         {
-            NetflowController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
+            ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
         }
+        // Otherwise if it is UDP / TCP traffic...
+        else if (jsonSourceData.proto != null)
+        {
+            // Send the protocol
+            ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.proto);
+        }
+
     }
 
     /// <summary>
@@ -111,10 +135,10 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="source">This source data has a SOURCE IP that we know
     /// of already, and we want to check the destination to see if we know
     /// of that or not.</param>
-    private void CheckConnections(Source source)
+    private void CheckConnection(Source source)
     {
         // If this source is 0, then we want to get rid of it
-        if(source.sourceIpInt == 0 || source.destIpInt == 0)
+        if (source.sourceIpInt == 0 || source.destIpInt == 0)
         {
             return;
         }
@@ -145,20 +169,13 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="IP">The IP of the computer that we want to find</param>
     /// <returns>The transform of the computer</returns>
     public Transform GetTransform(int IP)
-    { 
+    {
         // If we contrain this IP address, then return the transform
-        if(computersDict.ContainsKey(IP))
+        if (computersDict.ContainsKey(IP))
             return computersDict[IP].transform;
 
         // Otherwise return null
         return null;
-    }
-
-    /// Returns true if this computer is on blue team
-    public bool isBlueTeam(int ipInt)
-    {
-        // return if this is blue team
-        return computersDict[ipInt].IsSpecialTeam;
     }
 
     /// <summary>

@@ -10,6 +10,7 @@ using UnityEngine;
 /// Control the color of this netflow data, which represents the type
 /// of traffic that it is
 /// </summary>
+[RequireComponent(typeof(TrailRenderer))]
 public class NetflowObject : MoveFromSourceToTarget
 {
     #region Fields
@@ -60,20 +61,6 @@ public class NetflowObject : MoveFromSourceToTarget
         _trailRend = GetComponent<TrailRenderer>();
     }
 
-    /// <summary>
-    /// Set's the start color of the trail particles to this color
-    /// </summary>
-    /// <param name="changeTo"></param>
-  /*  public void SetColor(Color changeTo)
-    {
-        // Get a reference to the main
-        ParticleSystem.MainModule main = trailPartical.main;
-
-        // Change the color
-        main.startColor = changeTo;
-
-        _trailRend.startColor = changeTo;
-    }*/
 
     /// <summary>
     /// Sets the color of the trail particles to this gradient
@@ -87,24 +74,5 @@ public class NetflowObject : MoveFromSourceToTarget
         // Change the color to the gradient
         main.startColor = changeTo;
     }
-
-    /// <summary>
-    /// drawan open GL line from the source to the destination
-    /// </summary>
-  /*  private void OnRenderObject()
-    {
-        // Set the material to be used for the first line
-        lineMaterial.SetPass(0);
-
-        // Draw one line
-        GL.Begin(GL.LINES);
-
-        // Set the vertecies of the line
-        GL.Vertex(transform.position);        // The beginning spot of the draw line
-        GL.Vertex(SourcePos.position);         // The endpoint of the draw line
-
-        // Close the GL pass
-        GL.End();
-    }*/
 
 }

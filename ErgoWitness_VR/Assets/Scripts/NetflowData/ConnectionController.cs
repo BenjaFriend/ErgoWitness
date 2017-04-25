@@ -5,11 +5,17 @@ using UnityEngine;
 /// <summary>
 /// This will manage the netflow data objects that we have
 /// and handle the comparisons and what not that we have
+/// 
+/// Author: Ben Hoffman
 /// </summary>
-public class NetflowController : MonoBehaviour
+[RequireComponent(typeof(ObjectPooler))]
+public class ConnectionController : MonoBehaviour
 {
     #region Fields
-    public static NetflowController currentNetflowController;
+
+    public static ConnectionController currentNetflowController;
+
+    public StreamingInfo_UI streamingUI;
 
     // Particle head materials =========
     public Material tcpMat;  // Just take in one material and use the colors to generate them
@@ -20,6 +26,7 @@ public class NetflowController : MonoBehaviour
     public Material AttackingBlueTeam_Material;
 
     // Particle system colors ============
+    [Tooltip("This is the gradient that will be assigned to the particle system of the connection")]
     public Gradient tcpTrailColor;
     public Gradient udpTrailColor;
     public Gradient httpTrailColor;
@@ -27,15 +34,7 @@ public class NetflowController : MonoBehaviour
     public Gradient dnsTrailColor;
     public Gradient AttackingBlueTeam_Gradient;
 
-    // Line colors ======================
-    public Color tcpColor;
-    public Color udpColor;
-    public Color httpColor;
-    public Color dnsColor;
-    public Color defaultColor;
-    public Color AttackingBlueTeam_Color;
-
-    public ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
+    private ObjectPooler netflowObjectPooler;    // The object pooler for the netflow object
 
     private GameObject obj; // This is better for memory
     private NetflowObject tempNet; // Temp object for when we alter stuff
@@ -61,49 +60,11 @@ public class NetflowController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// If we have this computer, then send the visual aspect of the flow data
-    /// Otherwise, add it to the network
-    /// </summary>
-    /// <param name="packetbeatSource">The netflow source data</param>
-    public void CheckPacketbeatData(Source_Packet packetbeatSource)
+    private void Start()
     {
-        if(packetbeatSource == null)
-        {
-            return;
-        }
-
-        // If the source and destination IP's are known:
-        if (!DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.sourceIpInt) ||
-            !DeviceManager.currentDeviceManager.CheckDictionary(packetbeatSource.destIpInt))
-        {
-            Source newSource = new Source();
-
-            // Set up the source data to properlly represent a computer that we don't yet have
-            newSource.id_orig_h = packetbeatSource.packet_source.ip;
-            newSource.id_orig_p = packetbeatSource.packet_source.port;
-
-            // Set the destination data so that the game controller can read it
-            newSource.id_resp_h = packetbeatSource.dest.ip;
-
-            // Set the destiation port data
-            newSource.id_resp_p = packetbeatSource.dest.port;
-
-            // Set the protocol so that the game controller can read it
-            newSource.proto = packetbeatSource.transport;
-
-            //Set the integer values for this object
-            ManageMonitors.currentMonitors.SetIntegerValues(newSource);
-
-            // Add them to the network, and wait for that to finish:
-            DeviceManager.currentDeviceManager.CheckIp(newSource);
-        }
-
-
-        // Then we can continue on and send out flow data out      
-		SendFlow(packetbeatSource.sourceIpInt, packetbeatSource.destIpInt, packetbeatSource.transport);
+        // Get the object pooler componenet
+        netflowObjectPooler = GetComponent<ObjectPooler>();
     }
-
 
     /// <summary>
     /// This method will just take in the source and IP integers of something,
@@ -132,16 +93,12 @@ public class NetflowController : MonoBehaviour
             // Set the protocol so that the game controller can read it
             newSource.proto = transport;
 
-            //Set the integer values for this object
-            //ManageMonitors.currentMonitors.SetIntegerValues(newSource);
-
             // Add them to the network, and wait for that to finish:
             DeviceManager.currentDeviceManager.CheckIp(newSource);
         }
-    
+
         // Actually send the flow
         SendFlow(sourceIP, destIP, transport);
-
     }
 
     /// <summary>
@@ -166,10 +123,10 @@ public class NetflowController : MonoBehaviour
         tempNet.SourcePos = DeviceManager.currentDeviceManager.GetTransform(sourceIP);
 
         // Set the protocol of the netflow 
-        tempNet.Protocol = protocol;
+        //tempNet.Protocol = protocol;
 
         // Set the color of the temp net object
-        SetColor(tempNet);
+        SetColor(tempNet, protocol);
 
         // Set the destination of the netflow obj, which also start the movement 
         tempNet.DestinationPos = DeviceManager.currentDeviceManager.GetTransform(destIP);
@@ -177,50 +134,50 @@ public class NetflowController : MonoBehaviour
         // Set the object as active in the hierachy, so that the object pooler
         // Knows not to 
         obj.SetActive(true);
-
-        // Connect the computers, because now they have talked to each other
-        //DeviceManager.currentDeviceManager.ConnectComputers(sourceIP, destIP);
     }
 
     /// <summary>
     /// Set the trail material for the given object
+    /// 
+    /// Author: Ben Hoffman
     /// </summary>
     /// <param name="objToSet"></param>
-    private void SetColor(NetflowObject objToSet)
-    {               
+    private void SetColor(NetflowObject objToSet, string protocol)
+    {
         // Change to the proper material
-        switch (objToSet.Protocol)
+        switch (protocol)
         {
             case ("tcp"):
                 objToSet.HeadParticleMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
-                objToSet.LineDrawColor = tcpColor;
+                objToSet.TrailColor = tcpTrailColor;
                 break;
 
             case ("udp"):
                 objToSet.HeadParticleMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
-                objToSet.LineDrawColor = udpColor;
+                objToSet.TrailColor = udpTrailColor;
                 break;
 
             case ("http"):
                 objToSet.HeadParticleMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
-                objToSet.LineDrawColor = httpColor;
+                objToSet.TrailColor = httpTrailColor;
                 break;
 
             case ("dns"):
                 objToSet.HeadParticleMaterial = dnsMat;
                 objToSet.SetColor(dnsTrailColor);
-                objToSet.LineDrawColor = dnsColor;
+                objToSet.TrailColor = dnsTrailColor;
                 break;
 
             default:
                 // Set the material of the single node/head of the particle system
                 objToSet.HeadParticleMaterial = defaultMat;
-                // Set the Trail particles color
+                // Set the head particle color
                 objToSet.SetColor(defaultTrailColor);
-                objToSet.LineDrawColor = defaultColor;
+                // Set the trail rend color
+                objToSet.TrailColor = defaultTrailColor;
                 break;
         }
     }

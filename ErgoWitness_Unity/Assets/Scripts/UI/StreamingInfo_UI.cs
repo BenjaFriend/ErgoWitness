@@ -102,17 +102,14 @@ public class StreamingInfo_UI : MonoBehaviour {
     /// <summary>
     /// Set the information of the one that is on top 
     /// Move all the other objects down
+    /// 
+    /// Author: Ben Hoffman
     /// </summary>
     /// <param name="newInfoObject">The object that we want to tell the player about</param>
     public void AddInfo(Source newFilebeatObj)
-    {
-        // If we are not showing the UI then don't bother
-        if (!isShowing)
-        {
-            return;
-        }
+    {        
         // Make sure that this object is valid to show, and has the proper information
-        if (newFilebeatObj.destIpInt == 0 || newFilebeatObj.sourceIpInt == 0)
+        if (!isShowing || newFilebeatObj.destIpInt == 0 || newFilebeatObj.sourceIpInt == 0)
         {
             return;
         }

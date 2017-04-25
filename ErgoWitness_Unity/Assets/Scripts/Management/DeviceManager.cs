@@ -108,11 +108,20 @@ public class DeviceManager : MonoBehaviour {
         // Send it to the streaming UI thing
         streamingInfo.AddInfo(jsonSourceData);
 
+        // ============== Sending the necessary info to draw lines between objects ======================= //
+
         // If there is a service runnign on this, then send it to the netflow controller to visualize it
         if (jsonSourceData.service != null)
         {
             ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
         }
+        // Otherwise if it is UDP / TCP traffic...
+        else if (jsonSourceData.proto != null)
+        {
+            // Send the protocol
+            ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.proto);
+        }
+
     }
 
     /// <summary>
