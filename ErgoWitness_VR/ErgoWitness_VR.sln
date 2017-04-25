@@ -1,13 +1,13 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR.Plugins", "ErgoWitness_VR.Plugins.csproj", "{5FB19DC6-97C3-5838-902F-BC97F86420B1}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{D5D59503-7A55-8F6F-1EC4-13AD202C267E}") = "ErgoWitness_VR", "Assembly-CSharp-firstpass.csproj", "{AD799E6F-8E6E-32D8-8B68-12BA3D54C5E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR", "ErgoWitness_VR.csproj", "{1C568D73-96DB-000D-00B9-111175FAF48B}"
+Project("{D5D59503-7A55-8F6F-1EC4-13AD202C267E}") = "ErgoWitness_VR", "Assembly-CSharp.csproj", "{762D8BEB-3555-DCF0-8F71-370B13C350D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR.Editor.Plugins", "ErgoWitness_VR.Editor.Plugins.csproj", "{B2FBD6B9-AADC-CB9F-9F29-C97472951013}"
+Project("{D5D59503-7A55-8F6F-1EC4-13AD202C267E}") = "ErgoWitness_VR", "Assembly-CSharp-Editor-firstpass.csproj", "{D20E0977-A54B-4DC3-545B-AD110564B8E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_VR.Editor", "ErgoWitness_VR.Editor.csproj", "{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}"
+Project("{D5D59503-7A55-8F6F-1EC4-13AD202C267E}") = "ErgoWitness_VR", "Assembly-CSharp-Editor.csproj", "{336756B2-6398-AE2C-344A-9A3BFEA23E5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,24 +15,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FB19DC6-97C3-5838-902F-BC97F86420B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C568D73-96DB-000D-00B9-111175FAF48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C568D73-96DB-000D-00B9-111175FAF48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C568D73-96DB-000D-00B9-111175FAF48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C568D73-96DB-000D-00B9-111175FAF48B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2FBD6B9-AADC-CB9F-9F29-C97472951013}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2057FBD8-DD5F-6FDB-C5A5-3A8DBE6D35DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD799E6F-8E6E-32D8-8B68-12BA3D54C5E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD799E6F-8E6E-32D8-8B68-12BA3D54C5E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD799E6F-8E6E-32D8-8B68-12BA3D54C5E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD799E6F-8E6E-32D8-8B68-12BA3D54C5E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762D8BEB-3555-DCF0-8F71-370B13C350D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762D8BEB-3555-DCF0-8F71-370B13C350D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762D8BEB-3555-DCF0-8F71-370B13C350D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762D8BEB-3555-DCF0-8F71-370B13C350D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D20E0977-A54B-4DC3-545B-AD110564B8E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D20E0977-A54B-4DC3-545B-AD110564B8E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D20E0977-A54B-4DC3-545B-AD110564B8E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D20E0977-A54B-4DC3-545B-AD110564B8E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336756B2-6398-AE2C-344A-9A3BFEA23E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336756B2-6398-AE2C-344A-9A3BFEA23E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336756B2-6398-AE2C-344A-9A3BFEA23E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336756B2-6398-AE2C-344A-9A3BFEA23E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

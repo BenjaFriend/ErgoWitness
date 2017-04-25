@@ -15,7 +15,7 @@ public class ConnectionController : MonoBehaviour
 
     public static ConnectionController currentNetflowController;
 
-    public StreamingInfo_UI streamingUI;
+    //public StreamingInfo_UI streamingUI;
 
     // Particle head materials =========
     public Material tcpMat;  // Just take in one material and use the colors to generate them

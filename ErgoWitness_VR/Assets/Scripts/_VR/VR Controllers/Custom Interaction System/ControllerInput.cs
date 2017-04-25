@@ -87,6 +87,7 @@ public class ControllerInput : MonoBehaviour
         {
             return;
         }
+
         // Clear our colliding object, because it has left our trigger
         collidingObject = null;
     }
@@ -120,6 +121,7 @@ public class ControllerInput : MonoBehaviour
     {
         // Add a fixed joint to the object that we are collidnig with
         objectInHand = collidingObject;
+
         // Set our colliding object to null, because now it is in our hand
         collidingObject = null;
 

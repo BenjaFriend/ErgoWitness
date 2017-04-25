@@ -65143,3 +65143,274 @@ transform.localScale assign attempt for 'Cube' is not valid. Input localScale is
 UnityEngine.Transform:set_localScale(Vector3)
 TouchPadScale:LateUpdate() (at Assets/VR/Scripts/VR Controllers/Custom Interaction System/TouchPadScale.cs:83)
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:89)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:77)
+BroMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/BroMonitor.cs:101)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+BroMonitor:CheckRequestData(Json_Data) (at Assets/Scripts/Monitoring/BroMonitor.cs:53)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:89)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:77)
+ConnectionController.CheckPacketbeatData (Int32 sourceIP, Int32 destIP, System.String transport) (at Assets/Scripts/NetflowData/ConnectionController.cs:97)
+PacketbeatMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:115)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:58)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:89)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:77)
+ConnectionController.CheckPacketbeatData (Int32 sourceIP, Int32 destIP, System.String transport) (at Assets/Scripts/NetflowData/ConnectionController.cs:97)
+PacketbeatMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:115)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:58)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:89)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:77)
+ConnectionController.CheckPacketbeatData (Int32 sourceIP, Int32 destIP, System.String transport) (at Assets/Scripts/NetflowData/ConnectionController.cs:97)
+PacketbeatMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:115)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:58)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:89)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:77)
+ConnectionController.CheckPacketbeatData (Int32 sourceIP, Int32 destIP, System.String transport) (at Assets/Scripts/NetflowData/ConnectionController.cs:97)
+PacketbeatMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:115)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:58)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:89)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:77)
+ConnectionController.CheckPacketbeatData (Int32 sourceIP, Int32 destIP, System.String transport) (at Assets/Scripts/NetflowData/ConnectionController.cs:97)
+PacketbeatMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:115)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:58)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:112)
+DeviceManager.CheckConnection (.Source source) (at Assets/Scripts/Management/DeviceManager.cs:161)
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:103)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:77)
+BroMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/BroMonitor.cs:101)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+BroMonitor:CheckRequestData(Json_Data) (at Assets/Scripts/Monitoring/BroMonitor.cs:53)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+DeviceManager.NewComputer (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:112)
+DeviceManager.CheckConnection (.Source source) (at Assets/Scripts/Management/DeviceManager.cs:161)
+DeviceManager.CheckIp (.Source jsonSourceData) (at Assets/Scripts/Management/DeviceManager.cs:69)
+ConnectionController.CheckPacketbeatData (Int32 sourceIP, Int32 destIP, System.String transport) (at Assets/Scripts/NetflowData/ConnectionController.cs:97)
+PacketbeatMonitor+<CheckData>c__Iterator0.MoveNext () (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:115)
+UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) (at C:/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+PacketbeatMonitor:CheckRequestData(Packetbeat_Json_Data) (at Assets/Scripts/Monitoring/PacketbeatMonitor.cs:58)
+<MakePostRequest>c__Iterator1`1:MoveNext() (at Assets/Scripts/Monitoring/MonitorObject.cs:294)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!!
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! TeleportZone (1)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Controller (right)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Computer_Prefab(Clone)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerStay(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:83)
+
+Error
+COLLIDED WITH ANOTHER OBJECT!!! Controller (right)
+UnityEngine.Debug:LogError(Object)
+ControllerInput:CheckCollidingObject(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:114)
+ControllerInput:OnTriggerEnter(Collider) (at Assets/Scripts/_VR/VR Controllers/Custom Interaction System/ControllerInput.cs:77)
+
