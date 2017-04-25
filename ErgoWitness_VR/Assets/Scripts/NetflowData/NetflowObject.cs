@@ -63,6 +63,9 @@ public class NetflowObject : MoveFromSourceToTarget
 
         // Get the trail renderer componenet
         _trailRend = GetComponent<TrailRenderer>();
+
+        // Set the partent object
+        transform.parent = ConnectionController.currentNetflowController.transform;
     }
 
     /// <summary>
