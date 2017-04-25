@@ -99,6 +99,7 @@ public class StreamingInfo_UI : MonoBehaviour {
         }
     }
 
+
     /// <summary>
     /// Set the information of the one that is on top 
     /// Move all the other objects down

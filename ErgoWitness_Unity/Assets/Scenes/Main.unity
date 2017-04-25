@@ -3412,8 +3412,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 117142595}
-        m_MethodName: ToggleRecieveData
-        m_Mode: 1
+        m_MethodName: set_IsShowing
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4770,7 +4770,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -121.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -6808,7 +6808,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -238.59999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -9091,7 +9091,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 227230812}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6313837
+  m_Size: 0.63126147
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

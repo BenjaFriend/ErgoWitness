@@ -198,6 +198,20 @@ public class MonitorObject : MonoBehaviour {
         currentState = MonitorState.Stop;
     }
 
+    public void ToggleMonitor()
+    {
+        // If we are playing, then stop
+        if(currentState != MonitorState.Stop)
+        {
+            StopMonitor();
+        }
+        else
+        {
+            // Otherwise, start the game
+            StartMonitor();
+        }
+    }
+
     #endregion
 
 

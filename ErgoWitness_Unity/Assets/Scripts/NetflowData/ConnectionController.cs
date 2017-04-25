@@ -14,9 +14,7 @@ public class ConnectionController : MonoBehaviour
     #region Fields
 
     public static ConnectionController currentNetflowController;
-        
-    public StreamingInfo_UI streamingUI;
-
+    
     // Particle head materials =========
     public Material tcpMat;  // Just take in one material and use the colors to generate them
     public Material udpMat;
@@ -96,7 +94,7 @@ public class ConnectionController : MonoBehaviour
             // Add them to the network, and wait for that to finish:
             DeviceManager.currentDeviceManager.CheckIp(newSource);
         }
-    
+
         // Actually send the flow
         SendFlow(sourceIP, destIP, transport);
     }
@@ -121,9 +119,6 @@ public class ConnectionController : MonoBehaviour
 
         // Set the source of the netflow 
         tempNet.SourcePos = DeviceManager.currentDeviceManager.GetTransform(sourceIP);
-
-        // Set the protocol of the netflow 
-        //tempNet.Protocol = protocol;
 
         // Set the color of the temp net object
         SetColor(tempNet, protocol);
