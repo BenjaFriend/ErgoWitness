@@ -12,16 +12,20 @@ using UnityEngine;
 /// 
 /// Author: Ben Hoffman
 /// </summary>
-[RequireComponent(typeof(TrailRenderer))]
+//[RequireComponent(typeof(TrailRenderer))]
 public class NetflowObject : MoveFromSourceToTarget
 {
     #region Fields
+	public Material connectionColor;        
 
     public ParticleSystem trailPartical;         // The emission module of this particle system
 
     private ParticleSystemRenderer headParticle; //The Particle system on this object
 
-    private TrailRenderer _trailRend;
+	private Material lineMaterial;
+
+
+    //private TrailRenderer _trailRend;
 
     #endregion
 
@@ -41,12 +45,15 @@ public class NetflowObject : MoveFromSourceToTarget
         }
     }
 
-    public Gradient TrailColor
+    public Color TrailColor
     {
         set
         {
             // Set the tint color of the material
-            _trailRend.colorGradient = value;
+            //_trailRend.colorGradient = value;
+			value.a = .3f;
+			// Set the tint color of the material
+			lineMaterial.SetColor("_TintColor", value);
         }
     }
 
@@ -62,15 +69,29 @@ public class NetflowObject : MoveFromSourceToTarget
         headParticle = GetComponent<ParticleSystemRenderer>();
 
         // Get the trail renderer componenet
-        _trailRend = GetComponent<TrailRenderer>();
-
-        
+        //_trailRend = GetComponent<TrailRenderer>();
+		lineMaterial = new Material(connectionColor);   
     }
 
 	void Start()
 	{
 		// Set the partent object
 		transform.parent = ConnectionController.currentNetflowController.transform;
+	}
+
+	/// <summary>
+	/// If we arrived at the destination then
+	/// fade out the line material
+	/// </summary>
+	void Update()
+	{
+		if (HasArrived)
+		{
+			// Start the coroutine for fading out the color
+			Color newColor = lineMaterial.GetColor("_TintColor");
+			newColor.a = Mathf.Lerp(newColor.a, 0, Time.deltaTime);
+			lineMaterial.SetColor("_TintColor", newColor);
+		}
 	}
 
     /// <summary>
@@ -85,5 +106,24 @@ public class NetflowObject : MoveFromSourceToTarget
         // Change the color to the gradient
         main.startColor = changeTo;
     }
+
+	/// <summary>
+	/// I will use this to draw lines for right now
+	/// </summary>
+	private void OnRenderObject()
+	{
+		// Set the material to be used for the first line
+		lineMaterial.SetPass(0);
+
+		// Draw one line
+		GL.Begin(GL.LINES);
+
+		// Set the vertecies of the line
+		GL.Vertex(transform.position);        // The beginning spot of the draw line
+		GL.Vertex(SourcePos.position);         // The endpoint of the draw line
+
+		// Close the GL pass
+		GL.End();
+	}
 
 }

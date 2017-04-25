@@ -150,25 +150,33 @@ public class ConnectionController : MonoBehaviour
             case ("tcp"):
                 objToSet.HeadParticleMaterial = tcpMat;
                 objToSet.SetColor(tcpTrailColor);
-                objToSet.TrailColor = tcpTrailColor;
+                //objToSet.TrailColor = tcpTrailColor;
+			objToSet.TrailColor = tcpMat.GetColor("_TintColor");
+
                 break;
 
             case ("udp"):
                 objToSet.HeadParticleMaterial = udpMat;
                 objToSet.SetColor(udpTrailColor);
-                objToSet.TrailColor = udpTrailColor;
+                //objToSet.TrailColor = udpTrailColor;
+			objToSet.TrailColor = udpMat.GetColor("_TintColor");
+
                 break;
 
             case ("http"):
                 objToSet.HeadParticleMaterial = httpMat;
                 objToSet.SetColor(httpTrailColor);
-                objToSet.TrailColor = httpTrailColor;
+                //objToSet.TrailColor = httpTrailColor;
+			objToSet.TrailColor = httpMat.GetColor("_TintColor");
+
                 break;
 
             case ("dns"):
                 objToSet.HeadParticleMaterial = dnsMat;
                 objToSet.SetColor(dnsTrailColor);
-                objToSet.TrailColor = dnsTrailColor;
+                //objToSet.TrailColor = dnsTrailColor;
+			objToSet.TrailColor = dnsMat.GetColor("_TintColor");
+
                 break;
 
             default:
@@ -177,7 +185,9 @@ public class ConnectionController : MonoBehaviour
                 // Set the head particle color
                 objToSet.SetColor(defaultTrailColor);
                 // Set the trail rend color
-                objToSet.TrailColor = defaultTrailColor;
+                //objToSet.TrailColor = defaultTrailColor;
+			objToSet.TrailColor = defaultMat.GetColor("_TintColor");
+
                 break;
         }
     }
