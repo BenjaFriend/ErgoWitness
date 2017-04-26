@@ -23,6 +23,7 @@ public class NetflowObject : MoveFromSourceToTarget
 
     #endregion
 
+
     #region Properties
     
     public Material HeadParticleMaterial
@@ -48,6 +49,7 @@ public class NetflowObject : MoveFromSourceToTarget
     }
 
     #endregion
+
 
     /// <summary>
     /// Get a reference to the particles

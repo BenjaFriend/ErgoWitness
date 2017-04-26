@@ -211,13 +211,12 @@ public class MonitorObject : MonoBehaviour {
     /// Called by a checkbox to turn the feature on or off
     /// </summary>
     public void ToggleMonitor()
-    {
+   { 
         // If we are playing, then stop
         if(currentState != MonitorState.Stop)
         {
             StopMonitor();
             toggledOff = true;
-
         }
         else
         {
