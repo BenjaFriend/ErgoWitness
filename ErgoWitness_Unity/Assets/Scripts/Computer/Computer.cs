@@ -28,13 +28,15 @@ public class Computer : MonoBehaviour
     private bool isDying = false;      // This will be used to make sure that we don't call the death function when we don't need to
     private WaitForSeconds deathWait;  // How long we wait for our animation to play when we go inactive
     private MeshRenderer meshRend;     // The mesh renderer component of this object so taht we can 
+
     private IPGroup myGroup;           // A reference to the IP group that I am in
+
+
     #endregion
 
     #region Mutators
-
     public bool IsSpecialTeam
-    { get { return isSpecialTeam;  }
+    { get { return isSpecialTeam; }
         set { isSpecialTeam = value; } }
 
     public int SourceInt
