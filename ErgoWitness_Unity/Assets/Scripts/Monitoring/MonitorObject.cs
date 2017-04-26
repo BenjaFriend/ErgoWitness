@@ -55,6 +55,8 @@ public class MonitorObject : MonoBehaviour {
     private string _lessThenQuery;
     private string _greaterThenQuery;
 
+    public bool toggledOff;
+
     /// <summary>
     /// The current state of this request
     /// </summary>
@@ -179,15 +181,22 @@ public class MonitorObject : MonoBehaviour {
             System.DateTime.Now.Second);
     }
 
+
     /// <summary>
     /// Set the current state of the monitor so that the FSM will create a new 
     /// request
     /// </summary>
     public virtual void StartMonitor()
     {
-        // Set the current state to restart
-        currentState = MonitorState.Finished;
+        // As long as we are not toggled off
+        if (!toggledOff)
+        {
+            // Set the current state to restart
+            currentState = MonitorState.Finished;
+        }
+
     }
+
 
     /// <summary>
     /// Stop the request coroutine if there is one, and set the current state of the FSM to stop
@@ -198,17 +207,23 @@ public class MonitorObject : MonoBehaviour {
         currentState = MonitorState.Stop;
     }
 
+    /// <summary>
+    /// Called by a checkbox to turn the feature on or off
+    /// </summary>
     public void ToggleMonitor()
     {
         // If we are playing, then stop
         if(currentState != MonitorState.Stop)
         {
             StopMonitor();
+            toggledOff = true;
+
         }
         else
         {
             // Otherwise, start the game
             StartMonitor();
+            toggledOff = false;
         }
     }
 

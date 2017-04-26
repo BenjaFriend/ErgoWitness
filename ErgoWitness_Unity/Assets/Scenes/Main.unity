@@ -496,6 +496,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114143052835096814, guid: 2b2de563bc6fe5b4bb90e348354f3f8b,
+        type: 2}
+      propertyPath: possibleColors.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8470cb0222c8ceb448a75b9f1a03ea87, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b2de563bc6fe5b4bb90e348354f3f8b, type: 2}
   m_IsPrefabParent: 0
@@ -6678,7 +6683,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Group 2
+  m_Text: Red Team
 --- !u!222 &999650172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8361,7 +8366,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Group 1
+  m_Text: Blue Team
 --- !u!222 &1250547388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11190,7 +11195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.65419555, g: 0, b: 0.8088235, a: 0.5}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.753}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
