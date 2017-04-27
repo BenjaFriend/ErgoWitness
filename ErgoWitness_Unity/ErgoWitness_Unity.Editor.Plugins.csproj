@@ -147,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art Assets\Fonts\Lato\OFL.txt" />
+    <None Include="Assets\Art Assets\Shaders\DrawingShapes\FlatCircle.shader" />
+    <None Include="Assets\Art Assets\Shaders\DrawingShapes\FlatShader.shader" />
+    <None Include="Assets\Art Assets\Shaders\DrawingShapes\FlatSinShader.shader" />
     <None Include="Assets\Art Assets\Shaders\OutlineShader.shader" />
     <None Include="Assets\Art Assets\Shaders\PulsingDissolve.shader" />
     <None Include="Assets\Art Assets\Shaders\RotateTexture.shader" />

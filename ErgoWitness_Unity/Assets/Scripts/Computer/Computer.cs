@@ -11,10 +11,9 @@ using UnityEngine;
 public class Computer : MonoBehaviour
 {
     #region Fields
-    private int sourceInt;
-    private int destInt;
 
-    //public Source sourceInfo;                // The info that bro gives you
+    private int sourceInt;
+
     [SerializeField]
     private float lifetime = 30f;            // How long until the computer will go off of the network
     private float timeSinceDiscovery = 0f;   // How long it has been since we were discovered
@@ -31,10 +30,13 @@ public class Computer : MonoBehaviour
 
     private IPGroup myGroup;           // A reference to the IP group that I am in
 
+    private int[,] alertCount;
 
     #endregion
 
+
     #region Mutators
+
     public bool IsSpecialTeam
     { get { return isSpecialTeam; }
         set { isSpecialTeam = value; } }
@@ -44,9 +46,11 @@ public class Computer : MonoBehaviour
         get { return sourceInt; }
         set { sourceInt = value; }
     }
-    public int DestInt { get { return destInt; }
-        set { destInt = value; } }
+
     #endregion
+
+
+    #region Methods
 
     void Awake()
     {
@@ -58,8 +62,23 @@ public class Computer : MonoBehaviour
 
         // Get the mesh rend componenet
         meshRend = GetComponentInChildren<MeshRenderer>();
+        
     }
 
+
+    private void Start()
+    {
+        alertCount = new int[SnortAlertManager.alertManager.alertsTypes.Length, 1];
+    }
+
+    /// <summary>
+    /// Add one to the index of the attack type
+    /// </summary>
+    /// <param name="attackType"></param>
+    public void AddAlert(int attackType)
+    {
+
+    }
 
     private void OnEnable()
     {
@@ -76,7 +95,6 @@ public class Computer : MonoBehaviour
         // We are not dying anymore
         isDying = false;
     }
-
 
     /// <summary>
     /// Keep track of how active this node is, and if it has exceeded its lifetime
@@ -96,7 +114,6 @@ public class Computer : MonoBehaviour
             timeSinceDiscovery += Time.deltaTime;
         }
     }
-
 
     /// <summary>
     /// Set the current mesh renderer's material to this new material.
@@ -150,7 +167,6 @@ public class Computer : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// This will wait for the death animation to finish before actually killing it
     /// </summary>
@@ -169,5 +185,7 @@ public class Computer : MonoBehaviour
         // Once that is done the animation, set ourselves as inactive
         gameObject.SetActive(false);
     }
+
+    #endregion
 
 }

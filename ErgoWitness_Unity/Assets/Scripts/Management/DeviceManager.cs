@@ -88,7 +88,6 @@ public class DeviceManager : MonoBehaviour {
         // Set the DATA on this gameobject to the data from the JSON data
         //newDevice.SourceInfo = jsonSourceData;
         newDevice.SourceInt = jsonSourceData.sourceIpInt;
-        newDevice.DestInt = jsonSourceData.destIpInt;
 
         // Set this object as active in the hierachy so that you can actually see it
         newDevice.gameObject.SetActive(true);
