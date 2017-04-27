@@ -106,7 +106,10 @@ public class DeviceManager : MonoBehaviour {
         deviceCountText.text = computersDict.Count.ToString();
 
         // Send it to the streaming UI thing
-        streamingInfo.AddInfo(jsonSourceData);
+        if (streamingInfo.IsShowing)
+        {
+            streamingInfo.AddInfo(jsonSourceData);
+        }
 
         // ============== Sending the necessary info to draw lines between objects ======================= //
 

@@ -97,7 +97,7 @@ public class UIController : MonoBehaviour {
             // Show the UI
             mainCanvas.enabled = true;
             // Set the streaming info to showing so that we know to update it
-            StreamingInfo_UI.currentStreamInfo.IsShowing = true;
+            //StreamingInfo_UI.currentStreamInfo.IsShowing = true;
         }
         // If we are NOT hiding the UI already....
         else
@@ -105,7 +105,7 @@ public class UIController : MonoBehaviour {
             // hide the UI
             mainCanvas.enabled = false;
             // Set the streaming info to not showing so that we don;t waste resources
-            StreamingInfo_UI.currentStreamInfo.IsShowing = false;
+            //StreamingInfo_UI.currentStreamInfo.IsShowing = false;
         }
     }
 

@@ -26,7 +26,7 @@ public class StreamingInfo_UI : MonoBehaviour {
     private Vector2 newPos;
     private RectTransform[] rectTransforms;
 
-    private bool isShowing = false;
+    private bool isShowing;
 
     public bool IsShowing { get { return isShowing; } set { isShowing = value; } }
     #endregion
@@ -56,6 +56,8 @@ public class StreamingInfo_UI : MonoBehaviour {
             // Set this array to the rect transform component of the info objects
             rectTransforms[i] = infoObjects[i].GetComponent<RectTransform>();
         }
+
+        isShowing = false;
     }
 
     /// <summary>
