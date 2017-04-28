@@ -68,7 +68,7 @@ public class Computer : MonoBehaviour
 
     private void Start()
     {
-        alertCount = new int[SnortAlertManager.alertManager.alertsTypes.Length, 1];
+        //alertCount = new int[SnortAlertManager.alertManager.alertsTypes.Length, 1];
     }
 
     /// <summary>

@@ -506,6 +506,16 @@ Prefab:
       propertyPath: deviceCountText
       value: 
       objectReference: {fileID: 1391823339}
+    - target: {fileID: 114303076078495022, guid: 2b2de563bc6fe5b4bb90e348354f3f8b,
+        type: 2}
+      propertyPath: pooledAmount
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827242643247854, guid: 2b2de563bc6fe5b4bb90e348354f3f8b,
+        type: 2}
+      propertyPath: pooledAmount
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b2de563bc6fe5b4bb90e348354f3f8b, type: 2}
   m_IsPrefabParent: 0
@@ -4780,7 +4790,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -121.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -6766,7 +6776,7 @@ Prefab:
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -238.59999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224427320668802770, guid: e491fcc397b2b874aa0a2205b2ad1f79,
         type: 2}
@@ -10745,7 +10755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1599455239
 MeshRenderer:
   m_ObjectHideFlags: 0

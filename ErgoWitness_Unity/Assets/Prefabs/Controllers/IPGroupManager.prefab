@@ -153,7 +153,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2cd4086391274ff45b128af3fd083444, type: 2}
   groupPrefab: {fileID: 1964255048097172, guid: edacc949154c026459dcd01c75097b1d,
     type: 2}
-  minDistanceApart: 15
+  minDistanceApart: 10
   size: 8
   increaseAmountPerGroup: 0.5
 --- !u!114 &114150829303086102
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 1259338230392002, guid: 9bb513620fab58047beadbb35b0edc6e,
     type: 2}
-  pooledAmount: 10
+  pooledAmount: 100
   willGrow: 1
 --- !u!114 &114827242643247854
 MonoBehaviour:
