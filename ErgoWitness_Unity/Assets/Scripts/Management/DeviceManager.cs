@@ -15,7 +15,7 @@ public class DeviceManager : MonoBehaviour {
     #region Fields
     public static DeviceManager currentDeviceManager;
 
-    public StreamingInfo_UI streamingInfo;
+    //public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
@@ -105,10 +105,10 @@ public class DeviceManager : MonoBehaviour {
         deviceCountText.text = computersDict.Count.ToString();
 
         // Send it to the streaming UI thing
-        if (streamingInfo.IsShowing)
+       /* if (streamingInfo.IsShowing)
         {
             streamingInfo.AddInfo(jsonSourceData);
-        }
+        }*/
 
         // ============== Sending the necessary info to draw lines between objects ======================= //
 

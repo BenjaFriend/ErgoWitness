@@ -81,10 +81,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AudioManager\AudioManager.cs" />
-    <Compile Include="Assets\Scripts\AudioManager\AudioTypes.cs" />
-    <Compile Include="Assets\Scripts\AudioManager\MixLevels.cs" />
-    <Compile Include="Assets\Scripts\AudioManager\TestAudioWithInput.cs" />
     <Compile Include="Assets\Scripts\Computer\Computer.cs" />
     <Compile Include="Assets\Scripts\Computer\ComputerUI.cs" />
     <Compile Include="Assets\Scripts\Computer\Computer_AnimationController.cs" />
@@ -93,12 +89,16 @@
     <Compile Include="Assets\Scripts\IPGroups\IPGroupManager.cs" />
     <Compile Include="Assets\Scripts\JSON_Data\Json_Data.cs" />
     <Compile Include="Assets\Scripts\JSON_Data\Packetbeat_Json_Data.cs" />
+    <Compile Include="Assets\Scripts\JSON_Data\Snort_Data.cs" />
     <Compile Include="Assets\Scripts\LoadAssets.cs" />
+    <Compile Include="Assets\Scripts\Management\AudioManager\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Management\AudioManager\AudioTypes.cs" />
+    <Compile Include="Assets\Scripts\Management\AudioManager\MixLevels.cs" />
+    <Compile Include="Assets\Scripts\Management\AudioManager\TestAudioWithInput.cs" />
     <Compile Include="Assets\Scripts\Management\DeviceManager.cs" />
     <Compile Include="Assets\Scripts\Management\ExceptionLogger.cs" />
     <Compile Include="Assets\Scripts\Management\ManageMonitors.cs" />
     <Compile Include="Assets\Scripts\Management\ObjectPooler.cs" />
-    <Compile Include="Assets\Scripts\Management\SnortAlertManager.cs" />
     <Compile Include="Assets\Scripts\Monitoring\BroMonitor.cs" />
     <Compile Include="Assets\Scripts\Monitoring\CustomTimestamps\MinMaxSliders.cs" />
     <Compile Include="Assets\Scripts\Monitoring\CustomTimestamps\SendInfoToMonitor.cs" />
@@ -111,10 +111,13 @@
     <Compile Include="Assets\Scripts\NetflowData\MoveFromSourceToTarget.cs" />
     <Compile Include="Assets\Scripts\NetflowData\NetflowObject.cs" />
     <Compile Include="Assets\Scripts\Player\Automated_Camera.cs" />
+    <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerClickAction.cs" />
+    <Compile Include="Assets\Scripts\SnortAlerts\AlertObj.cs" />
     <Compile Include="Assets\Scripts\SnortAlerts\AlertTypes.cs" />
+    <Compile Include="Assets\Scripts\SnortAlerts\GenerateFalseAlerts.cs" />
+    <Compile Include="Assets\Scripts\SnortAlerts\SnortAlertManager.cs" />
     <Compile Include="Assets\Scripts\UI\LeaderboardItem.cs" />
-    <Compile Include="Assets\Scripts\UI\Movement.cs" />
     <Compile Include="Assets\Scripts\UI\SetInfo.cs" />
     <Compile Include="Assets\Scripts\UI\Settings\GroupSettings.cs" />
     <Compile Include="Assets\Scripts\UI\Settings\ServerIP.cs" />

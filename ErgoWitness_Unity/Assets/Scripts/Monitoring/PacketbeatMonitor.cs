@@ -96,7 +96,7 @@ public class PacketbeatMonitor : MonitorObject {
         {
             // Set the integer IP values of this object
             SetIntegerValues(packetDataObj.hits.hits[i]._source);
-
+            
             // As long as what we got from those IP's is valid:
             if (packetDataObj.hits.hits[i]._source.destIpInt != 0 && packetDataObj.hits.hits[i]._source.sourceIpInt != 0)
             {
