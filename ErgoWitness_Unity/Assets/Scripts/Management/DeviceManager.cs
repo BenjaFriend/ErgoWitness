@@ -8,6 +8,8 @@ using UnityEngine.UI;
 /// This class will do a lot of important things. 
 /// It will have a way to STORE all my current 'computers' on the network
 /// It will have a method to check if a
+/// 
+/// Author: Ben Hoffman
 /// </summary>
 [RequireComponent(typeof(ObjectPooler))]
 public class DeviceManager : MonoBehaviour {
@@ -15,7 +17,6 @@ public class DeviceManager : MonoBehaviour {
     #region Fields
     public static DeviceManager currentDeviceManager;
 
-    //public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 

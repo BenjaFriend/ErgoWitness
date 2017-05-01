@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This script will handle what we do with new snort info.
@@ -11,37 +12,29 @@ using UnityEngine;
 /// </summary>
 public class SnortAlertManager : MonoBehaviour {
 
-    public static SnortAlertManager alertManager;
+    //public static SnortAlertManager alertManager;
+    public Image alertPanel;
+    public Text alertUIPrefab;
 
-    [Tooltip("What alerts are concerned about?")]
-    public AlertTypes[] alertsTypes;
+    private static Text[] alertUI;
+
+    public static int[,] maxAlertCounts;   // A 2D int array that represents the max counts of alerts
 
     private int _topAlertCount;     // The computer with the most attack counts
 
-   /* private void Awake()
-    {
-        // Make sure tha thtis is the only one of these objects in the scene
-        if (alertManager == null)
-        {
-            // Set the currenent referece
-            alertManager = this;
-        }
-        else if (alertManager != this)
-            Destroy(gameObject);
-    }*/
-
     private void Start()
     {
-        // Make sure tha thtis is the only one of these objects in the scene
-        if (alertManager == null)
-        {
-            // Set the currenent referece
-            alertManager = this;
-        }
-        else if (alertManager != this)
-            Destroy(gameObject);
-    }
+        maxAlertCounts = new int[System.Enum.GetNames(typeof(AlertTypes)).Length, 1];
 
+        alertUI = new Text[System.Enum.GetNames(typeof(AlertTypes)).Length];
+
+        for(int i = 0; i <  alertUI.Length; i++)
+        {
+            alertUI[i] = Instantiate(alertUIPrefab);
+            alertUI[i].transform.SetParent(alertPanel.transform);
+            alertUI[i].text = maxAlertCounts[i, 0].ToString();
+        }
+    }
 
     /// <summary>
     /// Add an alert to this PC of this alert type
@@ -49,10 +42,39 @@ public class SnortAlertManager : MonoBehaviour {
     /// Author: Ben Hoffman
     /// </summary>
     /// <param name="ipBeingAttacked"></param>
-    public void Alert(int ipBeingAttacked, string attackType)
+    public static void Alert(int ipBeingAttacked, AlertTypes alertType)
     {
         // Check the device manager for if we have this IP source or not
-        // If we do, then add an alert to that device of this type
+
+        // If we do have this IP that is being attacked:
+        if (DeviceManager.currentDeviceManager.CheckDictionary(ipBeingAttacked))
+        {
+            // Set the alert to that PC
+            DeviceManager.ComputersDict[ipBeingAttacked].AddAlert(alertType);
+            
+            // Check if that is the most amount of alerts for this alert type
+            if(DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType) > maxAlertCounts[(int)alertType, 0])
+            {
+                // Keep track of the highest number alert count we have to calculate the health
+                maxAlertCounts[(int)alertType, 0] = DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType);
+
+                // update the UI
+                alertUI[(int)alertType].text = maxAlertCounts[(int)alertType, 0].ToString();
+            }
+            
+        }
+        // If we do NOT know of this computer, then add it to the device manager
+        else
+        {
+            Source newSource = new Source();
+
+            // Set up the source data to properlly represent a computer that we don't yet have
+            newSource.sourceIpInt = ipBeingAttacked;
+
+            // Add them to the network, and wait for that to finish:
+            DeviceManager.currentDeviceManager.CheckIp(newSource);
+        }
+
         // If we do not, then add this device to the scene and then give it an alert
         
     }

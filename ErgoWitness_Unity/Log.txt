@@ -1,0 +1,35 @@
+Exception
+DivideByZeroException: Division by zero
+Computer.AddAlert (AlertTypes attackType) (at Assets/Scripts/Computer/Computer.cs:84)
+SnortAlertManager.Alert (Int32 ipBeingAttacked, AlertTypes alertType) (at Assets/Scripts/SnortAlerts/SnortAlertManager.cs:51)
+GenerateFalseAlerts.GenerateFalseAlert (AlertTypes alertType) (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:50)
+GenerateFalseAlerts.Update () (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:32)
+
+Exception
+DivideByZeroException: Division by zero
+Computer.AddAlert (AlertTypes attackType) (at Assets/Scripts/Computer/Computer.cs:84)
+SnortAlertManager.Alert (Int32 ipBeingAttacked, AlertTypes alertType) (at Assets/Scripts/SnortAlerts/SnortAlertManager.cs:51)
+GenerateFalseAlerts.GenerateFalseAlert (AlertTypes alertType) (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:50)
+GenerateFalseAlerts.Update () (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:32)
+
+Exception
+DivideByZeroException: Division by zero
+Computer.AddAlert (AlertTypes attackType) (at Assets/Scripts/Computer/Computer.cs:84)
+SnortAlertManager.Alert (Int32 ipBeingAttacked, AlertTypes alertType) (at Assets/Scripts/SnortAlerts/SnortAlertManager.cs:51)
+GenerateFalseAlerts.GenerateFalseAlert (AlertTypes alertType) (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:50)
+GenerateFalseAlerts.Update () (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:32)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer.AddAlert (AlertTypes attackType) (at Assets/Scripts/Computer/Computer.cs:89)
+SnortAlertManager.Alert (Int32 ipBeingAttacked, AlertTypes alertType) (at Assets/Scripts/SnortAlerts/SnortAlertManager.cs:53)
+GenerateFalseAlerts.GenerateFalseAlert (AlertTypes alertType) (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:50)
+GenerateFalseAlerts.Update () (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:32)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+Computer.AddAlert (AlertTypes attackType) (at Assets/Scripts/Computer/Computer.cs:89)
+SnortAlertManager.Alert (Int32 ipBeingAttacked, AlertTypes alertType) (at Assets/Scripts/SnortAlerts/SnortAlertManager.cs:53)
+GenerateFalseAlerts.GenerateFalseAlert (AlertTypes alertType) (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:50)
+GenerateFalseAlerts.Update () (at Assets/Scripts/SnortAlerts/GenerateFalseAlerts.cs:32)
+

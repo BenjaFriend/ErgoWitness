@@ -12,6 +12,9 @@ public class Computer : MonoBehaviour
 {
     #region Fields
 
+    private Color healthyColor = Color.green;
+    private Color hurtColor = Color.red;
+
     private int sourceInt;
 
     [SerializeField]
@@ -22,15 +25,17 @@ public class Computer : MonoBehaviour
     private float deathAnimTime = 0.5f;                        // The length of the death animation
     private Computer_AnimationController animationController;  // A reference to the animations for the computer object
 
-    private bool isSpecialTeam;     // This is true if this object is of special interest to the user
+    private bool isSpecialTeam;        // This is true if this object is of special interest to the user
 
     private bool isDying = false;      // This will be used to make sure that we don't call the death function when we don't need to
     private WaitForSeconds deathWait;  // How long we wait for our animation to play when we go inactive
-    private MeshRenderer meshRend;     // The mesh renderer component of this object so taht we can 
+    private MeshRenderer meshRend;     // The mesh renderer component of this object so that we can
 
     private IPGroup myGroup;           // A reference to the IP group that I am in
 
     private int[,] alertCount;
+
+    public Color[] healthArr;
 
     #endregion
 
@@ -65,19 +70,46 @@ public class Computer : MonoBehaviour
         
     }
 
-
     private void Start()
     {
-        //alertCount = new int[SnortAlertManager.alertManager.alertsTypes.Length, 1];
+        alertCount = new int[System.Enum.GetNames(typeof(AlertTypes)).Length, 1];
+
+        healthArr = new Color[System.Enum.GetNames(typeof(AlertTypes)).Length];
     }
 
     /// <summary>
     /// Add one to the index of the attack type
     /// </summary>
     /// <param name="attackType"></param>
-    public void AddAlert(int attackType)
+    public void AddAlert(AlertTypes attackType)
     {
+        int alertInt = (int)attackType;
 
+        alertCount[alertInt, 0]++;
+
+        // Calculate the percentage of health on this node based on the 
+        if(SnortAlertManager.maxAlertCounts[alertInt, 0] > 0)
+        {
+            healthArr[alertInt] = Color.Lerp(healthyColor, hurtColor, (float)alertCount[alertInt, 0] / (float)SnortAlertManager.maxAlertCounts[alertInt, 0]);
+        }
+        else
+        {
+            healthArr[alertInt] = Color.Lerp(healthyColor, hurtColor, (float)alertCount[alertInt, 0]);
+        }
+
+        //currentHealthColor = Color.Lerp(healthyColor, hurtColor, healthArr[alertInt]);
+
+        Debug.Log("Health for attack type " + alertInt.ToString() + " is " + healthArr[alertInt]);
+    }
+
+    /// <summary>
+    /// Get the alert count of this alert type on this object
+    /// </summary>
+    /// <param name="attackType">The type of alert we are checking</param>
+    /// <returns>How many of these alerts have occured on this object</returns>
+    public int AlertCount(AlertTypes attackType)
+    {
+        return alertCount[(int)attackType, 0];
     }
 
     private void OnEnable()

@@ -262,6 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa562669e9003734eb1c92384ad7cf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthyColor: {r: 0, g: 1, b: 0, a: 1}
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  currentHealthColor: {r: 0, g: 0, b: 0, a: 0}
   lifetime: 60
   deathAnimTime: 0.667
 --- !u!135 &135971264439090388

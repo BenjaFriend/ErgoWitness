@@ -9,7 +9,10 @@ using UnityEngine;
 /// for snort alerts. 
 /// </summary>
 public class GenerateFalseAlerts : MonoBehaviour {
-	
+
+    private int _fakeIPint = 10002;
+    private int _fakeIP_2 = 20002;
+
 	/// <summary>
     /// Check for input from the keyboard, and generate alerts if we 
     /// press the number keys of the alert type
@@ -21,28 +24,42 @@ public class GenerateFalseAlerts : MonoBehaviour {
         // If we press 1
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-
+            GenerateFalseAlert(_fakeIPint, AlertTypes.TypeA);
         }
         // If we press 2
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-
+            GenerateFalseAlert(_fakeIPint, AlertTypes.TypeB);
         }
         // If we press 3
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-
+            GenerateFalseAlert(_fakeIPint, AlertTypes.TypeC);
         }
-        // If we press 4
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+
+
+        // If we press 8
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-
+            GenerateFalseAlert(_fakeIP_2, AlertTypes.TypeA);
         }
+        // If we press 9
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            GenerateFalseAlert(_fakeIP_2, AlertTypes.TypeB);
+        }
+        // If we press 0
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            GenerateFalseAlert(_fakeIP_2, AlertTypes.TypeC);
+        }
+
     }
 
-    private static void GenerateFalseAlert(int alertType)
+    private void GenerateFalseAlert(int iptoUse, AlertTypes alertType)
     {
         // Send an alert to the snort manager with a false Ip address 
+        SnortAlertManager.Alert(iptoUse, alertType);
     }
 
 }
