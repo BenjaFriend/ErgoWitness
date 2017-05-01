@@ -1,4 +1,6 @@
-﻿Shader "Custom/Texture_Tint"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Texture_Tint"
 {
 	Properties
 	{
@@ -52,7 +54,7 @@
 			v2f vert (appdata IN)
 			{
 				v2f OUT;
-				OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertexPos);
+				OUT.vertex = UnityObjectToClipPos(IN.vertexPos);
 				OUT.uv = TRANSFORM_TEX(IN.uv, _MainTex);
 
 				OUT.uv = TRANSFORM_TEX(IN.uv, _MainTex);

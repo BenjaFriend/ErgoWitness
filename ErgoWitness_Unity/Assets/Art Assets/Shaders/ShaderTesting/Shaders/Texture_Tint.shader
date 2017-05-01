@@ -1,4 +1,6 @@
-﻿Shader ".New Custom/Fixed Unlit"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader ".New Custom/Fixed Unlit"
 {
 	// Shows up in the material inspector
 	Properties 
@@ -39,7 +41,7 @@
 			v2f vert (appdata IN)
 			{
 				v2f OUT;
-				OUT.pos = mul(UNITY_MATRIX_MVP, IN.vertex);
+				OUT.pos = UnityObjectToClipPos(IN.vertex);
 				OUT.texcoord = IN.texcoord;
 				return OUT;
 			}
