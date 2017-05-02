@@ -97,9 +97,13 @@ public class Computer : MonoBehaviour
             healthArr[alertInt] = Color.Lerp(healthyColor, hurtColor, (float)alertCount[alertInt, 0]);
         }
 
-        //currentHealthColor = Color.Lerp(healthyColor, hurtColor, healthArr[alertInt]);
+        // Set the color 
+        SetColor(alertInt);
+    }
 
-        Debug.Log("Health for attack type " + alertInt.ToString() + " is " + healthArr[alertInt]);
+    public void SetColor(int alertInt)
+    {
+        meshRend.material.color = healthArr[alertInt];
     }
 
     /// <summary>
