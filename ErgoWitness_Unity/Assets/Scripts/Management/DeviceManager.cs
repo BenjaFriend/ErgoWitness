@@ -67,7 +67,7 @@ public class DeviceManager : MonoBehaviour {
             CheckConnection(jsonSourceData);
 
             // Add more life to the computer that we saw
-            computersDict[jsonSourceData.sourceIpInt].AddHit();
+            computersDict[jsonSourceData.sourceIpInt].ResetLifetime();
         }
         else
         {
@@ -162,6 +162,7 @@ public class DeviceManager : MonoBehaviour {
         }
 
     }
+
 
     /// <summary>
     /// Simply get the transform of the given IP

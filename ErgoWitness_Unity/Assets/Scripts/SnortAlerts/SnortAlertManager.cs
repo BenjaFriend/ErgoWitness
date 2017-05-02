@@ -46,37 +46,35 @@ public class SnortAlertManager : MonoBehaviour {
     {
         // Check the device manager for if we have this IP source or not
 
-        // If we do have this IP that is being attacked:
-        if (DeviceManager.currentDeviceManager.CheckDictionary(ipBeingAttacked))
-        {
-            // Set the alert to that PC
-            DeviceManager.ComputersDict[ipBeingAttacked].AddAlert(alertType);
-            
-            // Check if that is the most amount of alerts for this alert type
-            if(DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType) > maxAlertCounts[(int)alertType, 0])
-            {
-                // Keep track of the highest number alert count we have to calculate the health
-                maxAlertCounts[(int)alertType, 0] = DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType);
-
-                // update the UI
-                alertUI[(int)alertType].text = maxAlertCounts[(int)alertType, 0].ToString();
-            }
-            
-        }
-        // If we do NOT know of this computer, then add it to the device manager
-        else
+        // If we do NOT have this IP that is being attacked:
+        if (!DeviceManager.currentDeviceManager.CheckDictionary(ipBeingAttacked))
         {
             Source newSource = new Source();
-
+ 
             // Set up the source data to properlly represent a computer that we don't yet have
             newSource.sourceIpInt = ipBeingAttacked;
 
             // Add them to the network, and wait for that to finish:
-            DeviceManager.currentDeviceManager.CheckIp(newSource);
+			DeviceManager.currentDeviceManager.NewComputer(newSource);
         }
 
-        // If we do not, then add this device to the scene and then give it an alert
-        
+        // Set the alert to that PC
+        DeviceManager.ComputersDict[ipBeingAttacked].AddAlert(alertType);
+
+        // Check if that is the most amount of alerts for this alert type
+        if (DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType) > maxAlertCounts[(int)alertType, 0])
+        {
+            // Keep track of the highest number alert count we have to calculate the health
+            maxAlertCounts[(int)alertType, 0] = DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType);
+
+            // update the UI
+            alertUI[(int)alertType].text = maxAlertCounts[(int)alertType, 0].ToString();
+
+            // Tell all the computers to calculate their new health for this alert type
+
+        }
+
+
     }
 
 }

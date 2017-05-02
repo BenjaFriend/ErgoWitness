@@ -72,16 +72,17 @@ public class UIController : MonoBehaviour {
     {
         // If the user presses the P button then hide all of the 
         // UI elements
-        if (Input.GetKeyDown(KeyCode.P) && Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             // Toggle is we are hiding all the UI or not
             HideAllUI();
         }
 
-        // If the user presses start or ESC, then pause monitoring
+        // If the user presses start or ESC, then toggle the pause menu
         if (Input.GetButtonDown("Cancel"))
         {
-            ToggleMonitoring();
+            ToggleOptionsMenu();
+            //ToggleMonitoring();
         }
     }
 
@@ -260,54 +261,6 @@ public class UIController : MonoBehaviour {
             //playerMovement.enabled = false;
         }
 
-    }
-
-    /// <summary>
-    /// Author: Ben Hoffman
-    /// If the given menu is active, then make it not active.
-    /// If the given menu is inactive, then make it active.
-    /// </summary>
-    /// <param name="menu"></param>
-    public void ToggleMenu(Canvas menu)
-    {
-        // If this menu is active in the hierachy...
-        if (!menu.gameObject.activeInHierarchy)
-        {
-            // Show the game menu
-            menu.gameObject.SetActive(true);
-
-            // Select the first button if there is one, this will allow me to traverse the 
-            // menu with a controller          
-           if (menu.GetComponentInChildren<Button>() != null)
-                menu.GetComponentInChildren<Button>().Select();
-        }
-        else
-        {
-            menu.gameObject.SetActive(false);
-        }
-        
-    }
-
-    /// <summary>
-    /// Display the help menu, or hide the help menu
-    /// </summary>
-    public void ToggleHelpMenu()
-    {
-        // Use the animator to do this
-        // If we are not showing the menu and we are in idle state....
-        //if (!MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        if (!MenuAnim.GetBool("showHelp"))
-        {
-            // Show the menu
-            MenuAnim.SetBool(("showHelp"), true);
-        }
-        // If we are showing the menu and we are in that state too
-        //else if (MenuAnim.GetBool("showHelp") && MenuAnim.GetCurrentAnimatorStateInfo(0).IsName("ShowHelpMenu"))
-        else if (MenuAnim.GetBool("showHelp"))
-        {
-            // Hide the menu
-            MenuAnim.SetBool(("showHelp"), false);
-        }
     }
 
     /// <summary>

@@ -10,6 +10,7 @@ using UnityEngine;
 /// </summary>
 public class Computer : MonoBehaviour
 {
+	
     #region Fields
 
     private Color healthyColor = Color.green;
@@ -33,9 +34,19 @@ public class Computer : MonoBehaviour
 
     private IPGroup myGroup;           // A reference to the IP group that I am in
 
-    private int[,] alertCount;
 
-    public Color[] healthArr;
+    private int[] alertCount;			// [ A , B ] where A is an integer representing the Alert Type Enum cast as an int, and B is the count of that. 
+    public float[] riskNumbers;			// Array in which the index is the integer representing the alert type enum cast as an int, and the value is the count of that
+
+
+	public UnityEngine.UI.Image colorQuadPrefab;
+	public Transform canvasTransform;
+	private UnityEngine.UI.Image[] quadObjs;
+
+
+	private ParticleSystem alertParticleSystem;
+
+    
 
     #endregion
 
@@ -59,51 +70,84 @@ public class Computer : MonoBehaviour
 
     void Awake()
     {
-        // Get the animation componenet
-        animationController = GetComponent<Computer_AnimationController>();
-
-        // Create a wait fro seconds object so taht we can avoid creating one every time
-        deathWait = new WaitForSeconds(deathAnimTime);
-
         // Get the mesh rend componenet
-        meshRend = GetComponentInChildren<MeshRenderer>();
-        
+        meshRend = GetComponentInChildren<MeshRenderer>();      
+		alertCount = new int[System.Enum.GetNames(typeof(AlertTypes)).Length - 1];
+
+		// Get the particle system on this object to show the alerts on
+		alertParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()
     {
-        alertCount = new int[System.Enum.GetNames(typeof(AlertTypes)).Length, 1];
+		// Create a wait fro seconds object so taht we can avoid creating one every time
+		deathWait = new WaitForSeconds(deathAnimTime);
 
-        healthArr = new Color[System.Enum.GetNames(typeof(AlertTypes)).Length];
+		// Get the animation componenet
+		animationController = GetComponent<Computer_AnimationController>();
+
+		riskNumbers = new float[System.Enum.GetNames(typeof(AlertTypes)).Length];
+
+
+		quadObjs = new UnityEngine.UI.Image[System.Enum.GetNames (typeof(AlertTypes)).Length - 1];
+
+		for (int i = 0; i < quadObjs.Length; i++) 
+		{
+			quadObjs [i] = Instantiate (colorQuadPrefab);
+			quadObjs [i].transform.SetParent (canvasTransform);
+			quadObjs [i].rectTransform.localPosition = Vector3.zero;
+		}
     }
 
     /// <summary>
     /// Add one to the index of the attack type
+	/// 
+	/// Author: Ben Hoffman
     /// </summary>
     /// <param name="attackType"></param>
     public void AddAlert(AlertTypes attackType)
     {
         int alertInt = (int)attackType;
 
-        alertCount[alertInt, 0]++;
+        alertCount[alertInt]++;
 
         // Calculate the percentage of health on this node based on the 
-        if(SnortAlertManager.maxAlertCounts[alertInt, 0] > 0)
-        {
-            healthArr[alertInt] = Color.Lerp(healthyColor, hurtColor, (float)alertCount[alertInt, 0] / (float)SnortAlertManager.maxAlertCounts[alertInt, 0]);
-        }
-        else
-        {
-            healthArr[alertInt] = Color.Lerp(healthyColor, hurtColor, (float)alertCount[alertInt, 0]);
-        }
+		riskNumbers[alertInt] =  (float)alertCount[alertInt] / (float)SnortAlertManager.maxAlertCounts[alertInt, 0] + 1;
+        
 
-        // Set the color 
-        SetColor(alertInt);
+		// Set the color 
+		SetColor(alertInt);
+
+		// If the alert value is less then the specified point at which the user wants to be alerted at...
+		if (riskNumbers [alertInt] >= 0.6f) 
+		{
+			// Start the alert ping
+			alertParticleSystem.Play();
+		}
+		else if(alertParticleSystem != null)
+		{
+			alertParticleSystem.Stop();
+		}
+
+		// If we are above the value of 0.5, then ping the alert particle system here
+
     }
+
+	public void CalculateAllAlerts()
+	{
+		for (int i = 0; i < riskNumbers.Length; i++) 
+		{
+			// Calculate the health
+			riskNumbers[i] =  (float)alertCount[i] / (float)SnortAlertManager.maxAlertCounts[i, 0] + 1;
+			// Set the color
+			SetColor (i);
+		}
+	}
 
     public void SetColor(int alertInt)
     {
-        meshRend.material.color = healthArr[alertInt];
+		meshRend.material.color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
+		quadObjs[alertInt].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
     }
 
     /// <summary>
@@ -113,8 +157,9 @@ public class Computer : MonoBehaviour
     /// <returns>How many of these alerts have occured on this object</returns>
     public int AlertCount(AlertTypes attackType)
     {
-        return alertCount[(int)attackType, 0];
+        return alertCount[(int)attackType];
     }
+
 
     private void OnEnable()
     {
@@ -169,7 +214,7 @@ public class Computer : MonoBehaviour
     /// This will reset the lifetime of this computer because it was
     /// seen again, and we want to mark is as active
     /// </summary>
-    public void AddHit()
+    public void ResetLifetime()
     {
         // Reset the lifetime of this computer
         timeSinceDiscovery = 0f;
