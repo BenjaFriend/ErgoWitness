@@ -12,6 +12,7 @@ using UnityEngine;
 public class IPGroup : MonoBehaviour {
 
     #region Fields
+
     private float lifeTime = 5f;
     private bool isSpecialTeam; // True if this IP is a blue team
     private float increasePerComputer = 0.1f;
@@ -27,7 +28,7 @@ public class IPGroup : MonoBehaviour {
             
     private List<Computer> groupedComputers;
 
-    private Material groupColor;        // The color of the group
+    private Color groupColor;        // The color of the group
     private int groupAddress;          // This is the IP address parsed into integers, with delimeters at the periods
     private string[] stringValues;      // Temp variable used to store an IP split at the '.'
     private int[] tempIntValues;        // Used for comparisons
@@ -47,7 +48,7 @@ public class IPGroup : MonoBehaviour {
     #region Mutators
 
     public int GroupAddress { get { return groupAddress; } set { groupAddress = value; } }
-    public Material GroupColor { get { return groupColor; } set { groupColor = value; } }
+    public Color GroupColor { get { return groupColor; } set { groupColor = value; myPointLight.color = value; } }
     public bool IsSpecialTeam { get { return isSpecialTeam; } set { isSpecialTeam = value; } }
     public bool IsDying { get { return isDying; } }
 
@@ -95,10 +96,10 @@ public class IPGroup : MonoBehaviour {
             radius += increasePerComputer;
 
             // Move the object to our spot
-            MoveToGroupSpot(tempObj);
+            MoveToGroupSpot(tempObj.transform);
 
             // Set the object's material to the group color, and give it a reference to this as it's group
-            tempObj.SetUpGroup(groupColor, this);
+            tempObj.SetUpGroup(this);
 
             // Increase the size of my light
             // if we are currently scalling the light, then stop
@@ -118,12 +119,12 @@ public class IPGroup : MonoBehaviour {
     /// <summary>
     /// This method will move a gameobject to the group position
     /// </summary>
-    private void MoveToGroupSpot(Computer thingToMove)
+    private void MoveToGroupSpot(Transform thingToMove)
     {
         attemptCount++;
 
         // Make the this group the parent of the computer object
-        thingToMove.transform.parent = gameObject.transform;
+        transform.parent = gameObject.transform;
 
         // Calculate a random spot that is within a certain radius of our positon
         temp = transform.position + UnityEngine.Random.onUnitSphere * radius;

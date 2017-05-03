@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ using UnityEngine.UI;
 public class DeviceManager : MonoBehaviour {
 
     #region Fields
+
     public static DeviceManager currentDeviceManager;
 
     public Text deviceCountText;        // How many devices are there currently?
@@ -23,6 +25,7 @@ public class DeviceManager : MonoBehaviour {
     private static Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
 
     public static Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
+
     #endregion
 
     /// <summary>
@@ -87,7 +90,6 @@ public class DeviceManager : MonoBehaviour {
         Computer newDevice = computerPooler.GetPooledObject().GetComponent<Computer>();
 
         // Set the DATA on this gameobject to the data from the JSON data
-        //newDevice.SourceInfo = jsonSourceData;
         newDevice.SourceInt = jsonSourceData.sourceIpInt;
 
         // Set this object as active in the hierachy so that you can actually see it
@@ -103,13 +105,7 @@ public class DeviceManager : MonoBehaviour {
         IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.sourceIpInt);
 
         // Update the UI that tells us how many devices there are
-        deviceCountText.text = computersDict.Count.ToString();
-
-        // Send it to the streaming UI thing
-       /* if (streamingInfo.IsShowing)
-        {
-            streamingInfo.AddInfo(jsonSourceData);
-        }*/
+        deviceCountText.text = Computer.ComputerCount.ToString();
 
         // ============== Sending the necessary info to draw lines between objects ======================= //
 
@@ -124,7 +120,6 @@ public class DeviceManager : MonoBehaviour {
             // Send the protocol
             ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.proto);
         }
-
     }
 
     /// <summary>
@@ -163,7 +158,6 @@ public class DeviceManager : MonoBehaviour {
 
     }
 
-
     /// <summary>
     /// Simply get the transform of the given IP
     /// </summary>
@@ -188,6 +182,49 @@ public class DeviceManager : MonoBehaviour {
     {
         // return if we contrain this address or not
         return computersDict.ContainsKey(IpInt);
+    }
+
+
+
+    /// <summary>
+    /// Start the calculate all colors coroutine
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    public void CalculateColors()
+    {
+        StartCoroutine(CalculateAllColors());
+    }
+
+    /// <summary>
+    /// Loop through all the computer objects and 
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator CalculateAllColors()
+    {
+        for (int i = 0; i < ComputersDict.Count; i++)
+        {
+            // Calculate all alerts for each computer 
+            ComputersDict.ElementAt(i).Value.CalculateAllAlerts();
+
+            // Wait for the end of this frame
+            yield return null;
+        }
+    }
+
+
+    /// <summary>
+    /// Call this when the toggle is called we hit the toggle
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    public void HideElement()
+    {
+        // I need to hide Image of this index
+
+
     }
 
 }

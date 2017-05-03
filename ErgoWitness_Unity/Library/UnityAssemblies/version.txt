@@ -1,4 +1,4 @@
-5.5.1f1:2.8.2.0
+5.5.1f1:3.1.0.0
 StandaloneWindows
 C:/Program Files/Unity5.5.1/Editor/Data/Managed/UnityEngine.dll
 C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
@@ -24,4 +24,4 @@ C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor
 C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
 C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
 C:/Program Files/Unity5.5.1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
+C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll

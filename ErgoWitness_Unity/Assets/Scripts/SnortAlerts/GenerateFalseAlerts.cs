@@ -37,7 +37,6 @@ public class GenerateFalseAlerts : MonoBehaviour {
             GenerateFalseAlert(_fakeIPint, AlertTypes.TypeC);
         }
 
-
         // If we press 8
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
@@ -51,7 +50,7 @@ public class GenerateFalseAlerts : MonoBehaviour {
         // If we press 0
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            GenerateFalseAlert(_fakeIP_2, AlertTypes.TypeC);
+            GenerateFalseAlert(_fakeIP_2, AlertTypes.TypeD);
         }
 
     }

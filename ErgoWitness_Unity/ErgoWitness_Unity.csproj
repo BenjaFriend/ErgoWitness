@@ -18,7 +18,7 @@
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
-    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
+    <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\JSON_Data\Packetbeat_Json_Data.cs" />
     <Compile Include="Assets\Scripts\JSON_Data\Snort_Data.cs" />
     <Compile Include="Assets\Scripts\LoadAssets.cs" />
+    <Compile Include="Assets\Scripts\LookAtCamera.cs" />
     <Compile Include="Assets\Scripts\Management\AudioManager\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Management\AudioManager\AudioTypes.cs" />
     <Compile Include="Assets\Scripts\Management\AudioManager\MixLevels.cs" />
@@ -113,7 +114,6 @@
     <Compile Include="Assets\Scripts\Player\Automated_Camera.cs" />
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerClickAction.cs" />
-    <Compile Include="Assets\Scripts\SnortAlerts\AlertObj.cs" />
     <Compile Include="Assets\Scripts\SnortAlerts\AlertTypes.cs" />
     <Compile Include="Assets\Scripts\SnortAlerts\GenerateFalseAlerts.cs" />
     <Compile Include="Assets\Scripts\SnortAlerts\SnortAlertManager.cs" />

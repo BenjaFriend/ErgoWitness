@@ -7,14 +7,18 @@ using UnityEngine;
 /// Author: Ben Hoffman
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
+/// 
+/// Author: Ben Hoffman
 /// </summary>
 public class Computer : MonoBehaviour
 {
-	
+    public static int ComputerCount;
+
     #region Fields
 
     private Color healthyColor = Color.green;
     private Color hurtColor = Color.red;
+    public Color hiddenColor;
 
     private int sourceInt;
 
@@ -35,18 +39,17 @@ public class Computer : MonoBehaviour
     private IPGroup myGroup;           // A reference to the IP group that I am in
 
 
-    private int[] alertCount;			// [ A , B ] where A is an integer representing the Alert Type Enum cast as an int, and B is the count of that. 
-    public float[] riskNumbers;			// Array in which the index is the integer representing the alert type enum cast as an int, and the value is the count of that
+    private int[] alertCount;		   // [ A , B ] where A is an integer representing the Alert Type Enum cast as an int, and B is the count of that. 
+    private float[] riskNumbers;       // Array in which the index is the integer representing the alert type enum cast as an int, and the value is the count of that
 
 
 	public UnityEngine.UI.Image colorQuadPrefab;
 	public Transform canvasTransform;
 	private UnityEngine.UI.Image[] quadObjs;
 
+    private float _currentHealth;
 
 	private ParticleSystem alertParticleSystem;
-
-    
 
     #endregion
 
@@ -72,10 +75,14 @@ public class Computer : MonoBehaviour
     {
         // Get the mesh rend componenet
         meshRend = GetComponentInChildren<MeshRenderer>();      
-		alertCount = new int[System.Enum.GetNames(typeof(AlertTypes)).Length - 1];
+		alertCount = new int[System.Enum.GetNames(typeof(AlertTypes)).Length];
 
-		// Get the particle system on this object to show the alerts on
-		alertParticleSystem = GetComponentInChildren<ParticleSystem>();
+        // Create two arrays based on the number of alert types in 
+        quadObjs = new UnityEngine.UI.Image[System.Enum.GetNames(typeof(AlertTypes)).Length];
+        riskNumbers = new float[System.Enum.GetNames(typeof(AlertTypes)).Length];
+
+        // Get the particle system on this object to show the alerts on
+        alertParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()
@@ -86,17 +93,21 @@ public class Computer : MonoBehaviour
 		// Get the animation componenet
 		animationController = GetComponent<Computer_AnimationController>();
 
-		riskNumbers = new float[System.Enum.GetNames(typeof(AlertTypes)).Length];
-
-
-		quadObjs = new UnityEngine.UI.Image[System.Enum.GetNames (typeof(AlertTypes)).Length - 1];
-
-		for (int i = 0; i < quadObjs.Length; i++) 
+        // Create the quad objects for our alert type
+		for (int i = 0; i < quadObjs.Length; i++)
 		{
+            // Instantiate the object
 			quadObjs [i] = Instantiate (colorQuadPrefab);
+            // Set the partent of the image, so that it is a layout object in the UI
 			quadObjs [i].transform.SetParent (canvasTransform);
+            // Set the local positoin to 0 so that
 			quadObjs [i].rectTransform.localPosition = Vector3.zero;
-		}
+            // Set the starting color to green
+            quadObjs[i].color = healthyColor;
+        }
+
+        // Set the colors of everything 
+        CalculateAllAlerts();
     }
 
     /// <summary>
@@ -107,47 +118,79 @@ public class Computer : MonoBehaviour
     /// <param name="attackType"></param>
     public void AddAlert(AlertTypes attackType)
     {
+        // Cast the alert type and store it
         int alertInt = (int)attackType;
 
+        // If this index is not being ignored by the snort manager 
+        if (!SnortAlertManager.CheckToggleOn(alertInt))
+            return;
+
+        // Add to the count of this alert type
         alertCount[alertInt]++;
 
-        // Calculate the percentage of health on this node based on the 
-		riskNumbers[alertInt] =  (float)alertCount[alertInt] / (float)SnortAlertManager.maxAlertCounts[alertInt, 0] + 1;
-        
+        // Calculate the percentage of health on this node based on the
+        riskNumbers[alertInt] = 
+            (float)alertCount[alertInt] / (float)(SnortAlertManager.maxAlertCounts[alertInt] + 1);
 
-		// Set the color 
-		SetColor(alertInt);
-
-		// If the alert value is less then the specified point at which the user wants to be alerted at...
-		if (riskNumbers [alertInt] >= 0.6f) 
-		{
-			// Start the alert ping
-			alertParticleSystem.Play();
-		}
-		else if(alertParticleSystem != null)
-		{
-			alertParticleSystem.Stop();
-		}
-
-		// If we are above the value of 0.5, then ping the alert particle system here
-
+        // Set the color of the quad object
+        quadObjs[alertInt].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
     }
 
+    /// <summary>
+    /// Calculate the average health based off of the risk number array.
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
 	public void CalculateAllAlerts()
 	{
+        // Reset the current health to 0
+        _currentHealth = 0f;
+
+        // Loop through the risk numbers and calculate them based on the max alert count
 		for (int i = 0; i < riskNumbers.Length; i++) 
 		{
-			// Calculate the health
-			riskNumbers[i] =  (float)alertCount[i] / (float)SnortAlertManager.maxAlertCounts[i, 0] + 1;
-			// Set the color
-			SetColor (i);
-		}
-	}
+            // IF this index is active in the snort manager, then account for it.
+            if (SnortAlertManager.CheckToggleOn(i))
+            {
+                // Calculate the health
+                riskNumbers[i] =  (float)alertCount[i] / ((float)SnortAlertManager.maxAlertCounts[i] + 1);
+            
+                // Set the color of that quad object
+                quadObjs[i].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[i]);
 
-    public void SetColor(int alertInt)
+                // Add to the current health
+                _currentHealth += riskNumbers[i];
+            }
+		}
+        
+        // Average the health numbers
+        _currentHealth /= riskNumbers.Length;
+
+        // Set the color of the mesh
+        meshRend.material.color = Color.Lerp(healthyColor, hurtColor, _currentHealth);
+
+        // If the average health of the network is above 0.6 un-healthy
+        if (_currentHealth >= 0.6f)
+        {
+            // Start the alert ping
+            alertParticleSystem.Play();
+        }
+        else if (alertParticleSystem != null)
+        {
+            // Stop the particle system
+            alertParticleSystem.Stop();
+        }
+    }
+
+    /// <summary>
+    /// Hide the attack UI element that represents this attack type
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    /// <param name="index"></param>
+    public void HideAttackType(int index)
     {
-		meshRend.material.color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
-		quadObjs[alertInt].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
+        quadObjs[index].color = hiddenColor;
     }
 
     /// <summary>
@@ -159,7 +202,6 @@ public class Computer : MonoBehaviour
     {
         return alertCount[(int)attackType];
     }
-
 
     private void OnEnable()
     {
@@ -175,6 +217,15 @@ public class Computer : MonoBehaviour
 
         // We are not dying anymore
         isDying = false;
+
+        // Increment the count of computers
+        ComputerCount++;
+    }
+
+    private void OnDisable()
+    {
+        // This computer is no longer active, so decrement the static field
+        ComputerCount--;
     }
 
     /// <summary>
@@ -201,11 +252,8 @@ public class Computer : MonoBehaviour
     /// Also set the group reference on this object to the 
     /// </summary>
     /// <param name="groupMat">The group material</param>
-    public void SetUpGroup(Material groupMat, IPGroup myNewGroup)
+    public void SetUpGroup(IPGroup myNewGroup)
     {
-        // Set the 
-        meshRend.material = groupMat;
-
         // Get the reference to a group
         myGroup = myNewGroup;
     }
