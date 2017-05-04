@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/SnortTesting.unity
-  isLoaded: 1
-  isActive: 1

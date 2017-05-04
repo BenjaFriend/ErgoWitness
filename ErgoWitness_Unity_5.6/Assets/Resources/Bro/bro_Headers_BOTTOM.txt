@@ -1,0 +1,18 @@
+} } },
+  "_source": {
+    "includes": [
+      "runtime_timestamp",
+      "id_orig_h",
+      "id_resp_h",
+	  "service",
+      "proto"
+    ]
+  }, "size": 50,
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ]
+}
