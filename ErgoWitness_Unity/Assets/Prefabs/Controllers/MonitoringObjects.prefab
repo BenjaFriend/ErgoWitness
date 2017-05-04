@@ -36,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4980261786873640}
   - component: {fileID: 114356144267389630}
-  - component: {fileID: 114187130576590288}
   m_Layer: 0
   m_Name: MonitoringObjects
   m_TagString: Untagged
@@ -101,20 +100,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114187130576590288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1726071068907772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422a7c03b10b71346aacefe4b1be1593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hours: {fileID: 0}
-  minutes: {fileID: 0}
-  seconds: {fileID: 0}
 --- !u!114 &114356144267389630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,9 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monitors:
-  - {fileID: 114543548410284238}
-  - {fileID: 114377164771766786}
   - {fileID: 0}
+  - {fileID: 114377164771766786}
+  - {fileID: 114543548410284238}
 --- !u!114 &114377164771766786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +133,7 @@ MonoBehaviour:
   fileLocation_queryBottom: Bro/bro_Headers_BOTTOM
   _latest_time: 
   _UseLastSuccess: 0
+  toggledOff: 0
 --- !u!114 &114543548410284238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,4 +152,5 @@ MonoBehaviour:
   fileLocation_queryBottom: Packetbeat/packetbeat_Headers_BOTTOM
   _latest_time: 
   _UseLastSuccess: 0
+  toggledOff: 0
   assumeHttp: 1

@@ -1211,3 +1211,108 @@ UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, Un
 UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) (at C:/buildslave/unity/build/Extensions/guisystem/UnityEngine.UI/EventSystem/ExecuteEvents.cs:269)
 UnityEngine.EventSystems.EventSystem:Update()
 
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+ServerIP.SetServerIP () (at Assets/Scripts/UI/Settings/ServerIP.cs:29)
+ServerIP.OnEnable () (at Assets/Scripts/UI/Settings/ServerIP.cs:20)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+ServerIP.SetServerIP () (at Assets/Scripts/UI/Settings/ServerIP.cs:29)
+ServerIP.OnEnable () (at Assets/Scripts/UI/Settings/ServerIP.cs:20)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Error
+IP GROUP IS NULL!
+UnityEngine.Debug:LogError(Object)
+Computer:OnEnable() (at Assets/Scripts/Computer/Computer.cs:135)
+UnityEngine.Object:Instantiate(GameObject)
+ObjectPooler:Start() (at Assets/Scripts/Management/ObjectPooler.cs:28)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.Start () (at Assets/Scripts/IPGroups/IPGroup.cs:94)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.Start () (at Assets/Scripts/IPGroups/IPGroup.cs:94)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.Start () (at Assets/Scripts/IPGroups/IPGroup.cs:94)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.Start () (at Assets/Scripts/IPGroups/IPGroup.cs:94)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+IPGroup.Start () (at Assets/Scripts/IPGroups/IPGroup.cs:94)
+
+Exception
+NullReferenceException: Object reference not set to an instance of an object
+ServerIP.SetServerIP () (at Assets/Scripts/UI/Settings/ServerIP.cs:29)
+ServerIP.OnEnable () (at Assets/Scripts/UI/Settings/ServerIP.cs:20)
+

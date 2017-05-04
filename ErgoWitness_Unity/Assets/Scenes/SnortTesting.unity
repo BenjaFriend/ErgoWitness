@@ -1888,12 +1888,12 @@ Prefab:
     - target: {fileID: 114303076078495022, guid: 2b2de563bc6fe5b4bb90e348354f3f8b,
         type: 2}
       propertyPath: pooledAmount
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114827242643247854, guid: 2b2de563bc6fe5b4bb90e348354f3f8b,
         type: 2}
       propertyPath: pooledAmount
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114143052835096814, guid: 2b2de563bc6fe5b4bb90e348354f3f8b,
         type: 2}
@@ -4034,6 +4034,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+        type: 2}
+      propertyPath: monitors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4980261786873640, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 516.93713
@@ -4066,28 +4071,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114377164771766786, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+    - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
         type: 2}
-      propertyPath: errorText
+      propertyPath: monitors.Array.data[0]
       value: 
-      objectReference: {fileID: 694759202}
+      objectReference: {fileID: 1443154484}
     - target: {fileID: 114543548410284238, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
         type: 2}
       propertyPath: errorText
       value: 
       objectReference: {fileID: 694759202}
-    - target: {fileID: 114187130576590288, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+    - target: {fileID: 114377164771766786, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: errorText
+      value: 
+      objectReference: {fileID: 694759202}
     - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
         type: 2}
       propertyPath: monitors.Array.data[2]
       value: 
-      objectReference: {fileID: 1443154484}
-    m_RemovedComponents:
-    - {fileID: 114187130576590288, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
+      objectReference: {fileID: 2079297941}
+    - target: {fileID: 1775203398950752, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &717784620 stripped
@@ -6024,7 +6032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10937,6 +10945,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2075699792}
+--- !u!114 &2079297941 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114543548410284238, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+    type: 2}
+  m_PrefabInternal: {fileID: 696902160}
+  m_Script: {fileID: 11500000, guid: 7fdfa41843fc7bd4e933cbe9b409a067, type: 3}
 --- !u!1 &2087187015
 GameObject:
   m_ObjectHideFlags: 0

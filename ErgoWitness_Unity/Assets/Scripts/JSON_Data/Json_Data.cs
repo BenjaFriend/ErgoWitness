@@ -33,10 +33,8 @@ public class HitsData
 public class Source
 {
     public string runtime_timestamp;    // the timestamp of the object
-    public int id_orig_p;               // source port
     public string id_orig_h;            // source ip
     public string id_resp_h;            // dest ip
-    public int id_resp_p;               // dest port
 
     public string service;      // dns, dhcp, etc.
     public string proto;        // udp, tcp, so on

@@ -91,13 +91,12 @@ public class BroMonitor : MonitorObject {
             SetIntegerValues(dataObject.hits.hits[i]._source);
 
             // If the source or dest ip's are 0 then break
-            if(dataObject.hits.hits[i]._source.sourceIpInt == 0 || dataObject.hits.hits[i]._source.destIpInt == 0)
+            if(dataObject.hits.hits[i]._source.sourceIpInt != 0 && dataObject.hits.hits[i]._source.destIpInt != 0)
             {
-                yield break;//  return;
+                // Send the bro data to the game controller, and add it to the network
+                DeviceManager.currentDeviceManager.CheckIp(dataObject.hits.hits[i]._source);
             }
 
-            // Send the bro data to the game controller, and add it to the network
-            DeviceManager.currentDeviceManager.CheckIp(dataObject.hits.hits[i]._source);
 
             // Make sure we get them smooth frames
             yield return null;

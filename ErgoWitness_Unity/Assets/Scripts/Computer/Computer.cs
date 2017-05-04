@@ -16,10 +16,6 @@ public class Computer : MonoBehaviour
 
     #region Fields
 
-    private Color healthyColor = Color.green;
-    private Color hurtColor = Color.red;
-    public Color hiddenColor;
-
     private int sourceInt;
 
     [SerializeField]
@@ -28,20 +24,16 @@ public class Computer : MonoBehaviour
 
     [SerializeField]    
     private float deathAnimTime = 0.5f;                        // The length of the death animation
+    private WaitForSeconds deathWait;  // How long we wait for our animation to play when we go inactive
     private Computer_AnimationController animationController;  // A reference to the animations for the computer object
 
     private bool isSpecialTeam;        // This is true if this object is of special interest to the user
 
     private bool isDying = false;      // This will be used to make sure that we don't call the death function when we don't need to
-    private WaitForSeconds deathWait;  // How long we wait for our animation to play when we go inactive
     private MeshRenderer meshRend;     // The mesh renderer component of this object so that we can
-
-    private IPGroup myGroup;           // A reference to the IP group that I am in
-
 
     private int[] alertCount;		   // [ A , B ] where A is an integer representing the Alert Type Enum cast as an int, and B is the count of that. 
     private float[] riskNumbers;       // Array in which the index is the integer representing the alert type enum cast as an int, and the value is the count of that
-
 
 	public UnityEngine.UI.Image colorQuadPrefab;
 	public Transform canvasTransform;
@@ -49,7 +41,12 @@ public class Computer : MonoBehaviour
 
     private float _currentHealth;
 
-	private ParticleSystem alertParticleSystem;
+    private Color healthyColor = Color.green;
+    private Color hurtColor = Color.red;
+
+    public bool showHealthReport;       // Bool determining whether or not we should be showing the tiles that represent health
+
+    private ParticleSystem alertParticleSystem;
 
     #endregion
 
@@ -71,6 +68,7 @@ public class Computer : MonoBehaviour
 
     #region Methods
 
+    #region Unity Methods
     void Awake()
     {
         // Get the mesh rend componenet
@@ -108,12 +106,62 @@ public class Computer : MonoBehaviour
 
         // Set the colors of everything 
         CalculateAllAlerts();
+
+        canvasTransform.gameObject.SetActive(false);
+
+    }
+
+    private void OnEnable()
+    {
+        // Make sure tha we know that the time since my discover is reset
+        timeSinceDiscovery = 0f;
+
+        // If this object is on a team that we care extra about...
+        if (isSpecialTeam)
+        {
+            // Make it's lifetime longer
+            lifetime *= 3;
+        }
+
+        // We are not dying anymore
+        isDying = false;
+
+        // Increment the count of computers
+        ComputerCount++;
+ 
+    }
+
+    private void OnDisable()
+    {
+        // This computer is no longer active, so decrement the static field
+        ComputerCount--;
     }
 
     /// <summary>
+    /// Keep track of how active this node is, and if it has exceeded its lifetime
+    /// then take it out of the dictionary
+    /// </summary>
+    private void Update()
+    {
+        // If we havce exceeded our active lifetime, and we are not on blue team...
+        if (!isSpecialTeam & timeSinceDiscovery >= lifetime && !isDying)
+        {
+            // Remove it from the dictionary
+            DisableMe();
+        }
+        else
+        {
+            // Add how long it has been to the field
+            timeSinceDiscovery += Time.deltaTime;
+        }
+    }
+
+    #endregion
+
+    /// <summary>
     /// Add one to the index of the attack type
-	/// 
-	/// Author: Ben Hoffman
+    /// 
+    /// Author: Ben Hoffman
     /// </summary>
     /// <param name="attackType"></param>
     public void AddAlert(AlertTypes attackType)
@@ -132,8 +180,15 @@ public class Computer : MonoBehaviour
         riskNumbers[alertInt] = 
             (float)alertCount[alertInt] / (float)(SnortAlertManager.maxAlertCounts[alertInt] + 1);
 
-        // Set the color of the quad object
-        quadObjs[alertInt].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
+
+        if (showHealthReport)
+        {
+            // Set the color of the quad object
+            quadObjs[alertInt].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
+        }
+        
+        // Tell our group this
+        GetComponentInParent<IPGroup>().AddAlert(alertInt, alertCount[alertInt]);
     }
 
     /// <summary>
@@ -183,17 +238,6 @@ public class Computer : MonoBehaviour
     }
 
     /// <summary>
-    /// Hide the attack UI element that represents this attack type
-    /// 
-    /// Author: Ben Hoffman
-    /// </summary>
-    /// <param name="index"></param>
-    public void HideAttackType(int index)
-    {
-        quadObjs[index].color = hiddenColor;
-    }
-
-    /// <summary>
     /// Get the alert count of this alert type on this object
     /// </summary>
     /// <param name="attackType">The type of alert we are checking</param>
@@ -203,60 +247,16 @@ public class Computer : MonoBehaviour
         return alertCount[(int)attackType];
     }
 
-    private void OnEnable()
+
+    public void ToggleAlertMessages()
     {
-        // Make sure tha we know that the time since my discover is reset
-        timeSinceDiscovery = 0f;
+        // Invert the bool indicating whether or not we ar showing the health report
+        showHealthReport = !showHealthReport;
 
-        // If this object is on a team that we care extra about...
-        if (isSpecialTeam)
-        {
-            // Make it's lifetime longer
-            lifetime *= 3;
-        }
-
-        // We are not dying anymore
-        isDying = false;
-
-        // Increment the count of computers
-        ComputerCount++;
+        // Invert whether or not this game object is active
+        canvasTransform.gameObject.SetActive(!canvasTransform.gameObject.activeInHierarchy);
     }
 
-    private void OnDisable()
-    {
-        // This computer is no longer active, so decrement the static field
-        ComputerCount--;
-    }
-
-    /// <summary>
-    /// Keep track of how active this node is, and if it has exceeded its lifetime
-    /// then take it out of the dictionary
-    /// </summary>
-    private void Update()
-    {
-        // If we havce exceeded our active lifetime, and we are not on blue team...
-        if (!isSpecialTeam & timeSinceDiscovery >= lifetime && !isDying)
-        {
-            // Remove it from the dictionary
-            DisableMe();
-        }
-        else
-        {
-            // Add how long it has been to the field
-            timeSinceDiscovery += Time.deltaTime;
-        }
-    }
-
-    /// <summary>
-    /// Set the current mesh renderer's material to this new material.
-    /// Also set the group reference on this object to the 
-    /// </summary>
-    /// <param name="groupMat">The group material</param>
-    public void SetUpGroup(IPGroup myNewGroup)
-    {
-        // Get the reference to a group
-        myGroup = myNewGroup;
-    }
 
     /// <summary>
     /// This will reset the lifetime of this computer because it was
@@ -273,14 +273,8 @@ public class Computer : MonoBehaviour
     /// </summary>
     private void DisableMe()
     {
-        // As long as I am actually in a group...
-        if(myGroup != null)
-        {
-            // Remove myself from that group
-            myGroup.RemoveIp(sourceInt);
-            // Remove the reference to my group
-            myGroup = null;
-        }
+        // Remove this object from the IP gorup it is in
+        GetComponentInParent<IPGroup>().RemoveIp(sourceInt);
 
         // I do not want a parent anymore, so set it to null
         gameObject.transform.parent = null;

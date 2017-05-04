@@ -63,6 +63,8 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="jsonSourceData">The source data that we are checking</param>
     public void CheckIp(Source jsonSourceData)
     {
+        
+
         // If we know of the source IP already:
         if (CheckDictionary(jsonSourceData.sourceIpInt))
         {
@@ -214,17 +216,9 @@ public class DeviceManager : MonoBehaviour {
         }
     }
 
-
-    /// <summary>
-    /// Call this when the toggle is called we hit the toggle
-    /// 
-    /// Author: Ben Hoffman
-    /// </summary>
-    public void HideElement()
+    private IEnumerator HideAlertType(int alertType)
     {
-        // I need to hide Image of this index
-
-
+        yield return null;
     }
 
 }
