@@ -41,6 +41,8 @@ public class PlayerClickAction : MonitorObject {
             // If we hit something witht that ray AND it was a computer...
             if (Physics.Raycast(ray, out hitInfo) && hitInfo.collider.CompareTag("Comp"))
             {
+                // Toggle the alert messages
+                hitInfo.collider.gameObject.GetComponent<Computer>().ToggleAlertMessages();
                 // Clear the text of the UI elements
                 ClearText();
 
@@ -131,7 +133,7 @@ public class PlayerClickAction : MonitorObject {
         {
             // Display the data
             proto.text = dataObject.hits.hits[i]._source.proto;
-            port.text = dataObject.hits.hits[i]._source.id_orig_p.ToString();
+            //port.text = dataObject.hits.hits[i]._source.id_orig_p.ToString();
             dest.text = dataObject.hits.hits[i]._source.id_resp_h;
         }
         

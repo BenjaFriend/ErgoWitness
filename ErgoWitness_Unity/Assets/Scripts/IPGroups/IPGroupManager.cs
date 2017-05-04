@@ -13,9 +13,9 @@ public class IPGroupManager : MonoBehaviour
 
     #region Fields
 
-    public Material[] possibleColors;    // The possible colors that we want to assign the groups at random
-    public Material[] blueTeamMats;      // The possible colors for the blue team
-    public Material[] redTeamMat;        // The possible colors for the red team
+    public Color[] possibleColors;    // The possible colors that we want to assign the groups at random
+    public Color[] blueTeamMats;      // The possible colors for the blue team
+    public Color[] redTeamMat;        // The possible colors for the red team
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
 

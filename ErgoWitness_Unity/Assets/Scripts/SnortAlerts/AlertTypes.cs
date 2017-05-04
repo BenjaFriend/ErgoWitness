@@ -6,5 +6,6 @@ public enum AlertTypes
 {
     TypeA,
     TypeB,
-    TypeC
+    TypeC,
+    TypeD    
 }

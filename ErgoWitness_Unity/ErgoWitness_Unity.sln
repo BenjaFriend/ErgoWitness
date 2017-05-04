@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity.Plugins", "ErgoWitness_Unity.Plugins.csproj", "{3351ACB0-7A7F-CE27-C071-6F38B3A66F34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity", "ErgoWitness_Unity.csproj", "{58D13BE4-4018-CE51-7CC1-A4D91AE2EC5C}"

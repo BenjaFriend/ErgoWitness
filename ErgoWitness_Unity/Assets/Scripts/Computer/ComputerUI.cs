@@ -25,12 +25,12 @@ public class ComputerUI : MonoBehaviour {
     {
         sourceIpText.text = "Source IP: " + data.id_orig_h.ToString();
         // Source port
-        sourcePortText.text = "Source Port: " + data.id_orig_p.ToString();
+        //sourcePortText.text = "Source Port: " + data.id_orig_p.ToString();
 
 
         destIpText.text = "Dest. IP: " + data.id_resp_h.ToString();
         // Dest port
-        destPortText.text = "Dest. Port: " + data.id_resp_p.ToString();
+        //destPortText.text = "Dest. Port: " + data.id_resp_p.ToString();
 
         if (data.service == null)
         {

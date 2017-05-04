@@ -50,7 +50,7 @@ public class SetInfo : MonoBehaviour {
 
             source.text = data.id_orig_h;
             dest.text = data.id_resp_h;
-            port.text = data.id_resp_p.ToString();
+            //port.text = data.id_resp_p.ToString();
             protocol.text = data.proto;
         }
         catch

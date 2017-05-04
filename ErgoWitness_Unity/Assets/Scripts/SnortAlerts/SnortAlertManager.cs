@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
+using System;
 
 /// <summary>
 /// This script will handle what we do with new snort info.
@@ -11,37 +14,43 @@ using UnityEngine;
 /// </summary>
 public class SnortAlertManager : MonoBehaviour {
 
-    public static SnortAlertManager alertManager;
+    #region Fields
 
-    [Tooltip("What alerts are concerned about?")]
-    public AlertTypes[] alertsTypes;
+    public static SnortAlertManager Instance { get; set; }
+    public Image alertPanel;
+    public Text alertUIPrefab;
+    public Toggle togglePrefab;
 
-    private int _topAlertCount;     // The computer with the most attack counts
+    private static Text[] alertUI;
+    private static Toggle[] alertToggles;
 
-   /* private void Awake()
-    {
-        // Make sure tha thtis is the only one of these objects in the scene
-        if (alertManager == null)
-        {
-            // Set the currenent referece
-            alertManager = this;
-        }
-        else if (alertManager != this)
-            Destroy(gameObject);
-    }*/
+    public static int[] maxAlertCounts;   // A 2D int array that represents the max counts of alerts, where the index is the type of attack
+
+    #endregion
 
     private void Start()
     {
-        // Make sure tha thtis is the only one of these objects in the scene
-        if (alertManager == null)
-        {
-            // Set the currenent referece
-            alertManager = this;
-        }
-        else if (alertManager != this)
-            Destroy(gameObject);
-    }
+        // Set the static instance to this
+        Instance = this;
 
+        maxAlertCounts = new int[System.Enum.GetNames(typeof(AlertTypes)).Length];
+
+        alertUI = new Text[System.Enum.GetNames(typeof(AlertTypes)).Length];
+        alertToggles = new Toggle[System.Enum.GetNames(typeof(AlertTypes)).Length];
+
+        // Create the UI panel that shows the max conuts of attack types, and the toggle options
+        for (int i = 0; i <  alertUI.Length; i++)
+        {
+            alertUI[i] = Instantiate(alertUIPrefab);
+            alertUI[i].transform.SetParent(alertPanel.transform);
+            alertUI[i].text = maxAlertCounts[i].ToString();
+
+            alertToggles[i] = Instantiate(togglePrefab);
+            alertToggles[i].transform.SetParent(alertPanel.transform);
+            alertToggles[i].GetComponentInChildren<Text>().text =
+                 System.Enum.GetName(typeof(AlertTypes), i);
+        }
+    }
 
     /// <summary>
     /// Add an alert to this PC of this alert type
@@ -49,12 +58,50 @@ public class SnortAlertManager : MonoBehaviour {
     /// Author: Ben Hoffman
     /// </summary>
     /// <param name="ipBeingAttacked"></param>
-    public void Alert(int ipBeingAttacked, string attackType)
+    public static void Alert(int ipBeingAttacked, AlertTypes alertType)
     {
-        // Check the device manager for if we have this IP source or not
-        // If we do, then add an alert to that device of this type
-        // If we do not, then add this device to the scene and then give it an alert
-        
+        // If we do NOT have this IP that is being attacked:
+        if (!DeviceManager.currentDeviceManager.CheckDictionary(ipBeingAttacked))
+        {
+            // Create a new source based on the source IP that we have
+            Source newSource = new Source();
+ 
+            // Set up the source data to properlly represent a computer that we don't yet have
+            newSource.sourceIpInt = ipBeingAttacked;
+
+            // Add them to the network, and wait for that to finish:
+			DeviceManager.currentDeviceManager.NewComputer(newSource);
+
+            return;
+        }
+
+        // Set the alert to that PC
+        DeviceManager.ComputersDict[ipBeingAttacked].AddAlert(alertType);
+
+        // Check if that is the most amount of alerts for this alert type
+        if (DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType) > maxAlertCounts[(int)alertType])
+        {
+            // Keep track of the highest number alert count we have to calculate the health
+            maxAlertCounts[(int)alertType] = DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType);
+
+            // update the UI
+            alertUI[(int)alertType].text = maxAlertCounts[(int)alertType].ToString();
+
+            // Tell all the computers to calculate their new health for this alert type
+            DeviceManager.currentDeviceManager.CalculateColors();
+            
+        }
     }
+
+    /// <summary>
+    /// Returns if the given toggle is on or not
+    /// </summary>
+    /// <param name="index">What alert index we are checking</param>
+    public static bool CheckToggleOn(int index)
+    {
+        return alertToggles[index].isOn;
+    }
+
+
 
 }

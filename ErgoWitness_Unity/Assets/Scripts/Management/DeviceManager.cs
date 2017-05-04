@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,20 +9,23 @@ using UnityEngine.UI;
 /// This class will do a lot of important things. 
 /// It will have a way to STORE all my current 'computers' on the network
 /// It will have a method to check if a
+/// 
+/// Author: Ben Hoffman
 /// </summary>
 [RequireComponent(typeof(ObjectPooler))]
 public class DeviceManager : MonoBehaviour {
 
     #region Fields
+
     public static DeviceManager currentDeviceManager;
 
-    //public StreamingInfo_UI streamingInfo;
     public Text deviceCountText;        // How many devices are there currently?
     public ObjectPooler computerPooler; // The object pooler for the computer prefab
 
     private static Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
 
     public static Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
+
     #endregion
 
     /// <summary>
@@ -59,6 +63,8 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="jsonSourceData">The source data that we are checking</param>
     public void CheckIp(Source jsonSourceData)
     {
+        
+
         // If we know of the source IP already:
         if (CheckDictionary(jsonSourceData.sourceIpInt))
         {
@@ -66,7 +72,7 @@ public class DeviceManager : MonoBehaviour {
             CheckConnection(jsonSourceData);
 
             // Add more life to the computer that we saw
-            computersDict[jsonSourceData.sourceIpInt].AddHit();
+            computersDict[jsonSourceData.sourceIpInt].ResetLifetime();
         }
         else
         {
@@ -86,7 +92,6 @@ public class DeviceManager : MonoBehaviour {
         Computer newDevice = computerPooler.GetPooledObject().GetComponent<Computer>();
 
         // Set the DATA on this gameobject to the data from the JSON data
-        //newDevice.SourceInfo = jsonSourceData;
         newDevice.SourceInt = jsonSourceData.sourceIpInt;
 
         // Set this object as active in the hierachy so that you can actually see it
@@ -102,13 +107,7 @@ public class DeviceManager : MonoBehaviour {
         IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.sourceIpInt);
 
         // Update the UI that tells us how many devices there are
-        deviceCountText.text = computersDict.Count.ToString();
-
-        // Send it to the streaming UI thing
-       /* if (streamingInfo.IsShowing)
-        {
-            streamingInfo.AddInfo(jsonSourceData);
-        }*/
+        deviceCountText.text = Computer.ComputerCount.ToString();
 
         // ============== Sending the necessary info to draw lines between objects ======================= //
 
@@ -123,7 +122,6 @@ public class DeviceManager : MonoBehaviour {
             // Send the protocol
             ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.proto);
         }
-
     }
 
     /// <summary>
@@ -186,6 +184,41 @@ public class DeviceManager : MonoBehaviour {
     {
         // return if we contrain this address or not
         return computersDict.ContainsKey(IpInt);
+    }
+
+
+
+    /// <summary>
+    /// Start the calculate all colors coroutine
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    public void CalculateColors()
+    {
+        StartCoroutine(CalculateAllColors());
+    }
+
+    /// <summary>
+    /// Loop through all the computer objects and 
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator CalculateAllColors()
+    {
+        for (int i = 0; i < ComputersDict.Count; i++)
+        {
+            // Calculate all alerts for each computer 
+            ComputersDict.ElementAt(i).Value.CalculateAllAlerts();
+
+            // Wait for the end of this frame
+            yield return null;
+        }
+    }
+
+    private IEnumerator HideAlertType(int alertType)
+    {
+        yield return null;
     }
 
 }
