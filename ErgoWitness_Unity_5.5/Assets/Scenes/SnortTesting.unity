@@ -4034,11 +4034,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
-        type: 2}
-      propertyPath: monitors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4980261786873640, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 516.93713
@@ -4071,6 +4066,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114377164771766786, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
+        type: 2}
+      propertyPath: errorText
+      value: 
+      objectReference: {fileID: 694759202}
     - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
         type: 2}
       propertyPath: monitors.Array.data[0]
@@ -4081,20 +4081,6 @@ Prefab:
       propertyPath: errorText
       value: 
       objectReference: {fileID: 694759202}
-    - target: {fileID: 114377164771766786, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
-        type: 2}
-      propertyPath: errorText
-      value: 
-      objectReference: {fileID: 694759202}
-    - target: {fileID: 114356144267389630, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
-        type: 2}
-      propertyPath: monitors.Array.data[2]
-      value: 
-      objectReference: {fileID: 2079297941}
-    - target: {fileID: 1775203398950752, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f45342b0df9b7b46b18e77ad5e3af0a, type: 2}
   m_IsPrefabParent: 0
@@ -7066,8 +7052,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 227230813}
   m_HandleRect: {fileID: 227230812}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.51010704
+  m_Value: 0.9999999
+  m_Size: 0.510884
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10945,12 +10931,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2075699792}
---- !u!114 &2079297941 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114543548410284238, guid: 2f45342b0df9b7b46b18e77ad5e3af0a,
-    type: 2}
-  m_PrefabInternal: {fileID: 696902160}
-  m_Script: {fileID: 11500000, guid: 7fdfa41843fc7bd4e933cbe9b409a067, type: 3}
 --- !u!1 &2087187015
 GameObject:
   m_ObjectHideFlags: 0

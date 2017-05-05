@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity_5.5.Plugins", "ErgoWitness_Unity_5.5.Plugins.csproj", "{A61DBC30-AD2E-121A-7547-9C7C352A1B6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity_5.5", "ErgoWitness_Unity_5.5.csproj", "{B5DCC5B6-EFC0-9C28-B07A-2390DBEC0893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity_5.5.Editor.Plugins", "ErgoWitness_Unity_5.5.Editor.Plugins.csproj", "{DC7AE8D2-17DC-50EF-CB95-2A0C34E42C58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A61DBC30-AD2E-121A-7547-9C7C352A1B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61DBC30-AD2E-121A-7547-9C7C352A1B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61DBC30-AD2E-121A-7547-9C7C352A1B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61DBC30-AD2E-121A-7547-9C7C352A1B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5DCC5B6-EFC0-9C28-B07A-2390DBEC0893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DCC5B6-EFC0-9C28-B07A-2390DBEC0893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DCC5B6-EFC0-9C28-B07A-2390DBEC0893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DCC5B6-EFC0-9C28-B07A-2390DBEC0893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7AE8D2-17DC-50EF-CB95-2A0C34E42C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7AE8D2-17DC-50EF-CB95-2A0C34E42C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7AE8D2-17DC-50EF-CB95-2A0C34E42C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7AE8D2-17DC-50EF-CB95-2A0C34E42C58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

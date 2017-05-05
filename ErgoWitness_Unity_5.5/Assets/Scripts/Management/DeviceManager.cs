@@ -66,13 +66,17 @@ public class DeviceManager : MonoBehaviour {
         
 
         // If we know of the source IP already:
-        if (CheckDictionary(jsonSourceData.sourceIpInt))
+        if (computersDict.ContainsKey(jsonSourceData.sourceIpInt))
         {
             // I want to check if there is a connection that I should add
             CheckConnection(jsonSourceData);
 
             // Add more life to the computer that we saw
             computersDict[jsonSourceData.sourceIpInt].ResetLifetime();
+
+            if(computersDict.ContainsKey(jsonSourceData.destIpInt))
+                computersDict[jsonSourceData.destIpInt].ResetLifetime();
+
         }
         else
         {

@@ -109,6 +109,55 @@ sed -i 's/#network.host: 192.168.0.1/network.host: localhost/g' /etc/elasticsear
   sudo chkconfig kibana on
 </code>
 
+
+<!-- =================== Install NGINX ====================== -->
+<h3>Install NGINX</h3>
+
+<p>Installing NGINX will provide some basic security to the access of the ELK stack. It is simple to do and highly recommended.</p>
+
+<code>
+yum -y install epel-release
+yum -y install nginx httpd-tools
+sudo htpasswd -c /etc/nginx/htpasswd.users kibanaadmin
+cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+
+# Delete server block  in default config
+sed -i -e '38,87d' /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/conf.d
+
+  cat > /etc/nginx/conf.d/kibana.conf << EOF
+server {
+    listen 80;
+
+    server_name example.com;
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+EOF
+
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo setsebool -P httpd_can_network_connect 1
+</code>
+
+
+<p>If you cannot access your ELK stack after you install NGINX, you may need to set your firewall rules to allow TCP access on port 9200 and 5400.</p>
+
+
+
+
+
 <h3>Install Logstash</h3>
 
 <code>
