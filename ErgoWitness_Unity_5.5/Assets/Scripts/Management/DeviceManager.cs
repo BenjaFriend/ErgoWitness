@@ -16,14 +16,19 @@ using UnityEngine.UI;
 public class DeviceManager : MonoBehaviour {
 
     #region Fields
+    // A static reference to this instance, because this is like the 'game manager' per se
+    public static DeviceManager Instance;
 
-    public static DeviceManager currentDeviceManager;
-
+    [Tooltip("Used to give the computers a reference to the snort alert manager that we are using.")]
+    public SnortAlertManager snortManager;
+    [Space]
+    [Tooltip("Part of the UI that will show the current count of computers on the screen")]
     public Text deviceCountText;        // How many devices are there currently?
-    public ObjectPooler computerPooler; // The object pooler for the computer prefab
+
+
+    private ObjectPooler computerPooler; // The object pooler for the computer prefab
 
     private static Dictionary<int, Computer> computersDict; // A dictionary of all the computers I have
-
     public static Dictionary<int, Computer> ComputersDict { get { return computersDict; } }
 
     #endregion
@@ -34,12 +39,12 @@ public class DeviceManager : MonoBehaviour {
     void Awake ()
     {
         // Make sure tha thtis is the only one of these objects in the scene
-        if (currentDeviceManager == null)
+        if (Instance == null)
         {
             // Set the currenent referece
-            currentDeviceManager = this;
+            Instance = this;
         }
-        else if (currentDeviceManager != this)
+        else if (Instance != this)
             Destroy(gameObject);
     }
 
@@ -48,11 +53,17 @@ public class DeviceManager : MonoBehaviour {
         // Initialize the dictionary
         computersDict = new Dictionary<int, Computer>();
 
-        // Set the text
-        deviceCountText.text = "0";
-
         // Get the object pooler
         computerPooler = GetComponent<ObjectPooler>();
+
+        if(deviceCountText != null)
+        {
+            // Set the text
+            deviceCountText.text = "0";
+        }
+
+
+        
     }
 
     /// <summary>
@@ -63,8 +74,6 @@ public class DeviceManager : MonoBehaviour {
     /// <param name="jsonSourceData">The source data that we are checking</param>
     public void CheckIp(Source jsonSourceData)
     {
-        
-
         // If we know of the source IP already:
         if (computersDict.ContainsKey(jsonSourceData.sourceIpInt))
         {
@@ -101,6 +110,12 @@ public class DeviceManager : MonoBehaviour {
         // Set this object as active in the hierachy so that you can actually see it
         newDevice.gameObject.SetActive(true);
 
+        // Set the snort manager if we have one
+        if (snortManager != null)
+        {            
+            newDevice.snortManager = snortManager;
+        }
+
         // Add the object to the dictionary
         computersDict.Add(jsonSourceData.sourceIpInt, newDevice);
 
@@ -110,8 +125,12 @@ public class DeviceManager : MonoBehaviour {
         // Check if we can add it to a group
         IPGroupManager.currentIpGroups.CheckGroups(jsonSourceData.sourceIpInt);
 
-        // Update the UI that tells us how many devices there are
-        deviceCountText.text = Computer.ComputerCount.ToString();
+        // If we have a device count text...
+        if(deviceCountText != null)
+        {
+            // Update the UI that tells us how many devices there are
+            deviceCountText.text = Computer.ComputerCount.ToString();
+        }
 
         // ============== Sending the necessary info to draw lines between objects ======================= //
 

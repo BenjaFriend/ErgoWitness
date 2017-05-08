@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class StreamingInfo_UI : MonoBehaviour {
 
     #region Fields
-	public static StreamingInfo_UI currentStreamInfo;
+	//public static StreamingInfo_UI currentStreamInfo;
 
     public SetInfo[] infoObjects;
 
@@ -39,13 +39,13 @@ public class StreamingInfo_UI : MonoBehaviour {
     void Start ()
     {
         // Make sure tha thtis is the only one of these objects in the scene
-        if (currentStreamInfo == null)
+        /*if (currentStreamInfo == null)
         {
             // Set the currenent referece
             currentStreamInfo = this;
         }
         else if (currentStreamInfo != this)
-            Destroy(gameObject);
+            Destroy(gameObject);*/
 
         // Get the UI components all the time
         rectTransforms = new RectTransform[infoObjects.Length];

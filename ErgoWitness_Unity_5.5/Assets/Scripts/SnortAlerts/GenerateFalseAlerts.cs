@@ -10,16 +10,23 @@ using UnityEngine;
 /// </summary>
 public class GenerateFalseAlerts : MonoBehaviour {
 
+    private SnortAlertManager snortManager;
+
     private int _fakeIPint = 10002;
     private int _fakeIP_2 = 20002;
 
-	/// <summary>
+    private void Start()
+    {
+        snortManager = GetComponent<SnortAlertManager>();
+    }
+
+    /// <summary>
     /// Check for input from the keyboard, and generate alerts if we 
     /// press the number keys of the alert type
     /// 
     /// Author: Ben Hoffman
     /// </summary>
-	void Update ()
+    void Update ()
     {
         // If we press 1
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -58,7 +65,7 @@ public class GenerateFalseAlerts : MonoBehaviour {
     private void GenerateFalseAlert(int iptoUse, AlertTypes alertType)
     {
         // Send an alert to the snort manager with a false Ip address 
-        SnortAlertManager.Alert(iptoUse, alertType);
+        snortManager.Alert(iptoUse, alertType);
     }
 
 }

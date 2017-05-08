@@ -121,7 +121,7 @@ public class IPGroup : MonoBehaviour {
     public void AddToGroup(int IpAddress)
     {
         // If our dictionary contains this...
-        if (DeviceManager.currentDeviceManager.CheckDictionary(IpAddress))
+        if (DeviceManager.Instance.CheckDictionary(IpAddress))
         {
             // Cache the object here
             tempObj = DeviceManager.ComputersDict[IpAddress];
@@ -326,7 +326,7 @@ public class IPGroup : MonoBehaviour {
                 Color.Lerp(
                 healthyColor,
                 hurtColor,
-                (float)maxAlertCountForGroup[alertIndex] / (float)(SnortAlertManager.maxAlertCounts[alertIndex] + 1));
+                (float)maxAlertCountForGroup[alertIndex] / (float)(DeviceManager.Instance.snortManager.maxAlertCounts[alertIndex] + 1));
         }
     }
 

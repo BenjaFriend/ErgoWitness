@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour {
 
     #region Fields
     public static UIController thisUIController;
+    public StreamingInfo_UI streamingInfo;
 
     public Camera playerControlledCamera;
     public Camera autoCamera;
@@ -211,14 +212,14 @@ public class UIController : MonoBehaviour {
 		{
 			// Hide it
 			MenuAnim.SetBool("showMain", false);
-            StreamingInfo_UI.currentStreamInfo.IsShowing = false;
+            streamingInfo.IsShowing = false;
 
         }
         // if we are NOT showing the menu...
         else
 		{
             // Show the menu
-            StreamingInfo_UI.currentStreamInfo.IsShowing = true;
+            streamingInfo.IsShowing = true;
             MenuAnim.SetBool("showMain", true);
 		}
 	}

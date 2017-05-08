@@ -16,36 +16,33 @@ public class SnortAlertManager : MonoBehaviour {
 
     #region Fields
 
-    public static SnortAlertManager Instance { get; set; }
+    //public static SnortAlertManager Instance { get; set; }
+
     public Image alertPanel;
-    public Text alertUIPrefab;
     public Toggle togglePrefab;
 
-    private static Text[] alertUI;
-    private static Toggle[] alertToggles;
+    public Graphic toggleGraphic;
 
-    public static int[] maxAlertCounts;   // A 2D int array that represents the max counts of alerts, where the index is the type of attack
+    private Toggle[] alertToggles;
+
+    public int[] maxAlertCounts;   // A 2D int array that represents the max counts of alerts, where the index is the type of attack
 
     #endregion
 
     private void Start()
     {
         // Set the static instance to this
-        Instance = this;
+        //Instance = this;
 
         maxAlertCounts = new int[System.Enum.GetNames(typeof(AlertTypes)).Length];
 
-        alertUI = new Text[System.Enum.GetNames(typeof(AlertTypes)).Length];
         alertToggles = new Toggle[System.Enum.GetNames(typeof(AlertTypes)).Length];
 
         // Create the UI panel that shows the max conuts of attack types, and the toggle options
-        for (int i = 0; i <  alertUI.Length; i++)
+        for (int i = 0; i < alertToggles.Length; i++)
         {
-            alertUI[i] = Instantiate(alertUIPrefab);
-            alertUI[i].transform.SetParent(alertPanel.transform);
-            alertUI[i].text = maxAlertCounts[i].ToString();
-
             alertToggles[i] = Instantiate(togglePrefab);
+            alertToggles[i].graphic = toggleGraphic;
             alertToggles[i].transform.SetParent(alertPanel.transform);
             alertToggles[i].GetComponentInChildren<Text>().text =
                  System.Enum.GetName(typeof(AlertTypes), i);
@@ -58,10 +55,10 @@ public class SnortAlertManager : MonoBehaviour {
     /// Author: Ben Hoffman
     /// </summary>
     /// <param name="ipBeingAttacked"></param>
-    public static void Alert(int ipBeingAttacked, AlertTypes alertType)
+    public void Alert(int ipBeingAttacked, AlertTypes alertType)
     {
         // If we do NOT have this IP that is being attacked:
-        if (!DeviceManager.currentDeviceManager.CheckDictionary(ipBeingAttacked))
+        if (!DeviceManager.Instance.CheckDictionary(ipBeingAttacked))
         {
             // Create a new source based on the source IP that we have
             Source newSource = new Source();
@@ -70,7 +67,7 @@ public class SnortAlertManager : MonoBehaviour {
             newSource.sourceIpInt = ipBeingAttacked;
 
             // Add them to the network, and wait for that to finish:
-			DeviceManager.currentDeviceManager.NewComputer(newSource);
+			DeviceManager.Instance.NewComputer(newSource);
 
             return;
         }
@@ -84,12 +81,8 @@ public class SnortAlertManager : MonoBehaviour {
             // Keep track of the highest number alert count we have to calculate the health
             maxAlertCounts[(int)alertType] = DeviceManager.ComputersDict[ipBeingAttacked].AlertCount(alertType);
 
-            // update the UI
-            alertUI[(int)alertType].text = maxAlertCounts[(int)alertType].ToString();
-
             // Tell all the computers to calculate their new health for this alert type
-            DeviceManager.currentDeviceManager.CalculateColors();
-            
+            DeviceManager.Instance.CalculateColors();           
         }
     }
 
@@ -97,9 +90,14 @@ public class SnortAlertManager : MonoBehaviour {
     /// Returns if the given toggle is on or not
     /// </summary>
     /// <param name="index">What alert index we are checking</param>
-    public static bool CheckToggleOn(int index)
+    public bool CheckToggleOn(int index)
     {
         return alertToggles[index].isOn;
+    }
+
+    public static void ToggleAlertPanelsOff()
+    {
+        
     }
 
 

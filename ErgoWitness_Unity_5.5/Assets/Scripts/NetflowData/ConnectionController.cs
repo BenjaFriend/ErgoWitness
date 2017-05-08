@@ -77,8 +77,8 @@ public class ConnectionController : MonoBehaviour
     public void CheckPacketbeatData(int sourceIP, int destIP, string transport)
     {
         // If the source and destination IP's are known:
-        if (!DeviceManager.currentDeviceManager.CheckDictionary(sourceIP) ||
-            !DeviceManager.currentDeviceManager.CheckDictionary(destIP))
+        if (!DeviceManager.Instance.CheckDictionary(sourceIP) ||
+            !DeviceManager.Instance.CheckDictionary(destIP))
         {
             Source newSource = new Source();
 
@@ -92,7 +92,7 @@ public class ConnectionController : MonoBehaviour
             newSource.proto = transport;
             
             // Add them to the network, and wait for that to finish:
-            DeviceManager.currentDeviceManager.CheckIp(newSource);
+            DeviceManager.Instance.CheckIp(newSource);
         }
 
         // Actually send the flow
@@ -118,13 +118,13 @@ public class ConnectionController : MonoBehaviour
         tempNet = obj.GetComponent<NetflowObject>();
 
         // Set the source of the netflow 
-        tempNet.SourcePos = DeviceManager.currentDeviceManager.GetTransform(sourceIP);
+        tempNet.SourcePos = DeviceManager.Instance.GetTransform(sourceIP);
 
         // Set the color of the temp net object
         SetColor(tempNet, protocol);
 
         // Set the destination of the netflow obj, which also start the movement 
-        tempNet.DestinationPos = DeviceManager.currentDeviceManager.GetTransform(destIP);
+        tempNet.DestinationPos = DeviceManager.Instance.GetTransform(destIP);
 
         // Set the object as active in the hierachy, so that the object pooler
         // Knows not to 

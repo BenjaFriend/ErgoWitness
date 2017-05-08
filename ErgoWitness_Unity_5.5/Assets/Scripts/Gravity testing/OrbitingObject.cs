@@ -22,7 +22,7 @@ public class OrbitingObject : MonoBehaviour {
     private Vector3 differenceVector;
 
 
-    private Vector3 _currentPosition;
+    //private Vector3 _currentPosition;
 
 	public Vector3 Position { get { return transform.position;  } }
     public float Mass { get { return rb.mass; } }
@@ -41,7 +41,7 @@ public class OrbitingObject : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        _currentPosition = transform.position;
+        //_currentPosition = transform.position;
 
         rb.AddForce(Orbit());
 

@@ -12,18 +12,28 @@ using UnityEngine;
 /// </summary>
 public class Computer : MonoBehaviour
 {
+    // A static count of all the computers in the scene
     public static int ComputerCount;
 
     #region Fields
+    
+    [Space]
+    [Header("Snort Alert Interface")]
+    [Tooltip("Determines if we are showing the health report or not")]
+    public bool showHealthReport;       // Bool determining whether or not we should be showing the tiles that represent health
+    public UnityEngine.UI.Image colorQuadPrefab;
+	public Transform canvasTransform;
+    
+    [Tooltip("The snort manager for this computer")]
+    public SnortAlertManager snortManager;
 
     private int sourceInt;
 
     [SerializeField]
     private float lifetime = 30f;            // How long until the computer will go off of the network
     private float timeSinceDiscovery = 0f;   // How long it has been since we were discovered
-
-    [SerializeField]    
-    private float deathAnimTime = 0.5f;                        // The length of the death animation
+  
+    private float deathAnimTime = 0.667F;                        // The length of the death animation
     private WaitForSeconds deathWait;  // How long we wait for our animation to play when we go inactive
     private Computer_AnimationController animationController;  // A reference to the animations for the computer object
 
@@ -35,16 +45,13 @@ public class Computer : MonoBehaviour
     private int[] alertCount;		   // [ A , B ] where A is an integer representing the Alert Type Enum cast as an int, and B is the count of that. 
     private float[] riskNumbers;       // Array in which the index is the integer representing the alert type enum cast as an int, and the value is the count of that
 
-	public UnityEngine.UI.Image colorQuadPrefab;
-	public Transform canvasTransform;
+	
 	private UnityEngine.UI.Image[] quadObjs;
 
     private float _currentHealth;
 
     private Color healthyColor = Color.green;
     private Color hurtColor = Color.red;
-
-    public bool showHealthReport;       // Bool determining whether or not we should be showing the tiles that represent health
 
     private ParticleSystem alertParticleSystem;
 
@@ -169,16 +176,12 @@ public class Computer : MonoBehaviour
         // Cast the alert type and store it
         int alertInt = (int)attackType;
 
-        // If this index is not being ignored by the snort manager 
-        if (!SnortAlertManager.CheckToggleOn(alertInt))
-            return;
-
         // Add to the count of this alert type
         alertCount[alertInt]++;
 
         // Calculate the percentage of health on this node based on the
         riskNumbers[alertInt] = 
-            (float)alertCount[alertInt] / (float)(SnortAlertManager.maxAlertCounts[alertInt] + 1);
+            (float)alertCount[alertInt] / (float)(snortManager.maxAlertCounts[alertInt] + 1);
 
 
         if (showHealthReport)
@@ -205,10 +208,10 @@ public class Computer : MonoBehaviour
 		for (int i = 0; i < riskNumbers.Length; i++) 
 		{
             // IF this index is active in the snort manager, then account for it.
-            if (SnortAlertManager.CheckToggleOn(i))
+            if (snortManager.CheckToggleOn(i))
             {
                 // Calculate the health
-                riskNumbers[i] =  (float)alertCount[i] / ((float)SnortAlertManager.maxAlertCounts[i] + 1);
+                riskNumbers[i] =  (float)alertCount[i] / ((float)snortManager.maxAlertCounts[i] + 1);
             
                 // Set the color of that quad object
                 quadObjs[i].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[i]);
@@ -255,6 +258,17 @@ public class Computer : MonoBehaviour
 
         // Invert whether or not this game object is active
         canvasTransform.gameObject.SetActive(!canvasTransform.gameObject.activeInHierarchy);
+    }
+
+    /// <summary>
+    /// Toggles if we are showing this specific type of attack in our Ui
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    /// <param name="attackType"></param>
+    public void ToggleAttackType(int attackType)
+    {
+        
     }
 
 
