@@ -8,21 +8,6 @@ using UnityEngine;
 public class ManageMonitors : MonoBehaviour {
 
     public MonitorObject[] monitors;
-    public static ManageMonitors currentMonitors;
-
-    /// <summary>
-    /// Set the static reference to this object
-    /// </summary>
-    void Awake()
-    {
-        // Make sure that this is the only one of these components in the scene
-        if (currentMonitors == null)
-        {
-            currentMonitors = this;
-        }
-        else if (currentMonitors != this)
-            Destroy(gameObject);
-    }
 
     /// <summary>
     /// Set the server IP address's of all the monitors

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// This script will handle what we do with new snort info.
@@ -15,13 +16,9 @@ using System;
 public class SnortAlertManager : MonoBehaviour {
 
     #region Fields
-
-    //public static SnortAlertManager Instance { get; set; }
-
+    
     public Image alertPanel;
     public Toggle togglePrefab;
-
-    public Graphic toggleGraphic;
 
     private Toggle[] alertToggles;
 
@@ -31,9 +28,6 @@ public class SnortAlertManager : MonoBehaviour {
 
     private void Start()
     {
-        // Set the static instance to this
-        //Instance = this;
-
         maxAlertCounts = new int[System.Enum.GetNames(typeof(AlertTypes)).Length];
 
         alertToggles = new Toggle[System.Enum.GetNames(typeof(AlertTypes)).Length];
@@ -42,11 +36,20 @@ public class SnortAlertManager : MonoBehaviour {
         for (int i = 0; i < alertToggles.Length; i++)
         {
             alertToggles[i] = Instantiate(togglePrefab);
-            alertToggles[i].graphic = toggleGraphic;
+            int index = i;
+            alertToggles[i].onValueChanged.AddListener(delegate { HideGroup(index); });
+
             alertToggles[i].transform.SetParent(alertPanel.transform);
             alertToggles[i].GetComponentInChildren<Text>().text =
                  System.Enum.GetName(typeof(AlertTypes), i);
         }
+    }
+
+
+    public void HideGroup(int value)
+    {
+        // Hides the group aspects
+        StartCoroutine(DeviceManager.Instance.HideAlertType(value));
     }
 
     /// <summary>

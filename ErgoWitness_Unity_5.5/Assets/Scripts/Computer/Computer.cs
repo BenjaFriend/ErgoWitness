@@ -183,8 +183,8 @@ public class Computer : MonoBehaviour
         riskNumbers[alertInt] = 
             (float)alertCount[alertInt] / (float)(snortManager.maxAlertCounts[alertInt] + 1);
 
-
-        if (showHealthReport)
+        // If we are showign the health report and this quad specifically,
+        if (showHealthReport && quadObjs[alertInt].isActiveAndEnabled)
         {
             // Set the color of the quad object
             quadObjs[alertInt].color = Color.Lerp(healthyColor, hurtColor, riskNumbers[alertInt]);
@@ -250,7 +250,12 @@ public class Computer : MonoBehaviour
         return alertCount[(int)attackType];
     }
 
-
+    /// <summary>
+    /// Set the showing health report bool and the canvas with the health
+    /// report on it to the opposite of their current state
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
     public void ToggleAlertMessages()
     {
         // Invert the bool indicating whether or not we ar showing the health report
@@ -268,7 +273,8 @@ public class Computer : MonoBehaviour
     /// <param name="attackType"></param>
     public void ToggleAttackType(int attackType)
     {
-        
+        // Set the object's active to the opposite of what it currently is
+        quadObjs[attackType].gameObject.SetActive(!quadObjs[attackType].gameObject.activeInHierarchy);
     }
 
 

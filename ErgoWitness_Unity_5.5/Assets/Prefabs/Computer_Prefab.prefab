@@ -381,12 +381,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa562669e9003734eb1c92384ad7cf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hiddenColor: {r: 0, g: 0, b: 0, a: 0}
-  lifetime: 10
-  deathAnimTime: 0.667
+  showHealthReport: 0
   colorQuadPrefab: {fileID: 114764073901784046, guid: ff8b8f863c27f024da31fc859a12bbfc,
     type: 2}
   canvasTransform: {fileID: 224433522934743198}
+  snortManager: {fileID: 0}
+  lifetime: 30
 --- !u!114 &114610013331797398
 MonoBehaviour:
   m_ObjectHideFlags: 1

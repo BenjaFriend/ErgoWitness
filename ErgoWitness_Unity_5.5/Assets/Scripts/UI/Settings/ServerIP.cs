@@ -26,7 +26,8 @@ public class ServerIP : MonoBehaviour {
     /// </summary>
     public void SetServerIP()
     {
-        ManageMonitors.currentMonitors.SetServerIP(serverInput.text);
+        GetComponentInParent<UIController>().monitorManager.SetServerIP(serverInput.text);
+        //ManageMonitors.currentMonitors.SetServerIP(serverInput.text);
 
         PlayerPrefs.SetString("serverIP", serverInput.text);
     }

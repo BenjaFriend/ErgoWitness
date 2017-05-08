@@ -11,23 +11,30 @@ using System.IO;
 public class MonitorObject : MonoBehaviour {
 
     #region Fields
-    private MonitorState currentState;    // The current state of this web request
 
+    public ManageMonitors monitorManager;
+
+
+    [Tooltip("This text will display any error that we have in the queries")]
     public UnityEngine.UI.Text errorText;
 
     [Range(0f, 1f)]
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
+    [Header("Index Name In Elasticsearch")]
+    public string indexName;    // Either packetbeat or filebeat
+    [Header("Query Locations")]
+    // File locations of the queries that we need to use
+    public string fileLocation_queryTop;        // Location of the top part of the query
+    public string fileLocation_queryBottom;     // Location of the bottom part fl the query, with what fields we want
 
     private string serverIP = "";    // The IP address of the server running our database
-    public string indexName;    // Either packetbeat or filebeat
+    
     private string url;         // The filebeat index
 
     private Dictionary<string, string> headers;  // The dictionary with all the headers in it
     private string _current_Query;               // The current query for us to use
 
-    // File locations of the queries that we need to use
-    public string fileLocation_queryTop;        // Location of the top part of the query
-    public string fileLocation_queryBottom;     // Location of the bottom part fl the query, with what fields we want
+    
 
     // The query data that we will use to build our request
     private string _query_TOP;
@@ -35,13 +42,16 @@ public class MonitorObject : MonoBehaviour {
 
     // The latest successful time stamp that we used to make a request
     public string _latest_time;
+
     // This is true if we want to use our last success, which means that the newest query failed
     public bool _UseLastSuccess;
+
+    private MonitorState currentState;    // The current state of this web request
 
     private byte[] _PostData;        // The post data that we are using
 
     private WaitForSeconds _waitTime;   // A wait object so that we only need to create it once
-    
+
     private IEnumerator request_Coroutine;  // The coroutine that is running the web request
 
     /// <summary>
@@ -49,7 +59,7 @@ public class MonitorObject : MonoBehaviour {
     /// to make a query. If it is false, then we will use the data from the custom
     /// user timestamp to make a query
     /// </summary>
-    private bool _UseRealTime;      
+    public bool _UseRealTime;      
 
     // Strings that will be used for custom queries if we need them
     private string _lessThenQuery;
@@ -81,8 +91,18 @@ public class MonitorObject : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        // Clear the error text
-        errorText.text = "";
+        if(monitorManager == null)
+        {
+            // Get the monitor manager in the parent object
+            monitorManager = GetComponentInParent<ManageMonitors>();
+        }
+        
+
+        if(errorText != null)
+        {
+            // Clear the error text
+            errorText.text = "";
+        }
 
         // Start loading the assets
         // Create new headers
@@ -175,7 +195,7 @@ public class MonitorObject : MonoBehaviour {
     /// <returns>A timestamp based on the current time</returns>
     private string GenerateTimestampNow()
     {
-        return ManageMonitors.currentMonitors.GenerateTimeStamp(
+        return monitorManager.GenerateTimeStamp(
             System.DateTime.Now.Hour,
             System.DateTime.Now.Minute,
             System.DateTime.Now.Second);
@@ -297,7 +317,8 @@ public class MonitorObject : MonoBehaviour {
         // If there was an error...
         if (myRequest.error != null)
         {
-            errorText.text = "There was a HTTP request error! Check your Server IP in the options tab!";
+            if(errorText != null)
+                errorText.text = "There was a HTTP request error! Check your Server IP in the options tab!";
             // If we are in the editor, then print the error to the console
 #if UNITY_EDITOR
                 Debug.Log("The HTTP request text:\n" + myRequest.error);
@@ -315,7 +336,7 @@ public class MonitorObject : MonoBehaviour {
         CheckRequestData(dataObject);
 
         // If our error text is displaying an error when it shoulnd't be...
-        if(!string.IsNullOrEmpty(errorText.text))
+        if(errorText != null && !string.IsNullOrEmpty(errorText.text))
         {
             // Clear the text to be empty
             errorText.text = "";

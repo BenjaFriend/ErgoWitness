@@ -121,6 +121,8 @@
     <Compile Include="Assets\Scripts\Player\PlayerClickAction.cs" />
     <Compile Include="Assets\Scripts\SnortAlerts\AlertTypes.cs" />
     <Compile Include="Assets\Scripts\SnortAlerts\GenerateFalseAlerts.cs" />
+    <Compile Include="Assets\Scripts\SnortAlerts\SetTargetGraphic.cs" />
+    <Compile Include="Assets\Scripts\SnortAlerts\SetUpToggleRuntime.cs" />
     <Compile Include="Assets\Scripts\SnortAlerts\SnortAlertManager.cs" />
     <Compile Include="Assets\Scripts\UI\LeaderboardItem.cs" />
     <Compile Include="Assets\Scripts\UI\SetInfo.cs" />

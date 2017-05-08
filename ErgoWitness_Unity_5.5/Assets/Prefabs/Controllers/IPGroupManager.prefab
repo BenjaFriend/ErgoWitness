@@ -228,9 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alertPanel: {fileID: 0}
-  togglePrefab: {fileID: 114758919415116330, guid: 0fb4f0fa81d1b51419bd01534809e99b,
+  togglePrefab: {fileID: 114503823948451684, guid: 0fb4f0fa81d1b51419bd01534809e99b,
     type: 2}
-  toggleGraphic: {fileID: 0}
   maxAlertCounts: 
 --- !u!114 &114827242643247854
 MonoBehaviour:

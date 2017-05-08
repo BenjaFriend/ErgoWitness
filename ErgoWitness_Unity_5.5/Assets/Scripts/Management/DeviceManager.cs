@@ -239,9 +239,16 @@ public class DeviceManager : MonoBehaviour {
         }
     }
 
-    private IEnumerator HideAlertType(int alertType)
+    public IEnumerator HideAlertType(int alertType)
     {
-        yield return null;
+        for (int i = 0; i < ComputersDict.Count; i++)
+        {
+            // Calculate all alerts for each computer 
+            ComputersDict.ElementAt(i).Value.ToggleAttackType(alertType);
+
+            // Wait for the end of this frame
+            yield return null;
+        }
     }
 
 }

@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91604547ddf14ec4b8c6768b1f950723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monitorManager: {fileID: 114356144267389630}
   errorText: {fileID: 0}
   frequency: 0.445
   indexName: filebeat
@@ -133,6 +134,7 @@ MonoBehaviour:
   fileLocation_queryBottom: Bro/bro_Headers_BOTTOM
   _latest_time: 
   _UseLastSuccess: 0
+  _UseRealTime: 0
   toggledOff: 0
 --- !u!114 &114543548410284238
 MonoBehaviour:
@@ -145,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdfa41843fc7bd4e933cbe9b409a067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monitorManager: {fileID: 114356144267389630}
   errorText: {fileID: 0}
   frequency: 0.487
   indexName: packetbeat
@@ -152,5 +155,6 @@ MonoBehaviour:
   fileLocation_queryBottom: Packetbeat/packetbeat_Headers_BOTTOM
   _latest_time: 
   _UseLastSuccess: 0
+  _UseRealTime: 0
   toggledOff: 0
   assumeHttp: 1

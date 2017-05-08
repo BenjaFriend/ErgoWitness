@@ -13,7 +13,11 @@ public class UIController : MonoBehaviour {
 
     #region Fields
     public static UIController thisUIController;
+    [Header("Streaming Info")]
     public StreamingInfo_UI streamingInfo;
+    [Header("Monitor Manager")]
+    [Tooltip("The monitors that you want to be able to control with te pause button")]
+    public ManageMonitors monitorManager;
 
     public Camera playerControlledCamera;
     public Camera autoCamera;
@@ -83,7 +87,6 @@ public class UIController : MonoBehaviour {
         if (Input.GetButtonDown("Cancel"))
         {
             ToggleOptionsMenu();
-            //ToggleMonitoring();
         }
     }
 
@@ -126,7 +129,7 @@ public class UIController : MonoBehaviour {
         isMonitoring = true;
 
         // Start monitoring
-        ManageMonitors.currentMonitors.StartMonitoringObjects();
+        monitorManager.StartMonitoringObjects();
     }  
 
     #region Toggles
@@ -236,7 +239,7 @@ public class UIController : MonoBehaviour {
             isMonitoring = false;
 
             // Stop monitoring
-            ManageMonitors.currentMonitors.StopMonitor();
+            monitorManager.StopMonitor();
 
             // Set the play button as active
             pausePlayButton.image.sprite = playSprite;
@@ -247,19 +250,13 @@ public class UIController : MonoBehaviour {
             pausePlayButton.image.sprite = pauseSprite;
 
             // Stop all coroutines first becore we start monitoring
-            ManageMonitors.currentMonitors.StopMonitor();
-
-            // Make sure that our timescale is up
-            //Time.timeScale = 1f;
-
+            monitorManager.StopMonitor();
+            
             // Make sure that we know that we are monitoring now
             isMonitoring = true;
 
             // Start monitoring
             StartMonitoring();
-
-            // Disable player movement
-            //playerMovement.enabled = false;
         }
 
     }
