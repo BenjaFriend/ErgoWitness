@@ -1,4 +1,6 @@
-﻿Shader "Custom/PulsingDissolve"{
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/PulsingDissolve"{
 
 	// Variables that will show up the materail editor
 	Properties{
@@ -74,7 +76,7 @@
 
 					// MVP = Model View Projection
 					// Pass in the vertex
-					OUT.position = mul(UNITY_MATRIX_MVP, IN.vertex);
+					OUT.position = UnityObjectToClipPos(IN.vertex);
 					// Take the UV's from the fragment and send it to the vertex
 					OUT.uv = IN.uv;
 

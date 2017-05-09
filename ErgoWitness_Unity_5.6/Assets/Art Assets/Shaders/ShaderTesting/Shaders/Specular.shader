@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
@@ -60,7 +62,7 @@ Shader ".New Custom/Specular"
 			v2f vert (appdata IN)
 			{
 				v2f OUT;
-				OUT.pos = mul(UNITY_MATRIX_MVP, IN.vertex);
+				OUT.pos = UnityObjectToClipPos(IN.vertex);
 				OUT.posWorld = mul(unity_ObjectToWorld, IN.vertex);
 				OUT.normal = mul(float4(IN.normal, 0.0), unity_ObjectToWorld).xyz;
 				//OUT.texcoord = TRANSFORM_TEX(IN.texcoord, _MainTex);
