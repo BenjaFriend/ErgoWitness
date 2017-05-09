@@ -96,20 +96,25 @@ public class IPGroup : MonoBehaviour {
     {
         maxAlertCountForGroup = new int[System.Enum.GetNames(typeof(AlertTypes)).Length];
 
-        // Create two arrays based on the number of alert types in 
-        quadObjs = new UnityEngine.UI.Image[System.Enum.GetNames(typeof(AlertTypes)).Length];
-
-        for (int i = 0; i < quadObjs.Length; i++)
+        if(canvasTransform != null)
         {
-            // Instantiate the object
-            quadObjs[i] = Instantiate(colorQuadPrefab);
-            // Set the partent of the image, so that it is a layout object in the UI
-            quadObjs[i].transform.SetParent(canvasTransform);
-            // Set the local positoin to 0 so that
-            quadObjs[i].rectTransform.localPosition = Vector3.zero;
-            // Set the starting color to green
-            quadObjs[i].color = healthyColor;
+            // Create two arrays based on the number of alert types in 
+            quadObjs = new UnityEngine.UI.Image[System.Enum.GetNames(typeof(AlertTypes)).Length];
+
+            for (int i = 0; i < quadObjs.Length; i++)
+            {
+                // Instantiate the object
+                quadObjs[i] = Instantiate(colorQuadPrefab);
+                // Set the partent of the image, so that it is a layout object in the UI
+                quadObjs[i].transform.SetParent(canvasTransform);
+                // Set the local positoin to 0 so that
+                quadObjs[i].rectTransform.localPosition = Vector3.zero;
+                // Set the starting color to green
+                quadObjs[i].color = healthyColor;
+            }
         }
+
+      
     }
 
     /// <summary>
@@ -328,6 +333,25 @@ public class IPGroup : MonoBehaviour {
                 hurtColor,
                 (float)maxAlertCountForGroup[alertIndex] / (float)(DeviceManager.Instance.snortManager.maxAlertCounts[alertIndex] + 1));
         }
+    }
+
+
+    /// <summary>
+    /// Toggles if we are showing this specific type of attack in our Ui
+    /// 
+    /// Author: Ben Hoffman
+    /// </summary>
+    /// <param name="attackType"></param>
+    public void ToggleAttackType(int attackType)
+    {
+        // If we don't have a snort manager, then return out of this method
+        if (DeviceManager.Instance.snortManager == null)
+        {
+            return;
+        }
+
+        // Set the object's active to the opposite of what it currently is
+        quadObjs[attackType].gameObject.SetActive(!quadObjs[attackType].gameObject.activeInHierarchy);
     }
 
 }

@@ -50,6 +50,8 @@ public class SnortAlertManager : MonoBehaviour {
     {
         // Hides the group aspects
         StartCoroutine(DeviceManager.Instance.HideAlertType(value));
+        // Hide it in the roups as well
+        StartCoroutine(IPGroupManager.currentIpGroups.HideAlertType(value));
     }
 
     /// <summary>
@@ -74,7 +76,7 @@ public class SnortAlertManager : MonoBehaviour {
 
             return;
         }
-
+        
         // Set the alert to that PC
         DeviceManager.ComputersDict[ipBeingAttacked].AddAlert(alertType);
 

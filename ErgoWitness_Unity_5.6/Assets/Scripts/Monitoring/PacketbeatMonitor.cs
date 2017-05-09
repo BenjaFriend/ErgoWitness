@@ -11,7 +11,7 @@ public class PacketbeatMonitor : MonitorObject {
 
     private Packetbeat_Json_Data _packetbeatJsonData;  // The JSON data that we are gonna keep track of
     public bool assumeHttp = false;                    // If this is true then all traffic on ports 80 and 8080 will be considered HTTP traffic
-
+    public ConnectionController connectionController;
     private Coroutine _CheckDataRoutine;
             
 
@@ -110,7 +110,7 @@ public class PacketbeatMonitor : MonitorObject {
                 }
 
                 // Send the data to the netflow controller
-                ConnectionController.currentNetflowController.CheckPacketbeatData(
+                connectionController.CheckPacketbeatData(
                     packetDataObj.hits.hits[i]._source.sourceIpInt,
                     packetDataObj.hits.hits[i]._source.destIpInt,
                     packetDataObj.hits.hits[i]._source.transport);

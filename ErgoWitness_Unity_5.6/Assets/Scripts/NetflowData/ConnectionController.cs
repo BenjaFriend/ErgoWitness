@@ -13,7 +13,7 @@ public class ConnectionController : MonoBehaviour
 {
     #region Fields
 
-    public static ConnectionController currentNetflowController;
+    //public static ConnectionController currentNetflowController;
     
     // Particle head materials =========
     public Material tcpMat;  // Just take in one material and use the colors to generate them
@@ -38,25 +38,6 @@ public class ConnectionController : MonoBehaviour
     private NetflowObject tempNet; // Temp object for when we alter stuff
 
     #endregion
-
-    /// <summary>
-    /// Set the static reference to this
-    /// </summary>
-    private void Awake()
-    {
-        // If there is not another controller in the scene...
-        if (currentNetflowController == null)
-        {
-            // Set the static reference to this
-            currentNetflowController = this;
-        }
-        // If there is another controller in scene...
-        else if (currentNetflowController != this)
-        {
-            // Destroy this 
-            Destroy(gameObject);
-        }
-    }
 
     private void Start()
     {

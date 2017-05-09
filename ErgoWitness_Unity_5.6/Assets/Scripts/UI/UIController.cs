@@ -215,16 +215,20 @@ public class UIController : MonoBehaviour {
 		{
 			// Hide it
 			MenuAnim.SetBool("showMain", false);
-            streamingInfo.IsShowing = false;
+
+            if(streamingInfo != null)
+                streamingInfo.IsShowing = false;
 
         }
         // if we are NOT showing the menu...
         else
 		{
             // Show the menu
-            streamingInfo.IsShowing = true;
             MenuAnim.SetBool("showMain", true);
-		}
+
+            if (streamingInfo != null)
+                streamingInfo.IsShowing = true;
+        }
 	}
 
     /// <summary>

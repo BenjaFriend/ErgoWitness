@@ -61,11 +61,12 @@ public class NetflowObject : MoveFromSourceToTarget
 
         // Get the trail renderer componenet
         _trailRend = GetComponent<TrailRenderer>();
-
-        // Set the partent object
-        transform.parent = ConnectionController.currentNetflowController.transform;
     }
 
+    private void Update()
+    {
+        
+    }
 
     /// <summary>
     /// Sets the color of the trail particles to this gradient

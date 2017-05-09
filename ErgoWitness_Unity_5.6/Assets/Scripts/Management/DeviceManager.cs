@@ -22,9 +22,10 @@ public class DeviceManager : MonoBehaviour {
     [Tooltip("Used to give the computers a reference to the snort alert manager that we are using.")]
     public SnortAlertManager snortManager;
     [Space]
+    [Tooltip("This controller is used to draw the lines between objects")]
+    public ConnectionController connectionController;
     [Tooltip("Part of the UI that will show the current count of computers on the screen")]
     public Text deviceCountText;        // How many devices are there currently?
-
 
     private ObjectPooler computerPooler; // The object pooler for the computer prefab
 
@@ -137,13 +138,13 @@ public class DeviceManager : MonoBehaviour {
         // If there is a service runnign on this, then send it to the netflow controller to visualize it
         if (jsonSourceData.service != null)
         {
-            ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
+            connectionController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.service);
         }
         // Otherwise if it is UDP / TCP traffic...
         else if (jsonSourceData.proto != null)
         {
             // Send the protocol
-            ConnectionController.currentNetflowController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.proto);
+            connectionController.CheckPacketbeatData(jsonSourceData.sourceIpInt, jsonSourceData.destIpInt, jsonSourceData.proto);
         }
     }
 
@@ -241,6 +242,8 @@ public class DeviceManager : MonoBehaviour {
 
     public IEnumerator HideAlertType(int alertType)
     {
+        // Tell the IP groups as well
+
         for (int i = 0; i < ComputersDict.Count; i++)
         {
             // Calculate all alerts for each computer 
@@ -249,6 +252,8 @@ public class DeviceManager : MonoBehaviour {
             // Wait for the end of this frame
             yield return null;
         }
+
+        
     }
 
 }

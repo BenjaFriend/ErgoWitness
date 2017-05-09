@@ -84,6 +84,7 @@ public class Computer : MonoBehaviour
 
         // Create two arrays based on the number of alert types in 
         quadObjs = new UnityEngine.UI.Image[System.Enum.GetNames(typeof(AlertTypes)).Length];
+
         riskNumbers = new float[System.Enum.GetNames(typeof(AlertTypes)).Length];
 
         // Get the particle system on this object to show the alerts on
@@ -98,23 +99,27 @@ public class Computer : MonoBehaviour
 		// Get the animation componenet
 		animationController = GetComponent<Computer_AnimationController>();
 
-        // Create the quad objects for our alert type
-		for (int i = 0; i < quadObjs.Length; i++)
-		{
-            // Instantiate the object
-			quadObjs [i] = Instantiate (colorQuadPrefab);
-            // Set the partent of the image, so that it is a layout object in the UI
-			quadObjs [i].transform.SetParent (canvasTransform);
-            // Set the local positoin to 0 so that
-			quadObjs [i].rectTransform.localPosition = Vector3.zero;
-            // Set the starting color to green
-            quadObjs[i].color = healthyColor;
+        // If we have a snort alert manager...
+        if (snortManager != null)
+        {
+            // Create the quad objects for our alert type
+            for (int i = 0; i < quadObjs.Length; i++)
+            {
+                // Instantiate the object
+                quadObjs[i] = Instantiate(colorQuadPrefab);
+                // Set the partent of the image, so that it is a layout object in the UI
+                quadObjs[i].transform.SetParent(canvasTransform);
+                // Set the local positoin to 0 so that
+                quadObjs[i].rectTransform.localPosition = Vector3.zero;
+                // Set the starting color to green
+                quadObjs[i].color = healthyColor;
+            }
+
+            // Set the colors of everything 
+            CalculateAllAlerts();
+
+            canvasTransform.gameObject.SetActive(false);
         }
-
-        // Set the colors of everything 
-        CalculateAllAlerts();
-
-        canvasTransform.gameObject.SetActive(false);
 
     }
 
@@ -173,6 +178,11 @@ public class Computer : MonoBehaviour
     /// <param name="attackType"></param>
     public void AddAlert(AlertTypes attackType)
     {
+        if(snortManager == null)
+        {
+            return;
+        }
+
         // Cast the alert type and store it
         int alertInt = (int)attackType;
 
@@ -201,6 +211,11 @@ public class Computer : MonoBehaviour
     /// </summary>
 	public void CalculateAllAlerts()
 	{
+        if (snortManager == null)
+        {
+            return;
+        }
+
         // Reset the current health to 0
         _currentHealth = 0f;
 
@@ -247,6 +262,11 @@ public class Computer : MonoBehaviour
     /// <returns>How many of these alerts have occured on this object</returns>
     public int AlertCount(AlertTypes attackType)
     {
+        if (snortManager == null)
+        {
+            return -1;
+        }
+
         return alertCount[(int)attackType];
     }
 
@@ -258,6 +278,11 @@ public class Computer : MonoBehaviour
     /// </summary>
     public void ToggleAlertMessages()
     {
+        if (snortManager == null)
+        {
+            return;
+        }
+
         // Invert the bool indicating whether or not we ar showing the health report
         showHealthReport = !showHealthReport;
 
@@ -273,10 +298,14 @@ public class Computer : MonoBehaviour
     /// <param name="attackType"></param>
     public void ToggleAttackType(int attackType)
     {
+        if (snortManager == null)
+        {
+            return;
+        }
+
         // Set the object's active to the opposite of what it currently is
         quadObjs[attackType].gameObject.SetActive(!quadObjs[attackType].gameObject.activeInHierarchy);
     }
-
 
     /// <summary>
     /// This will reset the lifetime of this computer because it was

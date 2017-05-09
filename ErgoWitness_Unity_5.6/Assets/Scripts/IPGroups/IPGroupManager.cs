@@ -436,4 +436,22 @@ public class IPGroupManager : MonoBehaviour
         return -1;
     }
 
+
+
+    public IEnumerator HideAlertType(int alertType)
+    {
+        // Tell the IP groups as well
+
+        for (int i = 0; i < groupsDictionary.Count; i++)
+        {
+            // Calculate all alerts for each computer 
+            groupsDictionary.ElementAt(i).Value.ToggleAttackType(alertType);
+
+            // Wait for the end of this frame
+            yield return null;
+        }
+
+
+    }
+
 }

@@ -13,10 +13,10 @@ public class Automated_Camera : MonoBehaviour {
 	public float zoomSpeed = 1f;
     [SerializeField]
     public float speed = 0.5f;       // How fast do we want to shoot this thing
-    public MoveFromSourceToTarget targetpos;
+    public Transform targetpos;
 
     private GameObject centerOfWorld;
-    private Vector3 newPos;
+    //private Vector3 newPos;
     public UnityEngine.UI.Slider slider;
 
     private bool isMobile;
@@ -30,7 +30,7 @@ public class Automated_Camera : MonoBehaviour {
         currentAutoCam = this;
 
         // Set the target position
-        transform.LookAt(targetpos.transform.position);
+        transform.LookAt(targetpos.position);
 
         // Make a new game object at the center of the world
         centerOfWorld = new GameObject("centerOfWorld");
@@ -50,7 +50,7 @@ public class Automated_Camera : MonoBehaviour {
     void Update()
     {
         // Rotate around the target position
-        transform.RotateAround(targetpos.transform.position, new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime * speed);
+        transform.RotateAround(targetpos.position, new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime * speed);
         float scrollWheel = 0f;
 
         if (isMobile)
@@ -84,16 +84,16 @@ public class Automated_Camera : MonoBehaviour {
         {
             // Scroll in
             transform.Translate(Vector3.forward * Time.deltaTime * zoomSpeed);
-            transform.LookAt(targetpos.transform.position);
+            transform.LookAt(targetpos.position);
         }
         else if (scrollWheel < 0f)
         {
             // Scroll out
             transform.Translate(-Vector3.forward * Time.deltaTime * zoomSpeed);
-            transform.LookAt(targetpos.transform.position);
+            transform.LookAt(targetpos.position);
         }
         // Look at the target position
-        transform.LookAt(targetpos.transform.position);
+        transform.LookAt(targetpos.position);
 
         if(slider.value != speed)
         {
@@ -102,18 +102,5 @@ public class Automated_Camera : MonoBehaviour {
 
     }
 
-    /// <summary>
-    /// Set the new target position and look at it
-    /// </summary>
-    /// <param name="newTarget">The new target to set</param>
-    public void ChangeTarget(Transform newTarget)
-    {
-        // Set the new target
-        targetpos.SourcePos = newTarget;
-        targetpos.DestinationPos = centerOfWorld.transform;
-        // Look at the new target
-        transform.LookAt(targetpos.transform.position);
-        
-    }
 
 }
