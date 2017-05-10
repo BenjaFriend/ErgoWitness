@@ -9,11 +9,17 @@ using UnityEngine;
 /// </summary>
 public class PacketbeatMonitor : MonitorObject {
 
+    public int packetPerQuery;
+
     private Packetbeat_Json_Data _packetbeatJsonData;  // The JSON data that we are gonna keep track of
     public bool assumeHttp = false;                    // If this is true then all traffic on ports 80 and 8080 will be considered HTTP traffic
     public ConnectionController connectionController;
     private Coroutine _CheckDataRoutine;
-            
+
+    
+    private enum CheckDataStates { Running, Done }
+    private CheckDataStates checkingState = CheckDataStates.Done;
+
 
     /// <summary>
     /// Start the necessary finite state machine with the
@@ -29,6 +35,9 @@ public class PacketbeatMonitor : MonitorObject {
 
         // Start the finite satate machine for the web request
         StartCoroutine(FSM(_packetbeatJsonData));
+
+
+        checkingState = CheckDataStates.Done;
     }
 
     /// <summary>
@@ -52,9 +61,12 @@ public class PacketbeatMonitor : MonitorObject {
                 StopCoroutine(_CheckDataRoutine);
             }
 
-            // Start a new coroutine
-            _CheckDataRoutine = StartCoroutine(CheckData(_packetbeatJsonData));
-
+            if(checkingState == CheckDataStates.Done)
+            {
+                // Start a new coroutine
+                _CheckDataRoutine = StartCoroutine(CheckData(_packetbeatJsonData));
+            }           
+    
         }
         else
         {
@@ -69,7 +81,7 @@ public class PacketbeatMonitor : MonitorObject {
     /// <param name="packetDataObj"></param>
     private IEnumerator CheckData(Packetbeat_Json_Data packetDataObj)
     {
-
+        
         // ================= Check and make sure that our data is valid =====================
         // Make sure that our data is not null
         if (packetDataObj.hits.hits.Length == 0)
@@ -77,7 +89,7 @@ public class PacketbeatMonitor : MonitorObject {
             _UseLastSuccess = true;
 
             // Tell this to use the last successful query
-            yield break;//return;
+            yield break;
         }
 
         // Let this know that we no longer need to bank on the last success
@@ -87,10 +99,10 @@ public class PacketbeatMonitor : MonitorObject {
         }
 
         // ============= Keep track of stuff to prevent duplicates =======================
-
+        packetPerQuery = 0;
         // Set our latest packetbeat time to the most recent one
         _latest_time = packetDataObj.hits.hits[packetDataObj.hits.hits.Length - 1]._source.runtime_timestamp;
-
+        checkingState = CheckDataStates.Running;
         // ============== Actually loop through our hits data  =========================
         for (int i = 0; i < packetDataObj.hits.hits.Length; i++)
         {
@@ -114,12 +126,13 @@ public class PacketbeatMonitor : MonitorObject {
                     packetDataObj.hits.hits[i]._source.sourceIpInt,
                     packetDataObj.hits.hits[i]._source.destIpInt,
                     packetDataObj.hits.hits[i]._source.transport);
+                packetPerQuery++;
             }
 
             // Get them frames
             yield return null;
         }
-
+        checkingState = CheckDataStates.Done;
     }
 
 

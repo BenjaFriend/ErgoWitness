@@ -20,10 +20,6 @@ public class MoveFromSourceToTarget : MonoBehaviour {
     private IEnumerator movingRoutine;
     private bool hasArrived;
 
-    private float timePaused;
-    private float orgininalTime;
-    private TrailRenderer trailRend;
-
     #endregion
 
 
@@ -76,38 +72,7 @@ public class MoveFromSourceToTarget : MonoBehaviour {
     public bool HasArrived { get { return hasArrived; } }
     #endregion
 
-    private void Start()
-    {
-        // Get the trail renderer componeent
-        trailRend = GetComponent<TrailRenderer>();
-        orgininalTime = trailRend.time;
-    }
 
-    /// <summary>
-    /// Keep track of the amount of time if we are paused
-    /// </summary>
-    private void Update()
-    {
-        // If we are paused, then keep track of the amount of time that we have been paused
-        if (paused)
-        {
-            timePaused += Time.deltaTime;
-            // Add to the amount of time that the trail renderer stays
-            trailRend.time = timePaused;
-        }
-    }
-
-    public void PauseMovemet()
-    {
-        timePaused = 0f;
-        paused = true;
-    }
-
-    public void UnPauseMovement()
-    {
-        paused = false;
-        trailRend.time = orgininalTime;
-    }
 
     /// <summary>
     /// Co ourtine that is started when the 'Destination' 
@@ -133,6 +98,7 @@ public class MoveFromSourceToTarget : MonoBehaviour {
         {
             yield break;
         }
+
         // Move the object to it's position
         while (Vector3.Distance(transform.position, destinatonPos.position) > 0.5f)
         {

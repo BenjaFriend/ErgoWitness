@@ -66,7 +66,7 @@ public class UIController : MonoBehaviour {
     /// Have the options menu pop up on start
     /// </summary>
     private void Start()
-    {
+    {	
         ToggleOptionsMenu();
     }
 
@@ -199,8 +199,6 @@ public class UIController : MonoBehaviour {
 
             // Enable the player controlled camera
             playerControlledCamera.enabled = true;
-
-
         }
 
     }

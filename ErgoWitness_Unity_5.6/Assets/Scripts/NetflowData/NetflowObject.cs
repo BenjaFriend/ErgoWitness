@@ -21,11 +21,15 @@ public class NetflowObject : MoveFromSourceToTarget
 
     private TrailRenderer _trailRend;
 
+    private float timePaused;
+    private float orgininalTime;
+
+
     #endregion
 
 
     #region Properties
-    
+
     public Material HeadParticleMaterial
     {
         get
@@ -61,11 +65,32 @@ public class NetflowObject : MoveFromSourceToTarget
 
         // Get the trail renderer componenet
         _trailRend = GetComponent<TrailRenderer>();
+
+        orgininalTime = _trailRend.time;
+
     }
 
     private void Update()
     {
-        
+        // If we are paused, then keep track of the amount of time that we have been paused
+        if (paused)
+        {
+            timePaused += Time.deltaTime;
+            // Add to the amount of time that the trail renderer stays
+            _trailRend.time = timePaused;
+        }
+    }
+
+    public void PauseMovemet()
+    {
+        timePaused = 0f;
+        paused = true;
+    }
+
+    public void UnPauseMovement()
+    {
+        paused = false;
+        _trailRend.time = orgininalTime;
     }
 
     /// <summary>

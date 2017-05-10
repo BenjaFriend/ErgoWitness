@@ -6,7 +6,9 @@
       "dest.ip",
       "packet_source.ip"
     ]
-}, "sort": [
+}, 
+"size": 30,
+"sort": [
   {
     "@timestamp": {
       "order": "desc"

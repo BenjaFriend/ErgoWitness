@@ -22,6 +22,7 @@ public class MonitorObject : MonoBehaviour {
     public float frequency = 1f;    // How often we want to make a request, 1 is the highest(most frequent)
     [Header("Index Name In Elasticsearch")]
     public string indexName;    // Either packetbeat or filebeat
+    [Space(20)]
     [Header("Query Locations")]
     // File locations of the queries that we need to use
     public string fileLocation_queryTop;        // Location of the top part of the query
@@ -35,11 +36,11 @@ public class MonitorObject : MonoBehaviour {
     private string _current_Query;               // The current query for us to use
 
     
-
     // The query data that we will use to build our request
     private string _query_TOP;
     private string _query_BOTTOM;
 
+    [HideInInspector]
     // The latest successful time stamp that we used to make a request
     public string _latest_time;
 

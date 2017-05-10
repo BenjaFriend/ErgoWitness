@@ -8,6 +8,7 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour {
 
     public GameObject pooledObject;     // The object that we are pooing
+    [Tooltip("How many of the pooled object prefabs will be instantiated on load.")]
     public int pooledAmount = 20;       // How much we want to initially pool
     public bool willGrow = true;        // If true then this pooler will grow until it reaches the max value
 

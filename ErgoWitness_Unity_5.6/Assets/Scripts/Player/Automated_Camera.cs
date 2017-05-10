@@ -8,17 +8,19 @@ using UnityEngine;
 /// new PC's and then slowyl zooming out
 /// </summary>
 public class Automated_Camera : MonoBehaviour {
-
-    public static Automated_Camera currentAutoCam;
+    [Header("Speed information")]
 	public float zoomSpeed = 1f;
-    [SerializeField]
     public float speed = 0.5f;       // How fast do we want to shoot this thing
-    public Transform targetpos;
 
-    private GameObject centerOfWorld;
-    //private Vector3 newPos;
+    [Tooltip("The transform of the object that this object will rotate around")]
+    public Transform targetpos;
+    [Header("User Interface")]
+    [Tooltip("The slider that will controll the camera rotation speed")]
     public UnityEngine.UI.Slider slider;
 
+    private GameObject centerOfWorld;
+    
+    
     private bool isMobile;
 
     /// <summary>
@@ -26,8 +28,6 @@ public class Automated_Camera : MonoBehaviour {
     /// </summary>
     void Start ()
     {
-        // Set the reference
-        currentAutoCam = this;
 
         // Set the target position
         transform.LookAt(targetpos.position);

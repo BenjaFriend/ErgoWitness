@@ -378,6 +378,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114653793905941930, guid: 5976d28e01ad6bc4680972b2484d2ba4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 21112905}
+    - target: {fileID: 114526475109847640, guid: 5976d28e01ad6bc4680972b2484d2ba4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 21112905}
+    - target: {fileID: 114624811584587274, guid: 5976d28e01ad6bc4680972b2484d2ba4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 21112905}
     - target: {fileID: 114033425655124370, guid: 5976d28e01ad6bc4680972b2484d2ba4,
         type: 2}
       propertyPath: monitorManager
@@ -403,21 +418,6 @@ Prefab:
       propertyPath: autoCam
       value: 
       objectReference: {fileID: 1626523225}
-    - target: {fileID: 114624811584587274, guid: 5976d28e01ad6bc4680972b2484d2ba4,
-        type: 2}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 21112905}
-    - target: {fileID: 114526475109847640, guid: 5976d28e01ad6bc4680972b2484d2ba4,
-        type: 2}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 21112905}
-    - target: {fileID: 114653793905941930, guid: 5976d28e01ad6bc4680972b2484d2ba4,
-        type: 2}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 21112905}
     - target: {fileID: 224294736152017240, guid: 5976d28e01ad6bc4680972b2484d2ba4,
         type: 2}
       propertyPath: m_AnchorMin.x
