@@ -71,7 +71,7 @@ namespace UnityTest
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "expected message")]
+        //[ExpectedException(typeof(ArgumentException), ExpectedMessage = "expected message")]
         public void ExpectedExceptionTest()
         {
             throw new ArgumentException("expected message");
