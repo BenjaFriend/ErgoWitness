@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity_5.6", "Er
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity_5.6.Editor.Plugins", "ErgoWitness_Unity_5.6.Editor.Plugins.csproj", "{43056AA4-5E20-185B-210C-979CA21B232F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErgoWitness_Unity_5.6.Editor", "ErgoWitness_Unity_5.6.Editor.csproj", "{9F598500-0833-EF1D-AF19-FCDFEE4DEB35}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{43056AA4-5E20-185B-210C-979CA21B232F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43056AA4-5E20-185B-210C-979CA21B232F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43056AA4-5E20-185B-210C-979CA21B232F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F598500-0833-EF1D-AF19-FCDFEE4DEB35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F598500-0833-EF1D-AF19-FCDFEE4DEB35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F598500-0833-EF1D-AF19-FCDFEE4DEB35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F598500-0833-EF1D-AF19-FCDFEE4DEB35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
