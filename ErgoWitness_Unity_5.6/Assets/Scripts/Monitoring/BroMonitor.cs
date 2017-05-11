@@ -13,6 +13,11 @@ public class BroMonitor : MonitorObject {
 
     private Coroutine _checkDataRoutine;
 
+    private int packetPerQuery = 0;
+
+    private enum CheckDataStates { Running, Done }
+    private CheckDataStates checkingState = CheckDataStates.Done;
+
     /// <summary>
     /// This will start the FSM with our specific stype of data
     /// </summary>
@@ -26,6 +31,9 @@ public class BroMonitor : MonitorObject {
 
         // Start the finite satate machine for the web request
         StartCoroutine(FSM(_broData));
+
+        checkingState = CheckDataStates.Done;
+
     }
 
     /// <summary>
@@ -83,7 +91,7 @@ public class BroMonitor : MonitorObject {
 
         // Set our latest packetbeat time to the most recent one
         _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp;
-
+        packetPerQuery++;
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
@@ -100,6 +108,7 @@ public class BroMonitor : MonitorObject {
             // Make sure we get them smooth frames
             yield return null;
         }
+        packetPerQuery = 0;
     }
 
     /// <summary>

@@ -58,7 +58,7 @@ public class PacketbeatMonitor : MonitorObject {
             if (_CheckDataRoutine != null)
             {
                 // Stop the current cortoutine after it finishes
-                StopCoroutine(_CheckDataRoutine);
+                //StopCoroutine(_CheckDataRoutine);
             }
 
             if(checkingState == CheckDataStates.Done)
