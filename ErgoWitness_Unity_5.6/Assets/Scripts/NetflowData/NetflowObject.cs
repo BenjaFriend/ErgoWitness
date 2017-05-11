@@ -24,7 +24,6 @@ public class NetflowObject : MoveFromSourceToTarget
     private float timePaused;
     private float orgininalTime;
 
-
     #endregion
 
 
@@ -66,18 +65,18 @@ public class NetflowObject : MoveFromSourceToTarget
         // Get the trail renderer componenet
         _trailRend = GetComponent<TrailRenderer>();
 
+        // Keep track of the 
         orgininalTime = _trailRend.time;
-
     }
 
     private void Update()
     {
         // If we are paused, then keep track of the amount of time that we have been paused
-        if (paused)
+        if (NetflowPauseController.IsPaused)
         {
-            timePaused += Time.deltaTime;
+            //timePaused += Time.deltaTime;
             // Add to the amount of time that the trail renderer stays
-            _trailRend.time = timePaused;
+            _trailRend.time += Time.deltaTime;
         }
     }
 
@@ -106,4 +105,9 @@ public class NetflowObject : MoveFromSourceToTarget
         main.startColor = changeTo;
     }
 
+    private void OnDisable()
+    {
+        // Reset the trail renderer time when this object is disabled
+        _trailRend.time = orgininalTime;
+    }
 }

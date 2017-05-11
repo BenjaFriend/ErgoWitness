@@ -102,7 +102,7 @@ public class MoveFromSourceToTarget : MonoBehaviour {
         // Move the object to it's position
         while (Vector3.Distance(transform.position, destinatonPos.position) > 0.5f)
         {
-            if (!paused)
+            if (!NetflowPauseController.IsPaused)
             {
                 transform.position = Vector3.Lerp(transform.position, destinatonPos.position, smoothing * Time.deltaTime);
             }

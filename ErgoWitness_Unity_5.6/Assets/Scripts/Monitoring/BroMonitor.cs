@@ -13,6 +13,7 @@ public class BroMonitor : MonitorObject {
 
     private Coroutine _checkDataRoutine;
 
+    [SerializeField]
     private int packetPerQuery = 0;
 
     private enum CheckDataStates { Running, Done }
@@ -55,9 +56,13 @@ public class BroMonitor : MonitorObject {
                 // If we are then stop it
                 StopCoroutine(_checkDataRoutine);
             }
+            // As long as we have finished checking out the previous request
+            if (checkingState == CheckDataStates.Done)
+            {
+                // Otherwise, start a new coroutine
+                _checkDataRoutine = StartCoroutine(CheckData(_broData));
+            }
 
-            // Otherwise, start a new coroutine
-            _checkDataRoutine = StartCoroutine(CheckData(_broData));
         }
         else
         {
@@ -91,7 +96,11 @@ public class BroMonitor : MonitorObject {
 
         // Set our latest packetbeat time to the most recent one
         _latest_time = dataObject.hits.hits[0]._source.runtime_timestamp;
+
         packetPerQuery++;
+        // Keep track of the state of this data checking
+        checkingState = CheckDataStates.Running;
+
         // Send the data to the game controller for all of our hits
         for (int i = 0; i < dataObject.hits.hits.Length; i++)
         {
@@ -109,6 +118,9 @@ public class BroMonitor : MonitorObject {
             yield return null;
         }
         packetPerQuery = 0;
+        // We are done chekcing this now
+        checkingState = CheckDataStates.Done;
+
     }
 
     /// <summary>

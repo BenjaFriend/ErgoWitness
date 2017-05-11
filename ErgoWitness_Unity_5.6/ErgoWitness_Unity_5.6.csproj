@@ -125,6 +125,8 @@
     <Compile Include="Assets\Scripts\NetflowData\DestroyAfterTime.cs" />
     <Compile Include="Assets\Scripts\NetflowData\MoveFromSourceToTarget.cs" />
     <Compile Include="Assets\Scripts\NetflowData\NetflowObject.cs" />
+    <Compile Include="Assets\Scripts\NetflowData\NetflowPauseController.cs" />
+    <Compile Include="Assets\Scripts\Player\ActivateMultiDisplay.cs" />
     <Compile Include="Assets\Scripts\Player\Automated_Camera.cs" />
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerClickAction.cs" />

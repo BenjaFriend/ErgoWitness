@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour {
 
     #region Fields
     public static UIController thisUIController;
+    public NetflowPauseController netflowSourceController;
+
     [Header("Streaming Info")]
     public StreamingInfo_UI streamingInfo;
     [Header("Monitor Manager")]
@@ -261,6 +263,7 @@ public class UIController : MonoBehaviour {
             StartMonitoring();
         }
 
+        netflowSourceController.TogglePaused();
     }
 
     /// <summary>
