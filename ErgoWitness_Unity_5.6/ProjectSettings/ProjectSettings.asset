@@ -216,7 +216,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Users/bah8892/GitHub/ErgoWitness/ErgoWitness_Unity/user.keystore
+  AndroidKeystoreName: D:/GitHub/ErgoWitness/ErgoWitness_Unity_5.6/user.keystore
   AndroidKeyaliasName: benjafriend
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
