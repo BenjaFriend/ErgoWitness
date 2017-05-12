@@ -1,4 +1,0 @@
-{
-  "query": {
-    "term": {
-      "id_orig_h" : 

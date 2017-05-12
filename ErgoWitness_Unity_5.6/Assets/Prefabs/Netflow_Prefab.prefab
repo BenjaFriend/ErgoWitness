@@ -253,7 +253,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605077836295848}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd4b3725968d9a54789ce38d166602e6, type: 3}
   m_Name: 
@@ -273,6 +273,7 @@ MonoBehaviour:
   smoothing: 2
   paused: 0
   trailPartical: {fileID: 198059126541695890}
+  lifeAfterDestination: 5
 --- !u!198 &198059126541695890
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -11,6 +11,18 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenu : MonoBehaviour {
 
+    public Canvas aboutCanvas;
+
+    private void Start()
+    {
+        aboutCanvas.enabled = false;
+    }
+
+    public void ToggleAboutCanvas()
+    {
+        aboutCanvas.enabled = !aboutCanvas.enabled;
+    }
+
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);     

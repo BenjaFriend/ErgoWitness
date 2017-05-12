@@ -1,9 +1,0 @@
-} }, "size": 2,
-  
-   "sort": [
-  {
-    "@timestamp": {
-      "order": "desc"
-    }
-  }
-]}
