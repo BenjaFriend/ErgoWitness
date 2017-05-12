@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Author: Ben Hoffman
 /// This class holds the Data that this computer has, and a list
 /// of computers that it is conenct to
 /// 
@@ -161,7 +160,7 @@ public class Computer : MonoBehaviour
             // Remove it from the dictionary
             DisableMe();
         }
-        else
+        else if(!NetflowPauseController.IsPaused)
         {
             // Add how long it has been to the field
             timeSinceDiscovery += Time.deltaTime;
