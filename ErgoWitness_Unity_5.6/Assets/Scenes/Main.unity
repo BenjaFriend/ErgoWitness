@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45138764, g: 0.50091743, b: 0.5725561, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.3807394, b: 0.3587268, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 112000001, guid: f498a0307ef9ab54e9fb20094b2db841,
+  m_LightingDataAsset: {fileID: 112000002, guid: 8b796bc0ba8f2fb43b73cb60dcff4e32,
     type: 2}
   m_ShadowMaskMode: 2
 --- !u!196 &4
@@ -7293,7 +7293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 750, y: 881.21}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &799658201
@@ -11471,6 +11471,16 @@ Prefab:
       propertyPath: slider
       value: 
       objectReference: {fileID: 1946531138}
+    - target: {fileID: 114865128993012910, guid: 67f93bcb722d84a49ab8aa6cac737a63,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368961553142060, guid: 67f93bcb722d84a49ab8aa6cac737a63,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67f93bcb722d84a49ab8aa6cac737a63, type: 2}
   m_IsPrefabParent: 0
@@ -12371,8 +12381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 12.8}
-  m_SizeDelta: {x: 63.95, y: 24.4}
+  m_AnchoredPosition: {x: 0, y: 1.4}
+  m_SizeDelta: {x: 30, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1357143954
 MonoBehaviour:
@@ -15848,7 +15858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -0.2, y: -21.5}
+  m_AnchoredPosition: {x: -0.20000076, y: -21.5}
   m_SizeDelta: {x: 120, y: 20}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1724636786
@@ -16985,11 +16995,11 @@ RectTransform:
   m_Father: {fileID: 301737472}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 27.000008, y: 0}
-  m_SizeDelta: {x: 75, y: 75}
-  m_Pivot: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1849276688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20444,7 +20454,7 @@ RectTransform:
   m_Father: {fileID: 13635972}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.48955268}
+  m_AnchorMin: {x: 0, y: 0.43259832}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -20676,11 +20686,11 @@ RectTransform:
   m_Father: {fileID: 536261072}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -450}
-  m_SizeDelta: {x: 20, y: 450}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2126051753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20693,7 +20703,7 @@ MonoBehaviour:
   m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
+  m_IgnoreLayout: 1
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
@@ -20739,8 +20749,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2118322995}
   m_HandleRect: {fileID: 2118322994}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.5104473
+  m_Value: 0.9999998
+  m_Size: 0.56740165
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

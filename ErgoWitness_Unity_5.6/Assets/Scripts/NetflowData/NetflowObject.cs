@@ -16,6 +16,8 @@ public class NetflowObject : MoveFromSourceToTarget
     #region Fields
 
     public ParticleSystem trailPartical;         // The emission module of this particle system
+    public float lifeAfterDestination = 5f; // How long this object will stay active
+
 
     private ParticleSystemRenderer headParticle; //The Particle system on this object
 
@@ -80,16 +82,21 @@ public class NetflowObject : MoveFromSourceToTarget
         }
     }
 
-    public void PauseMovemet()
+    /// <summary>
+    /// This will disable this game object after it reaches its destiantion
+    /// 
+    /// Author: Ben hoffman
+    /// </summary>
+    public override void ReachedDestination()
     {
-        timePaused = 0f;
-        paused = true;
+        base.ReachedDestination();
+
+        Invoke("Destroy", 2f);
     }
 
-    public void UnPauseMovement()
+    private void Destroy()
     {
-        paused = false;
-        _trailRend.time = orgininalTime;
+        gameObject.SetActive(false);
     }
 
     /// <summary>

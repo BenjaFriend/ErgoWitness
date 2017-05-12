@@ -111,6 +111,10 @@ public class MoveFromSourceToTarget : MonoBehaviour {
         }
 
         hasArrived = true;
+
+        ReachedDestination();
     }
+
+    public virtual void ReachedDestination() { }
 
 }

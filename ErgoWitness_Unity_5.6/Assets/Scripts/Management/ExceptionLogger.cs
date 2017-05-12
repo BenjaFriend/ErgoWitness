@@ -8,14 +8,20 @@ public class ExceptionLogger : MonoBehaviour
     private StringWriter logWriter;
 
     public UnityEngine.UI.Text logText;
+
+
     void OnEnable()
     {
-        Application.RegisterLogCallback(ExceptionWriter);
+        //Application.RegisterLogCallback(ExceptionWriter);
+        Application.logMessageReceived += ExceptionWriter;
+
     }
 
     void OnDisable()
     {
-        Application.RegisterLogCallback(null);
+        //Application.RegisterLogCallback(null);
+        Application.logMessageReceived -= ExceptionWriter;
+
     }
 
     //This is an instance of a delegate, we'll cover these in more detail in the Advanced scripting chapter

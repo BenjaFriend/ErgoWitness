@@ -38,6 +38,21 @@ namespace UnityStandardAssets.ImageEffects
         public Shader fastBloomShader = null;
         private Material fastBloomMaterial = null;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Disable this image effect if we are on a mobile platform
+        /// 
+        /// Author: Ben hoffman
+        /// </summary>
+        private void OnEnable()
+        {
+            if (Application.isMobilePlatform)
+            {
+                // Disable this image effect
+                this.enabled = false;
+            }
+        }
+ /////////////////////////////////////////////////////////////////////////////////////////////////
 
         public override bool CheckResources ()
 		{
