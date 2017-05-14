@@ -16,7 +16,7 @@ h1 {
   color:#2e83c3;
 }
 
-h2 h3 {
+h2, h3 {
   font-family: 'Roboto Medium', sans-serif;
   color:#2e83c3;
 }
