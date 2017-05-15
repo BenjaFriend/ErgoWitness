@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 /// <summary>
 /// This object will send HTTP queries to the specified server,
@@ -194,12 +195,15 @@ public class MonitorObject : MonoBehaviour {
     /// Make a timestamp
     /// </summary>
     /// <returns>A timestamp based on the current time</returns>
-    private string GenerateTimestampNow()
+    public string GenerateTimestampNow()
     {
-        return monitorManager.GenerateTimeStamp(
-            System.DateTime.Now.Hour,
-            System.DateTime.Now.Minute,
-            System.DateTime.Now.Second);
+        return
+            DateTime.Today.Year.ToString() + "-" +
+            DateTime.Today.ToString("MM") + "-" +
+            DateTime.Today.ToString("dd") +
+            "T" + DateTime.Now.ToString("hh") + ":" +
+            DateTime.Now.ToString("mm") + ":" +
+            DateTime.Now.ToString("ss") + ".000Z";
     }
 
 

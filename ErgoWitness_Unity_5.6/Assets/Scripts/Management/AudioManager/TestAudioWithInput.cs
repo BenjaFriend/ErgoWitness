@@ -13,24 +13,30 @@ public class TestAudioWithInput : MonoBehaviour {
 	void Update ()
     {
 
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             AudioManager.audioManager.PlayAudio(_MyAudioTypes.NewComputer);
-            Debug.Log("Played new computer sound!");
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             AudioManager.audioManager.PlayAudio(_MyAudioTypes.Tcp);
-            Debug.Log("Played TCP sound!");
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             AudioManager.audioManager.PlayAudio(_MyAudioTypes.Http);
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             AudioManager.audioManager.PlayAudio(_MyAudioTypes.Udp);
         }
 
+    }
+
+    void OnGUI()
+    {
+        GUI.skin.box.fontSize = 15;
+
+        GUI.Box(new Rect(10f, 10f, 300, 80),
+            "Press 1: New Computer Sound\nPress2: TCP Sound\nPress3: HTTP sound\nPress4: UDP Sound");
     }
 }
