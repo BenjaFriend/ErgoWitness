@@ -23,6 +23,11 @@ public class MainMenu : MonoBehaviour {
         aboutCanvas.gameObject.SetActive(!aboutCanvas.gameObject.activeInHierarchy);
     }
 
+    public void OpenWebsite()
+    {
+        Application.OpenURL("http://ergowitness.info");
+    }
+
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);     

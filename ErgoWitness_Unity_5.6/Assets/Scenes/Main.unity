@@ -11474,12 +11474,12 @@ Prefab:
     - target: {fileID: 114865128993012910, guid: 67f93bcb722d84a49ab8aa6cac737a63,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114368961553142060, guid: 67f93bcb722d84a49ab8aa6cac737a63,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67f93bcb722d84a49ab8aa6cac737a63, type: 2}
@@ -12951,7 +12951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 1259338230392002, guid: 0c58b62a4dbe65c49b7b591d4c6ec24c,
     type: 2}
-  pooledAmount: 10
+  pooledAmount: 50
   willGrow: 1
 --- !u!114 &1421912386
 MonoBehaviour:
@@ -13973,7 +13973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoObjects: []
-  _leadboardDisplaySize: 3
   topYCoord: -20
   bottomYCoord: -80
   movementAmount: -20
@@ -16616,7 +16615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 1605077836295848, guid: bbbc984707d75cb4fa77beb71dfc452a,
     type: 2}
-  pooledAmount: 100
+  pooledAmount: 50
   willGrow: 1
 --- !u!114 &1820772820
 MonoBehaviour:

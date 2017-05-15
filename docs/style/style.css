@@ -1,9 +1,9 @@
 /* =============== Font Imports ================  */
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 
 * {
-  font-family: 'Roboto Light', sans-serif, Arial, Calibri, monospace;
+  font-family: 'Montserrat', sans-serif;
  }
 
 body {
@@ -12,17 +12,14 @@ body {
 }
 
 h1 {
-  font-family: 'Roboto Black', sans-serif;
   color:#2e83c3;
 }
 
 h2, h3 {
-  font-family: 'Roboto Medium', sans-serif;
   color:#2e83c3;
 }
 
 p {
-  font-family: 'Roboto Light', sans-serif;
   color: black;
 }
 
@@ -75,6 +72,7 @@ a:visited {
 
 /* ============== Footer ======================= */
 footer {
-  padding-top: 10%;
   text-align: center;
+  padding: 25px;
+
 }
