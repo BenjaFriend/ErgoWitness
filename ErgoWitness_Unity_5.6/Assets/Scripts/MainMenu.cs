@@ -15,12 +15,12 @@ public class MainMenu : MonoBehaviour {
 
     private void Start()
     {
-        aboutCanvas.enabled = false;
+        aboutCanvas.gameObject.SetActive(false);
     }
 
     public void ToggleAboutCanvas()
     {
-        aboutCanvas.enabled = !aboutCanvas.enabled;
+        aboutCanvas.gameObject.SetActive(!aboutCanvas.gameObject.activeInHierarchy);
     }
 
     public void LoadLevel(string levelName)

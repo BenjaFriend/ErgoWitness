@@ -9839,18 +9839,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleColors:
   - {r: 1, g: 1, b: 1, a: 1}
-  blueTeamMats:
-  - {r: 0.007352948, g: 0.014198734, b: 1, a: 0.997}
-  - {r: 0.007352948, g: 0.794625, b: 1, a: 0.997}
-  - {r: 0.007352948, g: 1, b: 0.26064894, a: 0.997}
-  - {r: 0, g: 0.5862069, b: 1, a: 0.997}
-  - {r: 0.25562897, g: 0, b: 0.52205884, a: 0.997}
-  redTeamMat:
+  blueTeamColors:
+  - {r: 0, g: 0.2965517, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0.95862055, a: 1}
+  - {r: 0, g: 0, b: 0.6911765, a: 1}
+  - {r: 0.3493188, g: 0.6161856, b: 0.6691177, a: 1}
+  - {r: 0, g: 1, b: 0.2965517, a: 1}
+  redTeamColors:
+  - {r: 0.8161765, g: 0, b: 0.69234264, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0.61764705, g: 0.009083053, b: 0.009083053, a: 1}
-  - {r: 1, g: 0.9724138, b: 0, a: 1}
-  - {r: 1, g: 0.6, b: 0, a: 1}
-  - {r: 1, g: 0.1862069, b: 0, a: 1}
+  - {r: 1, g: 0.76551723, b: 0, a: 1}
+  - {r: 1, g: 0.93103445, b: 0, a: 1}
+  - {r: 0.63235295, g: 0.0046496587, b: 0.0046496587, a: 1}
   groupPrefab: {fileID: 1964255048097172, guid: a0750c11c46947942a1fdbde1bf5aa2e,
     type: 2}
   minDistanceApart: 10
@@ -16125,7 +16125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 79.5, y: -166.69998}
+  m_AnchoredPosition: {x: 79.5, y: -169.5}
   m_SizeDelta: {x: 65, y: 20}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1764002318

@@ -13,11 +13,12 @@ public class BroMonitor : MonitorObject {
 
     private Coroutine _checkDataRoutine;
 
-    [SerializeField]
     private int packetPerQuery = 0;
 
     private enum CheckDataStates { Running, Done }
     private CheckDataStates checkingState = CheckDataStates.Done;
+
+    public int PacketPerQuery { get { return packetPerQuery; } }
 
     /// <summary>
     /// This will start the FSM with our specific stype of data

@@ -14,8 +14,8 @@ public class IPGroupManager : MonoBehaviour
     #region Fields
 
     public Color[] possibleColors;    // The possible colors that we want to assign the groups at random
-    public Color[] blueTeamMats;      // The possible colors for the blue team
-    public Color[] redTeamMat;        // The possible colors for the red team
+    public Color[] blueTeamColors;      // The possible colors for the blue team
+    public Color[] redTeamColors;        // The possible colors for the red team
 
     public static IPGroupManager currentIpGroups;   // A static reference to this manager
 
@@ -270,15 +270,15 @@ public class IPGroupManager : MonoBehaviour
             groupToColor.IsSpecialTeam = true;
 
             // Set the color to the red team specific color
-            if (whichRedTeam >= redTeamMat.Length)
+            if (whichRedTeam >= redTeamColors.Length)
             {
                 // Pick a random red team color
-                groupToColor.GroupColor = redTeamMat[Random.Range(0, redTeamMat.Length)];
+                groupToColor.GroupColor = redTeamColors[Random.Range(0, redTeamColors.Length)];
             }
             else
             {
                 // Set it to a proper red team color
-                groupToColor.GroupColor = redTeamMat[whichRedTeam];
+                groupToColor.GroupColor = redTeamColors[whichRedTeam];
             }
             return;
         }
@@ -289,13 +289,13 @@ public class IPGroupManager : MonoBehaviour
             groupToColor.IsSpecialTeam = true;
 
             // Set the color to the blue team specific color
-            if (whichBlueTeam >= blueTeamMats.Length)
+            if (whichBlueTeam >= blueTeamColors.Length)
             {
-                groupToColor.GroupColor = blueTeamMats[Random.Range(0, blueTeamMats.Length)];
+                groupToColor.GroupColor = blueTeamColors[Random.Range(0, blueTeamColors.Length)];
             }
             else
             {
-                groupToColor.GroupColor = blueTeamMats[whichBlueTeam];
+                groupToColor.GroupColor = blueTeamColors[whichBlueTeam];
             }
 
             return;

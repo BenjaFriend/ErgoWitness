@@ -16,8 +16,8 @@ public class StreamingInfo_UI : MonoBehaviour {
 
     public SetInfo[] infoObjects;
 
-    [SerializeField]
-    private int _leadboardDisplaySize = 3;
+    //[SerializeField]
+    //private int _leadboardDisplaySize = 3;
 
     [SerializeField] private float topYCoord = -20;
     [SerializeField] private float bottomYCoord = -80;

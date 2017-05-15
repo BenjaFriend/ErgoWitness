@@ -149,7 +149,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Monitoring\Editor\MonitorObjectEditor.cs" />
+    <Compile Include="Assets\Scripts\Monitoring\Editor\BroMonitor_Editor.cs" />
+    <Compile Include="Assets\Scripts\Monitoring\Editor\Packetbeat_Editor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art Assets\Fonts\Lato\OFL.txt" />

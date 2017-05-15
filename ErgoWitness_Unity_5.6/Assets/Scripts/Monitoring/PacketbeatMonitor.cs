@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class PacketbeatMonitor : MonitorObject {
 
-    public int packetPerQuery;
+    private int packetPerQuery;
 
     private Packetbeat_Json_Data _packetbeatJsonData;  // The JSON data that we are gonna keep track of
     public bool assumeHttp = false;                    // If this is true then all traffic on ports 80 and 8080 will be considered HTTP traffic
@@ -20,6 +20,7 @@ public class PacketbeatMonitor : MonitorObject {
     private enum CheckDataStates { Running, Done }
     private CheckDataStates checkingState = CheckDataStates.Done;
 
+    public int PacketPerQuery { get { return packetPerQuery; } }
 
     /// <summary>
     /// Start the necessary finite state machine with the
