@@ -326,7 +326,7 @@ public class MonitorObject : MonoBehaviour {
                 errorText.text = "There was a HTTP request error! Check your Server IP in the options tab!";
             // If we are in the editor, then print the error to the console
 #if UNITY_EDITOR
-                Debug.Log("The HTTP request text:\n" + myRequest.error);
+                Debug.Log("Index " + indexName + " The HTTP request text:\n" + myRequest.error);
                 Debug.Log("The query was: " + _current_Query);
 #endif
             

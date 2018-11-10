@@ -36,14 +36,14 @@
     <div id="header"></div>
     <h1> Create a Capture Server</h1>
 <p>
-    In order to actually send data to Logstash, we need a device that can grab the information that we want. For this project, I used Bro, Filebeat, and Packetbeat. Again,, these commands are for an RPM distribution of Linux.
+    In order to actually send data to Logstash, we need a device that can grab the information that we want. For this project, I used Bro, Filebeat, and Packetbeat. Again, these commands are for an RPM distribution of Linux.
 </p>
   
-    <h2>Get these scripts on GitHub</h2>
+    <h2>Checkout these scripts on GitHub</h2>
     <ul>
-    <li><a href="https://github.com/bah8892/ELK_Network_Infrastructure/blob/master/rpm/deployPacketbeat.sh">Installing Packetbeat</a></li>
-    <li><a href="https://github.com/bah8892/ELK_Network_Infrastructure/blob/master/rpm/InstallBroScript.sh">Installing Bro</a></li>
-    <li><a href="https://github.com/bah8892/ELK_Network_Infrastructure/blob/master/rpm/deployFilebeat.sh">Installing Filebeat</a></li>
+      <li><a href="https://github.com/bah8892/ELK_Network_Infrastructure/blob/master/rpm/deployPacketbeat.sh">Installing Packetbeat</a></li>
+      <li><a href="https://github.com/bah8892/ELK_Network_Infrastructure/blob/master/rpm/InstallBroScript.sh">Installing Bro</a></li>
+      <li><a href="https://github.com/bah8892/ELK_Network_Infrastructure/blob/master/rpm/deployFilebeat.sh">Installing Filebeat</a></li>
     </ul>
 
     <h3> Install Packetbeat</h3>
@@ -100,7 +100,7 @@
   </code>
 
 </h3>Enable Bro JSON logging</h3>
-    <code>
+  <code>
     sed -i 's#const use_json = F#const use_json = T#g' /usr/local/bro/share/bro/base/frameworks/logging/writers/ascii.bro
   </code>
 
@@ -117,80 +117,162 @@
   </code>
 
   <p>  Change the interface that Bro is monitoring here:</p>
-    <code>
+  <code>
     /usr/local/bro/etc/node.cfg
   </code>
 
-</h2> Install Filebeat</h2>
 
-  <p>  Now that we have installed Bro, we can start sending logs to our Logstash server.
-</p>
-    <code>
-    sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
-    cat > /etc/yum.repos.d/elastic.repo << EOF
-    [elastic-5.x]
-    name=Elastic repository for 5.x packages
-    baseurl=https://artifacts.elastic.co/packages/5.x/yum
-    gpgcheck=1
-    gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-    enabled=1
-    autorefresh=1
-    type=rpm-md
-    EOF
+<h3>Completed Install setup (without NGINX)</h3>
 
-    sudo yum install filebeat -y
-    systemctl enable filebeat
-    service filebeat restart
-
-    mkdir /etc/filebeat/conf.d/
-    cp /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.bak
-
-    cat > /etc/filebeat/filebeat.yml << EOF
-    filebeat:
-      registry_file: /var/lib/filebeat/registry
-      config_dir: /etc/filebeat/conf.d
-
-    ## Change this to whatever your logstash server is running on
-    output.logstash:
-      hosts: ["$1:5044"]
-    EOF
-  </code>
 <p>
-    After you make that basic configuration, go in and change the “hosts” line to whatever logstash host you are using. You can use multiple hosts if you want to, but I do not.
-
-    Now we have to tell Filebeat what logs we want to forward. So just add this configuration file to the conf.d directory.
+  Here is a full set of installation steps for the server. 
 </p>
-    <code>
-    cat > /etc/filebeat/conf.d/bro.yml << EOF
-    filebeat.prospectors:
-    - input_type: log
-      paths:
-          - /usr/local/bro/logs/current/conn.log
-          - /usr/local/bro/logs/current/dhcp.log
-          - /usr/local/bro/logs/current/http.log
-          - /usr/local/bro/logs/current/ssl.log
-          - /usr/local/bro/logs/current/dns.log
-          - /usr/local/bro/logs/current/known_services.log
-          - /usr/local/bro/logs/current/ssh.log
-          - /usr/local/bro/logs/current/weird.log
-      fields:
-        sensorID: $result
-        sensorType: networksensor
-      document_type: bro
-    EOF
+<code>
+  ##################################### Install Java ##################################
 
-    systemctl restart filebeat
+  yum install wget -y
+  yum install java-devel -y
+  
+  
+  ##################################### Install/Setup Elasticsearch #####################################
+  
+  sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  
+  echo '[elasticsearch-5.x]
+  name=Elasticsearch repository for 5.x packages
+  baseurl=https://artifacts.elastic.co/packages/5.x/yum
+  gpgcheck=1
+  gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  enabled=1
+  autorefresh=1
+  type=rpm-md
+  ' | sudo tee /etc/yum.repos.d/elasticsearch.repo
+  sudo yum -y install elasticsearch
+  
+  sed -i 's/#network.host: 192.168.0.1/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
+  
+  systemctl enable elasticsearch
+  systemctl start elasticsearch
+  
+  ##################################### Install/Setup Kibana #####################################
+  echo '[kibana-4.4]
+  name=Kibana repository for 4.4.x packages
+  baseurl=http://packages.elastic.co/kibana/4.4/centos
+  gpgcheck=1
+  gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch
+  enabled=1
+  ' | sudo tee /etc/yum.repos.d/kibana.repo
+  
+  sudo yum -y install kibana
+  
+  sudo vi /opt/kibana/config/kibana.yml
+  ## In the kibana config file, find the line that specifies server.host and replace the ip with "localhost"
+  ## server.host: "localhost"
+  
+  
+  sudo systemctl start kibana
+  sudo chkconfig kibana on
+  
+  
+  ###################################### Allow firewall connections #################################
+  
+  firewall-cmd --zone=public --add-port=5601/tcp --permanent
+  firewall-cmd --zone=public --add-port=5400/tcp --permanent
+  firewall-cmd --zone=public --add-port=9200/tcp --permanent
+  firewall-cmd --zone=public --add-port=9600/tcp --permanent
+  firewall-cmd --add-service=http
+  firewall-cmd --add-service=https
+  firewall-cmd --runtime-to-permanent
+  firewall-cmd --reload
+  
+  
+  ##################################### Install/Setup Logstash #####################################
+  echo '[logstash-5.x]
+  name=Elastic repository for 5.x packages
+  baseurl=https://artifacts.elastic.co/packages/5.x/yum
+  gpgcheck=1
+  gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  enabled=1
+  autorefresh=1
+  type=rpm-md
+  ' | sudo tee /etc/yum.repos.d/logstash.repo
+  
+  sudo yum -y install logstash
+  
+  systemctl restart logstash
+  systemctl enable logstash
+  
+  ##################################### Install/Setup Packetbeat #####################################
+  
+  sudo yum install libpcap
+  curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.2.2-x86_64.rpm
+  sudo rpm -vi packetbeat-5.2.2-x86_64.rpm
+  
+  mv /etc/packetbeat/packetbeat.yml /etc/packetbeat/packetbeat.yml.back
+  
+  
+    cat > /etc/packetbeat/packetbeat.yml << EOF
+  #============================== Network device ================================
+  
+  packetbeat.interfaces.device: any
+  packetbeat.interfaces.type: pcap
+  
+  # If you want to us the af_packet style (which uses a lot of RAM, but is faster then PCAP)
+  #packetbeat.interfaces.type: af_packet
+  
+  #================================== Flows =====================================
+  
+  packetbeat.flows:
+    timeout: 30s
+    period: 1s
+  #========================== Transaction protocols =============================
+  
+  packetbeat.protocols.icmp:
+    enabled: true
+  packetbeat.protocols.amqp:
+    ports: [5672]
+  packetbeat.protocols.cassandra:
+    ports: [9042]
+  packetbeat.protocols.dns:
+    ports: [53]
+    include_authorities: true
+    include_additionals: true
+  packetbeat.protocols.http:
+    ports: [80, 8080, 8000, 5000, 8002]
+  packetbeat.protocols.memcache:
+    ports: [11211]
+  packetbeat.protocols.mysql:
+    ports: [3306]
+  packetbeat.protocols.pgsql:
+    ports: [5432]
+  packetbeat.protocols.redis:
+    ports: [6379]
+  packetbeat.protocols.thrift:
+    ports: [9090]
+  packetbeat.protocols.mongodb:
+    ports: [27017]
+  packetbeat.protocols.nfs:
+    ports: [2049]
+  
+  #----------------------------- Logstash output --------------------------------
+  output.logstash:
+    # The Logstash hosts
+    hosts: ["127.0.0.1:5044"]
+  
+  logging.level: debug
+  
+  
+  EOF
+  
+  
+  ###### Disable SELinux ###### 
+  
+  sudo setenforce 0  
 
-  </code>
-  <p>
-    That will gather all the important bro logs for the visualization, and keep some of the grarbage out that Bro generates. If you DO want all the Bro logs sent to Logstash, just replace all of the file locations with the one below:
-</p>
-    <code>
-          - /usr/local/bro/logs/current/*.log
-    </code>
-<p>
-    This will forward ALL .log files that bro generates to Logstash.
-</p>
+</code>
+
+
+
   </body>
 
   </html>
